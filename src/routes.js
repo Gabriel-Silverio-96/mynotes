@@ -1,16 +1,16 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 
-//Page
-import Index from './page/index';
+//pages
+import Index from './page';
 
-export default function Routes() {
+export default function Router() {
     return (
         <BrowserRouter>
             <Switch>
                 <Route exact path="/" component={Index} />
                 <Route path="*" component={Index}>
-                    <Redirect to="/"/>
+                    <Redirect to="/" />
                 </Route>
             </Switch>
         </BrowserRouter>
