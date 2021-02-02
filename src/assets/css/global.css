@@ -1,0 +1,9 @@
+.container {    
+    padding: 0 25px;
+    margin: auto;
+}
+
+h1 {
+    font-family: 'Epilogue', sans-serif;
+    font-weight: 700;
+}

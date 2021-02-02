@@ -1,0 +1,21 @@
+.notes-area {    
+    margin-top: 50px;
+    display: flex;    
+    flex-wrap: wrap;    
+}
+
+.notes-area .notes-box {
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+}
+
+.notes-area .notes-box:last-child {
+    margin-right: 0rem;
+}
+
+.notes-box {
+    width: 12.5rem;
+    height: 12.5rem;
+    background-color: tomato;
+    border-radius:  1.5rem;
+}

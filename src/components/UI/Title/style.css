@@ -1,0 +1,10 @@
+.title-area {
+    display: flex;
+    justify-content: space-between;    
+    flex-wrap: wrap;
+}
+
+.title-main {
+    margin-top: 1.7rem;
+    font-size: 3rem;
+}
