@@ -15,7 +15,17 @@
 
 .notes-box {
     width: 12.5rem;
-    height: 12.5rem;
+    height: 11rem;
     background-color: tomato;
     border-radius:  1.5rem;
+    padding: 25px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.notes-box p{
+    font-family: 'Rajdhani', sans-serif;
+    margin-left: auto;
 }
