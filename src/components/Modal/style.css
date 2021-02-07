@@ -1,0 +1,21 @@
+.modal {
+    background-color: #282A36;
+    border: 0.18rem solid #9500FF;
+    width: 25rem !important;
+    padding: 2rem;
+    border-radius: 1rem;
+
+    margin-right: 1rem;
+    margin-left: 1rem;
+        
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    min-height: 15rem;
+    max-height: max-content;    
+}
+
+.modal-body, .modal-footer {
+    margin-top: 2rem;
+}

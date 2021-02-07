@@ -3,7 +3,22 @@
     margin: auto;
 }
 
-h1 {
+h1, h2{
     font-family: 'Epilogue', sans-serif;
     font-weight: 700;
+}
+
+input {
+    font-family: 'Rajdhani', sans-serif;
+    background-color: #44475A;
+    padding: 1rem 0.90rem;
+    border: 0.18rem solid white;
+    border-radius: 1rem;
+    width: 90%;
+    color: white;
+}
+
+input::placeholder {
+    font-family: 'Rajdhani', sans-serif;
+    color: white;
 }
