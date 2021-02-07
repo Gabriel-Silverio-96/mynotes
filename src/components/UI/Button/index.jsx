@@ -5,7 +5,11 @@ import "./style.css";
 
 export default function ButtonPrimary({name, onClick, className}) {   
     return (
-        <button className={`btn btn-primary ${className}`} onClick={onClick}>{name}</button>
+        <button 
+        className={`btn btn-primary ${className}`} 
+        onClick={onClick}>
+            {name}
+        </button>
     )
 }
 
