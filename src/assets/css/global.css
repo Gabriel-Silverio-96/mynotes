@@ -22,3 +22,65 @@ input::placeholder {
     font-family: 'Rajdhani', sans-serif;
     color: white;
 }
+
+.radio label {
+    font-family: 'Rajdhani', sans-serif;
+    color: white;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.radio-area {
+    display: flex;
+}
+
+.radio-area .color-radio{
+    margin-right: 1rem;
+}#
+
+.radio-area .color-radio:last-child{
+    margin-right: 0rem;
+}
+
+.color-radio input[type="radio"]{     
+    display:none;      
+}
+
+.color-radio label{     
+    width: 1.2rem;    
+    height: 1.2rem;    
+    border-radius: 50%;
+    display: inline-block;
+    border: 0.2rem solid white;
+    cursor: pointer;      
+}
+
+.color-radio input[type="radio"]:checked + label {
+    border: 0.2rem solid #44475A;    
+    transition: 0.2s;
+    transform: scale(1.5);
+}
+
+[for|=color1] {   
+    background-color: #FF51B5;
+}
+
+[for|=color2] {   
+    background-color: #FFAA4E;
+}
+
+[for|=color3] {   
+    background-color: #4EDCFB;
+}
+
+[for|=color4] {   
+    background-color: #0DFF7E;
+}
+
+[for|=color5] {   
+    background-color: #FF0D5F;
+}
+
+[for|=color6] {   
+    background-color: #9C10FF;
+}

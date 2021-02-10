@@ -10,20 +10,20 @@ export default function Modal(props) {
             <div className="modal-header">
                 <h1>{props.title}</h1>
             </div>
-            <form>
+            <form onSubmit={props.onSubmit}>
                 <div className="modal-body">
-                    {props.modalBody.map(value => {
+                    {props.modalBody.map((value, index) => {
                         return (
-                            <div key={value.length}>
+                            <div key={index}>
                                 {value}
                             </div>
                         )
                     })}
                 </div>
                 <div className="modal-footer">
-                    {props.modalFooter.map(value => {
+                    {props.modalFooter.map((value, index) => {
                         return (
-                            <div key={value.length}>
+                            <div key={index}>
                                 {value}
                             </div>
                         )
