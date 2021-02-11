@@ -22,7 +22,7 @@ function Index() {
 
   const [newNote, SetNewNote] = useState(
     {
-      id: Math.floor(Math.random() * 1000),
+      id: '',
       colornote: '',
       title: '',
       date: dateNote,
@@ -30,7 +30,10 @@ function Index() {
   );
 
   function handleChange(e) {
-    SetNewNote({ ...newNote, [e.target.name]: e.target.value })
+    SetNewNote({ ...newNote, 
+      id: Math.floor(Math.random() * 1000),
+      [e.target.name]: e.target.value 
+    })
   }
 
   function SaveNote(e) {
@@ -71,7 +74,16 @@ function Index() {
     SetModalState("modal-none")
   }
 
-  return (        
+  function DeleteThisNote(e) {
+      
+      storage.filter((value, index) => {         
+        if(value.id === Number(e.target.id)) {
+          console.log(e.target);
+        }
+      })
+  }
+
+  return (      
     <div className="container">
       <Header />
 
@@ -89,6 +101,7 @@ function Index() {
         {noteStorage !== null ?
           noteStorage.map((value, index) => (
             <Notes
+              onClick={DeleteThisNote}
               key={index}
               id={value.id}
               colornote={value.colornote}
