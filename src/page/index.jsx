@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { ContextGlobal } from '../provider/context';
 
 //components
 import Header from '../components/Header';
 import Title from '../components/UI/Title/index';
-import ButtonPrimary from '../components/UI/Button';
+import { ButtonPrimary, Delete} from '../components/UI/Button';
 import Notes from '../components/UI/Notes';
 import Modal from '../components/Modal';
 
@@ -11,6 +12,8 @@ import Modal from '../components/Modal';
 import '../assets/css/global.css';
 
 function Index() {
+  const {modalState, SetModalState} = useContext(ContextGlobal);
+  
   const date = new Date()
   const day = date.getDate();
   const month = date.getMonth() + 1;
@@ -32,7 +35,7 @@ function Index() {
 
   function SaveNote(e) {
     e.preventDefault()
-
+    
     SetNewNote({
       ...newNote
     })
@@ -43,17 +46,43 @@ function Index() {
     } else {
       localStorage.setItem('notes', JSON.stringify([newNote]))
     }
+
+    CloseModal()       
+    e.target.reset()
   }
 
-  const noteStorage = JSON.parse(localStorage.getItem('notes'));
+  const storage = JSON.parse(localStorage.getItem('notes'));
+  const [noteStorage, SetNoteStorage] = useState(storage)
 
-  return (    
+  useEffect(() => {    
+    return SetNoteStorage(storage)
+  }, [newNote]);
+  
+  function deleteNotes() {
+    localStorage.removeItem("notes");
+    SetNoteStorage(null);
+  }
+
+  function ShowModal() {
+    SetModalState("modal-show")
+  }
+
+  function CloseModal() {
+    SetModalState("modal-none")
+  }
+
+  return (        
     <div className="container">
       <Header />
 
       <div className="title-area">
         <Title text="Notas rápidas" />
-        <ButtonPrimary name="Nova nota" className="btn-margin" />
+        <div>
+          {noteStorage !== null ? (
+            <Delete name="Deletar todas as notas" className="btn-margin" onClick={deleteNotes} />
+          ) : ("")}
+          <ButtonPrimary name="Nova nota" className="btn-margin" onClick={ShowModal} />
+        </div>
       </div>
 
       <div className="notes-area">
@@ -74,6 +103,8 @@ function Index() {
 
       <Modal
         title="Adicionar nota"
+        classCss={modalState}
+        CloseModal={CloseModal}
         onSubmit={SaveNote}
         modalBody={[
           <div className="radio">
@@ -105,7 +136,7 @@ function Index() {
               </div>
             </div>
           </div>,
-          <input type="text" name="title" onChange={handleChange} placeholder="Título da nota" />,
+          <input type="text" name="title" onChange={handleChange} placeholder="Título da nota" />,           
         ]}
         modalFooter={[
           <ButtonPrimary name="Salvar" className="btn-width" />,
