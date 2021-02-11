@@ -19,3 +19,27 @@
 .modal-body, .modal-footer {
     margin-top: 2rem;
 }
+
+.modal-none {
+    display: none;
+}
+
+.modal-show {
+    display: block;
+}
+
+.btn-modal-header {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    top: -1rem;
+    right: -1rem;
+    background-color: #9500FF;
+    color: white;
+    border: 0.18rem solid #9500FF;
+    padding: 0.5rem 0.7rem;
+    border-radius: 50%;
+    font-weight: bold;
+    cursor: pointer;
+}

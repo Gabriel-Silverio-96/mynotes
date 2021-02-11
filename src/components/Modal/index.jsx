@@ -6,9 +6,10 @@ import './style.css';
 
 export default function Modal(props) {
     return (
-        <div className="modal">
+        <div className={`modal ${props.classCss}`}>
             <div className="modal-header">
                 <h1>{props.title}</h1>
+                <button className="btn-modal-header" onClick={props.CloseModal}>X</button>
             </div>
             <form onSubmit={props.onSubmit}>
                 <div className="modal-body">
