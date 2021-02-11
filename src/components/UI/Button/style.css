@@ -6,6 +6,8 @@
     font-weight: 700;
     border-radius: 0.5rem;
     height: 2.5rem;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 .btn-primary {
@@ -15,8 +17,19 @@
 
 .btn-margin {
     margin-top: 1.5rem;
+    margin-left: 1rem;
 }
 
 .btn-width {
     width: 100%;
+}
+
+.btn-delete {
+    background-color: #ff0018;
+    color: white;
+    border:0.18rem solid #ff0018;
+}
+
+.btn-delete:hover {    
+    background-color: #282A36;
 }
