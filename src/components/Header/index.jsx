@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 //assets
-import Logo from '../assets/logo-mynotes.svg';
-import "../assets/css/header.css";
+import Logo from '../../assets/logo-mynotes.svg';
+import "../../assets/css/header.css";
 
 export default function Header(props) {
     return(
@@ -10,4 +11,8 @@ export default function Header(props) {
             <img className="logo" src={Logo} alt="Logo MyNotes" />
         </header>
     )
+}
+
+Header.protoType = {
+    props:PropTypes.object.isRequired 
 }
