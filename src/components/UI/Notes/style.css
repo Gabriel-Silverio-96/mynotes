@@ -4,9 +4,10 @@
     flex-wrap: wrap;    
 }
 
-.notes-area .notes-box {
-    margin-right: 2rem;
-    margin-bottom: 2rem;
+.notes {
+    margin-right: 2rem; 
+    margin-bottom: 2rem;   
+    cursor: pointer;
 }
 
 .notes-area .notes-box:last-child {
@@ -25,7 +26,20 @@
     justify-content: space-between;
 }
 
-.notes-box p{
+.notes-box p {
     font-family: 'Rajdhani', sans-serif;
     margin-left: auto;
+}
+
+.notes .message-delete-note {
+    text-align: center;    
+    opacity: 0;
+    margin-top: 0.5rem;
+    transition: 0.3s;
+    transform: translateY(-10px);
+}
+
+.notes:hover .message-delete-note {
+    opacity: 1;
+    transform: translateY(0px);
 }

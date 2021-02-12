@@ -6,9 +6,8 @@ import './style.css';
 
 export default function Notes(props) {
     return (
-        <>
-            <div className="notes-box"
-                onDoubleClick={props.onDoubleClick}
+        <div className="notes" onDoubleClick={props.onDoubleClick}>
+            <div className="notes-box"                                
                 id={props.id}
                 style={{ 
                     backgroundColor: props.colornote 
@@ -18,7 +17,8 @@ export default function Notes(props) {
                 <h2>{props.title}</h2>
                 <p>Criado em {props.date}</p>
             </div>
-        </>
+            <p className="message-delete-note">Duplo clique para deletar a nota</p>
+        </div>
     )
 }
 
