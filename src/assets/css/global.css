@@ -3,7 +3,11 @@
     margin: auto;
 }
 
-h1, h2{
+body {
+    font-family: 'Rajdhani', sans-serif;
+}
+
+h1, h2 {
     font-family: 'Epilogue', sans-serif;
     font-weight: 700;
 }
@@ -19,17 +23,11 @@ input {
     font-size: 1rem;
 }
 
-p {
-    font-family: 'Rajdhani', sans-serif;
-}
-
-input::placeholder {
-    font-family: 'Rajdhani', sans-serif;
+input::placeholder {    
     color: white;
 }
 
-.radio label {
-    font-family: 'Rajdhani', sans-serif;
+.radio label {    
     color: white;
     margin-top: 15px;
     margin-bottom: 15px;
@@ -39,7 +37,7 @@ input::placeholder {
     display: flex;
 }
 
-.radio-area .color-radio{
+.radio-area .color-radio {
     margin-right: 1rem;
 }
 
@@ -56,12 +54,12 @@ input::placeholder {
     height: 1.2rem;    
     border-radius: 50%;
     display: inline-block;
-    border: 0.2rem solid white;
+    border: 0.2rem solid #44475A;
     cursor: pointer;      
 }
 
 .color-radio input[type="radio"]:checked + label {
-    border: 0.2rem solid #44475A;    
+    border: 0.2rem solid white;    
     transition: 0.2s;
     transform: scale(1.5);
 }
@@ -88,4 +86,30 @@ input::placeholder {
 
 [for|=color6] {   
     background-color: #9C10FF;
+}
+
+.blur {
+    filter: blur(8px);
+}
+
+.erro-message {
+    color: #d4ff00; 
+    margin-top: 0.4rem;
+    display: block;    
+}
+
+.no-note {    
+    width: 100%;
+    margin-top: calc(10% - 1rem);
+}
+
+.no-note img {
+    margin-bottom: 1rem;
+}
+
+.no-note h1 {
+    color: #44475A;
+    letter-spacing: 0.10rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
 }
