@@ -36,6 +36,9 @@ export default function Modal(props) {
 }
 
 Modal.propTypes = {
+    classCss: PropTypes.string.isRequired,
+    CloseModal: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired,
     title: PropTypes.string.isRequired,
     modalBody: PropTypes.array.isRequired,
     modalFooter: PropTypes.array.isRequired
