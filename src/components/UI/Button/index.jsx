@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+//style
 import "./style.css";
 
 function ButtonPrimary({name, onClick, className, type}) {   
@@ -14,7 +15,7 @@ function ButtonPrimary({name, onClick, className, type}) {
     )
 }
 
-function Delete({name, onClick, className}) {   
+function Delete({name, className, onClick}) {   
     return (
         <button 
         className={`btn btn-delete ${className}`} 
@@ -27,5 +28,14 @@ function Delete({name, onClick, className}) {
 export {ButtonPrimary, Delete};
 
 ButtonPrimary.propTypes = {
-    name: PropTypes.string.isRequired
+    type: PropTypes.string,
+    className: PropTypes.string.isRequired,
+    onClick: PropTypes.func,
+    name: PropTypes.string.isRequired,
+}
+
+Delete.propTypes = {
+    name: PropTypes.string.isRequired,
+    className: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired,
 }
