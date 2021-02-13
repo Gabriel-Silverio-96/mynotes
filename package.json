@@ -5,7 +5,7 @@
   "homepage": "https://gabriel-silverio-96.github.io/mynotes/",
   "repository": {
     "type": "git",
-    "url": "https://gabriel-silverio-96.github.io/mynotes/"
+    "url": "https://gabriel-silverio-96.github.io/mynotes"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
