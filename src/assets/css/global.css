@@ -35,6 +35,7 @@ input::placeholder {
 
 .radio-area {
     display: flex;
+    margin-bottom: 1rem;
 }
 
 .radio-area .color-radio {
@@ -73,7 +74,7 @@ input::placeholder {
 }
 
 [for|=color3] {   
-    background-color: #4EDCFB;
+    background-color: #36BDDA;
 }
 
 [for|=color4] {   
@@ -108,8 +109,6 @@ input::placeholder {
 }
 
 .no-note h1 {
-    color: #44475A;
-    letter-spacing: 0.10rem;
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
+    color: #44475A;    
+    margin-bottom: 0.5rem;    
 }
