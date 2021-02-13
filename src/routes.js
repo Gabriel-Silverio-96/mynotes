@@ -9,8 +9,9 @@ export default function Router() {
         <BrowserRouter>
             <Switch>
                 <Route exact path="/" component={Index} />
+                <Route path="/mynotes" component={Index} />
                 <Route path="*" component={Index}>
-                    <Redirect to="/" />
+                    <Redirect to="/mynotes" />
                 </Route>
             </Switch>
         </BrowserRouter>
