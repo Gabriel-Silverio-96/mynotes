@@ -10,6 +10,7 @@ import Modal from '../components/Modal';
 
 //assets
 import '../assets/css/global.css';
+import '../assets/css/responsive.css';
 import ImageNote from '../assets/image/notes.png';
 
 function Index() {
@@ -91,9 +92,11 @@ function Index() {
   }
 
   useEffect(() => {
+    const storage = JSON.parse(localStorage.getItem('notes'));
     return SetNoteStorage(storage)
   }, [newNote]);
 
+  //Interações do usuário  
   function deleteAllNotes() {
     localStorage.removeItem("notes");
     SetNoteStorage(null);
@@ -110,27 +113,20 @@ function Index() {
   }
 
   function DeleteThisNote(e) {
-    noteStorage.filter((value, index) => {
-      if (value.id === Number(e.target.id)) {
-
-        storage.splice(index, index);
+    noteStorage.filter((value, index) => {      
+      if (value.id === Number(e.target.id)) {               
+        storage.splice(index, 1);
         localStorage.setItem('notes', JSON.stringify([...storage]));
-
-        SetNoteStorage(storage);
-      }
-
-      if (value.id === Number(e.target.id) && index === 0) {
-        //remove a primeira nota
-        storage.shift();
-        localStorage.setItem('notes', JSON.stringify([...storage]));
-
+        
         SetNoteStorage(storage);
       }
 
       if (storage.length === 0 && index === 0) {
-        //remote o item notes do storage
+        //remove o item notes do storage
         deleteAllNotes();
       }
+
+      return true
     })
   }
 
@@ -140,7 +136,7 @@ function Index() {
 
       <div className={`title-area ${blur}`}>
         <Title text="Notas rápidas" />
-        <div>
+        <div className="btn-action">
           {noteStorage !== null ? (
             <Delete name="Deletar todas as notas" className="btn-margin" onClick={deleteAllNotes} />
           ) : ("")}
@@ -161,9 +157,9 @@ function Index() {
             />
           )) : (
             <div className="no-note">
-              <img src={ImageNote} alt="Image notas" />
-              <h1>Nenhuma nota</h1>
-              <p>Crie uma nova nota</p>
+              <img src={ImageNote} alt="Imagem de aviso sem notas" />
+              <h1>Você não tem nenhuma nota</h1>
+              <p>Crie uma nova nota =)</p>
             </div>
           )}
       </div>
@@ -186,7 +182,7 @@ function Index() {
                 <label htmlFor="color2"></label>
               </div>
               <div className="color-radio">
-                <input type="radio" id="color3" name="colornote" value="#4EDCFB" onChange={handleChange} />
+                <input type="radio" id="color3" name="colornote" value="#36BDDA" onChange={handleChange} />
                 <label htmlFor="color3"></label>
               </div>
               <div className="color-radio">
