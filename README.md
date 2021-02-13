@@ -12,7 +12,7 @@
 
 ## 📝 Sobre 
 
-🌐 Vamos lá, agora crie suas notas. Acesse:
+🌐 Vamos lá, agora crie suas notas. Acesse: https://gabriel-silverio-96.github.io/mynotes/
 
 Sabe quando você precisa fazer aquela anotação rápida, o MyNotes é para você. Aplicação desenvolvida com ReactJS e para salvar as informações foi utilizado o <code>localStorage</code> do navegador.
 
