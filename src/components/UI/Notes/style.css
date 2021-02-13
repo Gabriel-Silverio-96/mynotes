@@ -16,10 +16,9 @@
 
 .notes-box {
     width: 12.5rem;
-    height: 11rem;
-    background-color: tomato;
+    height: 11rem;    
     border-radius:  1.5rem;
-    padding: 25px;
+    padding: 25px;    
 
     display: flex;
     flex-direction: column;
