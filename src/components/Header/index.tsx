@@ -1,24 +1,43 @@
-import React from 'react';
+import React from "react";
 
-//assets
-import Logo from "assets/logo-mynotes.svg";
+//Assets
+import LogoLight from "assets/logo-mynotes-light.svg";
+import LogoDark from "assets/logo-mynotes-dark.svg";
+import { HeaderContainer } from "./styled";
 
-//Style
-import { HeaderContainer, BallButtonHeader } from './styled';
+//Components
+import { IconMoon, IconSun } from "components/UI/Icons";
+import { ButtonPrimary, ButtonRound } from "components/UI/Button";
 
 interface HeaderProps {
-    toggleTheme(): void
+    toggleTheme(): void,
+    themeTitle: string;
 }
 
-const Header: React.FC<HeaderProps> = ({ toggleTheme }) => {
+const Header: React.FC<HeaderProps> = ({ toggleTheme, themeTitle }) => {
+
     return (
         <HeaderContainer>
-            <img className="logo" src={Logo} alt="Logo MyNotes" />
+            <img
+                src={themeTitle === "dark" ? LogoDark : LogoLight}
+                alt="Logo MyNotes"
+                role="img"
+            />
 
             <nav>
-                <BallButtonHeader onClick={toggleTheme}>
-                    trocar tema
-                </BallButtonHeader>
+                <ButtonRound
+                    onClick={toggleTheme}
+                >
+                    {
+                        themeTitle === "dark"
+                            ? <IconSun />
+                            : <IconMoon />
+                    }
+                </ButtonRound>
+                <ButtonPrimary
+                    title="New Note"
+                />
+
             </nav>
         </HeaderContainer>
     )

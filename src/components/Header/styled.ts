@@ -1,9 +1,14 @@
 import styled from "styled-components";
+import * as variables from "assets/styles/variables";
 
 export const HeaderContainer = styled.header`
-    background-color: ${props => props.theme.colors.backgroundPrimary}
-`
+    background-color: ${props => props.theme.colors.backgroundPrimary};
+    padding: 1.5625rem 0;
+    display: flex;
+    justify-content: space-between;
 
-export const BallButtonHeader = styled.button`
-    color: ${props => props.theme.colors.primary}
+    nav {
+        display: flex;
+        gap: 1rem;
+    }
 `

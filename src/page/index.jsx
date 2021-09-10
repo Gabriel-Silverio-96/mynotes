@@ -22,7 +22,6 @@ import useThemeStorage from 'util/useThemeStorage';
 
 function Index() {
   const [theme, setTheme] = useThemeStorage("theme", light);
-
   const toggleTheme = useCallback(() => {
     setTheme(theme.title === "light" ? dark : light);
   }, [theme])
@@ -150,6 +149,7 @@ function Index() {
 
         <Header
           toggleTheme={toggleTheme}
+          themeTitle={theme.title}
         />
 
         <div className={`title-area ${blur}`}>
