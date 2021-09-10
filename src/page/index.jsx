@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext, useCallback } from 'react';
 import { ContextGlobal } from '../provider/context';
 
 //components
@@ -13,13 +13,26 @@ import '../assets/css/global.css';
 import '../assets/css/responsive.css';
 import ImageNote from '../assets/image/notes.png';
 
+import { ThemeProvider } from 'styled-components';
+import light from 'assets/styles/themes/light';
+import dark from 'assets/styles/themes/dark';
+import GlobalStyles from "assets/styles/global";
+
+import useThemeStorage from 'util/useThemeStorage';
+
 function Index() {
+  const [theme, setTheme] = useThemeStorage("theme", light);
+
+  const toggleTheme = useCallback(() => {
+    setTheme(theme.title === "light" ? dark : light);
+  }, [theme])
+
   //Context 
-  const { 
+  const {
     modalState,
     SetModalState,
     blur,
-    SetBlur 
+    SetBlur
   } = useContext(ContextGlobal);
 
   const date = new Date()
@@ -113,11 +126,11 @@ function Index() {
   }
 
   function DeleteThisNote(e) {
-    noteStorage.filter((value, index) => {      
-      if (value.id === Number(e.target.id)) {               
+    noteStorage.filter((value, index) => {
+      if (value.id === Number(e.target.id)) {
         storage.splice(index, 1);
         localStorage.setItem('notes', JSON.stringify([...storage]));
-        
+
         SetNoteStorage(storage);
       }
 
@@ -130,83 +143,89 @@ function Index() {
     })
   }
 
-  return (    
-    <div className="container">
-      <Header className={blur} />
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <div className="container">
 
-      <div className={`title-area ${blur}`}>
-        <Title text="Notas rápidas" />
-        <div className="btn-action">
-          {noteStorage !== null ? (
-            <Delete name="Deletar todas as notas" className="btn-margin" onClick={deleteAllNotes} />
-          ) : ("")}
-          <ButtonPrimary name="Nova nota" className="btn-margin" onClick={ShowModal} />
+        <Header
+          toggleTheme={toggleTheme}
+        />
+
+        <div className={`title-area ${blur}`}>
+          <Title text="Notas rápidas" />
+          <div className="btn-action">
+            {noteStorage !== null ? (
+              <Delete name="Deletar todas as notas" className="btn-margin" onClick={deleteAllNotes} />
+            ) : ("")}
+            <ButtonPrimary name="Nova nota" className="btn-margin" onClick={ShowModal} />
+          </div>
         </div>
-      </div>
 
-      <div className={`notes-area ${blur}`}>
-        {noteStorage !== null ?
-          noteStorage.map((value, index) => (
-            <Notes
-              onDoubleClick={DeleteThisNote}
-              key={index}
-              id={value.id}
-              colornote={value.colornote}
-              title={value.title}
-              date={value.date}
-            />
-          )) : (
-            <div className="no-note">
-              <img src={ImageNote} alt="Imagem de aviso sem notas" />
-              <h1>Você não tem nenhuma nota</h1>
-              <p>Crie uma nova nota =)</p>
-            </div>
-          )}
-      </div>
+        <div className={`notes-area ${blur}`}>
+          {noteStorage !== null ?
+            noteStorage.map((value, index) => (
+              <Notes
+                onDoubleClick={DeleteThisNote}
+                key={index}
+                id={value.id}
+                colornote={value.colornote}
+                title={value.title}
+                date={value.date}
+              />
+            )) : (
+              <div className="no-note">
+                <img src={ImageNote} alt="Imagem de aviso sem notas" />
+                <h1>Você não tem nenhuma nota</h1>
+                <p>Crie uma nova nota =)</p>
+              </div>
+            )}
+        </div>
 
-      <Modal
-        title="Adicionar nota"
-        classCss={modalState}
-        CloseModal={CloseModal}
-        onSubmit={SaveNote}
-        modalBody={[
-          <div className="radio">
-            <label>Selecione uma cor</label>
-            <div className="radio-area">
-              <div className="color-radio">
-                <input type="radio" id="color1" name="colornote" value="#FF51B5" onChange={handleChange} defaultChecked />
-                <label htmlFor="color1"></label>
+        <Modal
+          title="Adicionar nota"
+          classCss={modalState}
+          CloseModal={CloseModal}
+          onSubmit={SaveNote}
+          modalBody={[
+            <div className="radio">
+              <label>Selecione uma cor</label>
+              <div className="radio-area">
+                <div className="color-radio">
+                  <input type="radio" id="color1" name="colornote" value="#FF51B5" onChange={handleChange} defaultChecked />
+                  <label htmlFor="color1"></label>
+                </div>
+                <div className="color-radio">
+                  <input type="radio" id="color2" name="colornote" value="#FFAA4E" onChange={handleChange} />
+                  <label htmlFor="color2"></label>
+                </div>
+                <div className="color-radio">
+                  <input type="radio" id="color3" name="colornote" value="#36BDDA" onChange={handleChange} />
+                  <label htmlFor="color3"></label>
+                </div>
+                <div className="color-radio">
+                  <input type="radio" id="color4" name="colornote" value="#0DFF7E" onChange={handleChange} />
+                  <label htmlFor="color4"></label>
+                </div>
+                <div className="color-radio">
+                  <input type="radio" id="color5" name="colornote" value="#FF0D5F" onChange={handleChange} />
+                  <label htmlFor="color5"></label>
+                </div>
+                <div className="color-radio">
+                  <input type="radio" id="color6" name="colornote" value="#9C10FF" onChange={handleChange} />
+                  <label htmlFor="color6"></label>
+                </div>
               </div>
-              <div className="color-radio">
-                <input type="radio" id="color2" name="colornote" value="#FFAA4E" onChange={handleChange} />
-                <label htmlFor="color2"></label>
-              </div>
-              <div className="color-radio">
-                <input type="radio" id="color3" name="colornote" value="#36BDDA" onChange={handleChange} />
-                <label htmlFor="color3"></label>
-              </div>
-              <div className="color-radio">
-                <input type="radio" id="color4" name="colornote" value="#0DFF7E" onChange={handleChange} />
-                <label htmlFor="color4"></label>
-              </div>
-              <div className="color-radio">
-                <input type="radio" id="color5" name="colornote" value="#FF0D5F" onChange={handleChange} />
-                <label htmlFor="color5"></label>
-              </div>
-              <div className="color-radio">
-                <input type="radio" id="color6" name="colornote" value="#9C10FF" onChange={handleChange} />
-                <label htmlFor="color6"></label>
-              </div>
-            </div>
-          </div>,
-          <input type="text" name="title" onChange={handleChange} placeholder="Título da nota" maxLength="65" />,
-          <span className="erro-message">{erroMessage.inputRequiredTitle}</span>,
-        ]}
-        modalFooter={[
-          <ButtonPrimary name="Salvar" className="btn-width" />,
-        ]}
-      />
-    </div>
+            </div>,
+            <input type="text" name="title" onChange={handleChange} placeholder="Título da nota" maxLength="65" />,
+            <span className="erro-message">{erroMessage.inputRequiredTitle}</span>,
+          ]}
+          modalFooter={[
+            <ButtonPrimary name="Salvar" className="btn-width" />,
+          ]}
+        />
+      </div>
+    </ThemeProvider>
   );
 }
 
