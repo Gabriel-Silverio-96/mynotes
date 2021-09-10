@@ -25,3 +25,5 @@ yarn.lock
 
 /artefatos
 /.eslintcache
+yarn.lock
+.eslintcache
