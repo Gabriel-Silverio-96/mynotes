@@ -1,4 +1,4 @@
-export default {
+const light = {
     title: "light",
 
     colors: {
@@ -10,6 +10,8 @@ export default {
 
         textColorTitle: "#000000",
         textColorParagraph: "#929292",
-        inputBorder:"#EBEBEB"
+        inputBorder: "#EBEBEB"
     }
 }
+
+export default light
