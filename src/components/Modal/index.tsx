@@ -10,19 +10,15 @@ import {
     ModalHeader,
     ModalBody,
     FormGroupColor,
-    FormGroupColorContainer,    
+    FormGroupColorContainer,
     FormGroup,
     ModalFooter
 } from "./styled";
-
-import useThemeStorage from "util/useThemeStorage";
-import light from "assets/styles/themes/light";
 
 import { ModalMainProps } from "./types";
 
 const ModalMain: React.FC<ModalMainProps> = React.memo(
     ({ onSubmit, onChange }) => {
-        const [theme] = useThemeStorage("theme", light);
         const { modalState, setModalState } = useContext(ContextGlobal);
 
         const closeModal = () => {
@@ -47,7 +43,7 @@ const ModalMain: React.FC<ModalMainProps> = React.memo(
                         <ModalBody>
                             <FormGroupColorContainer>
                                 <FormGroupColor>
-                                    <input type="color" name="colorNote" id="colorNote" onChange={onChange} />
+                                    <input type="color" name="colorNote" id="colorNote" defaultValue="#9C10FF" onChange={onChange} />
                                     <label htmlFor="colorNote">Color note</label>
                                 </FormGroupColor>
                             </FormGroupColorContainer>
