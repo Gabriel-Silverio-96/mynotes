@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import * as variables from "assets/styles/variables";
 
 export const HeaderContainer = styled.header`
     background-color: ${props => props.theme.colors.backgroundPrimary};
