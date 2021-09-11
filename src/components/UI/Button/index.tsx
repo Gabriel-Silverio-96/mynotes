@@ -1,24 +1,36 @@
 import React from "react";
 import { ButtonProps } from "./types";
 
-import { ButtonPrimaryContainer, ButtonRoundContainer } from "./styled";
+import { ButtonPrimaryContainer, ButtonSecodaryContainer, ButtonRoundContainer } from "./styled";
 
 const ButtonPrimary: React.FC<ButtonProps> = ({ title, onClick, type }) => {
     return (
         <ButtonPrimaryContainer
             type={type}
-            onClick={onClick}
+            onClick={onClick}            
             >
             {title}
         </ButtonPrimaryContainer>
     )
 }
 
-const ButtonRound: React.FC<ButtonProps> = ({ children, onClick, type }) => {
+const ButtonSecodary: React.FC<ButtonProps> = ({ title, onClick, type }) => {
+    return (
+        <ButtonSecodaryContainer
+            type={type}
+            onClick={onClick}            
+            >
+            {title}
+        </ButtonSecodaryContainer>
+    )
+}
+
+const ButtonRound: React.FC<ButtonProps> = ({ children, onClick, type, scale }) => {
     return (
         <ButtonRoundContainer
             type={type}
             onClick={onClick}
+            scale={scale}
         >
             {children}
         </ButtonRoundContainer>
@@ -32,4 +44,4 @@ function Delete() {
     )
 }
 
-export { ButtonPrimary, ButtonRound, Delete };
+export { ButtonPrimary, ButtonSecodary, ButtonRound, Delete };

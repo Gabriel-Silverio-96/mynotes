@@ -25,5 +25,13 @@ const IconSun: React.FC = () => {
     );
 }
 
+const IconClose: React.FC = () => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="8.578" height="8.578" viewBox="0 0 8.578 8.578">
+            <path id="Path_33" d="M120.578,113l-1-1-3.292,3.292L113,112l-1,1,3.292,3.292L112,119.581l1,1,3.292-3.292,3.292,3.292,1-1-3.292-3.292Z" transform="translate(-112 -112)" stroke="#000" strokeWidth="0" />
+        </svg>
+    );
+}
 
-export { IconMoon, IconSun };
+
+export { IconMoon, IconSun, IconClose };

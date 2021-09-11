@@ -1,17 +1,12 @@
 import React, { useEffect, useState, useContext, useCallback } from 'react';
 import { ContextGlobal } from '../provider/context';
 
-//components
+//Components
 import Header from '../components/Header/index';
-import Title from '../components/UI/Title/index';
 import { ButtonPrimary, Delete } from '../components/UI/Button';
 import Notes from '../components/UI/Notes';
-import Modal from '../components/Modal';
-
-//assets
-import '../assets/css/global.css';
-import '../assets/css/responsive.css';
-import ImageNote from '../assets/image/notes.png';
+import ModalMain from '../components/Modal';
+import NoNotes from 'components/NoNotes';
 
 import { ThemeProvider } from 'styled-components';
 import light from 'assets/styles/themes/light';
@@ -24,7 +19,7 @@ function Index() {
   const [theme, setTheme] = useThemeStorage("theme", light);
   const toggleTheme = useCallback(() => {
     setTheme(theme.title === "light" ? dark : light);
-  }, [theme])
+  }, [theme, setTheme])
 
   //Context 
   const {
@@ -43,8 +38,9 @@ function Index() {
   const [newNote, SetNewNote] = useState(
     {
       id: '',
-      colornote: '#FF51B5',
-      title: '',
+      colorNote: '#9C10FF',
+      titleNote: '',
+      observation: "",
       date: dateNote,
     },
   );
@@ -55,8 +51,8 @@ function Index() {
     inputRequiredTitle: ""
   });
 
-  //Set State newNote
-  function handleChange(e) {
+  const handleChange = (e) => {
+    console.log(e.target);
     SetNewNote({
       ...newNote,
       id: Math.floor(Math.random() * 1000),
@@ -67,7 +63,6 @@ function Index() {
   //Submit
   function SaveNote(e) {
     e.preventDefault();
-
     if (newNote.title === "" || newNote.length < 3) {
       SetErroMessage({
         ...erroMessage,
@@ -89,12 +84,11 @@ function Index() {
         localStorage.setItem('notes', JSON.stringify([newNote]))
       }
 
-      CloseModal();
-
       SetNewNote({
         id: '',
-        colornote: '#FF51B5',
+        colorNote: '#FF51B5',
         title: '',
+        observation: "",
         date: dateNote,
       })
 
@@ -112,16 +106,6 @@ function Index() {
   function deleteAllNotes() {
     localStorage.removeItem("notes");
     SetNoteStorage(null);
-  }
-
-  function ShowModal() {
-    SetModalState("modal-show");
-    SetBlur("blur");
-  }
-
-  function CloseModal() {
-    SetModalState("modal-none");
-    SetBlur("");
   }
 
   function DeleteThisNote(e) {
@@ -143,6 +127,7 @@ function Index() {
   }
 
   return (
+    console.log(newNote),
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <div className="container">
@@ -152,78 +137,19 @@ function Index() {
           themeTitle={theme.title}
         />
 
-        <div className={`title-area ${blur}`}>
-          <Title text="Notas rápidas" />
-          <div className="btn-action">
-            {noteStorage !== null ? (
-              <Delete name="Deletar todas as notas" className="btn-margin" onClick={deleteAllNotes} />
-            ) : ("")}
-            <ButtonPrimary name="Nova nota" className="btn-margin" onClick={ShowModal} />
-          </div>
-        </div>
+        {modalState && <ModalMain onSubmit={SaveNote} onChange={handleChange} />}
 
-        <div className={`notes-area ${blur}`}>
+        <div>
           {noteStorage !== null ?
             noteStorage.map((value, index) => (
-              <Notes
-                onDoubleClick={DeleteThisNote}
-                key={index}
-                id={value.id}
-                colornote={value.colornote}
-                title={value.title}
-                date={value.date}
-              />
-            )) : (
-              <div className="no-note">
-                <img src={ImageNote} alt="Imagem de aviso sem notas" />
-                <h1>Você não tem nenhuma nota</h1>
-                <p>Crie uma nova nota =)</p>
+              <div key={index}>
+                <p>{value.titleNote}</p>
+                <p>{value.observation}</p>
               </div>
+            )) : (
+              <NoNotes />
             )}
         </div>
-
-        <Modal
-          title="Adicionar nota"
-          classCss={modalState}
-          CloseModal={CloseModal}
-          onSubmit={SaveNote}
-          modalBody={[
-            <div className="radio">
-              <label>Selecione uma cor</label>
-              <div className="radio-area">
-                <div className="color-radio">
-                  <input type="radio" id="color1" name="colornote" value="#FF51B5" onChange={handleChange} defaultChecked />
-                  <label htmlFor="color1"></label>
-                </div>
-                <div className="color-radio">
-                  <input type="radio" id="color2" name="colornote" value="#FFAA4E" onChange={handleChange} />
-                  <label htmlFor="color2"></label>
-                </div>
-                <div className="color-radio">
-                  <input type="radio" id="color3" name="colornote" value="#36BDDA" onChange={handleChange} />
-                  <label htmlFor="color3"></label>
-                </div>
-                <div className="color-radio">
-                  <input type="radio" id="color4" name="colornote" value="#0DFF7E" onChange={handleChange} />
-                  <label htmlFor="color4"></label>
-                </div>
-                <div className="color-radio">
-                  <input type="radio" id="color5" name="colornote" value="#FF0D5F" onChange={handleChange} />
-                  <label htmlFor="color5"></label>
-                </div>
-                <div className="color-radio">
-                  <input type="radio" id="color6" name="colornote" value="#9C10FF" onChange={handleChange} />
-                  <label htmlFor="color6"></label>
-                </div>
-              </div>
-            </div>,
-            <input type="text" name="title" onChange={handleChange} placeholder="Título da nota" maxLength="65" />,
-            <span className="erro-message">{erroMessage.inputRequiredTitle}</span>,
-          ]}
-          modalFooter={[
-            <ButtonPrimary name="Salvar" className="btn-width" />,
-          ]}
-        />
       </div>
     </ThemeProvider>
   );

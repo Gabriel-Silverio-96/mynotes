@@ -13,9 +13,10 @@ export default createGlobalStyle `
         box-sizing: border-box;
         background-color: ${props => props.theme.colors.backgroundPrimary};
         font-family: 'Inter', sans-serif;
+        padding: 0 1rem;
     }
 
-    button {
+    button, h1, h2, textarea {
         font-family: 'Inter', sans-serif;
     }
 

@@ -9,6 +9,7 @@ export default {
         backgroundSecundary: "#FFFFFF",
 
         textColorTitle: "#000000",
-        textColorParagraph: "#929292"
+        textColorParagraph: "#929292",
+        inputBorder:"#EBEBEB"
     }
 }

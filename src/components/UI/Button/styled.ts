@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import * as variables from "assets/styles/variables";
+import { ButtonRoundContainerProps } from "./types";
 
 export const ButtonPrimaryContainer = styled.button `
     background-color: ${variables.black};
@@ -16,7 +17,7 @@ export const ButtonPrimaryContainer = styled.button `
     }
 `
 
-export const ButtonRoundContainer = styled.button`
+export const ButtonRoundContainer = styled.button<ButtonRoundContainerProps>`
     background-color: ${variables.grayLight};
     border: 0;
     padding: 0.65rem;
@@ -25,8 +26,26 @@ export const ButtonRoundContainer = styled.button`
     width: 2.5rem;
     cursor: pointer;
     transition: 0.3s;
+    transform: scale(
+        ${props => props.scale}
+    );
 
     &:hover {
         background-color: ${variables.yellowLight};
+    }
+`
+
+export const ButtonSecodaryContainer = styled.button`
+    background-color: transparent;
+    color: ${props => props.theme.colors.textColorTitle};
+    border: 0.03rem solid ${props => props.theme.colors.textColorTitle};
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.3125rem;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+        background-color: ${variables.primaryColor};                
     }
 `
