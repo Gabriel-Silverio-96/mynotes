@@ -6,6 +6,7 @@ export const NoNotesCenter = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    grid-column: 1 / -1;
 `
 
 export const NoNotesContainer = styled.div`
