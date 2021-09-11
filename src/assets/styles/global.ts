@@ -16,7 +16,7 @@ export default createGlobalStyle `
         padding: 0 1rem;
     }
 
-    button, h1, h2, textarea {
+    button, h1, h2, h3, h4, h5, h6, textarea, input {
         font-family: 'Inter', sans-serif;
     }
 
