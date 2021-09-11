@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { ContextGlobal } from "provider/context";
 
 import { ButtonPrimary, ButtonRound, ButtonSecodary } from "components/UI/Button";
