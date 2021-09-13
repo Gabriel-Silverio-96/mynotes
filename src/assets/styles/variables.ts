@@ -8,3 +8,5 @@ export const black = "#000000";
 export const blackLight = "#00000075";
 export const white = "#FFFFFF";
 export const yellowLight = "#fbea8a";
+export const red = "#FF0000";
+export const redLight = "#FFE3E3";
