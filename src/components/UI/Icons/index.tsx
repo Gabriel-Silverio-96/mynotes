@@ -33,5 +33,25 @@ const IconClose: React.FC = () => {
     );
 }
 
+const IconEye: React.FC = () => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="13.8" height="10.309" viewBox="0 0 13.8 10.309">
+            <g transform="translate(-2.578 -5.011)">
+                <path d="M1,8.655S3.327,4,7.4,4s6.4,4.655,6.4,4.655-2.327,4.655-6.4,4.655S1,8.655,1,8.655Z" transform="translate(2.078 1.511)" fill="none" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+                <circle cx="2" cy="2" r="2" transform="translate(7.478 8.166)" fill="none" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" />
+            </g>
+        </svg>
+    )
+}
 
-export { IconMoon, IconSun, IconClose };
+const IconTrash: React.FC = () => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="10.73" height="11.177" viewBox="0 0 10.73 11.177">
+            <path d="M131.241,113.006h-.112a.112.112,0,0,0,.112-.112v.112h4.247v-.112a.112.112,0,0,0,.112.112h-.112v1.006h1.006v-1.118A.9.9,0,0,0,135.6,112H131.13a.9.9,0,0,0-.894.894v1.118h1.006Zm7.042,1.006h-9.836a.447.447,0,0,0-.447.447v.447a.112.112,0,0,0,.112.112h.844l.345,7.307a.9.9,0,0,0,.893.852h6.343a.893.893,0,0,0,.893-.852l.345-7.307h.844a.112.112,0,0,0,.112-.112v-.447A.447.447,0,0,0,138.283,114.012Zm-1.854,8.159H130.3l-.338-7.153h6.8Z" transform="translate(-128 -112)" fill="red" />
+        </svg>
+
+    )
+}
+
+
+export { IconMoon, IconSun, IconClose, IconEye, IconTrash };

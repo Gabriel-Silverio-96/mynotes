@@ -11,16 +11,48 @@ export const NoteCardContainer = styled.div<NoteCardContainerProps>`
     border-top-color: ${variable.black};    
     border-left-color: ${variable.black};
     border-right-color: ${variable.black};
+    cursor: pointer;
 
     border-bottom: 0.3rem solid ${props => props.colorNote};
 
     h3 {
         color: ${props => props.theme.colors.textColorTitle};
     }
+
+    &:hover {
+        & > div > div {
+            display: flex;
+        }
+    }
 `
 export const NoteCardHeader = styled.div`
-
+    position: relative;
 `
+
+export const NoteCardButton = styled.div`
+    display: none;
+    align-items: center;
+
+    position: absolute;
+    top: -5px;
+    right: 0;
+
+    width: 100%;
+    background: red;
+    justify-content: flex-end;
+
+    background: linear-gradient(
+            90deg, rgba(255,0,0,0) 0%, 
+            ${props => props.theme.colors.backgroundSecundary} 100%
+        );
+
+    button {
+        svg {
+            transform: scale(1.5);
+        }
+    }
+`
+
 export const NoteCardBody = styled.div`
     margin-top: 2rem;
 

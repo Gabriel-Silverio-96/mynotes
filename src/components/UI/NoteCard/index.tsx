@@ -1,8 +1,11 @@
 import React from "react";
 
-import { NoteCardContainer, NoteCardHeader, NoteCardBody } from "./styled";
+import { ButtonRound } from "components/UI/Button";
+
+import { NoteCardContainer, NoteCardHeader, NoteCardButton, NoteCardBody } from "./styled";
 
 import { NoteCardProps } from "./types";
+import { IconEye, IconTrash } from "../Icons";
 
 const NoteCard: React.FC<NoteCardProps> = (props) => {
     return (
@@ -16,6 +19,16 @@ const NoteCard: React.FC<NoteCardProps> = (props) => {
                     }
 
                 </h3>
+
+                <NoteCardButton>
+                    <ButtonRound scale="0.7">
+                        <IconEye />
+                    </ButtonRound>
+
+                    <ButtonRound scale="0.7" deleteButton={true}>
+                        <IconTrash />
+                    </ButtonRound>
+                </NoteCardButton>
             </NoteCardHeader>
 
             <NoteCardBody>

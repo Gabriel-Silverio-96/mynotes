@@ -2,7 +2,7 @@ import styled from "styled-components";
 import * as variables from "assets/styles/variables";
 import { ButtonRoundContainerProps } from "./types";
 
-export const ButtonPrimaryContainer = styled.button `
+export const ButtonPrimaryContainer = styled.button`
     background-color: ${variables.black};
     color: ${variables.white};
     border: 0.03rem solid ${variables.white};
@@ -18,7 +18,7 @@ export const ButtonPrimaryContainer = styled.button `
 `
 
 export const ButtonRoundContainer = styled.button<ButtonRoundContainerProps>`
-    background-color: ${variables.grayLight};
+    background-color: ${props => props.deleteButton ? `${variables.redLight}` : `${variables.grayLight}`};
     border: 0;
     padding: 0.65rem;
     border-radius: 50%;
@@ -31,7 +31,13 @@ export const ButtonRoundContainer = styled.button<ButtonRoundContainerProps>`
     );
 
     &:hover {
-        background-color: ${variables.yellowLight};
+        background-color: ${props => props.deleteButton ? `${variables.red}` : `${variables.yellowLight}`};
+        
+        svg {
+            path {
+                fill: ${props => props.deleteButton && `${variables.white}`};
+            }
+        }
     }
 `
 
