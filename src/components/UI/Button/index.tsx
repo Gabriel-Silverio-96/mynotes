@@ -1,5 +1,5 @@
 import React from "react";
-import { ButtonProps } from "./types";
+import { ButtonProps, ButtonRoundProps } from "./types";
 
 import { ButtonPrimaryContainer, ButtonSecodaryContainer, ButtonRoundContainer } from "./styled";
 
@@ -25,12 +25,13 @@ const ButtonSecodary: React.FC<ButtonProps> = ({ title, onClick, type }) => {
     )
 }
 
-const ButtonRound: React.FC<ButtonProps> = ({ children, onClick, type, scale }) => {
+const ButtonRound: React.FC<ButtonRoundProps> = ({ children, onClick, type, scale, deleteButton }) => {
     return (
         <ButtonRoundContainer
             type={type}
             onClick={onClick}
             scale={scale}
+            deleteButton={deleteButton}
         >
             {children}
         </ButtonRoundContainer>
