@@ -8,6 +8,11 @@ export interface ButtonProps {
     onClick?: () => void;
 }
 
+export interface ButtonRoundProps extends ButtonProps {
+    deleteButton?: boolean
+}
+
 export interface ButtonRoundContainerProps {
     scale?: string;
+    deleteButton?: boolean
 }
