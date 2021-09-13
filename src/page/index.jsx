@@ -11,6 +11,7 @@ import Header from "../components/Header/index";
 import ModalMain from "../components/Modal";
 import NoNotes from "components/NoNotes";
 import NoteCard from "components/UI/NoteCard";
+import ModalGeneric from "components/ModalGeneric";
 
 //Util
 import useThemeStorage from "util/useThemeStorage";
@@ -25,8 +26,10 @@ const Index = () => {
     setTheme(theme.title === "light" ? dark : light);
   }, [theme, setTheme])
 
+  const [idNote, setIdNote] = useState("");
+
   //Context 
-  const { modalState } = useContext(ContextGlobal);
+  const { modalState, modalDeleteThisNote, setModalDeleteThisNote } = useContext(ContextGlobal);
 
   const [newNote, setNewNote] = useState(
     {
@@ -39,7 +42,7 @@ const Index = () => {
   );
 
   const storage = JSON.parse(localStorage.getItem("notes"));
-  const [noteStorage, SetNoteStorage] = useState(storage);
+  const [noteStorage, setNoteStorage] = useState(storage);
 
   const handleChange = (e) => {
     setNewNote({
@@ -69,14 +72,38 @@ const Index = () => {
 
   useEffect(() => {
     const storage = JSON.parse(localStorage.getItem("notes"));
-    return SetNoteStorage(storage)
+    return setNoteStorage(storage)
   }, [newNote]);
+
+  const showModalDeleteThisNote = (idNote) => {
+    setModalDeleteThisNote(prevState => !prevState);
+    setIdNote(idNote);
+  }
+
+  const deleteThisNote = () => {
+    noteStorage.filter((value, index) => {
+      if (value.id === Number(idNote)) {
+        storage.splice(index, 1);
+        localStorage.setItem('notes', JSON.stringify([...storage]));
+
+        setNoteStorage(storage);
+        setModalDeleteThisNote(!modalDeleteThisNote);
+      }
+
+
+      // if (storage.length === 0 && index === 0) {
+      //   //remove o item notes do storage
+      //   deleteAllNotes();
+      // }
+
+      return true
+    })
+  }
 
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <div className="container">
-
+      <div className="container">        
         <Header
           toggleTheme={toggleTheme}
           themeTitle={theme.title}
@@ -84,15 +111,18 @@ const Index = () => {
 
         {modalState && <ModalMain onSubmit={SaveNote} onChange={handleChange} />}
 
+        {modalDeleteThisNote && <ModalGeneric deleteThisNote={deleteThisNote} />}
+
         <NoteCardWrapper>
           {noteStorage !== null ?
-            noteStorage.map((value, index) => (              
+            noteStorage.map((value, index) => (
               <NoteCard
                 key={index}
                 id={value.id}
                 colorNote={value.colorNote}
                 titleNote={value.titleNote}
                 observation={value.observation}
+                showModalDeleteThisNote={() => showModalDeleteThisNote(value.id)}
               />
             )) : (
               <NoNotes />

@@ -25,13 +25,14 @@ const ButtonSecodary: React.FC<ButtonProps> = ({ title, onClick, type }) => {
     )
 }
 
-const ButtonRound: React.FC<ButtonRoundProps> = ({ children, onClick, type, scale, deleteButton }) => {
+const ButtonRound: React.FC<ButtonRoundProps> = ({ children, onClick, type, scale, deleteButton, id }) => {
     return (
         <ButtonRoundContainer
             type={type}
             onClick={onClick}
             scale={scale}
             deleteButton={deleteButton}
+            id={id}
         >
             {children}
         </ButtonRoundContainer>

@@ -25,7 +25,11 @@ const NoteCard: React.FC<NoteCardProps> = (props) => {
                         <IconEye />
                     </ButtonRound>
 
-                    <ButtonRound scale="0.7" deleteButton={true}>
+                    <ButtonRound scale="0.7"
+                        deleteButton={true}
+                        onClick={props.showModalDeleteThisNote}
+                        id={props.id}
+                    >
                         <IconTrash />
                     </ButtonRound>
                 </NoteCardButton>

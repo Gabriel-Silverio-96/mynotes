@@ -3,6 +3,7 @@ export interface NoteCardProps {
     colorNote: string;
     titleNote: string;
     observation: string;    
+    showModalDeleteThisNote: () => void;
 }
 
 export interface NoteCardContainerProps {

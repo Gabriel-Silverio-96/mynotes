@@ -9,7 +9,8 @@ export interface ButtonProps {
 }
 
 export interface ButtonRoundProps extends ButtonProps {
-    deleteButton?: boolean
+    deleteButton?: boolean;
+    id?: string;
 }
 
 export interface ButtonRoundContainerProps {
