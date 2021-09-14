@@ -27,19 +27,20 @@ const Index = () => {
   }, [theme, setTheme])
 
   const [idNote, setIdNote] = useState("");
+  const [isNewNote, setIsNewNote] = useState(false);
 
   //Context 
-  const { modalState, modalDeleteThisNote, setModalDeleteThisNote } = useContext(ContextGlobal);
+  const { modalState, setModalState, modalDeleteThisNote, setModalDeleteThisNote, modalDeleteAllNote, setModalDeleteAllNote } = useContext(ContextGlobal);
 
-  const [newNote, setNewNote] = useState(
-    {
-      id: "",
-      colorNote: "#9C10FF",
-      titleNote: "",
-      observation: "",
-      date: dateNote,
-    },
-  );
+  const newNoteInitialState = {
+    id: "",
+    colorNote: "#9C10FF",
+    titleNote: "",
+    observation: "",
+    date: dateNote,
+  }
+
+  const [newNote, setNewNote] = useState(newNoteInitialState);
 
   const storage = JSON.parse(localStorage.getItem("notes"));
   const [noteStorage, setNoteStorage] = useState(storage);
@@ -53,12 +54,9 @@ const Index = () => {
   }
 
   //Submit
-  function SaveNote(e) {
+  function saveNote(e) {
     e.preventDefault();
-
-    setNewNote({
-      ...newNote
-    })
+    setIsNewNote(!isNewNote);
 
     const storage = JSON.parse(localStorage.getItem("notes"));
     if (storage !== null) {
@@ -68,33 +66,52 @@ const Index = () => {
     }
 
     e.target.reset();
+    setModalState(!modalState);
+    setNewNote(newNoteInitialState)
   }
 
   useEffect(() => {
     const storage = JSON.parse(localStorage.getItem("notes"));
     return setNoteStorage(storage)
-  }, [newNote]);
+  }, [isNewNote]);
 
   const showModalDeleteThisNote = (idNote) => {
     setModalDeleteThisNote(prevState => !prevState);
     setIdNote(idNote);
   }
 
+  const showModalDeleteAllNote = () => {
+    setModalDeleteAllNote(true);
+  }
+
+  const closeModalDeleteThisNote = () => {
+    setModalDeleteThisNote(!modalDeleteThisNote)
+  }
+
+  const closeModalDeleteAllNote = () => {
+    setModalDeleteAllNote(!modalDeleteAllNote)
+  }
+
+  const deleteAllNotes = () => {
+    localStorage.removeItem("notes");
+    setNoteStorage(null);
+    setModalDeleteAllNote(!modalDeleteAllNote)
+  }
+
   const deleteThisNote = () => {
     noteStorage.filter((value, index) => {
       if (value.id === Number(idNote)) {
         storage.splice(index, 1);
-        localStorage.setItem('notes', JSON.stringify([...storage]));
+        localStorage.setItem("notes", JSON.stringify([...storage]));
 
         setNoteStorage(storage);
         setModalDeleteThisNote(!modalDeleteThisNote);
       }
 
 
-      // if (storage.length === 0 && index === 0) {
-      //   //remove o item notes do storage
-      //   deleteAllNotes();
-      // }
+      if (storage.length === 0 && index === 0) {
+        deleteAllNotes();
+      }
 
       return true
     })
@@ -103,15 +120,37 @@ const Index = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <div className="container">        
+      <div className="container">
         <Header
           toggleTheme={toggleTheme}
           themeTitle={theme.title}
+          thereAreNotes={noteStorage === null || noteStorage.length === 0 ? false : true}
+          showModalDeleteAllNote={showModalDeleteAllNote}
         />
 
-        {modalState && <ModalMain onSubmit={SaveNote} onChange={handleChange} />}
+        {modalState && <ModalMain onSubmit={saveNote} onChange={handleChange} />}
 
-        {modalDeleteThisNote && <ModalGeneric deleteThisNote={deleteThisNote} />}
+        {
+          modalDeleteThisNote && (
+            <ModalGeneric
+              title="Delete note"
+              body="Do you want to delete this note?"
+              onClick={deleteThisNote}
+              closeModal={closeModalDeleteThisNote}
+            />
+          )
+        }
+
+        {
+          modalDeleteAllNote && (
+            <ModalGeneric
+              title="Delete all note"
+              body="Do you want to delete all note?"
+              onClick={deleteAllNotes}
+              closeModal={closeModalDeleteAllNote}
+            />
+          )
+        }
 
         <NoteCardWrapper>
           {noteStorage !== null ?

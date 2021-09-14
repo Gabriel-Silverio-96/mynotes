@@ -16,7 +16,7 @@ export const ModalWrapper = styled.div`
 `
 
 export const ModalContainer = styled.div`
-    width: 35rem;
+    width: 25rem;
     min-height: 9rem;
     padding: 1.5rem;
     background-color: ${props => props.theme.colors.backgroundSecundary};   

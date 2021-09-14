@@ -6,17 +6,15 @@ import LogoDark from "assets/logo-mynotes-dark.svg";
 import { HeaderContainer } from "./styled";
 
 //Components
-import { IconMoon, IconSun } from "components/UI/Icons";
+import { IconMoon, IconSun, IconTrash } from "components/UI/Icons";
 import { ButtonPrimary, ButtonRound } from "components/UI/Button";
 import { ContextGlobal } from "provider/context";
 
-interface HeaderProps {
-    toggleTheme(): void,
-    themeTitle: string;
-}
+import { HeaderProps } from "./types"
 
-const Header: React.FC<HeaderProps> = React.memo(({ toggleTheme, themeTitle }) => {
+const Header: React.FC<HeaderProps> = React.memo(({ toggleTheme, themeTitle, thereAreNotes, showModalDeleteAllNote }) => {
     const { setModalState } = useContext<any>(ContextGlobal);
+
     const showModal = () => {
         setModalState((prevState: boolean) => !prevState)
     }
@@ -38,6 +36,15 @@ const Header: React.FC<HeaderProps> = React.memo(({ toggleTheme, themeTitle }) =
                             : <IconMoon />
                     }
                 </ButtonRound>
+
+                {
+                    thereAreNotes && (
+                        <ButtonRound deleteButton={true} onClick={showModalDeleteAllNote}>
+                            <IconTrash />
+                        </ButtonRound>
+                    )
+                }
+
                 <ButtonPrimary
                     title="New Note"
                     onClick={showModal}

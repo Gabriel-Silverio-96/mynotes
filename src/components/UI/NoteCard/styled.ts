@@ -21,7 +21,7 @@ export const NoteCardContainer = styled.div<NoteCardContainerProps>`
 
     &:hover {
         & > div > div {
-            display: flex;
+            opacity: 1;
         }
     }
 `
@@ -30,16 +30,16 @@ export const NoteCardHeader = styled.div`
 `
 
 export const NoteCardButton = styled.div`
-    display: none;
+    display: flex;
     align-items: center;
-
     position: absolute;
     top: -5px;
     right: 0;
-
     width: 100%;
     background: red;
     justify-content: flex-end;
+    opacity: 0;
+    transition: 0.3s;
 
     background: linear-gradient(
             90deg, rgba(255,0,0,0) 0%, 

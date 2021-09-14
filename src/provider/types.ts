@@ -4,4 +4,7 @@ export interface ContextGlobalProps {
 
     modalDeleteThisNote: boolean;
     setModalDeleteThisNote: (b: boolean) => void;
+
+    modalDeleteAllNote: boolean;
+    setModalDeleteAllNote: (b: boolean) => void;
 }

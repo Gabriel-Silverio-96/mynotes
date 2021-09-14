@@ -9,5 +9,13 @@ export const HeaderContainer = styled.header`
     nav {
         display: flex;
         gap: 1rem;
+
+        button {
+            &:nth-child(2n) {
+                svg {
+                    transform: scale(1.5);
+                }
+            }
+        }
     }
 `

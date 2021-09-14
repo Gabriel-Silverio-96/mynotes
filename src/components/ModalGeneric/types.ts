@@ -1,3 +1,6 @@
 export interface ModalGenericProps {
-    deleteThisNote: () => void;
+    onClick: () => void;
+    title: string;
+    body: string;
+    closeModal: () => void;
 }

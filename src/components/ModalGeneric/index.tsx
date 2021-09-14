@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import { ContextGlobal } from "provider/context";
+import React from "react";
 
 import { ButtonPrimary, ButtonRound, ButtonSecodary } from "components/UI/Button";
 import { IconClose } from "components/UI/Icons";
@@ -14,18 +13,14 @@ import {
 
 import { ModalGenericProps } from "./types";
 
-const ModalGeneric: React.FC<ModalGenericProps> = React.memo(({ deleteThisNote }) => {
-    const { modalDeleteThisNote, setModalDeleteThisNote } = useContext(ContextGlobal);
-
-    const closeModal = () => {
-        setModalDeleteThisNote(!modalDeleteThisNote)
-    }
-
+const ModalGeneric: React.FC<ModalGenericProps> = React.memo(({ onClick, title, body, closeModal }) => {  
     return (
         <ModalWrapper>
             <ModalContainer>
                 <ModalHeader>
-                    <h2>Delete note</h2>
+                    <h2>
+                        {title}
+                    </h2>
                     <ButtonRound
                         scale="0.8"
                         onClick={closeModal}
@@ -35,17 +30,19 @@ const ModalGeneric: React.FC<ModalGenericProps> = React.memo(({ deleteThisNote }
                 </ModalHeader>
 
                 <ModalBody>
-                    <p>Do you want to delete this note?</p>
+                    <p>
+                        {body}
+                    </p>
                 </ModalBody>
 
                 <ModalFooter>
                     <ButtonSecodary
-                        title="Close"
+                        title="No"
                         onClick={closeModal}
                     />
                     <ButtonPrimary
-                        title="Delete"
-                        onClick={deleteThisNote}
+                        title="Yes"
+                        onClick={onClick}
                     />
 
                 </ModalFooter>
