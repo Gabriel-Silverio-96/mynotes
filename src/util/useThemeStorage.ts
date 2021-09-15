@@ -6,7 +6,6 @@ type useThemeStorageProps<T> = [
 ]
 
 function useThemeStorage<T>(key: string, initialState: T): useThemeStorageProps<T> {
-
     const [state, setState] = useState(() => {
         const storage = localStorage.getItem(key);
 

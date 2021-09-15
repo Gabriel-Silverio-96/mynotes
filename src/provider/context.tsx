@@ -7,7 +7,6 @@ export const ContextProvider = (props: any) => {
     const [modalState, setModalState] = useState<boolean>(false);
     const [modalDeleteThisNote, setModalDeleteThisNote] = useState<boolean>(false);
     const [modalDeleteAllNote, setModalDeleteAllNote] = useState<boolean>(false);
-
     const [modalViewEditNote, setModalViewEditNote] = useState<boolean>(false);
 
     return (
