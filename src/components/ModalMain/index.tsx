@@ -18,8 +18,8 @@ import {
 import { ModalMainProps } from "./types";
 import { ContextGlobalProps } from "provider/types";
 
-const ModalMain: React.FC<ModalMainProps> = React.memo(({ onSubmit, onChange, noteEditData, deleteNote }) => {
-    const { modalState, setModalState, modalViewEditNote } = useContext<ContextGlobalProps>(ContextGlobal);   
+const ModalMain: React.FC<ModalMainProps<HTMLInputElement | HTMLTextAreaElement>> = React.memo(({ onSubmit, onChange, noteEditData, deleteNote, titleNoteErro }) => {
+    const { modalState, setModalState, modalViewEditNote } = useContext<ContextGlobalProps>(ContextGlobal);
 
     const closeModal = () => {
         setModalState(!modalState)
@@ -49,12 +49,12 @@ const ModalMain: React.FC<ModalMainProps> = React.memo(({ onSubmit, onChange, no
                     <ModalBody>
                         <FormGroupColorContainer>
                             <FormGroupColor>
-                                <input 
-                                    type="color" 
-                                    name="colorNote" 
+                                <input
+                                    type="color"
+                                    name="colorNote"
                                     id="colorNote"
                                     defaultValue={modalViewEditNote ? noteEditData.colorNote : "#9C10FF"}
-                                    onChange={onChange} 
+                                    onChange={onChange}
                                 />
                                 <label htmlFor="colorNote">Color note</label>
                             </FormGroupColor>
@@ -62,21 +62,22 @@ const ModalMain: React.FC<ModalMainProps> = React.memo(({ onSubmit, onChange, no
 
                         <FormGroup>
                             <label htmlFor="titleNote">Title note</label>
-                            <input 
-                                type="text" 
-                                name="titleNote" 
-                                id="titleNote"                             
-                                onChange={onChange}                                 
+                            <input
+                                type="text"
+                                name="titleNote"
+                                id="titleNote"
+                                onChange={onChange}
                                 defaultValue={modalViewEditNote ? noteEditData.titleNote : ""}
                             />
+                            <span>{titleNoteErro}</span>
                         </FormGroup>
                         <FormGroup>
                             <label htmlFor="observation">Observation</label>
-                            <textarea 
-                                name="observation" 
-                                id="observation" 
-                                rows={10} 
-                                onChange={onChange} 
+                            <textarea
+                                name="observation"
+                                id="observation"
+                                rows={10}
+                                onChange={onChange}
                                 defaultValue={modalViewEditNote ? noteEditData.observation : ""}
                             />
                         </FormGroup>
@@ -85,7 +86,7 @@ const ModalMain: React.FC<ModalMainProps> = React.memo(({ onSubmit, onChange, no
                     <ModalFooter>
                         {
                             modalViewEditNote
-                                ? <ButtonDelete onClick={deleteNote}/>
+                                ? <ButtonDelete onClick={deleteNote} />
                                 : (
                                     <ButtonSecodary
                                         title="Close"
