@@ -8,7 +8,7 @@ import GlobalStyles from "assets/styles/global";
 
 //Components
 import Header from "../components/Header/index";
-import ModalMain from "../components/Modal";
+import ModalMain from "../components/ModalMain";
 import NoNotes from "components/NoNotes";
 import NoteCard from "components/UI/NoteCard";
 import ModalGeneric from "components/ModalGeneric";
@@ -29,8 +29,19 @@ const Index = () => {
   const [idNote, setIdNote] = useState("");
   const [isNewNote, setIsNewNote] = useState(false);
 
+  const [noteEditData, setNoteEditData] = useState({})
+
   //Context 
-  const { modalState, setModalState, modalDeleteThisNote, setModalDeleteThisNote, modalDeleteAllNote, setModalDeleteAllNote } = useContext(ContextGlobal);
+  const {
+    modalState,
+    setModalState,
+    modalDeleteThisNote,
+    setModalDeleteThisNote,
+    modalDeleteAllNote,
+    setModalDeleteAllNote,
+    modalViewEditNote,
+    setModalViewEditNote
+  } = useContext(ContextGlobal);
 
   const newNoteInitialState = {
     id: "",
@@ -46,28 +57,52 @@ const Index = () => {
   const [noteStorage, setNoteStorage] = useState(storage);
 
   const handleChange = (e) => {
-    setNewNote({
-      ...newNote,
-      id: Math.floor(Math.random() * 1000),
-      [e.target.name]: e.target.value
-    })
+    if (!modalViewEditNote) {
+      setNewNote({
+        ...newNote,
+        id: Math.floor(Math.random() * 1000),
+        [e.target.name]: e.target.value
+      })
+    } else {
+      setNoteEditData({
+        ...noteEditData,
+        [e.target.name]: e.target.value
+      })
+    }
   }
 
   //Submit
   function saveNote(e) {
     e.preventDefault();
-    setIsNewNote(!isNewNote);
 
-    const storage = JSON.parse(localStorage.getItem("notes"));
-    if (storage !== null) {
-      localStorage.setItem("notes", JSON.stringify([...storage, newNote]))
+    if (!modalViewEditNote) {
+      setIsNewNote(!isNewNote);
+
+      const storage = JSON.parse(localStorage.getItem("notes"));
+      if (storage !== null) {
+        localStorage.setItem("notes", JSON.stringify([...storage, newNote]))
+      } else {
+        localStorage.setItem("notes", JSON.stringify([newNote]))
+      }
+
+      e.target.reset();
+      setModalState(!modalState);
+      setNewNote(newNoteInitialState);
+
     } else {
-      localStorage.setItem("notes", JSON.stringify([newNote]))
-    }
+      noteStorage.filter((note, index) => {        
+        if (note.id === idNote) {
+          const storageGet = JSON.parse(localStorage.getItem("notes"));
+          storageGet.splice(index, 1, noteEditData)
 
-    e.target.reset();
-    setModalState(!modalState);
-    setNewNote(newNoteInitialState)
+          localStorage.setItem("notes", JSON.stringify(storageGet));
+          setIsNewNote(!isNewNote);
+          setModalState(!modalState);
+        }
+
+        return true
+      })
+    }
   }
 
   useEffect(() => {
@@ -78,6 +113,7 @@ const Index = () => {
   const showModalDeleteThisNote = (idNote) => {
     setModalDeleteThisNote(prevState => !prevState);
     setIdNote(idNote);
+    setModalState(false);
   }
 
   const showModalDeleteAllNote = () => {
@@ -117,6 +153,20 @@ const Index = () => {
     })
   }
 
+  const showModalVieEditNote = (id) => {
+    setModalViewEditNote(true);
+    setModalState((prevState) => !prevState);
+
+    noteStorage.filter((note, index) => {
+      if (note.id === id) {
+        setNoteEditData(note)
+        setIdNote(note.id);
+      }
+
+      return true
+    })
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
@@ -128,7 +178,7 @@ const Index = () => {
           showModalDeleteAllNote={showModalDeleteAllNote}
         />
 
-        {modalState && <ModalMain onSubmit={saveNote} onChange={handleChange} />}
+        {modalState && <ModalMain onSubmit={saveNote} onChange={handleChange} noteEditData={noteEditData} deleteNote={() => showModalDeleteThisNote(idNote)} />}
 
         {
           modalDeleteThisNote && (
@@ -162,6 +212,7 @@ const Index = () => {
                 titleNote={value.titleNote}
                 observation={value.observation}
                 showModalDeleteThisNote={() => showModalDeleteThisNote(value.id)}
+                viewEditNote={() => showModalVieEditNote(value.id)}
               />
             )) : (
               <NoNotes />
