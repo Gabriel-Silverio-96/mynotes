@@ -11,12 +11,14 @@ import { ButtonPrimary, ButtonRound } from "components/UI/Button";
 import { ContextGlobal } from "provider/context";
 
 import { HeaderProps } from "./types"
+import { ContextGlobalProps } from "provider/types";
 
 const Header: React.FC<HeaderProps> = React.memo(({ toggleTheme, themeTitle, thereAreNotes, showModalDeleteAllNote }) => {
-    const { setModalState } = useContext<any>(ContextGlobal);
+    const { setModalState, setModalViewEditNote, modalState } = useContext<ContextGlobalProps>(ContextGlobal);
 
     const showModal = () => {
-        setModalState((prevState: boolean) => !prevState)
+        setModalState(!modalState);        
+        setModalViewEditNote(false);
     }
 
     return (
