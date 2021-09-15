@@ -8,6 +8,8 @@ export const ContextProvider = (props: any) => {
     const [modalDeleteThisNote, setModalDeleteThisNote] = useState<boolean>(false);
     const [modalDeleteAllNote, setModalDeleteAllNote] = useState<boolean>(false);
 
+    const [modalViewEditNote, setModalViewEditNote] = useState<boolean>(false);
+
     return (
         <ContextGlobal.Provider value={
             {
@@ -18,7 +20,10 @@ export const ContextProvider = (props: any) => {
                 setModalDeleteThisNote,
 
                 modalDeleteAllNote,
-                setModalDeleteAllNote
+                setModalDeleteAllNote,
+
+                modalViewEditNote,
+                setModalViewEditNote
             }
         }>
             {props.children}
