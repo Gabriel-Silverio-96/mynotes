@@ -178,8 +178,6 @@ const Index: React.FC = () => {
   }
 
   return (
-    console.log(noteStorage),
-    
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <div className="container">
