@@ -6,14 +6,12 @@ import light from "assets/styles/themes/light";
 import dark from "assets/styles/themes/dark";
 import GlobalStyles from "assets/styles/global";
 
-//Components
 import Header from "../components/Header/index";
 import ModalMain from "../components/ModalMain";
 import NoNotes from "components/NoNotes";
 import NoteCard from "components/UI/NoteCard";
 import ModalGeneric from "components/ModalGeneric";
 
-//Util
 import useThemeStorage from "util/useThemeStorage";
 import dateNote from "util/dateNote";
 
