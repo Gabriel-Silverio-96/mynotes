@@ -55,3 +55,19 @@ export const ButtonSecodaryContainer = styled.button`
         background-color: ${variables.primaryColor};                
     }
 `
+
+export const ButtonDeleteContainer = styled.button`
+    background-color: ${variables.redLight};
+    color: ${variables.red};
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.3125rem;
+    cursor: pointer;
+    transition: 0.3s;
+    border: 0;
+
+    &:hover {
+        background-color: ${variables.red};  
+        color: ${variables.white};              
+    }
+`
