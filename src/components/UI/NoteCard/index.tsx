@@ -21,7 +21,7 @@ const NoteCard: React.FC<NoteCardProps> = (props) => {
                 </h3>
 
                 <NoteCardButton>
-                    <ButtonRound scale="0.7">
+                    <ButtonRound scale="0.7" onClick={props.viewEditNote}>
                         <IconEye />
                     </ButtonRound>
 

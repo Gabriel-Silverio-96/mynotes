@@ -4,6 +4,7 @@ export interface NoteCardProps {
     titleNote: string;
     observation: string;    
     showModalDeleteThisNote: () => void;
+    viewEditNote: () => void;
 }
 
 export interface NoteCardContainerProps {
