@@ -1,16 +1,18 @@
+import { black, grayDark, primaryColor, secondaryColor, textColorParagraph, white } from "../variables"
+
 const dark = {
     title: "dark",
 
     colors: {
-        primary: "#FFE210",
-        secundary: "#9C10FF",
+        primary: secondaryColor,
+        secundary: primaryColor,
 
-        backgroundPrimary: "#000000",
-        backgroundSecundary: "#161414",
+        backgroundPrimary: black,
+        backgroundSecundary: grayDark,
 
-        textColorTitle: "#FFFFFF",
-        textColorParagraph: "#929292",
-        inputBorder: "#161414"
+        textColorTitle: white,
+        textColorParagraph: textColorParagraph,
+        inputBorder: grayDark
     }
 }
 
