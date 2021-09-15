@@ -5,6 +5,10 @@ export const NoteCardWrapper = styled.section`
     grid-template-columns: repeat(5, 1fr);
     gap: 1rem;
 
+    @media (min-width: 1920px) {
+        grid-template-columns: repeat(8, 1fr) !important;
+    }
+
     @media (min-width: 1400px) {
         grid-template-columns: repeat(6, 1fr);
     }
