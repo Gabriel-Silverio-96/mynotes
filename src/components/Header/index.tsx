@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 
 //Assets
-import LogoLight from "assets/logo-mynotes-light.svg";
-import LogoDark from "assets/logo-mynotes-dark.svg";
+import LogoLight from "assets/images/logo-mynotes-light.svg";
+import LogoDark from "assets/images/logo-mynotes-dark.svg";
 import { HeaderContainer } from "./styled";
 
 //Components
