@@ -54,7 +54,7 @@ const Index: React.FC = () => {
   const [newNote, setNewNote] = useState<NoteProps>(newNoteInitialState);
 
   const storage = JSON.parse(localStorage.getItem("notes") || "[]");
-  const [noteStorage, setNoteStorage] = useState(storage);
+  const [noteStorage, setNoteStorage] = useState<Array<NoteProps>>(storage);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     if (!modalViewEditNote) {
@@ -140,7 +140,7 @@ const Index: React.FC = () => {
 
   const deleteAllNotes = () => {
     localStorage.removeItem("notes");
-    setNoteStorage(null);
+    setNoteStorage([]);
     setModalDeleteAllNote(!modalDeleteAllNote)
   }
 
@@ -178,6 +178,8 @@ const Index: React.FC = () => {
   }
 
   return (
+    console.log(noteStorage),
+    
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <div className="container">
@@ -223,7 +225,7 @@ const Index: React.FC = () => {
         }
 
         <NoteCardWrapper>
-          {noteStorage !== null ?
+          {noteStorage.length > 0 ?
             noteStorage.map((note: NoteProps, index: number) => (
               <NoteCard
                 key={index}
