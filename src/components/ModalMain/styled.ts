@@ -119,6 +119,12 @@ export const FormGroup = styled.div`
             outline: 0;            
         }
     }
+
+    span {
+        color: ${variables.red};
+        margin-left: 0.2rem;
+        font-size: 0.8rem;
+    }
 `
 
 export const ModalFooter = styled.div`
