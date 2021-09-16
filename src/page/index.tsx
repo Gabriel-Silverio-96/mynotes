@@ -152,11 +152,6 @@ const Index: React.FC = () => {
         setModalDeleteThisNote(!modalDeleteThisNote);
       }
 
-
-      if (storage.length === 0 && index === 0) {
-        deleteAllNotes();
-      }
-
       return true
     })
   }
