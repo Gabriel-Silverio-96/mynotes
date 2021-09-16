@@ -7,7 +7,7 @@ const NoNotes: React.FC = () => {
         <NoNotesCenter>
             <NoNotesContainer>
                 <span>😄</span>
-                <h1>You don't have <br/> any grade</h1>
+                <h1>You didn't create<br/>any notes</h1>
                 <p>Create a new note</p>
             </NoNotesContainer>
         </NoNotesCenter>
