@@ -1,5 +1,5 @@
 <p align="center">
-    <img alt="Logo MyNotes" src="https://user-images.githubusercontent.com/53228013/107854258-8de7e000-6df9-11eb-862a-f63d8172002b.png" />
+    <img alt="Logo MyNotes" src="https://user-images.githubusercontent.com/53228013/133528578-605cf457-42b4-420a-9932-3d9b50da7abc.png" />
 </p>
 
 <h1 align="center">
@@ -7,33 +7,39 @@
 </h1>
 
 <p align="center">
-    <img alt="Banner MyNotes" src="https://user-images.githubusercontent.com/53228013/107854597-9b9e6500-6dfb-11eb-84e2-48ee5378f8e9.png" />
+    <img alt="Banner MyNotes" src="https://user-images.githubusercontent.com/53228013/133530361-7df5ff9e-ad0c-4032-97b1-ce7e20bae2e6.gif" />
 </p>
 
-## 📝 Sobre 
+## 📝 About 
 
-🌐 Vamos lá, agora crie suas notas. Acesse: https://gabriel-silverio-96.github.io/mynotes/
+🌐 Lets go, now create your notes > https://gabriel-silverio-96.github.io/mynotes/
 
-Sabe quando você precisa fazer aquela anotação rápida, o MyNotes é para você. Aplicação desenvolvida com ReactJS e para salvar as informações foi utilizado o <code>localStorage</code> do navegador.
+You know when you need to take that quick note, MyNotes is for you.
 
-## 📁 Clona aí
+## 📁 Clone
 
-Com o projeto clonado, acesse a pasta dos arquivos
+With project clone, go file folder
 
 ```
 $ cd mynotes
 ```
 
-Instale as dependências. 
-Obs: Neste passo é necessário ter o NodeJS instalado, caso não tenha, [acesse o link](https://nodejs.org/en/), realize o download e a instalação.
-Yarn: [Download Yarn](https://yarnpkg.com/getting-started/install)
+Install dependencies
+[NodeJS](https://nodejs.org/en/)
+
+Package manager yarn (not obligatory)
+[Download Yarn](https://yarnpkg.com/getting-started/install)
 
 ```
-$ npm / yarn
+$ npm 
+or
+$ yarn
 ```
 
-Em seguida rode o projeto
+Run project
 
 ```
-$ npm start / yarn start
+$ npm start 
+or
+$yarn start
 ```
