@@ -21,12 +21,17 @@ import { ContextGlobalProps } from "provider/types";
 const ModalMain: React.FC<ModalMainProps<HTMLInputElement | HTMLTextAreaElement>> = React.memo((props) => {
     const { modalState, setModalState, modalViewEditNote } = useContext<ContextGlobalProps>(ContextGlobal);
 
-    const closeModal = () => {
-        setModalState(!modalState)
+    const closeModal = (e: any) => {
+        const dataModal = e.target.dataset.modal
+
+        if(dataModal === "close") {            
+            setModalState(!modalState)
+        }
+        
     }
 
     return (
-        <ModalWrapper>
+        <ModalWrapper onClick={closeModal} data-modal="close">
             <ModalContainer>
 
                 <ModalHeader>
@@ -40,6 +45,7 @@ const ModalMain: React.FC<ModalMainProps<HTMLInputElement | HTMLTextAreaElement>
                     <ButtonRound
                         scale="0.8"
                         onClick={closeModal}
+                        dataModal="close"
                     >
                         <IconClose />
                     </ButtonRound>
@@ -91,6 +97,7 @@ const ModalMain: React.FC<ModalMainProps<HTMLInputElement | HTMLTextAreaElement>
                                     <ButtonSecodary
                                         title="Close"
                                         onClick={closeModal}
+                                        dataModal="close"
                                     />
                                 )
                         }

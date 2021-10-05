@@ -118,6 +118,12 @@ const Index: React.FC = () => {
     return setNoteStorage(storage)
   }, [isNewNote]);
 
+  useEffect(() => {
+    if(titleNoteErro !== "" && !modalState) {
+      setTitleNoteErro("")
+    }
+  }, [modalState, titleNoteErro])
+
   const showModalDeleteThisNote = (idNote: number) => {
     setModalDeleteThisNote(!modalDeleteAllNote);
     setIdNote(Number(idNote));

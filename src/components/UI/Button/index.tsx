@@ -4,22 +4,24 @@ import { ButtonProps, ButtonRoundProps } from "./types";
 import { ButtonPrimaryContainer, ButtonSecodaryContainer, ButtonRoundContainer, ButtonDeleteContainer } from "./styled";
 import { IconTrash } from "../Icons";
 
-const ButtonPrimary: React.FC<ButtonProps> = ({ title, onClick, type }) => {
+const ButtonPrimary: React.FC<ButtonProps> = ({ title, onClick, type, dataModal }) => {
     return (
         <ButtonPrimaryContainer
             type={type}
             onClick={onClick}
+            data-modal={dataModal}
         >
             {title}
         </ButtonPrimaryContainer>
     )
 }
 
-const ButtonSecodary: React.FC<ButtonProps> = ({ title, onClick, type }) => {
+const ButtonSecodary: React.FC<ButtonProps> = ({ title, onClick, type, dataModal }) => {
     return (
         <ButtonSecodaryContainer
             type={type}
             onClick={onClick}
+            data-modal={dataModal}
         >
             {title}
         </ButtonSecodaryContainer>
@@ -29,12 +31,12 @@ const ButtonSecodary: React.FC<ButtonProps> = ({ title, onClick, type }) => {
 const ButtonDelete: React.FC<ButtonProps> = ({ onClick }) => {
     return (
         <ButtonDeleteContainer onClick={onClick}>
-            <IconTrash /> Delete            
+            <IconTrash /> Delete
         </ButtonDeleteContainer>
     )
 }
 
-const ButtonRound: React.FC<ButtonRoundProps> = ({ children, onClick, type, scale, deleteButton, id }) => {
+const ButtonRound: React.FC<ButtonRoundProps> = ({ children, onClick, type, scale, deleteButton, id, dataModal }) => {
     return (
         <ButtonRoundContainer
             type={type}
@@ -42,6 +44,7 @@ const ButtonRound: React.FC<ButtonRoundProps> = ({ children, onClick, type, scal
             scale={scale}
             deleteButton={deleteButton}
             id={id}
+            data-modal={dataModal}
         >
             {children}
         </ButtonRoundContainer>

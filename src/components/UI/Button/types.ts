@@ -5,12 +5,14 @@ export interface ButtonProps {
     type?: "button" | "reset" | "submit";
     children?: React.ReactNode;
     scale?: string;
-    onClick?: () => void;
+    onClick?: (e: any) => void;
+    dataModal?: string;
 }
 
 export interface ButtonRoundProps extends ButtonProps {
     deleteButton?: boolean;
     id?: string;
+    dataModal?: string;
 }
 
 export interface ButtonRoundContainerProps {
