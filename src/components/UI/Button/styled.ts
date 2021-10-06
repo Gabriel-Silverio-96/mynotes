@@ -71,3 +71,10 @@ export const ButtonDeleteContainer = styled.button`
         color: ${variables.white};              
     }
 `
+
+export const ButtonNoBackgroundContainer = styled.button`
+    background-color: transparent;
+    border: 0;
+    color: ${variables.white};    
+    padding: 0.5rem 1rem;
+`

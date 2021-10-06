@@ -1,7 +1,7 @@
 import React from "react";
 import { ButtonProps, ButtonRoundProps } from "./types";
 
-import { ButtonPrimaryContainer, ButtonSecodaryContainer, ButtonRoundContainer, ButtonDeleteContainer } from "./styled";
+import { ButtonPrimaryContainer, ButtonSecodaryContainer, ButtonRoundContainer, ButtonDeleteContainer, ButtonNoBackgroundContainer } from "./styled";
 import { IconTrash } from "../Icons";
 
 const ButtonPrimary: React.FC<ButtonProps> = ({ title, onClick, type, dataModal }) => {
@@ -28,6 +28,16 @@ const ButtonSecodary: React.FC<ButtonProps> = ({ title, onClick, type, dataModal
     )
 }
 
+const ButtonNoBackground: React.FC<ButtonProps> = ({ title, onClick }) => {
+    return (
+        <ButtonNoBackgroundContainer
+            onClick={onClick}
+        >
+            {title}
+        </ButtonNoBackgroundContainer>
+    )
+}
+
 const ButtonDelete: React.FC<ButtonProps> = ({ onClick }) => {
     return (
         <ButtonDeleteContainer onClick={onClick}>
@@ -51,4 +61,4 @@ const ButtonRound: React.FC<ButtonRoundProps> = ({ children, onClick, type, scal
     )
 }
 
-export { ButtonPrimary, ButtonSecodary, ButtonRound, ButtonDelete };
+export { ButtonPrimary, ButtonSecodary, ButtonRound, ButtonDelete, ButtonNoBackground };
