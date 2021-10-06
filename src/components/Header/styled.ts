@@ -10,7 +10,13 @@ export const HeaderContainer = styled.header`
         display: flex;
         gap: 1rem;
 
+        a {
+            text-decoration: none;
+            display: contents;
+        }
+        
         button {
+            cursor: pointer;
             &:nth-child(2n) {
                 svg {
                     transform: scale(1.5);

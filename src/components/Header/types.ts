@@ -1,6 +1,6 @@
 export interface HeaderProps {
-    toggleTheme(): void,
+    toggleTheme?: () => void,
     themeTitle: string;
-    thereAreNotes: boolean;
-    showModalDeleteAllNote: () => void;
+    thereAreNotes?: boolean;
+    showModalDeleteAllNote?: () => void;
 }
