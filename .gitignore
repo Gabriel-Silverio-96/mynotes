@@ -27,3 +27,4 @@ yarn.lock
 /.eslintcache
 yarn.lock
 .eslintcache
+.env
