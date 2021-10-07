@@ -57,7 +57,7 @@ const Header: React.FC<HeaderProps> = React.memo(({ toggleTheme, themeTitle, the
                     </>
                 ) : (
                     <>
-                        <Link to="login">
+                        <Link to="auth/login">
                             <ButtonNoBackground
                                 title="Login"
                             />
