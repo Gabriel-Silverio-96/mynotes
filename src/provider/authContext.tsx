@@ -15,7 +15,7 @@ const AuthProvider: React.FC = ({ children }) => {
         const token: string | null = localStorage.getItem(("token") || null);
 
         if (token) {
-            apiMyNotes.defaults.headers!.Authorization = `Bearer ${JSON.parse(token)}`
+            apiMyNotes.defaults.headers!.Authorization = `Bearer ${token}`
             setAuthenticated(true);
             setLoading(false)
         }

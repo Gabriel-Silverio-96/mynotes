@@ -46,7 +46,7 @@ const Login: React.FC = () => {
             const token = data.token; 
             
             if (status === 200) {
-                localStorage.setItem("token", JSON.stringify(token));
+                localStorage.setItem("token", token);
                 apiMyNotes.defaults.headers!.Authorization = `Bearer ${token}`
                 setAuthenticated(true);
                 return history.push("/mynotes")                
