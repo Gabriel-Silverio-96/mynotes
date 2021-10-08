@@ -1,3 +1,5 @@
+import React, { ChangeEvent, FormEvent } from "react";
+
 export interface ContextGlobalProps {
     modalState: boolean;
     setModalState: (b: boolean) => void;
@@ -10,4 +12,15 @@ export interface ContextGlobalProps {
 
     modalViewEditNote: boolean;
     setModalViewEditNote: (b: boolean) => void;
+}
+
+export interface LoginFieldsProps {
+    email: string;
+    password: string;
+}
+
+export interface AuthContextProps {
+    authenticated: boolean;
+    setAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
+    loading: boolean;    
 }
