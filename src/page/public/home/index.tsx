@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 //Components
 import Header from "components/Header";
@@ -11,6 +11,16 @@ import Background from "assets/images/background.png";
 import Layout from "components/Layout";
 
 const HomePagePublic: React.FC = () => {
+    const history = useHistory();
+    const sessionUser = () => {
+        const path = document.location.pathname === "/";
+        const token = localStorage.getItem("token");
+        if(path && token) {
+            history.push("/mynotes")
+        }
+    }
+    sessionUser()
+
     return (
         <Layout>
             <Header themeTitle="dark" />
