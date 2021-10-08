@@ -1,7 +1,9 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
-import apiMyNotes from "service/apiMyNotes";
-import { useHistory } from "react-router";
+import React, { ChangeEvent, FormEvent, useContext, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { AxiosError } from "axios";
+import apiMyNotes from "service/apiMyNotes";
+import { AuthContext } from "provider/authContext";
+
 
 //Components
 import Layout from "components/Layout";
@@ -9,15 +11,10 @@ import FormGeneric from "components/FormGeneric";
 import Input from "components/FormFields/Input";
 import { ButtonPrimary } from "components/UI/Button";
 import MessageFormError from "components/MessageFormError";
-import { Link } from "react-router-dom";
 
 const Login: React.FC = () => {
+    const { setAuthenticated } = useContext(AuthContext);
     const history = useHistory();
-    const [errorMessage, setErrorMessage] = useState({
-        message_erro_input_email: "",
-        message_erro_input_password: "",
-        message_erro: ""
-    })
     const [loginFields, setLoginFields] = useState({
         email: "",
         password: ""
@@ -32,25 +29,34 @@ const Login: React.FC = () => {
             [name]: value
         })
     }
-
+    const [errorMessage, setErrorMessage] = useState({
+        message_erro_input_email: "",
+        message_erro_input_password: "",
+        message_erro: ""
+    })
     const Login = async (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+        e.preventDefault()
         setErrorMessage({
             message_erro_input_email: "",
             message_erro_input_password: "",
             message_erro: ""
         })
         try {
-            const request = await apiMyNotes.post("auth/login", loginFields);
-            if (request.status === 200) {
-                history.push("/mynotes")
+            const { status, data } = await apiMyNotes.post("auth/login", loginFields) as any;
+            const token = data.token; 
+            
+            if (status === 200) {
+                localStorage.setItem("token", JSON.stringify(token));
+                apiMyNotes.defaults.headers!.Authorization = `Bearer ${token}`
+                setAuthenticated(true);
+                return history.push("/mynotes")                
             }
 
         } catch (error) {
-            const errorMessge = error as AxiosError;
-            const status: number = errorMessge.response!.status;
-            const { message_erro_input_email, message_erro_input_password } = errorMessge.response!.data
-
+            const errorLog = error as AxiosError;       
+            const status = errorLog.response!.status;            
+            const { message_erro_input_email, message_erro_input_password } = errorLog.response!.data
+            
             setErrorMessage({
                 ...errorMessage,
                 message_erro_input_email,
@@ -59,18 +65,17 @@ const Login: React.FC = () => {
             })
 
             if (status === 401) {
-                const { message_erro } = errorMessge.response!.data;
+                const { message_erro } = errorLog.response!.data;
                 setErrorMessage({
                     message_erro_input_email: "",
                     message_erro_input_password: "",
                     message_erro
                 })
             }
-
-            console.error(errorMessge);
+           console.error(errorLog);
         }
     }
-
+    
     return (
         <Layout>
             <FormGeneric title="Login" widthModal="25rem">
@@ -95,7 +100,6 @@ const Login: React.FC = () => {
                         onChange={handleForm}
                         erroMessage={errorMessage.message_erro_input_password}
                     />
-
 
                     <ButtonPrimary
                         title="Send"
