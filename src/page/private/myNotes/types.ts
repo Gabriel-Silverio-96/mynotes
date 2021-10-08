@@ -6,9 +6,16 @@ export interface NoteProps {
 }
 
 export interface NotesListProps {
-    note_id: string;
+    note_id?: string;
     color_note: string;
     title_note: string;
     observation: string;
-    created_at: string;
+    created_at?: string;
+}
+
+export interface RequestProps {
+    data: {
+        list_notes: NotesListProps[] | [];
+    }
+    status: number;
 }

@@ -1,5 +1,5 @@
 export interface NoteCardProps {
-    id: string;
+    id: any;
     colorNote: string;
     titleNote: string;
     observation: string;    

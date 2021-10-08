@@ -12,7 +12,6 @@ export interface ButtonProps {
 export interface ButtonRoundProps extends ButtonProps {
     deleteButton?: boolean;
     id?: string;
-    dataModal?: string;
 }
 
 export interface ButtonRoundContainerProps {

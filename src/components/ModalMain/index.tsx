@@ -20,7 +20,7 @@ import { ContextGlobalProps } from "provider/types";
 
 const ModalMain: React.FC<ModalMainProps<HTMLInputElement | HTMLTextAreaElement>> = React.memo((props) => {
     const { modalState, setModalState, modalViewEditNote } = useContext<ContextGlobalProps>(ContextGlobal);
-
+    
     const closeModal = (e: any) => {
         const dataModal = e.target.dataset.modal
 
@@ -45,7 +45,7 @@ const ModalMain: React.FC<ModalMainProps<HTMLInputElement | HTMLTextAreaElement>
                     <ButtonRound
                         scale="0.8"
                         onClick={closeModal}
-                        dataModal="close"
+                        data-modal="close"
                     >
                         <IconClose />
                     </ButtonRound>
@@ -59,7 +59,7 @@ const ModalMain: React.FC<ModalMainProps<HTMLInputElement | HTMLTextAreaElement>
                                     type="color"
                                     name="colorNote"
                                     id="colorNote"
-                                    defaultValue={modalViewEditNote ? props.noteEditData.colorNote : "#9C10FF"}
+                                    defaultValue={modalViewEditNote ? props.noteEditData.color_note : "#9C10FF"}
                                     onChange={props.onChange}
                                 />
                                 <label htmlFor="colorNote">Color note</label>
@@ -73,7 +73,7 @@ const ModalMain: React.FC<ModalMainProps<HTMLInputElement | HTMLTextAreaElement>
                                 name="titleNote"
                                 id="titleNote"
                                 onChange={props.onChange}
-                                defaultValue={modalViewEditNote ? props.noteEditData.titleNote : ""}
+                                defaultValue={modalViewEditNote ? props.noteEditData.title_note : ""}
                             />
                             <span>{props.titleNoteErro}</span>
                         </FormGroup>

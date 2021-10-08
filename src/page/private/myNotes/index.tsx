@@ -11,10 +11,9 @@ import NoteCard from "components/UI/NoteCard";
 import ModalGeneric from "components/ModalGeneric";
 
 import useThemeStorage from "util/useThemeStorage";
-import dateNote from "util/dateNote";
 
 import { NoteCardWrapper } from "./styled";
-import { NoteProps, NotesListProps } from "./types";
+import { NotesListProps, RequestProps } from "./types";
 import { ContextGlobalProps } from "provider/types";
 import Layout from "components/Layout";
 import apiMyNotes from "service/apiMyNotes";
@@ -22,13 +21,18 @@ import { AxiosError } from "axios";
 import { useHistory } from "react-router";
 
 const Index: React.FC = () => {
+    const [theme, setTheme] = useThemeStorage("theme", dark);
+    const toggleTheme = useCallback(() => {
+        setTheme(theme.title === "light" ? dark : light);
+    }, [theme, setTheme])
+
     const [notesList, setNoteList] = useState([] as NotesListProps[]);
     const history = useHistory();
 
     useEffect(() => {
         const request = async () => {
             try {
-                const { status, data } = await apiMyNotes.get("notes/list") as any
+                const { status, data } = await apiMyNotes.get("notes/list") as RequestProps;
                 if (status === 200) {
                     setNoteList(data.list_notes)
                 }
@@ -51,19 +55,6 @@ const Index: React.FC = () => {
         request()
     }, [history])
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     const {
         modalState,
         setModalState,
@@ -75,34 +66,21 @@ const Index: React.FC = () => {
         setModalViewEditNote
     } = useContext<ContextGlobalProps>(ContextGlobal);
 
-    const [theme, setTheme] = useThemeStorage("theme", dark);
-    const toggleTheme = useCallback(() => {
-        setTheme(theme.title === "light" ? dark : light);
-    }, [theme, setTheme])
-
-    const [idNote, setIdNote] = useState<number>(0);
+    const [idNote, setIdNote] = useState<string>("");
     const [isNewNote, setIsNewNote] = useState<boolean>(false);
-    const [titleNoteErro, setTitleNoteErro] = useState<string>("");
-    const [noteEditData, setNoteEditData] = useState({} as NoteProps)
+    const [noteEditData, setNoteEditData] = useState({} as NotesListProps)
 
     const newNoteInitialState = {
-        id: 0,
-        colorNote: "#9C10FF",
-        titleNote: "",
+        color_note: "#9C10FF",
+        title_note: "",
         observation: "",
-        date: dateNote,
     }
 
-    const [newNote, setNewNote] = useState<NoteProps>(newNoteInitialState);
-
-    const storage = JSON.parse(localStorage.getItem("notes") || "[]");
-    const [noteStorage, setNoteStorage] = useState<Array<NoteProps>>(storage);
-
+    const [newNote, setNewNote] = useState<NotesListProps>(newNoteInitialState);
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         if (!modalViewEditNote) {
             setNewNote({
                 ...newNote,
-                id: Math.floor(Math.random() * 1000),
                 [e.target.name]: e.target.value
             })
         } else {
@@ -115,108 +93,41 @@ const Index: React.FC = () => {
 
     const saveNote = (e: FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
-
-        if (!modalViewEditNote) {
-            if (newNote.titleNote === "") {
-                setTitleNoteErro("Add title");
-            } else {
-                setTitleNoteErro("")
-
-                const storage = JSON.parse(localStorage.getItem("notes") || "[]");
-                if (storage !== null) {
-                    localStorage.setItem("notes", JSON.stringify([...storage, newNote]))
-                } else {
-                    localStorage.setItem("notes", JSON.stringify([newNote]))
-                }
-
-                setModalState(!modalState);
-                setNewNote(newNoteInitialState);
-                setIsNewNote(!isNewNote);
-            }
-
-        } else {
-
-            if (noteEditData.titleNote === "") {
-                setTitleNoteErro("Add title");
-            } else {
-                setTitleNoteErro("")
-
-                noteStorage.filter((note: NoteProps, index: number) => {
-                    if (note.id === Number(idNote)) {
-                        const storageGet = JSON.parse(localStorage.getItem("notes") || "[]");
-                        storageGet.splice(index, 1, noteEditData)
-
-                        localStorage.setItem("notes", JSON.stringify(storageGet));
-                        setIsNewNote(!isNewNote);
-                        setModalState(!modalState);
-                    }
-
-                    return true
-                })
-            }
-        }
     }
-
-    useEffect(() => {
-        const storage = JSON.parse(localStorage.getItem("notes") || "[]");
-        return setNoteStorage(storage)
-    }, [isNewNote]);
-
-    useEffect(() => {
-        if (titleNoteErro !== "" && !modalState) {
-            setTitleNoteErro("")
-        }
-    }, [modalState, titleNoteErro])
 
     const showModalDeleteThisNote = (idNote: string) => {
         setModalDeleteThisNote(!modalDeleteAllNote);
-        setIdNote(Number(idNote));
+        setIdNote(idNote);
         setModalState(false);
     }
 
     const showModalDeleteAllNote = () => {
-        setModalDeleteAllNote(true);
     }
 
     const closeModalDeleteThisNote = () => {
-        setModalDeleteThisNote(!modalDeleteThisNote)
     }
 
     const closeModalDeleteAllNote = () => {
-        setModalDeleteAllNote(!modalDeleteAllNote)
     }
 
     const deleteAllNotes = () => {
-        localStorage.removeItem("notes");
-        setNoteStorage([]);
-        setModalDeleteAllNote(!modalDeleteAllNote)
+      
     }
 
     const deleteThisNote = () => {
-        noteStorage.filter((note: NoteProps, index: number) => {
-            if (note.id === idNote) {
-                storage.splice(index, 1);
-                localStorage.setItem("notes", JSON.stringify([...storage]));
 
-                setNoteStorage(storage);
-                setModalDeleteThisNote(!modalDeleteThisNote);
-            }
-
-            return true
-        })
     }
 
-    const showModalVieEditNote = (id: string) => {
+    const showModalVieEditNote = (noteId: string) => {
         setModalViewEditNote(true);
-        setModalState(!modalState);
+        setModalState(true);
 
-        noteStorage.filter((note: NoteProps, index: number) => {
-            if (note.id === Number(id)) {
-                setNoteEditData(note)
-                setIdNote(note.id);
+        const filterNote = notesList.filter((note: NotesListProps) => {
+            if (note.note_id === noteId) {
+                setNoteEditData(note);
             }
 
-            return true
+            return true;
         })
     }
 
@@ -226,7 +137,7 @@ const Index: React.FC = () => {
                 <Header
                     toggleTheme={toggleTheme}
                     themeTitle={theme.title}
-                    thereAreNotes={noteStorage === null || noteStorage.length === 0 ? false : true}
+                    thereAreNotes={notesList.length === 0 ? false : true}
                     showModalDeleteAllNote={showModalDeleteAllNote}
                 />
 
@@ -236,13 +147,13 @@ const Index: React.FC = () => {
                             onSubmit={saveNote}
                             onChange={handleChange}
                             noteEditData={noteEditData}
-                            deleteNote={() => showModalDeleteThisNote(idNote.toString())}
-                            titleNoteErro={titleNoteErro}
+                            deleteNote={() => showModalDeleteThisNote(idNote)}
+                            titleNoteErro={""}
                         />
                     )
                 }
 
-                {
+                {/* {
                     modalDeleteThisNote && (
                         <ModalGeneric
                             title="Delete note"
@@ -262,7 +173,7 @@ const Index: React.FC = () => {
                             closeModal={closeModalDeleteAllNote}
                         />
                     )
-                }
+                } */}
 
                 <NoteCardWrapper>
                     {notesList.length > 0 ?
@@ -273,8 +184,8 @@ const Index: React.FC = () => {
                                 colorNote={note.color_note}
                                 titleNote={note.title_note}
                                 observation={note.observation}
-                                showModalDeleteThisNote={() => showModalDeleteThisNote(note.note_id)}
-                                viewEditNote={() => showModalVieEditNote(note.note_id)}
+                                showModalDeleteThisNote={() => showModalDeleteThisNote(note.note_id!)}
+                                viewEditNote={() => showModalVieEditNote(note.note_id!)}
                             />
                         )) : (
                             <NoNotes />

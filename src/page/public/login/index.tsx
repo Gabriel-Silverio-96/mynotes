@@ -4,7 +4,6 @@ import { AxiosError } from "axios";
 import apiMyNotes from "service/apiMyNotes";
 import { AuthContext } from "provider/authContext";
 
-
 //Components
 import Layout from "components/Layout";
 import FormGeneric from "components/FormGeneric";

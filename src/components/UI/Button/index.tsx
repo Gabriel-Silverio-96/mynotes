@@ -46,7 +46,7 @@ const ButtonDelete: React.FC<ButtonProps> = ({ onClick }) => {
     )
 }
 
-const ButtonRound: React.FC<ButtonRoundProps> = ({ children, onClick, type, scale, deleteButton, id, dataModal }) => {
+const ButtonRound: React.FC<ButtonRoundProps> = ({ children, onClick, type, scale, deleteButton, id, ...rest }) => {
     return (
         <ButtonRoundContainer
             type={type}
@@ -54,7 +54,7 @@ const ButtonRound: React.FC<ButtonRoundProps> = ({ children, onClick, type, scal
             scale={scale}
             deleteButton={deleteButton}
             id={id}
-            data-modal={dataModal}
+            {...rest}
         >
             {children}
         </ButtonRoundContainer>
