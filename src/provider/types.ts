@@ -4,11 +4,8 @@ export interface ContextGlobalProps {
     modalState: boolean;
     setModalState: (b: boolean) => void;
 
-    modalDeleteThisNote: boolean;
-    setModalDeleteThisNote: (b: boolean) => void;
-
-    modalDeleteAllNote: boolean;
-    setModalDeleteAllNote: (b: boolean) => void;
+    modalDelete: ModalDeleteProps;
+    setModalDelete: (ModalDeleteProps: ModalDeleteProps) => void;
 
     modalViewEditNote: boolean;
     setModalViewEditNote: (b: boolean) => void;
@@ -23,4 +20,9 @@ export interface AuthContextProps {
     authenticated: boolean;
     setAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
     loading: boolean;    
+}
+
+export interface ModalDeleteProps {
+    modalType: "delete" | "deleteAll"
+    isActive: boolean;
 }

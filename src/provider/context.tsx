@@ -1,12 +1,14 @@
 import React, { createContext, useState } from "react";
-import { ContextGlobalProps } from "./types";
+import { ContextGlobalProps, ModalDeleteProps } from "./types";
 
 export const ContextGlobal = createContext({} as ContextGlobalProps);
 
 export const ContextProvider = (props: any) => {
     const [modalState, setModalState] = useState<boolean>(false);
-    const [modalDeleteThisNote, setModalDeleteThisNote] = useState<boolean>(false);
-    const [modalDeleteAllNote, setModalDeleteAllNote] = useState<boolean>(false);
+    const [modalDelete, setModalDelete] = useState<ModalDeleteProps>({
+        modalType: "delete",
+        isActive: false,
+    });
     const [modalViewEditNote, setModalViewEditNote] = useState<boolean>(false);
 
     return (
@@ -15,11 +17,8 @@ export const ContextProvider = (props: any) => {
                 modalState,
                 setModalState,
 
-                modalDeleteThisNote,
-                setModalDeleteThisNote,
-
-                modalDeleteAllNote,
-                setModalDeleteAllNote,
+                modalDelete,
+                setModalDelete,
 
                 modalViewEditNote,
                 setModalViewEditNote
