@@ -8,7 +8,7 @@ import Header from "components/Header/index";
 import ModalMain from "components/ModalMain";
 import NoNotes from "components/NoNotes";
 import NoteCard from "components/UI/NoteCard";
-import ModalGeneric from "components/ModalGeneric";
+import ModalDelete from "components/ModalDelete";
 
 import useThemeStorage from "util/useThemeStorage";
 
@@ -21,13 +21,13 @@ import { AxiosError } from "axios";
 import { useHistory } from "react-router";
 
 const Index: React.FC = () => {
+    const history = useHistory();
     const [theme, setTheme] = useThemeStorage("theme", dark);
     const toggleTheme = useCallback(() => {
         setTheme(theme.title === "light" ? dark : light);
     }, [theme, setTheme])
 
     const [notesList, setNoteList] = useState([] as NotesListProps[]);
-    const history = useHistory();
 
     useEffect(() => {
         const request = async () => {
@@ -58,16 +58,12 @@ const Index: React.FC = () => {
     const {
         modalState,
         setModalState,
-        modalDeleteThisNote,
-        setModalDeleteThisNote,
-        modalDeleteAllNote,
-        setModalDeleteAllNote,
+        modalDelete,
+        setModalDelete,
         modalViewEditNote,
         setModalViewEditNote
     } = useContext<ContextGlobalProps>(ContextGlobal);
 
-    const [idNote, setIdNote] = useState<string>("");
-    const [isNewNote, setIsNewNote] = useState<boolean>(false);
     const [noteEditData, setNoteEditData] = useState({} as NotesListProps)
 
     const newNoteInitialState = {
@@ -95,40 +91,28 @@ const Index: React.FC = () => {
         e.preventDefault();
     }
 
-    const showModalDeleteThisNote = (idNote: string) => {
-        setModalDeleteThisNote(!modalDeleteAllNote);
-        setIdNote(idNote);
-        setModalState(false);
-    }
-
-    const showModalDeleteAllNote = () => {
-    }
-
-    const closeModalDeleteThisNote = () => {
-    }
-
-    const closeModalDeleteAllNote = () => {
-    }
-
-    const deleteAllNotes = () => {
-      
-    }
-
-    const deleteThisNote = () => {
-
-    }
-
     const showModalVieEditNote = (noteId: string) => {
         setModalViewEditNote(true);
         setModalState(true);
 
-        const filterNote = notesList.filter((note: NotesListProps) => {
+        notesList.filter((note: NotesListProps) => {
             if (note.note_id === noteId) {
                 setNoteEditData(note);
             }
 
             return true;
         })
+    }
+
+    const showModalDelete = (modalType: "delete" | "deleteAll") => {
+        setModalDelete({
+            modalType: modalType,
+            isActive: true,      
+        })
+    }
+
+    const deleteThisNote = () => {
+        
     }
 
     return (
@@ -138,7 +122,7 @@ const Index: React.FC = () => {
                     toggleTheme={toggleTheme}
                     themeTitle={theme.title}
                     thereAreNotes={notesList.length === 0 ? false : true}
-                    showModalDeleteAllNote={showModalDeleteAllNote}
+                    showModalDeleteAllNote={() => showModalDelete("deleteAll")}
                 />
 
                 {
@@ -147,33 +131,29 @@ const Index: React.FC = () => {
                             onSubmit={saveNote}
                             onChange={handleChange}
                             noteEditData={noteEditData}
-                            deleteNote={() => showModalDeleteThisNote(idNote)}
+                            deleteNote={() => ""}
                             titleNoteErro={""}
                         />
                     )
                 }
 
-                {/* {
-                    modalDeleteThisNote && (
-                        <ModalGeneric
-                            title="Delete note"
-                            body="Do you want to delete this note?"
-                            onClick={deleteThisNote}
-                            closeModal={closeModalDeleteThisNote}
+                {
+                    modalDelete.isActive && (
+                        <ModalDelete 
+                            title={
+                                modalDelete.modalType === "delete"
+                                ? "Delete note"
+                                : "Delete all note"
+                            }
+                            body={
+                                modalDelete.modalType === "delete"
+                                ? "Do you want to delete this note?"
+                                : "Do you want to delete all note?"
+                            }   
+                            actionMain={() => ""}                         
                         />
                     )
                 }
-
-                {
-                    modalDeleteAllNote && (
-                        <ModalGeneric
-                            title="Delete all note"
-                            body="Do you want to delete all note?"
-                            onClick={deleteAllNotes}
-                            closeModal={closeModalDeleteAllNote}
-                        />
-                    )
-                } */}
 
                 <NoteCardWrapper>
                     {notesList.length > 0 ?
@@ -184,7 +164,7 @@ const Index: React.FC = () => {
                                 colorNote={note.color_note}
                                 titleNote={note.title_note}
                                 observation={note.observation}
-                                showModalDeleteThisNote={() => showModalDeleteThisNote(note.note_id!)}
+                                showModalDeleteThisNote={() => showModalDelete("delete")}
                                 viewEditNote={() => showModalVieEditNote(note.note_id!)}
                             />
                         )) : (

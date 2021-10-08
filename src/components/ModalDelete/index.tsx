@@ -1,7 +1,6 @@
-import React from "react";
+import React, { MouseEvent, useContext } from "react";
 
 import { ButtonPrimary, ButtonRound, ButtonSecodary } from "components/UI/Button";
-import { IconClose } from "components/UI/Icons";
 
 import {
     ModalWrapper,
@@ -11,11 +10,27 @@ import {
     ModalFooter,
 } from "./styled";
 
-import { ModalGenericProps } from "./types";
+import { ModalDeleteProps } from "./types";
+import { ContextGlobal } from "provider/context";
+import { ContextGlobalProps } from "provider/types";
 
-const ModalGeneric: React.FC<ModalGenericProps> = React.memo(({ onClick, title, body, closeModal }) => {  
+const ModalDelete: React.FC<ModalDeleteProps> = React.memo(({ actionMain, title, body }) => {
+    const { setModalDelete } = useContext<ContextGlobalProps>(ContextGlobal);
+
+    const closeModal = (e: MouseEvent) => {
+        const target = e.target as HTMLButtonElement;
+        const dataModal = target.dataset.modal;
+
+        if (dataModal === "close") {
+            setModalDelete({
+                modalType: "delete",
+                isActive: false
+            })
+        }
+    }
+
     return (
-        <ModalWrapper>
+        <ModalWrapper data-modal="close" onClick={closeModal}> 
             <ModalContainer>
                 <ModalHeader>
                     <h2>
@@ -23,9 +38,9 @@ const ModalGeneric: React.FC<ModalGenericProps> = React.memo(({ onClick, title, 
                     </h2>
                     <ButtonRound
                         scale="0.8"
-                        onClick={closeModal}
+                        data-modal="close"
                     >
-                        <IconClose />
+                        X
                     </ButtonRound>
                 </ModalHeader>
 
@@ -38,11 +53,11 @@ const ModalGeneric: React.FC<ModalGenericProps> = React.memo(({ onClick, title, 
                 <ModalFooter>
                     <ButtonSecodary
                         title="No"
-                        onClick={closeModal}
+                        data-modal="close"
                     />
                     <ButtonPrimary
                         title="Yes"
-                        onClick={onClick}
+                        onClick={actionMain}
                     />
 
                 </ModalFooter>
@@ -52,4 +67,4 @@ const ModalGeneric: React.FC<ModalGenericProps> = React.memo(({ onClick, title, 
 }
 )
 
-export default ModalGeneric;
+export default ModalDelete;

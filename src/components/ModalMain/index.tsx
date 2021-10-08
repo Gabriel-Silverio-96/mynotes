@@ -1,8 +1,7 @@
-import React, { useContext } from "react";
+import React, { MouseEvent, useContext } from "react";
 import { ContextGlobal } from "provider/context";
 
 import { ButtonDelete, ButtonPrimary, ButtonRound, ButtonSecodary } from "components/UI/Button";
-import { IconClose } from "components/UI/Icons";
 
 import {
     ModalWrapper,
@@ -21,17 +20,17 @@ import { ContextGlobalProps } from "provider/types";
 const ModalMain: React.FC<ModalMainProps<HTMLInputElement | HTMLTextAreaElement>> = React.memo((props) => {
     const { modalState, setModalState, modalViewEditNote } = useContext<ContextGlobalProps>(ContextGlobal);
     
-    const closeModal = (e: any) => {
-        const dataModal = e.target.dataset.modal
+    const closeModal = (e: MouseEvent) => {
+        const target = e.target as HTMLButtonElement;
+        const dataModal = target.dataset.modal;
 
         if(dataModal === "close") {            
             setModalState(!modalState)
         }
-        
     }
 
     return (
-        <ModalWrapper onClick={closeModal} data-modal="close">
+        <ModalWrapper data-modal="close" onClick={closeModal}>
             <ModalContainer>
 
                 <ModalHeader>
@@ -47,7 +46,6 @@ const ModalMain: React.FC<ModalMainProps<HTMLInputElement | HTMLTextAreaElement>
                         onClick={closeModal}
                         data-modal="close"
                     >
-                        <IconClose />
                     </ButtonRound>
                 </ModalHeader>
 
