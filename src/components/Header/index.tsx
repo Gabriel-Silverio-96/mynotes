@@ -1,5 +1,8 @@
 import React, { useContext } from "react";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { AuthContext } from "provider/authContext";
+import apiMyNotes from "service/apiMyNotes";
 
 //Assets
 import LogoLight from "assets/images/logo-mynotes-light.svg";
@@ -15,11 +18,20 @@ import { HeaderProps } from "./types"
 import { ContextGlobalProps } from "provider/types";
 
 const Header: React.FC<HeaderProps> = React.memo(({ toggleTheme, themeTitle, thereAreNotes, showModalDeleteAllNote }) => {
+    const history = useHistory();
     const { setModalState, setModalViewEditNote, modalState } = useContext<ContextGlobalProps>(ContextGlobal);
-    const isLogged = false;
+    const { authenticated, setAuthenticated } = useContext(AuthContext)
+    
     const showModal = () => {
         setModalState(!modalState);
         setModalViewEditNote(false);
+    }
+
+    const logout = () => {
+        setAuthenticated(false);
+        localStorage.removeItem("token");
+        apiMyNotes.defaults.headers!.Authorization = "";
+        history.push("/")
     }
 
     return (
@@ -30,7 +42,7 @@ const Header: React.FC<HeaderProps> = React.memo(({ toggleTheme, themeTitle, the
             />
 
             <nav>
-                {isLogged ? (
+                {authenticated && document.location.pathname !== "/"  ? (
                     <>
                         <ButtonRound
                             onClick={toggleTheme}
@@ -54,6 +66,8 @@ const Header: React.FC<HeaderProps> = React.memo(({ toggleTheme, themeTitle, the
                             title="New Note"
                             onClick={showModal}
                         />
+
+                        <p onClick={logout} style={{color: "white"}}>Exit</p>
                     </>
                 ) : (
                     <>
