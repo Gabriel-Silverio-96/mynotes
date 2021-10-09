@@ -44,7 +44,7 @@ const Index: React.FC = () => {
     const [notesList, setNoteList] = useState([] as NotesListProps[]);
     const [noteIdSelected, setNoteIdSelected] = useState<string>("");
     const [noteEditData, setNoteEditData] = useState({} as NotesListProps);
-    
+    const [refreshRequest, setRefreshRequest] = useState<boolean>(true);
     const newNoteInitialState = {
         color_note: "#9C10FF",
         title_note: "",
@@ -76,7 +76,7 @@ const Index: React.FC = () => {
             }
         }
         request()
-    }, [history, noteIdSelected]) 
+    }, [history, noteIdSelected, refreshRequest]) 
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         if (!modalViewEditNote) {
@@ -127,6 +127,7 @@ const Index: React.FC = () => {
                     isActive: false,
                 })
                 setNoteIdSelected("");
+                setRefreshRequest(prevState => !prevState);
             }
 
         } catch (error) {
@@ -146,6 +147,35 @@ const Index: React.FC = () => {
         }
     }
 
+    const deleteAllNotes = async () => {
+        try {
+            const request = await apiMyNotes.delete("/notes/delete-all") as RequestDeleteProps;
+            if (request.status === 200) {
+                setModalDelete({
+                    modalType: "deleteAll",
+                    isActive: false,
+                })
+                setNoteIdSelected("");
+                setRefreshRequest(prevState => !prevState);
+            }
+
+        } catch (error) {
+            const errorMessge = error as AxiosError;
+            const status = errorMessge.response!.status;
+
+            if (status === 401) {
+                localStorage.removeItem("token");
+                apiMyNotes.defaults.headers!.Authorization = "";
+                history.push("/");
+            }
+
+            if (status === 500) {
+                history.push("/");
+            }
+            console.error(error);
+        }
+    }
+    
     return (
         <Layout themeStyle={theme}>
             <div className="container">
@@ -181,7 +211,11 @@ const Index: React.FC = () => {
                                     ? "Do you want to delete this note?"
                                     : "Do you want to delete all note?"
                             }
-                            actionMain={() => deleteThisNote()}
+                            actionMain={
+                                modalDelete.modalType === "delete"
+                                ? () => deleteThisNote()
+                                : () => deleteAllNotes()
+                            }
                         />
                     )
                 }
