@@ -19,3 +19,9 @@ export interface RequestProps {
     }
     status: number;
 }
+
+export interface RequestDeleteProps {
+    status: number;
+    message: string;
+    type_message: string;
+}
