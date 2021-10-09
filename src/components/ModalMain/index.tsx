@@ -46,6 +46,7 @@ const ModalMain: React.FC<ModalMainProps<HTMLInputElement | HTMLTextAreaElement>
                         onClick={closeModal}
                         data-modal="close"
                     >
+                        X
                     </ButtonRound>
                 </ModalHeader>
 
