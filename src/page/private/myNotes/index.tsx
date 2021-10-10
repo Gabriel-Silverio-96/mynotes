@@ -110,11 +110,23 @@ const Index: React.FC = () => {
         })
 
         try {
-            const { status } = await apiMyNotes.post("notes/create", newNote);
-            if (status === 200) {
-                setModalState(false);
-                setRefreshRequest(prevState => !prevState);
-                setNewNote(newNoteInitialState);
+            if(modalViewEditNote) {
+                const endPoint = `notes/edit/note_id=${noteIdSelected}`;
+
+                const { status } = await apiMyNotes.put(endPoint, noteEditData);
+                if (status === 200) {
+                    setModalState(false);
+                    setRefreshRequest(prevState => !prevState);
+                    setNewNote(newNoteInitialState);
+                }
+
+            } else {
+                const { status } = await apiMyNotes.post("notes/create", newNote);
+                if (status === 200) {
+                    setModalState(false);
+                    setRefreshRequest(prevState => !prevState);
+                    setNewNote(newNoteInitialState);
+                }
             }
 
         } catch (error) {
