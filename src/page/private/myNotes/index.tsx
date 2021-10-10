@@ -83,6 +83,12 @@ const Index: React.FC = () => {
         request()
     }, [history, noteIdSelected, refreshRequest])
 
+    useEffect(() => {
+        setInputRequired({
+            message_erro_input_required: ""
+        })
+    }, [modalState])
+
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         if (!modalViewEditNote) {
             setNewNote({
@@ -134,8 +140,12 @@ const Index: React.FC = () => {
     }
 
     const showModalVieEditNote = (noteId: string) => {
+        setNoteIdSelected(noteId);
         setModalViewEditNote(true);
         setModalState(true);
+        setInputRequired({
+            message_erro_input_required: ""
+        })
 
         notesList.filter((note: NotesListProps) => {
             if (note.note_id === noteId) {
@@ -165,6 +175,7 @@ const Index: React.FC = () => {
                 })
                 setNoteIdSelected("");
                 setRefreshRequest(prevState => !prevState);
+                setModalState(false);
             }
 
         } catch (error) {
