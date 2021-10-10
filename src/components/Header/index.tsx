@@ -20,7 +20,7 @@ import { ContextGlobalProps } from "provider/types";
 const Header: React.FC<HeaderProps> = React.memo(({ toggleTheme, themeTitle, thereAreNotes, showModalDeleteAllNote }) => {
     const history = useHistory();
     const { setModalState, setModalViewEditNote, modalState } = useContext<ContextGlobalProps>(ContextGlobal);
-    const { authenticated, setAuthenticated } = useContext(AuthContext)
+    const { authenticated, setAuthenticated } = useContext(AuthContext);
     
     const showModal = () => {
         setModalState(!modalState);

@@ -16,7 +16,7 @@ import Layout from "components/Layout";
 import useThemeStorage from "util/useThemeStorage";
 
 //Types
-import { NotesListProps, RequestDeleteProps, RequestProps } from "./types";
+import { InputRequiredProps, NotesListProps, RequestDeleteProps, RequestProps } from "./types";
 import { ContextGlobalProps } from "provider/types";
 
 //Assets
@@ -45,6 +45,11 @@ const Index: React.FC = () => {
     const [noteIdSelected, setNoteIdSelected] = useState<string>("");
     const [noteEditData, setNoteEditData] = useState({} as NotesListProps);
     const [refreshRequest, setRefreshRequest] = useState<boolean>(true);
+
+    const [inputRequired, setInputRequired] = useState<InputRequiredProps>({
+        message_erro_input_required: ""
+    })
+
     const newNoteInitialState = {
         color_note: "#9C10FF",
         title_note: "",
@@ -60,8 +65,8 @@ const Index: React.FC = () => {
                     setNoteList(data.list_notes)
                 }
             } catch (error) {
-                const errorMessge = error as AxiosError;
-                const status = errorMessge.response!.status;
+                const errorMessage = error as AxiosError;
+                const status = errorMessage.response!.status;
 
                 if (status === 401) {
                     localStorage.removeItem("token");
@@ -76,7 +81,7 @@ const Index: React.FC = () => {
             }
         }
         request()
-    }, [history, noteIdSelected, refreshRequest]) 
+    }, [history, noteIdSelected, refreshRequest])
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         if (!modalViewEditNote) {
@@ -92,8 +97,40 @@ const Index: React.FC = () => {
         }
     }
 
-    const saveNote = (e: FormEvent<HTMLFormElement>): void => {
+    const saveNote = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setInputRequired({
+            message_erro_input_required: ""
+        })
+
+        try {
+            const { status } = await apiMyNotes.post("notes/create", newNote);
+            if (status === 200) {
+                setModalState(false);
+                setRefreshRequest(prevState => !prevState);
+                setNewNote(newNoteInitialState);
+            }
+
+        } catch (error) {
+            const errorMessage = error as AxiosError;
+            const status = errorMessage.response!.status;
+
+            if (status === 422) {
+                const messageErro = errorMessage.response!.data;
+                setInputRequired(messageErro)
+            }
+
+            if (status === 401) {
+                localStorage.removeItem("token");
+                apiMyNotes.defaults.headers!.Authorization = "";
+                history.push("/");
+            }
+
+            if (status === 500) {
+                history.push("/");
+            }
+            console.error(error);
+        }
     }
 
     const showModalVieEditNote = (noteId: string) => {
@@ -131,8 +168,8 @@ const Index: React.FC = () => {
             }
 
         } catch (error) {
-            const errorMessge = error as AxiosError;
-            const status = errorMessge.response!.status;
+            const errorMessage = error as AxiosError;
+            const status = errorMessage.response!.status;
 
             if (status === 401) {
                 localStorage.removeItem("token");
@@ -160,8 +197,8 @@ const Index: React.FC = () => {
             }
 
         } catch (error) {
-            const errorMessge = error as AxiosError;
-            const status = errorMessge.response!.status;
+            const errorMessage = error as AxiosError;
+            const status = errorMessage.response!.status;
 
             if (status === 401) {
                 localStorage.removeItem("token");
@@ -175,7 +212,7 @@ const Index: React.FC = () => {
             console.error(error);
         }
     }
-    
+
     return (
         <Layout themeStyle={theme}>
             <div className="container">
@@ -192,8 +229,8 @@ const Index: React.FC = () => {
                             onSubmit={saveNote}
                             onChange={handleChange}
                             noteEditData={noteEditData}
-                            deleteNote={() => ""}
-                            titleNoteErro={""}
+                            deleteNote={() => deleteThisNote()}
+                            titleNoteErro={inputRequired.message_erro_input_required}
                         />
                     )
                 }
@@ -213,8 +250,8 @@ const Index: React.FC = () => {
                             }
                             actionMain={
                                 modalDelete.modalType === "delete"
-                                ? () => deleteThisNote()
-                                : () => deleteAllNotes()
+                                    ? () => deleteThisNote()
+                                    : () => deleteAllNotes()
                             }
                         />
                     )

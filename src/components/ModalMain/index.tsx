@@ -56,21 +56,21 @@ const ModalMain: React.FC<ModalMainProps<HTMLInputElement | HTMLTextAreaElement>
                             <FormGroupColor>
                                 <input
                                     type="color"
-                                    name="colorNote"
-                                    id="colorNote"
+                                    name="color_note"
+                                    id="color_note"
                                     defaultValue={modalViewEditNote ? props.noteEditData.color_note : "#9C10FF"}
                                     onChange={props.onChange}
                                 />
-                                <label htmlFor="colorNote">Color note</label>
+                                <label htmlFor="color_note">Color note</label>
                             </FormGroupColor>
                         </FormGroupColorContainer>
 
                         <FormGroup>
-                            <label htmlFor="titleNote">Title note</label>
+                            <label htmlFor="title_note">Title note</label>
                             <input
                                 type="text"
-                                name="titleNote"
-                                id="titleNote"
+                                name="title_note"
+                                id="title_note"
                                 onChange={props.onChange}
                                 defaultValue={modalViewEditNote ? props.noteEditData.title_note : ""}
                             />

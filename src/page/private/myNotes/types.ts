@@ -25,3 +25,7 @@ export interface RequestDeleteProps {
     message: string;
     type_message: string;
 }
+
+export interface InputRequiredProps {
+    message_erro_input_required: string;
+}
