@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
+
 import { AuthContext } from "provider/authContext";
-import apiMyNotes from "service/apiMyNotes";
+import { ContextGlobalProps } from "provider/types";
 
 //Assets
 import LogoLight from "assets/images/logo-mynotes-light.svg";
@@ -13,25 +13,17 @@ import { HeaderContainer } from "./styled";
 import { IconMoon, IconSun, IconTrash } from "components/UI/Icons";
 import { ButtonPrimary, ButtonRound, ButtonNoBackground } from "components/UI/Button";
 import { ContextGlobal } from "provider/context";
+import  DropdownHeader  from "components/DropdownHeader";
 
 import { HeaderProps } from "./types"
-import { ContextGlobalProps } from "provider/types";
 
 const Header: React.FC<HeaderProps> = React.memo(({ toggleTheme, themeTitle, thereAreNotes, showModalDeleteAllNote }) => {
-    const history = useHistory();
     const { setModalState, setModalViewEditNote, modalState } = useContext<ContextGlobalProps>(ContextGlobal);
-    const { authenticated, setAuthenticated } = useContext(AuthContext);
+    const { authenticated } = useContext(AuthContext);
     
     const showModal = () => {
         setModalState(!modalState);
         setModalViewEditNote(false);
-    }
-
-    const logout = () => {
-        setAuthenticated(false);
-        localStorage.removeItem("token");
-        apiMyNotes.defaults.headers!.Authorization = "";
-        history.push("/")
     }
 
     return (
@@ -67,7 +59,7 @@ const Header: React.FC<HeaderProps> = React.memo(({ toggleTheme, themeTitle, the
                             onClick={showModal}
                         />
 
-                        <p onClick={logout} style={{color: "white"}}>Exit</p>
+                        <DropdownHeader />                        
                     </>
                 ) : (
                     <>
