@@ -13,14 +13,14 @@ import { HeaderContainer } from "./styled";
 import { IconMoon, IconSun, IconTrash } from "components/UI/Icons";
 import { ButtonPrimary, ButtonRound, ButtonNoBackground } from "components/UI/Button";
 import { ContextGlobal } from "provider/context";
-import  DropdownHeader  from "components/DropdownHeader";
+import DropdownHeader from "components/DropdownHeader";
 
-import { HeaderProps } from "./types"
+import { HeaderProps } from "./types";
 
-const Header: React.FC<HeaderProps> = React.memo(({ toggleTheme, themeTitle, thereAreNotes, showModalDeleteAllNote }) => {
+const Header: React.FC<HeaderProps> = React.memo(({ toggleTheme, themeTitle, thereAreNotes, showModalDeleteAllNote, isActiveNav }) => {
     const { setModalState, setModalViewEditNote, modalState } = useContext<ContextGlobalProps>(ContextGlobal);
     const { authenticated } = useContext(AuthContext);
-    
+
     const showModal = () => {
         setModalState(!modalState);
         setModalViewEditNote(false);
@@ -33,49 +33,51 @@ const Header: React.FC<HeaderProps> = React.memo(({ toggleTheme, themeTitle, the
                 alt="Logo MyNotes"
             />
 
-            <nav>
-                {authenticated && document.location.pathname !== "/"  ? (
-                    <>
-                        <ButtonRound
-                            onClick={toggleTheme}
-                        >
+            {isActiveNav && (
+                <nav>
+                    {authenticated && document.location.pathname !== "/" ? (
+                        <>
+                            <ButtonRound
+                                onClick={toggleTheme}
+                            >
+                                {
+                                    themeTitle === "dark"
+                                        ? <IconSun />
+                                        : <IconMoon />
+                                }
+                            </ButtonRound>
+
                             {
-                                themeTitle === "dark"
-                                    ? <IconSun />
-                                    : <IconMoon />
+                                thereAreNotes && (
+                                    <ButtonRound deleteButton={true} onClick={showModalDeleteAllNote}>
+                                        <IconTrash />
+                                    </ButtonRound>
+                                )
                             }
-                        </ButtonRound>
 
-                        {
-                            thereAreNotes && (
-                                <ButtonRound deleteButton={true} onClick={showModalDeleteAllNote}>
-                                    <IconTrash />
-                                </ButtonRound>
-                            )
-                        }
-
-                        <ButtonPrimary
-                            title="New Note"
-                            onClick={showModal}
-                        />
-
-                        <DropdownHeader />                        
-                    </>
-                ) : (
-                    <>
-                        <Link to="auth/login">
-                            <ButtonNoBackground
-                                title="Login"
-                            />
-                        </Link>
-                        <Link to="create-account">
                             <ButtonPrimary
-                                title="Create account"
+                                title="New Note"
+                                onClick={showModal}
                             />
-                        </Link>
-                    </>
-                )}
-            </nav>
+
+                            <DropdownHeader />
+                        </>
+                    ) : (
+                        <>
+                            <Link to="auth/login">
+                                <ButtonNoBackground
+                                    title="Login"
+                                />
+                            </Link>
+                            <Link to="create-account">
+                                <ButtonPrimary
+                                    title="Create account"
+                                />
+                            </Link>
+                        </>
+                    )}
+                </nav>
+            )}
         </HeaderContainer>
     )
 })

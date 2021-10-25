@@ -40,7 +40,7 @@ const DropdownHeader: React.FC = () => {
                 <Dropdown>
                     <ul>
                         <li role="button">
-                            <Link to="my-profile">
+                            <Link to="profile">
                                 My profile
                             </Link>
                         </li>

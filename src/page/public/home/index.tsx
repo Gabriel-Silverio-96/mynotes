@@ -23,7 +23,7 @@ const HomePagePublic: React.FC = () => {
 
     return (
         <Layout>
-            <Header themeTitle="dark" />
+            <Header themeTitle="dark" isActiveNav={true}/>
             <Main src={Background}>
                 <h1>Time to<br /> create new notes</h1>
                 <p>Easily and quickly organize your day</p>

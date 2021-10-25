@@ -6,13 +6,15 @@ import { WrapperGenericProps } from "./types";
 import { Header, FormGenericContainer, FormContainer } from "./styled";
 import LogoDark from "assets/images/logo-mynotes-dark.svg";
 
-const FormGeneric: React.FC<WrapperGenericProps> = ({ title, children, widthModal }) => {
+const FormGeneric: React.FC<WrapperGenericProps> = ({ title, children, widthModal, isHeaderActive}) => {
     return (
         <>
             <FormGenericContainer>
-                <Header>
-                    <img src={LogoDark} alt="Logo MyNotes" />
-                </Header>
+                {isHeaderActive && (
+                    <Header>
+                        <img src={LogoDark} alt="Logo MyNotes" />
+                    </Header>
+                )}
 
                 <FormContainer widthModal={widthModal}>
                     <h1>{title}</h1>

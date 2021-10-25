@@ -240,65 +240,64 @@ const Index: React.FC = () => {
 
     return (
         <Layout themeStyle={theme}>
-            <div className="container">
-                <Header
-                    toggleTheme={toggleTheme}
-                    themeTitle={theme.title}
-                    thereAreNotes={notesList.length === 0 ? false : true}
-                    showModalDeleteAllNote={() => showModalDelete("deleteAll")}
-                />
+            <Header
+                toggleTheme={toggleTheme}
+                themeTitle={theme.title}
+                thereAreNotes={notesList.length === 0 ? false : true}
+                showModalDeleteAllNote={() => showModalDelete("deleteAll")}
+                isActiveNav={true}
+            />
 
-                {
-                    modalState && (
-                        <ModalMain
-                            onSubmit={saveNote}
-                            onChange={handleChange}
-                            noteEditData={noteEditData}
-                            deleteNote={() => deleteThisNote()}
-                            titleNoteErro={inputRequired.message_erro_input_required}
+            {
+                modalState && (
+                    <ModalMain
+                        onSubmit={saveNote}
+                        onChange={handleChange}
+                        noteEditData={noteEditData}
+                        deleteNote={() => deleteThisNote()}
+                        titleNoteErro={inputRequired.message_erro_input_required}
+                    />
+                )
+            }
+
+            {
+                modalDelete.isActive && (
+                    <ModalDelete
+                        title={
+                            modalDelete.modalType === "delete"
+                                ? "Delete note"
+                                : "Delete all note"
+                        }
+                        body={
+                            modalDelete.modalType === "delete"
+                                ? "Do you want to delete this note?"
+                                : "Do you want to delete all note?"
+                        }
+                        actionMain={
+                            modalDelete.modalType === "delete"
+                                ? () => deleteThisNote()
+                                : () => deleteAllNotes()
+                        }
+                    />
+                )
+            }
+
+            <NoteCardWrapper>
+                {notesList.length > 0 ?
+                    notesList.map((note: NotesListProps) => (
+                        <NoteCard
+                            key={note.note_id}
+                            id={note.note_id}
+                            colorNote={note.color_note}
+                            titleNote={note.title_note}
+                            observation={note.observation}
+                            showModalDeleteThisNote={() => showModalDelete("delete", note.note_id!)}
+                            viewEditNote={() => showModalVieEditNote(note.note_id!)}
                         />
-                    )
-                }
-
-                {
-                    modalDelete.isActive && (
-                        <ModalDelete
-                            title={
-                                modalDelete.modalType === "delete"
-                                    ? "Delete note"
-                                    : "Delete all note"
-                            }
-                            body={
-                                modalDelete.modalType === "delete"
-                                    ? "Do you want to delete this note?"
-                                    : "Do you want to delete all note?"
-                            }
-                            actionMain={
-                                modalDelete.modalType === "delete"
-                                    ? () => deleteThisNote()
-                                    : () => deleteAllNotes()
-                            }
-                        />
-                    )
-                }
-
-                <NoteCardWrapper>
-                    {notesList.length > 0 ?
-                        notesList.map((note: NotesListProps) => (
-                            <NoteCard
-                                key={note.note_id}
-                                id={note.note_id}
-                                colorNote={note.color_note}
-                                titleNote={note.title_note}
-                                observation={note.observation}
-                                showModalDeleteThisNote={() => showModalDelete("delete", note.note_id!)}
-                                viewEditNote={() => showModalVieEditNote(note.note_id!)}
-                            />
-                        )) : (
-                            <NoNotes />
-                        )}
-                </NoteCardWrapper>
-            </div>
+                    )) : (
+                        <NoNotes />
+                    )}
+            </NoteCardWrapper>
         </Layout>
     );
 }
