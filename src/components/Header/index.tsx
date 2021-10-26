@@ -69,7 +69,7 @@ const Header: React.FC<HeaderProps> = React.memo(({ toggleTheme, themeTitle, the
                                     title="Login"
                                 />
                             </Link>
-                            <Link to="create-account">
+                            <Link to="auth/create-account">
                                 <ButtonPrimary
                                     title="Create account"
                                 />
