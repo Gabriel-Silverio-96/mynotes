@@ -6,6 +6,7 @@ import HomePagePublic from "page/public/home";
 import Login from "page/public/login";
 import MyNotes from "page/private/myNotes";
 import Profile from "page/private/profile";
+import CreateAccount from "page/public/createAccount";
 
 const Router = () => {
     return (
@@ -13,6 +14,8 @@ const Router = () => {
             <Switch>
                 <CustomRoute exact path="/" component={HomePagePublic} />             
                 <CustomRoute path="/auth/login" component={Login} />             
+                <CustomRoute path="/auth/create-account" component={CreateAccount} />
+                             
                 <CustomRoute isPrivate path="/mynotes" component={MyNotes} />             
                 <CustomRoute isPrivate path="/profile" component={Profile} />             
             </Switch>
