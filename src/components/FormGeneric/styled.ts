@@ -43,10 +43,11 @@ export const FormContainer = styled.div<FormWrapper>`
     width: ${props => props.widthModal};
     padding: 3rem;
     border-radius: 0.8rem;
-    background-color: ${variables.grayDark};
+    background-color: ${props => props.theme.colors.backgroundSecundary};   
+    border: 0.2rem solid ${props => props.theme.colors.inputBorder};
 
     h1 {
-        color: ${variables.white};
+        color: ${props => props.theme.colors.textColorTitle};
         font-size: 2.5rem;
         margin-bottom: 3rem;
     }

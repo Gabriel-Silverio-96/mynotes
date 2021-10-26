@@ -10,5 +10,6 @@ export interface InputProps {
     id: string,
     typeInput: TypeInputProps;
     erroMessage?: string;
-    onChange: (e: ChangeEvent<HTMLInputElement>) => void
+    onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+    disabled?: boolean;
 }

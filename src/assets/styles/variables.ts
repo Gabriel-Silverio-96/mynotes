@@ -14,4 +14,5 @@ export const blackLight = "#00000075";
 export const white = "#FFFFFF";
 export const yellowLight = "#fbea8a";
 export const redLight = "#FFE3E3";
-export const textColorParagraph = "#929292"
+export const textColorParagraph = "#929292";
+export const disabledColor = "#2a2a2a";

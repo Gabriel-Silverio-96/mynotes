@@ -4,11 +4,11 @@ import { InputProps } from "./type";
 //Assets
 import { FormGroup } from "components/FormFields/styled";
 
-const Input: React.FC<InputProps> = ({ label, id, name, typeInput, value, defaultValue, erroMessage, onChange }) => {
+const Input: React.FC<InputProps> = ({ label, id, name, typeInput, value, defaultValue, erroMessage, onChange, disabled }) => {       
     return (
         <FormGroup>
             <label htmlFor={id}>{label}</label>
-            <input type={typeInput} id={id} name={name} onChange={onChange} value={value} defaultValue={defaultValue} />
+            <input type={typeInput} id={id} name={name} onChange={onChange} value={value} defaultValue={defaultValue} disabled={disabled}/>
             <span>{erroMessage}</span>
         </FormGroup>
     )

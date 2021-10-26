@@ -9,7 +9,7 @@ import FormGeneric from "components/FormGeneric";
 import Input from "components/FormFields/Input";
 import { ButtonPrimary } from "components/UI/Button";
 import apiMyNotes from "service/apiMyNotes";
-import { GetUserData, InputRequiredProps, UserData } from "./types";
+import { GetUserData, UserData } from "./types";
 import { AxiosError } from "axios";
 import { useHistory } from "react-router";
 import MessageFormError from "components/MessageFormError";
@@ -23,7 +23,6 @@ const Profile: React.FC = () => {
 
     const [errorMessage, setErrorMessage] = useState({
         message_erro_input_full_name: "",
-        message_erro_input_email: "",
         message_error: "",
     })
 
@@ -67,22 +66,21 @@ const Profile: React.FC = () => {
         e.preventDefault();
         setErrorMessage({
             message_erro_input_full_name: "",
-            message_erro_input_email: "",
             message_error: "",
         })
         try {
-            const request = await apiMyNotes.put("auth/account", userData);
-            console.log(request);
-
+            const { status } = await apiMyNotes.put("auth/account", userData);
+            if (status === 200) {
+                history.push("/mynotes")
+            }
         } catch (error) {
             const errorMessage = error as AxiosError;
-            const { message_erro_input_full_name, message_erro_input_email, message_erro } = errorMessage.response!.data as any;
+            const { message_erro_input_full_name, message_erro } = errorMessage.response!.data as any;
             const status = errorMessage.response!.status;
 
             if (status === 422) {
                 setErrorMessage({
                     message_erro_input_full_name,
-                    message_erro_input_email,
                     message_error: "",
                 })
             }
@@ -90,7 +88,6 @@ const Profile: React.FC = () => {
             if (status === 403) {
                 setErrorMessage({
                     message_erro_input_full_name: "",
-                    message_erro_input_email: "",
                     message_error: message_erro
                 })
             }
@@ -99,7 +96,7 @@ const Profile: React.FC = () => {
 
     return (
         <Layout themeStyle={theme}>
-            <Header themeTitle="dark" isActiveNav={false} />
+            <Header themeTitle={theme.title} isActiveNav={false} />
             {isLoading && (
                 <FormGeneric
                     title="Profile"
@@ -125,8 +122,7 @@ const Profile: React.FC = () => {
                             id="email"
                             name="email"
                             defaultValue={userData.email}
-                            onChange={handleChange}
-                            erroMessage={errorMessage.message_erro_input_email}
+                            disabled={true}
                         />
 
                         <ButtonPrimary type="submit" title="Save" />

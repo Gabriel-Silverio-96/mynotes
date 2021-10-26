@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import * as variables from "./variables";
 
 export default createGlobalStyle `
     * {
@@ -27,5 +28,12 @@ export default createGlobalStyle `
     :focus-visible {
         outline: 0.3rem solid red;
         outline-style: dotted;
+    }
+
+    input {
+        &:disabled {
+            background-color: ${variables.disabledColor};
+            cursor: not-allowed;
+        }
     }
 `
