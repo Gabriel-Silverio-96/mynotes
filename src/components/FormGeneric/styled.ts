@@ -48,8 +48,21 @@ export const FormContainer = styled.div<FormWrapper>`
 
     h1 {
         color: ${props => props.theme.colors.textColorTitle};
-        font-size: 2.5rem;
-        margin-bottom: 3rem;
+        font-size: 2.5rem;    
+        margin-bottom: 0.5rem;    
+    }
+    
+    p {
+        color: ${props => props.theme.colors.textColorParagraph};
+        margin-bottom: 2rem;   
+        
+        strong {
+            color: ${variables.primaryColor}
+        }
+    }
+
+    form {
+        margin-top: 3rem;
     }
 
     form {

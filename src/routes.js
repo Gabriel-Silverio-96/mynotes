@@ -7,6 +7,7 @@ import Login from "page/public/login";
 import MyNotes from "page/private/myNotes";
 import Profile from "page/private/profile";
 import CreateAccount from "page/public/createAccount";
+import ForgotPassoword from "page/public/forgotPassoword";
 
 const Router = () => {
     return (
@@ -15,6 +16,7 @@ const Router = () => {
                 <CustomRoute exact path="/" component={HomePagePublic} />             
                 <CustomRoute path="/auth/login" component={Login} />             
                 <CustomRoute path="/auth/create-account" component={CreateAccount} />
+                <CustomRoute path="/auth/forgot-password" component={ForgotPassoword} />
                              
                 <CustomRoute isPrivate path="/mynotes" component={MyNotes} />             
                 <CustomRoute isPrivate path="/profile" component={Profile} />             

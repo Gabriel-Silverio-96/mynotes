@@ -106,7 +106,7 @@ const Login: React.FC = () => {
                     />
 
                     <div>
-                        <Link to="auth/forgot-password">
+                        <Link to="/auth/forgot-password">
                             Forgot password?
                         </Link>
                     </div>

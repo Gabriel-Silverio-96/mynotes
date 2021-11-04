@@ -28,7 +28,7 @@ const HomePagePublic: React.FC = () => {
                 <h1>Time to<br /> create new notes</h1>
                 <p>Easily and quickly organize your day</p>
                 <div>
-                    <Link to="create-account">
+                    <Link to="auth/create-account">
                         <ButtonPrimary
                             title="Get started"
                         />

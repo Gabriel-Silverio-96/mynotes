@@ -40,7 +40,7 @@ const CreateAccount: React.FC = () => {
             const { status } = await apiMyNotes.post("/auth/create-account", userData);
 
             if (status === 201) {
-                history.push("/")
+                history.push("/auth/login")
             }
         } catch (error) {
             const errorLog = error as AxiosError;
