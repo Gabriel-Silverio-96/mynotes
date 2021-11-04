@@ -153,7 +153,7 @@ const Index: React.FC = () => {
         }
     }
 
-    const showModalVieEditNote = (noteId: string) => {
+    const showModalViewEditNote = (noteId: string) => {
         setNoteIdSelected(noteId);
         setModalViewEditNote(true);
         setModalState(true);
@@ -292,7 +292,7 @@ const Index: React.FC = () => {
                             titleNote={note.title_note}
                             observation={note.observation}
                             showModalDeleteThisNote={() => showModalDelete("delete", note.note_id!)}
-                            viewEditNote={() => showModalVieEditNote(note.note_id!)}
+                            viewEditNote={() => showModalViewEditNote(note.note_id!)}
                         />
                     )) : (
                         <NoNotes />
