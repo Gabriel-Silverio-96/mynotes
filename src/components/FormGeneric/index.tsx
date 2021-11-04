@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { WrapperGenericProps } from "./types";
 
 //Assets
@@ -7,6 +7,8 @@ import { Header, FormGenericContainer, FormContainer } from "./styled";
 import LogoDark from "assets/images/logo-mynotes-dark.svg";
 
 const FormGeneric: React.FC<WrapperGenericProps> = ({ title, children, widthModal, isHeaderActive}) => {
+    const history = useHistory();
+        
     return (
         <>
             <FormGenericContainer>
@@ -21,9 +23,9 @@ const FormGeneric: React.FC<WrapperGenericProps> = ({ title, children, widthModa
                     {children}
                 </FormContainer>
 
-                <Link to="/">
+                <a onClick={() => history.goBack()}>
                     Back
-                </Link>
+                </a>
             </FormGenericContainer>
         </>
     )

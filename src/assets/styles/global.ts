@@ -36,4 +36,8 @@ export default createGlobalStyle `
             cursor: not-allowed;
         }
     }
+
+    a {
+        cursor: pointer;
+    }
 `
