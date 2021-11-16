@@ -8,6 +8,7 @@ import MyNotes from "page/private/myNotes";
 import Profile from "page/private/profile";
 import CreateAccount from "page/public/createAccount";
 import ForgotPassoword from "page/public/forgotPassoword";
+import ResetPassword from "page/public/resetPassword";
 
 const Router = () => {
     return (
@@ -17,6 +18,7 @@ const Router = () => {
                 <CustomRoute path="/auth/login" component={Login} />             
                 <CustomRoute path="/auth/create-account" component={CreateAccount} />
                 <CustomRoute path="/auth/forgot-password" component={ForgotPassoword} />
+                <CustomRoute path="/auth/reset-password/token=:token" component={ResetPassword} />
                              
                 <CustomRoute isPrivate path="/mynotes" component={MyNotes} />             
                 <CustomRoute isPrivate path="/profile" component={Profile} />             
