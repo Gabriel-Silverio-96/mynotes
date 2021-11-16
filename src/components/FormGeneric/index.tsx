@@ -6,7 +6,7 @@ import { WrapperGenericProps } from "./types";
 import { Header, FormGenericContainer, FormContainer } from "./styled";
 import LogoDark from "assets/images/logo-mynotes-dark.svg";
 
-const FormGeneric: React.FC<WrapperGenericProps> = ({ title, children, widthModal, isHeaderActive}) => {
+const FormGeneric: React.FC<WrapperGenericProps> = ({ title, children, widthModal, isHeaderActive, isActiveBack }) => {
     const history = useHistory();
         
     return (
@@ -22,10 +22,12 @@ const FormGeneric: React.FC<WrapperGenericProps> = ({ title, children, widthModa
                     <h1>{title}</h1>
                     {children}
                 </FormContainer>
-
-                <a onClick={() => history.goBack()}>
-                    Back
-                </a>
+                
+                {isActiveBack && (
+                    <a onClick={() => history.goBack()}>
+                        Back
+                    </a>
+                )}
             </FormGenericContainer>
         </>
     )

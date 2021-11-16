@@ -5,6 +5,7 @@ export interface WrapperGenericProps {
     children: React.ReactNode;
     widthModal: string;
     isHeaderActive: boolean;    
+    isActiveBack?: boolean;    
 }
 
 export interface FormWrapper {
