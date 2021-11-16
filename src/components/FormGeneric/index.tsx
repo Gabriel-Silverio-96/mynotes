@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { WrapperGenericProps } from "./types";
 
 //Assets
-import { Header, FormGenericContainer, FormContainer } from "./styled";
+import { Header, FormGenericContainer, FormContainer, BackPage } from "./styled";
 import LogoDark from "assets/images/logo-mynotes-dark.svg";
 
 const FormGeneric: React.FC<WrapperGenericProps> = ({ title, children, widthModal, isHeaderActive, isActiveBack }) => {
@@ -24,9 +24,9 @@ const FormGeneric: React.FC<WrapperGenericProps> = ({ title, children, widthModa
                 </FormContainer>
                 
                 {isActiveBack && (
-                    <a onClick={() => history.goBack()}>
+                    <BackPage onClick={() => history.goBack()}>
                         Back
-                    </a>
+                    </BackPage>
                 )}
             </FormGenericContainer>
         </>

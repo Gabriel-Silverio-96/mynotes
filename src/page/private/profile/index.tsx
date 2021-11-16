@@ -102,6 +102,7 @@ const Profile: React.FC = () => {
                     title="Profile"
                     widthModal="25rem"
                     isHeaderActive={false}
+                    isActiveBack={true}
                 >
                     <MessageFormError
                         message={errorMessage.message_error}

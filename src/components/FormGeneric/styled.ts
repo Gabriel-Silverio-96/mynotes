@@ -19,24 +19,24 @@ export const FormGenericContainer = styled.section`
     header {
         padding: 1rem 0;
         text-align: center;
-    }
-
-    a {
-        margin-top: 2rem;
-        text-decoration: none;
-        color: ${variables.textColorParagraph};
-        transition: .3s;
-
-        &:hover {
-            color: ${variables.primaryColor};
-        }
-
-    }
+    }  
 
     @media(max-width: 767px) {
         align-items: baseline;
         height: 100%;
     } 
+`
+
+export const BackPage = styled.div`
+    margin-top: 2rem;
+    text-decoration: none;
+    color: ${variables.textColorParagraph};
+    transition: .3s;
+    cursor: pointer;
+
+    &:hover {
+        color: ${variables.primaryColor};
+    }
 `
 
 export const FormContainer = styled.div<FormWrapper>`

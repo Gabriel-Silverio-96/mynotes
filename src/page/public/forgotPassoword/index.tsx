@@ -40,9 +40,9 @@ const ForgotPassoword: React.FC = () => {
         setErrorMessage({
             message_erro_input_email: ""
         })
-        
+
         setAlertMessage("");
-        
+
         try {
             const { status } = await apiMyNotes.post("auth/forgot-password", userData);
             if (status === 200) {
@@ -68,7 +68,12 @@ const ForgotPassoword: React.FC = () => {
     }
     return (
         <Layout>
-            <FormGeneric title={!isSendingMessage ? "Forgot password" : "Check your email"} widthModal="25rem" isHeaderActive={true}>
+            <FormGeneric
+                title={!isSendingMessage ? "Forgot password" : "Check your email"}
+                widthModal="25rem"
+                isHeaderActive={true}
+                isActiveBack={true}
+            >
                 {!isSendingMessage ? (
                     <>
                         <p>Which email is registered on MyNotes</p>

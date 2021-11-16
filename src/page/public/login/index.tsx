@@ -77,11 +77,11 @@ const Login: React.FC = () => {
     
     return (
         <Layout>
-            <FormGeneric title="Login" widthModal="25rem" isHeaderActive={true}>
+            <FormGeneric title="Login" widthModal="25rem" isHeaderActive={true} isActiveBack={true}>
                 <MessageFormError
                     message={errorMessage.message_erro}
                 />
-                <form method="POST" onSubmit={Login}>
+                <form method="POST" onSubmit={Login} >
 
                     <Input
                         typeInput="email"
