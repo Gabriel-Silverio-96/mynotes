@@ -40,6 +40,7 @@ const ForgotPassoword: React.FC = () => {
         setErrorMessage({
             message_erro_input_email: ""
         })
+        
         setAlertMessage("");
         
         try {
@@ -91,7 +92,7 @@ const ForgotPassoword: React.FC = () => {
                     <SendingMessage>
                         <p>An email is on its way to
                             <strong> {userData.email} </strong>
-                            with instructions for resetting your password.
+                            with instructions for reset your password.
                         </p>
                         <Link to="/auth/login">
                             <ButtonPrimary title="Back to login" />
