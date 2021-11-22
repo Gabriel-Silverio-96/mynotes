@@ -12,7 +12,7 @@ import { ButtonPrimary } from "components/UI/Button";
 import MessageFormError from "components/MessageFormError";
 
 const Login: React.FC = () => {
-    const { setAuthenticated } = useContext(AuthContext);
+    const { setAuthenticated, setUserData } = useContext(AuthContext);
     const history = useHistory();
     const [loginFields, setLoginFields] = useState({
         email: "",
@@ -42,20 +42,23 @@ const Login: React.FC = () => {
         })
         try {
             const { status, data } = await apiMyNotes.post("auth/login", loginFields) as any;
-            const token = data.token; 
-            
+            const token = data.token;
+            const userData = data.user_data;
+
             if (status === 200) {
                 localStorage.setItem("token", token);
-                apiMyNotes.defaults.headers!.Authorization = `Bearer ${token}`
+                localStorage.setItem("userData", JSON.stringify(userData));
+                apiMyNotes.defaults.headers!.Authorization = `Bearer ${token}`;
+                setUserData(userData)
                 setAuthenticated(true);
                 return history.push("/mynotes")                
             }
 
         } catch (error) {
-            const errorLog = error as AxiosError;       
-            const status = errorLog.response!.status;            
+            const errorLog = error as AxiosError;
+            const status = errorLog.response!.status;
             const { message_erro_input_email, message_erro_input_password } = errorLog.response!.data
-            
+
             setErrorMessage({
                 ...errorMessage,
                 message_erro_input_email,
@@ -71,10 +74,10 @@ const Login: React.FC = () => {
                     message_erro
                 })
             }
-           console.error(errorLog);
+            console.error(errorLog);
         }
     }
-    
+
     return (
         <Layout>
             <FormGeneric title="Login" widthModal="25rem" isHeaderActive={true} isActiveBack={true}>

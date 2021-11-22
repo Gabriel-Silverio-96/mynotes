@@ -16,10 +16,16 @@ export interface LoginFieldsProps {
     password: string;
 }
 
+export interface UserDataProps {
+    full_name: string;
+}
+
 export interface AuthContextProps {
     authenticated: boolean;
     setAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
-    loading: boolean;    
+    loading: boolean;
+    userData: UserDataProps;
+    setUserData: React.Dispatch<React.SetStateAction<UserDataProps>>;
 }
 
 export interface ModalDeleteProps {

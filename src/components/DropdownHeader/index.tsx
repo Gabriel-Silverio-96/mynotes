@@ -9,7 +9,7 @@ import { DropdownHeaderWrapper, ButtonDropdown, Dropdown } from "./styled";
 
 const DropdownHeader: React.FC = () => {
     const history = useHistory();
-    const { setAuthenticated } = useContext(AuthContext);
+    const { setAuthenticated, userData } = useContext(AuthContext);
     const [isActiveDropDown, setIsActiveDropDown] = useState<boolean>(false);
 
     const toogleDropdown = () => {
@@ -32,7 +32,7 @@ const DropdownHeader: React.FC = () => {
                 <div>
                     <FiUser color="#fff" size={20} />
                 </div>
-                <span>Gabriel</span>
+                <span>{userData.full_name.split(" ")[0]}</span>
                 <FiChevronDown color="#fff" size={20} className="arrow-chevron" />
             </ButtonDropdown>
 
