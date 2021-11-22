@@ -74,10 +74,13 @@ const CreateAccount: React.FC = () => {
         })
     }
     return (
-        console.log(userData),
-
         <Layout>
-            <FormGeneric title="Create account" widthModal="25rem" isHeaderActive={true}>
+            <FormGeneric
+                title="Create account"
+                widthModal="25rem"
+                isHeaderActive={true}
+                isActiveBack={true}
+            >
                 <MessageFormError
                     message={alertMessage}
                 />
