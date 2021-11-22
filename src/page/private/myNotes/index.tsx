@@ -47,6 +47,7 @@ const Index: React.FC = () => {
     const [noteIdSelected, setNoteIdSelected] = useState<string>("");
     const [noteEditData, setNoteEditData] = useState({} as NotesListProps);
     const [refreshRequest, setRefreshRequest] = useState<boolean>(true);
+    const [noNotesCreated, setNoNotesCreated] = useState<boolean>(false);
 
     const [inputRequired, setInputRequired] = useState<InputRequiredProps>({
         message_erro_input_required: ""
@@ -63,8 +64,11 @@ const Index: React.FC = () => {
         const request = async () => {
             try {
                 const { status, data } = await apiMyNotes.get("notes/list") as RequestProps;
-                if (status === 200) {
-                    setNoteList(data.list_notes)
+                if (status === 200 && data.list_notes.length > 0) {
+                    setNoteList(data.list_notes);
+                    setNoNotesCreated(false);
+                } else {
+                    setNoNotesCreated(true);
                 }
             } catch (error) {
                 const errorMessage = error as AxiosError;
@@ -83,7 +87,7 @@ const Index: React.FC = () => {
             }
         }
         request()
-    }, [history, noteIdSelected, refreshRequest])
+    }, [history, noteIdSelected, refreshRequest, noNotesCreated])
 
     useEffect(() => {
         setInputRequired({
@@ -112,7 +116,7 @@ const Index: React.FC = () => {
         })
 
         try {
-            if(modalViewEditNote) {
+            if (modalViewEditNote) {
                 const endPoint = `notes/edit/note_id=${noteIdSelected}`;
 
                 const { status } = await apiMyNotes.put(endPoint, noteEditData);
@@ -283,7 +287,7 @@ const Index: React.FC = () => {
             }
 
             <NoteCardWrapper>
-                {notesList.length > 0 ?
+                {notesList.length > 0 && noNotesCreated === false &&
                     notesList.map((note: NotesListProps) => (
                         <NoteCard
                             key={note.note_id}
@@ -294,9 +298,10 @@ const Index: React.FC = () => {
                             showModalDeleteThisNote={() => showModalDelete("delete", note.note_id!)}
                             viewEditNote={() => showModalViewEditNote(note.note_id!)}
                         />
-                    )) : (
-                        <NoNotes />
-                    )}
+                    ))}
+
+                {noNotesCreated && <NoNotes />}
+
             </NoteCardWrapper>
         </Layout>
     );
