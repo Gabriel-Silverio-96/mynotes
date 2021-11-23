@@ -19,6 +19,7 @@ const DropdownHeader: React.FC = () => {
     const logout = () => {
         setAuthenticated(false);
         localStorage.removeItem("token");
+        localStorage.removeItem("userData");
         apiMyNotes.defaults.headers!.Authorization = "";
         history.push("/")
     }
