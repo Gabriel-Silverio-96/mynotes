@@ -4,6 +4,8 @@ export const secondaryColor = "#FFE210";
 
 //Complementary
 export const red = "#FF0000";
+export const success = "#138d05";
+export const warning = "#ffbc00";
 
 //Neutral colors
 export const grayDark = "#161414"

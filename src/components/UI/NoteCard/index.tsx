@@ -17,7 +17,6 @@ const NoteCard: React.FC<NoteCardProps> = (props) => {
                             ? `${props.titleNote.substr(0, 40)}...`
                             : props.titleNote
                     }
-
                 </h3>
 
                 <NoteCardButton>
