@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, FormEvent, useContext, useEffect, useState } from "react";
 
 import dark from "assets/styles/themes/dark";
 import useThemeStorage from "util/useThemeStorage";
@@ -14,8 +14,12 @@ import { AxiosError } from "axios";
 import { useHistory } from "react-router";
 import MessageFormError from "components/MessageFormError";
 
+import { ContextGlobal } from "provider/context";
+import { ContextGlobalProps } from "provider/types";
+
 const Profile: React.FC = () => {
     const history = useHistory();
+    const { setSnackBar } = useContext<ContextGlobalProps>(ContextGlobal);
 
     const [theme] = useThemeStorage("theme", dark);
     const [userData, setUserData] = useState({} as UserData);
@@ -72,6 +76,12 @@ const Profile: React.FC = () => {
             const { status } = await apiMyNotes.put("auth/account", userData);
             if (status === 200) {
                 history.push("/mynotes")
+
+                setSnackBar({
+                    isActive: true,
+                    typeMessage: "success",
+                    message: "Profile edited"
+                })
             }
         } catch (error) {
             const errorMessage = error as AxiosError;
