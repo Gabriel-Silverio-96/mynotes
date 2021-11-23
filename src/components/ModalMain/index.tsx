@@ -96,7 +96,7 @@ const ModalMain: React.FC<ModalMainProps<HTMLInputElement | HTMLTextAreaElement>
                                     <ButtonSecodary
                                         title="Close"
                                         onClick={closeModal}
-                                        dataModal="close"
+                                        data-modal="close"
                                     />
                                 )
                         }
