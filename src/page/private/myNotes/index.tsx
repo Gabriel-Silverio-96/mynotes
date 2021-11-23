@@ -33,7 +33,8 @@ const Index: React.FC = () => {
         modalDelete,
         setModalDelete,
         modalViewEditNote,
-        setModalViewEditNote
+        setModalViewEditNote,
+        setSnackBar,
     } = useContext<ContextGlobalProps>(ContextGlobal);
 
     const history = useHistory();
@@ -123,7 +124,12 @@ const Index: React.FC = () => {
                 if (status === 200) {
                     setModalState(false);
                     setRefreshRequest(prevState => !prevState);
-                    setNewNote(newNoteInitialState);
+                    setNewNote(newNoteInitialState);  
+                    setSnackBar({
+                        isActive: true,
+                        typeMessage: "success",
+                        message: "Note edited"
+                    })                
                 }
 
             } else {
@@ -132,6 +138,11 @@ const Index: React.FC = () => {
                     setModalState(false);
                     setRefreshRequest(prevState => !prevState);
                     setNewNote(newNoteInitialState);
+                    setSnackBar({
+                        isActive: true,
+                        typeMessage: "success",
+                        message: "New note created"
+                    })
                 }
             }
 
@@ -194,6 +205,11 @@ const Index: React.FC = () => {
                 setNoteIdSelected("");
                 setRefreshRequest(prevState => !prevState);
                 setModalState(false);
+                setSnackBar({
+                    isActive: true,
+                    typeMessage: "success",
+                    message: "Note successfully deleted"
+                })   
             }
 
         } catch (error) {
@@ -223,6 +239,11 @@ const Index: React.FC = () => {
                 })
                 setNoteIdSelected("");
                 setRefreshRequest(prevState => !prevState);
+                setSnackBar({
+                    isActive: true,
+                    typeMessage: "success",
+                    message: "Successfully deleted all notes"
+                }) 
             }
 
         } catch (error) {
