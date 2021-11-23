@@ -9,10 +9,11 @@ import { AxiosError } from "axios";
 //Components
 import Header from "components/Header/index";
 import ModalMain from "components/ModalMain";
-import NoNotes from "components/NoNotes";
+import Layout from "components/Layout";
 import NoteCard from "components/UI/NoteCard";
 import ModalDelete from "components/ModalDelete";
-import Layout from "components/Layout";
+import NoNotes from "components/NoNotes";
+import Loading from "components/Loading";
 
 //Util
 import useThemeStorage from "util/useThemeStorage";
@@ -49,6 +50,7 @@ const Index: React.FC = () => {
     const [noteEditData, setNoteEditData] = useState({} as NotesListProps);
     const [refreshRequest, setRefreshRequest] = useState<boolean>(true);
     const [noNotesCreated, setNoNotesCreated] = useState<boolean>(false);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
 
     const [inputRequired, setInputRequired] = useState<InputRequiredProps>({
         message_erro_input_required: ""
@@ -63,10 +65,11 @@ const Index: React.FC = () => {
 
     useEffect(() => {
         const request = async () => {
+            setIsLoading(true);
             try {
                 const { status, data } = await apiMyNotes.get("notes/list") as RequestProps;
                 if (status === 200 && data.list_notes.length > 0) {
-                    setNoteList(data.list_notes);
+                    setNoteList(data.list_notes);                    
                     setNoNotesCreated(false);
                 } else {
                     setNoNotesCreated(true);
@@ -86,6 +89,8 @@ const Index: React.FC = () => {
                 }
                 console.error(error);
             }
+
+            return setTimeout(() => setIsLoading(false), 500) 
         }
         request()
     }, [history, noteIdSelected, refreshRequest, noNotesCreated])
@@ -307,8 +312,10 @@ const Index: React.FC = () => {
                 )
             }
 
+            <Loading isLoading={isLoading}/>
+
             <NoteCardWrapper>
-                {notesList.length > 0 && noNotesCreated === false &&
+                {notesList.length > 0 && !noNotesCreated &&
                     notesList.map((note: NotesListProps) => (
                         <NoteCard
                             key={note.note_id}
@@ -321,7 +328,7 @@ const Index: React.FC = () => {
                         />
                     ))}
 
-                {noNotesCreated && <NoNotes />}
+                {noNotesCreated && !isLoading && <NoNotes />}
 
             </NoteCardWrapper>
         </Layout>
