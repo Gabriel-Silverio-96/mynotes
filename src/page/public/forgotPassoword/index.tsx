@@ -72,7 +72,7 @@ const ForgotPassoword: React.FC = () => {
                 title={!isSendingMessage ? "Forgot password" : "Check your email"}
                 widthModal="25rem"
                 isHeaderActive={true}
-                isActiveBack={true}
+                isActiveBack={!isSendingMessage ? true : false}
             >
                 {!isSendingMessage ? (
                     <>
