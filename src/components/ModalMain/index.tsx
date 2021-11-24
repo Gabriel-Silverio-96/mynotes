@@ -84,6 +84,7 @@ const ModalMain: React.FC<ModalMainProps<HTMLInputElement | HTMLTextAreaElement>
                                 rows={10}
                                 onChange={props.onChange}
                                 defaultValue={modalViewEditNote ? props.noteEditData.observation : ""}
+                                maxLength={500}
                             />
                         </FormGroup>
                     </ModalBody>
