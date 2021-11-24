@@ -12,6 +12,7 @@ export const NoteCardContainer = styled.div<NoteCardContainerProps>`
     border-left-color: ${variable.black};
     border-right-color: ${variable.black};
     cursor: pointer;
+    word-break: break-all;
 
     border-bottom: 0.3rem solid ${props => props.colorNote};
 
