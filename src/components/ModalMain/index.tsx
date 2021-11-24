@@ -19,12 +19,12 @@ import { ContextGlobalProps } from "provider/types";
 
 const ModalMain: React.FC<ModalMainProps<HTMLInputElement | HTMLTextAreaElement>> = React.memo((props) => {
     const { modalState, setModalState, modalViewEditNote } = useContext<ContextGlobalProps>(ContextGlobal);
-    
+
     const closeModal = (e: MouseEvent) => {
         const target = e.target as HTMLButtonElement;
         const dataModal = target.dataset.modal;
 
-        if(dataModal === "close") {            
+        if (dataModal === "close") {
             setModalState(!modalState)
         }
     }
@@ -91,7 +91,7 @@ const ModalMain: React.FC<ModalMainProps<HTMLInputElement | HTMLTextAreaElement>
                     <ModalFooter>
                         {
                             modalViewEditNote
-                                ? <ButtonDelete onClick={props.deleteNote} />
+                                ? <ButtonDelete onClick={props.deleteNote} type="button"/>
                                 : (
                                     <ButtonSecodary
                                         title="Close"

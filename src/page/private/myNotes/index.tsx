@@ -192,6 +192,7 @@ const Index: React.FC = () => {
 
     const showModalDelete = (modalType: "delete" | "deleteAll", noteId?: string) => {
         setNoteIdSelected(noteId || "");
+        setModalState(false);
         setModalDelete({
             modalType: modalType,
             isActive: true,
@@ -284,7 +285,7 @@ const Index: React.FC = () => {
                         onSubmit={saveNote}
                         onChange={handleChange}
                         noteEditData={noteEditData}
-                        deleteNote={() => deleteThisNote()}
+                        deleteNote={() => showModalDelete("delete", noteIdSelected)}
                         titleNoteErro={inputRequired.message_erro_input_required}
                     />
                 )

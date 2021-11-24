@@ -48,6 +48,7 @@ export const FormGroupColorContainer = styled.div`
     margin-top: 1.5rem;
     position: relative;
     width: 30%;
+    display: none;
 `
 
 export const FormGroupColor = styled.div`
