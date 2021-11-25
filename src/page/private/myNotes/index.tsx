@@ -93,7 +93,7 @@ const Index: React.FC = () => {
             return setTimeout(() => setIsLoading(false), 500) 
         }
         request()
-    }, [history, noteIdSelected, refreshRequest, noNotesCreated])
+    }, [history, refreshRequest, noNotesCreated])
 
     useEffect(() => {
         setInputRequired({
