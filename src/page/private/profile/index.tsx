@@ -13,6 +13,7 @@ import { GetUserData, UserData } from "./types";
 import { AxiosError } from "axios";
 import { useHistory } from "react-router";
 import MessageFormError from "components/MessageFormError";
+import Loading from "components/Loading";
 
 import { ContextGlobal } from "provider/context";
 import { ContextGlobalProps } from "provider/types";
@@ -32,12 +33,11 @@ const Profile: React.FC = () => {
 
     useEffect(() => {
         const getUserData = async () => {
-            setIsLoading((prevState) => !prevState);
+            setIsLoading(true);
             try {
                 const { data, status } = await apiMyNotes.get("/auth/account") as GetUserData;
                 if (status === 200) {
-                    setUserData(data);
-                    setIsLoading((prevState) => !prevState);
+                    setUserData(data);                    
                 }
             } catch (error) {
                 const errorMessage = error as AxiosError;
@@ -53,6 +53,7 @@ const Profile: React.FC = () => {
                     history.push("/");
                 }
             }
+            return setIsLoading(false);
         }
         getUserData()
     }, [history])
@@ -107,7 +108,9 @@ const Profile: React.FC = () => {
     return (
         <Layout themeStyle={theme}>
             <Header themeTitle={theme.title} isActiveNav={false} />
-            {isLoading && (
+            <Loading isLoading={isLoading}/>
+
+            {!isLoading && (
                 <FormGeneric
                     title="Profile"
                     widthModal="25rem"
