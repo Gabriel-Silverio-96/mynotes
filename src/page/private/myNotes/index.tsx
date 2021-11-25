@@ -69,13 +69,21 @@ const Index: React.FC = () => {
             try {
                 const { status, data } = await apiMyNotes.get("notes/list") as RequestProps;
                 if (status === 200 && data.list_notes.length > 0) {
-                    setNoteList(data.list_notes);                    
+                    setNoteList(data.list_notes);
                     setNoNotesCreated(false);
                 } else {
                     setNoNotesCreated(true);
                 }
             } catch (error) {
                 const errorMessage = error as AxiosError;
+                //@ts-ignore
+                const message = errorMessage.response!.data.message;
+                setSnackBar({
+                    isActive: true,
+                    typeMessage: "error",
+                    message: `Error:${message}`
+                })
+
                 const status = errorMessage.response!.status;
 
                 if (status === 401) {
@@ -90,7 +98,7 @@ const Index: React.FC = () => {
                 console.error(error);
             }
 
-            return setTimeout(() => setIsLoading(false), 500) 
+            return setTimeout(() => setIsLoading(false), 500)
         }
         request()
     }, [history, refreshRequest, noNotesCreated])
@@ -129,12 +137,12 @@ const Index: React.FC = () => {
                 if (status === 200) {
                     setModalState(false);
                     setRefreshRequest(prevState => !prevState);
-                    setNewNote(newNoteInitialState);  
+                    setNewNote(newNoteInitialState);
                     setSnackBar({
                         isActive: true,
                         typeMessage: "success",
                         message: "Note edited"
-                    })                
+                    })
                 }
 
             } else {
@@ -154,6 +162,13 @@ const Index: React.FC = () => {
         } catch (error) {
             const errorMessage = error as AxiosError;
             const status = errorMessage.response!.status;
+            //@ts-ignore
+            const message = errorMessage.response!.data.message;
+            setSnackBar({
+                isActive: true,
+                typeMessage: "error",
+                message: `Error: ${message}`
+            })
 
             if (status === 422) {
                 const messageErro = errorMessage.response!.data;
@@ -215,7 +230,7 @@ const Index: React.FC = () => {
                     isActive: true,
                     typeMessage: "success",
                     message: "Note successfully deleted"
-                })   
+                })
             }
 
         } catch (error) {
@@ -249,7 +264,7 @@ const Index: React.FC = () => {
                     isActive: true,
                     typeMessage: "success",
                     message: "Successfully deleted all notes"
-                }) 
+                })
             }
 
         } catch (error) {
@@ -313,7 +328,7 @@ const Index: React.FC = () => {
                 )
             }
 
-            <Loading isLoading={isLoading}/>
+            <Loading isLoading={isLoading} />
 
             <NoteCardWrapper>
                 {notesList.length > 0 && !noNotesCreated &&
