@@ -101,6 +101,8 @@ const Index: React.FC = () => {
             return setTimeout(() => setIsLoading(false), 500)
         }
         request()
+        
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [history, refreshRequest, noNotesCreated])
 
     useEffect(() => {
