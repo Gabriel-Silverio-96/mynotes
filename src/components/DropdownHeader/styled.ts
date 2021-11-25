@@ -1,6 +1,18 @@
 import styled from "styled-components";
 import * as variables from "assets/styles/variables";
 
+export const DropdownHeaderContainer = styled.div`
+    background: #000000bf;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    margin: 0;
+    right: 0;
+    top: 0;
+    display: flex;
+    justify-content: end;
+`
+
 export const DropdownHeaderWrapper = styled.div`
     display: grid;
     place-items: center;
@@ -50,6 +62,7 @@ export const Dropdown = styled.div`
     color: ${variables.white};   
     border: 0.03rem solid ${variables.white};
     border-radius: 0.5rem;
+    right: 0.85rem;
 
     ul {
         list-style: none;

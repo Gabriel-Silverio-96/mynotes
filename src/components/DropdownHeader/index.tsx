@@ -5,7 +5,7 @@ import { AuthContext } from "provider/authContext";
 import apiMyNotes from "service/apiMyNotes";
 
 import { FiUser, FiChevronDown } from "react-icons/fi";
-import { DropdownHeaderWrapper, ButtonDropdown, Dropdown } from "./styled";
+import { DropdownHeaderContainer, DropdownHeaderWrapper, ButtonDropdown, Dropdown } from "./styled";
 
 const DropdownHeader: React.FC = () => {
     const history = useHistory();
@@ -38,17 +38,19 @@ const DropdownHeader: React.FC = () => {
             </ButtonDropdown>
 
             {isActiveDropDown && (
-                <Dropdown>
-                    <ul>
-                        <li role="button">
-                            <Link to="profile">
-                                My profile
-                            </Link>
-                        </li>
+                <DropdownHeaderContainer>
+                    <Dropdown>
+                        <ul>
+                            <li role="button">
+                                <Link to="profile">
+                                    My profile
+                                </Link>
+                            </li>
 
-                        <li onClick={logout} role="button">Sair</li>
-                    </ul>
-                </Dropdown>
+                            <li onClick={logout} role="button">Sair</li>
+                        </ul>
+                    </Dropdown>
+                </DropdownHeaderContainer>
             )}
         </DropdownHeaderWrapper>
     )
