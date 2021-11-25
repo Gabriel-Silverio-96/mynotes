@@ -13,13 +13,13 @@ const interceptorTypeMessage = (message: string): string => {
 
 export const SnackBarContainer = styled.div<SnackBarContainerProps>`
     position: absolute;
-    bottom: 1rem;
+    top: 1rem;
     right: 0;
     left: 0;
     margin: auto;
 
-    color: ${props => props.theme.colors.textColorParagraph};
-    background-color: ${props => props.theme.colors.backgroundSecundary};
+    color: ${variables.white};
+    background-color: ${({ typeMessage }) => interceptorTypeMessage(typeMessage)};
     padding: 1rem;
     border-radius: 0.5rem;
     width: 15rem;
