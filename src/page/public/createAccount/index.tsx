@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import React, { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import apiMyNotes from "service/apiMyNotes";
@@ -9,10 +9,14 @@ import MessageFormError from "components/MessageFormError";
 import Input from "components/FormFields/Input";
 import { ButtonPrimary } from "components/UI/Button";
 
-import { UserData } from "./types";
 import { AxiosError } from "axios";
+import { ContextGlobalProps } from "provider/types";
+import { ContextGlobal } from "provider/context";
+
+import { UserData } from "./types";
 
 const CreateAccount: React.FC = () => {
+    const { setSnackBar } = useContext<ContextGlobalProps>(ContextGlobal);
     const history = useHistory();
     const [alertMessage, setAlertMessage] = useState("");
 
@@ -41,6 +45,11 @@ const CreateAccount: React.FC = () => {
 
             if (status === 201) {
                 history.push("/auth/login")
+                setSnackBar({
+                    isActive: true,
+                    typeMessage: "success",
+                    message: "Account created successfully"
+                })
             }
         } catch (error) {
             const errorLog = error as AxiosError;
