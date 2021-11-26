@@ -81,7 +81,7 @@ const Index: React.FC = () => {
                 setSnackBar({
                     isActive: true,
                     typeMessage: "error",
-                    message: `Error:${message}`
+                    message: `Error: ${message}`
                 })
 
                 const status = errorMessage.response!.status;
