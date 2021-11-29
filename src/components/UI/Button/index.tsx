@@ -4,11 +4,12 @@ import { ButtonProps, ButtonRoundProps } from "./types";
 import { ButtonPrimaryContainer, ButtonSecodaryContainer, ButtonRoundContainer, ButtonDeleteContainer, ButtonNoBackgroundContainer } from "./styled";
 import { IconTrash } from "../Icons";
 
-const ButtonPrimary: React.FC<ButtonProps> = ({ title, onClick, type, ...rest }) => {
+const ButtonPrimary: React.FC<ButtonProps> = ({ title, onClick, type, size, ...rest }) => {
     return (
         <ButtonPrimaryContainer
             type={type}
             onClick={onClick}
+            size={size}
             {...rest}
         >
             {title}

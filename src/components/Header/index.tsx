@@ -28,10 +28,12 @@ const Header: React.FC<HeaderProps> = React.memo(({ toggleTheme, themeTitle, the
 
     return (
         <HeaderContainer>
-            <img
-                src={themeTitle === "dark" ? LogoDark : LogoLight}
-                alt="Logo MyNotes"
-            />
+            <Link to={authenticated ? "/mynotes": "/"}>
+                <img
+                    src={themeTitle === "dark" ? LogoDark : LogoLight}
+                    alt="Logo MyNotes"
+                />
+            </Link>
 
             {isActiveNav && (
                 <nav>

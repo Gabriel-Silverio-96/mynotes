@@ -29,7 +29,7 @@ const HomePagePublic: React.FC = () => {
                 <p>Easily and quickly organize your day</p>
                 <div>
                     <Link to="auth/create-account">
-                        <ButtonPrimary
+                        <ButtonPrimary size="large"
                             title="Get started"
                         />
                     </Link>
