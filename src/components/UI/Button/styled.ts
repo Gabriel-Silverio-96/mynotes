@@ -86,6 +86,12 @@ export const ButtonDeleteContainer = styled.button`
     &:hover {
         background-color: ${variables.red};  
         color: ${variables.white};              
+
+        svg {
+            path {
+                fill: ${variables.white};
+            }
+        }
     }
 `
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 import LoadingGif from "assets/images/loading.gif";
 import { LoadingContainer } from "./styled";
@@ -13,4 +13,4 @@ const Loading: React.FC<LoadingProps> = ({isLoading}) => {
     )
 }
 
-export default Loading;
+export default memo(Loading);

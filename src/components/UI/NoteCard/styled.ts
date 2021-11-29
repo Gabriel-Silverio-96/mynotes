@@ -37,10 +37,11 @@ export const NoteCardButton = styled.div`
     top: -5px;
     right: 0;
     width: 100%;
-    background: red;
     justify-content: flex-end;
     opacity: 0;
     transition: 0.3s;
+    height: 10rem;
+    align-items: baseline;
 
     background: linear-gradient(
             90deg, rgba(255,0,0,0) 0%, 
