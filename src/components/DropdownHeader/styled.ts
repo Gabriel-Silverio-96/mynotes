@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import * as variables from "assets/styles/variables";
+import { ButtonDropdownProps } from "./types";
 
 export const DropdownHeaderContainer = styled.div`
     background: #000000bf;
@@ -38,7 +39,7 @@ export const DropdownHeaderWrapper = styled.div`
     }   
 `
 
-export const ButtonDropdown = styled.div`
+export const ButtonDropdown = styled.div<ButtonDropdownProps>`
     border: 0.03rem solid ${variables.white};
     font-size: 0.9rem;
     padding: 0.5rem 1rem;
@@ -48,6 +49,7 @@ export const ButtonDropdown = styled.div`
     border-radius: 2rem;
     background-color: ${variables.black};
     position: relative;
+    z-index: ${props => props.zIndex && "1"};
 
     span {
         color: ${variables.white};            

@@ -29,7 +29,7 @@ const DropdownHeader: React.FC = () => {
             className={isActiveDropDown ? "active-dropdown" : "dropdown"}
             onClick={toogleDropdown}
         >
-            <ButtonDropdown role="button">
+            <ButtonDropdown role="button" zIndex={isActiveDropDown}>
                 <div>
                     <FiUser color="#fff" size={20} />
                 </div>
