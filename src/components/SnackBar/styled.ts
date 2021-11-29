@@ -28,6 +28,7 @@ export const SnackBarContainer = styled.div<SnackBarContainerProps>`
     border-right: 0;
     border-left: 0;
     box-shadow: -2px 10px 19px 0px rgb(0 0 0 / 17%);
+    z-index: 99;
 
     &:empty {
         display: none;

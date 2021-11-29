@@ -6,7 +6,7 @@ export const LoadingContainer = styled.div<LoadingContainerProps>`
     align-items: center;
     gap: 0.2rem;
     visibility: ${({ isLoading }) => isLoading ? "visible" : "hidden"};
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 
     img {
         width: 1.5rem;
