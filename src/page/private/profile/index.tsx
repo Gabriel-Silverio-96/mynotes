@@ -37,7 +37,7 @@ const Profile: React.FC = () => {
             try {
                 const { data, status } = await apiMyNotes.get("/auth/account") as GetUserData;
                 if (status === 200) {
-                    setUserData(data);                    
+                    setUserData(data);
                 }
             } catch (error) {
                 const errorMessage = error as AxiosError;
@@ -108,40 +108,42 @@ const Profile: React.FC = () => {
     return (
         <Layout themeStyle={theme}>
             <Header themeTitle={theme.title} isActiveNav={false} />
-            <Loading isLoading={isLoading}/>
+            <Loading isLoading={isLoading} />
 
             {!isLoading && (
-                <FormGeneric
-                    title="Profile"
-                    widthModal="25rem"
-                    isHeaderActive={false}
-                    isActiveBack={true}
-                >
-                    <MessageFormError
-                        message={errorMessage.message_error}
-                    />
-                    <form method="put" onSubmit={saveData}>
-                        <Input
-                            label="Full name"
-                            typeInput="text"
-                            id="full_name"
-                            name="full_name"
-                            defaultValue={userData.full_name}
-                            onChange={handleChange}
-                            erroMessage={errorMessage.message_erro_input_full_name}
+                <div style={{ marginTop: "-3rem" }}>
+                    <FormGeneric
+                        title="Profile"
+                        widthModal="25rem"
+                        isHeaderActive={false}
+                        isActiveBack={true}
+                    >
+                        <MessageFormError
+                            message={errorMessage.message_error}
                         />
-                        <Input
-                            label="Email"
-                            typeInput="email"
-                            id="email"
-                            name="email"
-                            defaultValue={userData.email}
-                            disabled={true}
-                        />
+                        <form method="put" onSubmit={saveData}>
+                            <Input
+                                label="Full name"
+                                typeInput="text"
+                                id="full_name"
+                                name="full_name"
+                                defaultValue={userData.full_name}
+                                onChange={handleChange}
+                                erroMessage={errorMessage.message_erro_input_full_name}
+                            />
+                            <Input
+                                label="Email"
+                                typeInput="email"
+                                id="email"
+                                name="email"
+                                defaultValue={userData.email}
+                                disabled={true}
+                            />
 
-                        <ButtonPrimary type="submit" title="Save" />
-                    </form>
-                </FormGeneric>
+                            <ButtonPrimary type="submit" title="Save" />
+                        </form>
+                    </FormGeneric>
+                </div>
             )}
         </Layout>
     )
