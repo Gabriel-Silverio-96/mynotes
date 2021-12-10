@@ -10,9 +10,12 @@ import FormGeneric from "components/FormGeneric";
 import Input from "components/FormFields/Input";
 import { ButtonPrimary } from "components/UI/Button";
 import MessageFormError from "components/MessageFormError";
+import Loading from "components/Loading";
 
 const Login: React.FC = () => {
     const { setAuthenticated, setUserData } = useContext(AuthContext);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+
     const history = useHistory();
     const [loginFields, setLoginFields] = useState({
         email: "",
@@ -40,6 +43,8 @@ const Login: React.FC = () => {
             message_erro_input_password: "",
             message_erro: ""
         })
+        setIsLoading(true);
+
         try {
             const { status, data } = await apiMyNotes.post("auth/login", loginFields) as any;
             const token = data.token;
@@ -51,6 +56,7 @@ const Login: React.FC = () => {
                 apiMyNotes.defaults.headers!.Authorization = `Bearer ${token}`;
                 setUserData(userData)
                 setAuthenticated(true);
+                setIsLoading(false);
                 return history.push("/mynotes")                
             }
 
@@ -75,6 +81,7 @@ const Login: React.FC = () => {
                 })
             }
             console.error(errorLog);
+            setIsLoading(false);
         }
     }
 
@@ -104,11 +111,12 @@ const Login: React.FC = () => {
                     />
 
                     <ButtonPrimary
-                        title="Send"
+                        title={isLoading ? <Loading isLoading={true} justIcon alignCenter/> : "Send"}
                         type="submit"
+                        disabled={isLoading ? true : false}
                     />
-
-                    <div>
+    
+                    <div style={{marginTop: "1rem"}}>
                         <Link to="/auth/forgot-password">
                             Forgot password?
                         </Link>

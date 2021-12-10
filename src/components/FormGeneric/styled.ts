@@ -73,7 +73,6 @@ export const FormContainer = styled.div<FormWrapper>`
 
         div {
             &:last-child {
-                margin-top: 2rem;
                 text-align: center;
                 a {
                     text-decoration: none;

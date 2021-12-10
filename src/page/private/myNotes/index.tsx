@@ -101,8 +101,8 @@ const Index: React.FC = () => {
             return setTimeout(() => setIsLoading(false), 500)
         }
         request()
-        
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [history, refreshRequest, noNotesCreated])
 
     useEffect(() => {
@@ -330,7 +330,9 @@ const Index: React.FC = () => {
                 )
             }
 
-            <Loading isLoading={isLoading} />
+            <div style={{marginBottom: "1rem"}}>
+                <Loading isLoading={isLoading} />
+            </div>
 
             <NoteCardWrapper>
                 {notesList.length > 0 && !noNotesCreated &&

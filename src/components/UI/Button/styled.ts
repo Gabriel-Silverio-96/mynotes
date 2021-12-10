@@ -30,6 +30,12 @@ export const ButtonPrimaryContainer = styled.button<ButtonPrimaryContainerProps>
     &:hover {
         background-color: ${variables.primaryColor};                
     }
+
+    &:disabled {
+        background-color: ${variables.black} !important;                
+        cursor: not-allowed;
+        opacity: 0.4;
+    }
 `
 
 export const ButtonRoundContainer = styled.button<ButtonRoundContainerProps>`

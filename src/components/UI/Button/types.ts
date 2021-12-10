@@ -1,7 +1,7 @@
-import React from "react";
+import React, { ButtonHTMLAttributes } from "react";
 
-export interface ButtonProps {
-    title?: string;
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
+    title?: string | any;
     type?: "button" | "reset" | "submit";
     children?: React.ReactNode;
     scale?: string;

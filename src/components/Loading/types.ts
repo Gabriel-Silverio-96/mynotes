@@ -1,7 +1,10 @@
 export interface LoadingProps {
-    isLoading: boolean
+    isLoading: boolean;
+    justIcon?: boolean;
+    alignCenter?: boolean;
 }
 
 export interface LoadingContainerProps {
-    isLoading: boolean
+    isLoading: boolean;
+    alignCenter?: boolean;
 }

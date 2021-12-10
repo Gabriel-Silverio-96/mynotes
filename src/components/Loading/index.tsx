@@ -4,11 +4,11 @@ import LoadingGif from "assets/images/loading.gif";
 import { LoadingContainer } from "./styled";
 import { LoadingProps } from "./types";
 
-const Loading: React.FC<LoadingProps> = ({isLoading}) => {
+const Loading: React.FC<LoadingProps> = ({isLoading, justIcon, alignCenter}) => {
     return (
-        <LoadingContainer isLoading={isLoading}>
+        <LoadingContainer isLoading={isLoading} alignCenter={alignCenter}>
             <img src={LoadingGif} alt="Loading" />
-            <p>Loading</p>
+            {!justIcon && <p>Loading</p>}
         </LoadingContainer>
     )
 }
