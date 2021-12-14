@@ -10,7 +10,7 @@ import { AxiosError } from "axios";
 import Header from "components/Header/index";
 import ModalMain from "components/ModalMain";
 import Layout from "components/Layout";
-import NoteCard from "components/UI/NoteCard";
+import NoteCard from "components/NoteCard";
 import ModalDelete from "components/ModalDelete";
 import NoNotes from "components/NoNotes";
 import Loading from "components/Loading";
@@ -301,7 +301,7 @@ const Index: React.FC = () => {
                     <ModalMain
                         onSubmit={saveNote}
                         onChange={handleChange}
-                        noteEditData={noteEditData}
+                        noteEditData={noteEditData}                        
                         deleteNote={() => showModalDelete("delete", noteIdSelected)}
                         titleNoteErro={inputRequired.message_erro_input_required}
                     />

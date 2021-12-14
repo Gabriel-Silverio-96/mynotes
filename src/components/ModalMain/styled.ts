@@ -138,3 +138,8 @@ export const ModalFooter = styled.div`
         font-size: 1rem;
     }
 `
+
+export const ModalHeaderTitle = styled.div`
+    display: flex;
+    gap: 1rem;
+`

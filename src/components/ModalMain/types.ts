@@ -4,6 +4,7 @@ type NoteEditData = {
     color_note: string;
     title_note: string;
     observation: string;
+    created_at?: string;
 }
 
 export interface ModalMainProps<T> {
@@ -11,5 +12,5 @@ export interface ModalMainProps<T> {
     onChange: (e: ChangeEvent<T>) => void;
     noteEditData: NoteEditData;
     deleteNote: () => void;
-    titleNoteErro: string;
+    titleNoteErro: string;    
 }

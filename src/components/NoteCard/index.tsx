@@ -5,7 +5,7 @@ import { ButtonRound } from "components/UI/Button";
 import { NoteCardContainer, NoteCardHeader, NoteCardButton, NoteCardBody } from "./styled";
 
 import { NoteCardProps } from "./types";
-import { IconEye, IconTrash } from "../Icons";
+import { IconEye, IconTrash } from "components/UI/Icons";
 
 const NoteCard: React.FC<NoteCardProps> = (props) => {
     return (

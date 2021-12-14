@@ -1,12 +1,10 @@
 import React, { MouseEvent, useContext } from "react";
 import { ContextGlobal } from "provider/context";
-
-import { ButtonDelete, ButtonPrimary, ButtonRound, ButtonSecodary } from "components/UI/Button";
-
 import {
     ModalWrapper,
     ModalContainer,
     ModalHeader,
+    ModalHeaderTitle,
     ModalBody,
     FormGroupColor,
     FormGroupColorContainer,
@@ -14,11 +12,15 @@ import {
     ModalFooter
 } from "./styled";
 
+import { ButtonDelete, ButtonPrimary, ButtonRound, ButtonSecodary } from "components/UI/Button";
+import Badge from "components/Badge";
+
 import { ModalMainProps } from "./types";
 import { ContextGlobalProps } from "provider/types";
 
 const ModalMain: React.FC<ModalMainProps<HTMLInputElement | HTMLTextAreaElement>> = React.memo((props) => {
     const { modalState, setModalState, modalViewEditNote } = useContext<ContextGlobalProps>(ContextGlobal);
+    const dateCreatedAt = new Date(props.noteEditData.created_at!).toLocaleDateString("en-US");
 
     const closeModal = (e: MouseEvent) => {
         const target = e.target as HTMLButtonElement;
@@ -34,13 +36,19 @@ const ModalMain: React.FC<ModalMainProps<HTMLInputElement | HTMLTextAreaElement>
             <ModalContainer>
 
                 <ModalHeader>
-                    <h2>
-                        {
-                            modalViewEditNote
-                                ? "Edit note"
-                                : "View note"
-                        }
-                    </h2>
+                    <ModalHeaderTitle>
+                        <h2>
+                            {
+                                modalViewEditNote
+                                    ? "Edit note"
+                                    : "Created note"
+                            }
+                        </h2>
+
+                        {modalViewEditNote && (
+                            <Badge text={`Created at ${dateCreatedAt}`} />
+                        )}
+                    </ModalHeaderTitle>
                     <ButtonRound
                         scale="0.8"
                         onClick={closeModal}
@@ -92,7 +100,7 @@ const ModalMain: React.FC<ModalMainProps<HTMLInputElement | HTMLTextAreaElement>
                     <ModalFooter>
                         {
                             modalViewEditNote
-                                ? <ButtonDelete onClick={props.deleteNote} type="button"/>
+                                ? <ButtonDelete onClick={props.deleteNote} type="button" />
                                 : (
                                     <ButtonSecodary
                                         title="Close"
