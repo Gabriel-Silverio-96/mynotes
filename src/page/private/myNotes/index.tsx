@@ -291,7 +291,7 @@ const Index: React.FC = () => {
             <Header
                 toggleTheme={toggleTheme}
                 themeTitle={theme.title}
-                thereAreNotes={notesList.length === 0 ? false : true}
+                thereAreNotes={!noNotesCreated}
                 showModalDeleteAllNote={() => showModalDelete("deleteAll")}
                 isActiveNav={true}
             />
