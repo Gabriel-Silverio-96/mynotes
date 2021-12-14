@@ -49,7 +49,7 @@ const Index: React.FC = () => {
     const [noteIdSelected, setNoteIdSelected] = useState<string>("");
     const [noteEditData, setNoteEditData] = useState({} as NotesListProps);
     const [refreshRequest, setRefreshRequest] = useState<boolean>(true);
-    const [noNotesCreated, setNoNotesCreated] = useState<boolean>(false);
+    const [noNotesCreated, setNoNotesCreated] = useState<boolean>(true);
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
     const [inputRequired, setInputRequired] = useState<InputRequiredProps>({
@@ -296,7 +296,7 @@ const Index: React.FC = () => {
             <Header
                 toggleTheme={toggleTheme}
                 themeTitle={theme.title}
-                thereAreNotes={!noNotesCreated}
+                thereAreNotes={noNotesCreated}
                 showModalDeleteAllNote={() => showModalDelete("deleteAll")}
                 isActiveNav={true}
             />

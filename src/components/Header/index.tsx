@@ -39,7 +39,7 @@ const Header: React.FC<HeaderProps> = React.memo(({ toggleTheme, themeTitle, the
                 <nav>
                     {authenticated && document.location.pathname !== "/" ? (
                         <>
-                            <ButtonRound deleteButton={true} onClick={showModalDeleteAllNote} disabled={!thereAreNotes}>
+                            <ButtonRound deleteButton={true} onClick={showModalDeleteAllNote} disabled={thereAreNotes}>
                                 <IconTrash />
                             </ButtonRound>
 
