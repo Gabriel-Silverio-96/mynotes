@@ -41,7 +41,7 @@ const ModalMain: React.FC<ModalMainProps<HTMLInputElement | HTMLTextAreaElement>
                             {
                                 modalViewEditNote
                                     ? "Edit note"
-                                    : "Created note"
+                                    : "New note"
                             }
                         </h2>
 
