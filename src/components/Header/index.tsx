@@ -28,7 +28,7 @@ const Header: React.FC<HeaderProps> = React.memo(({ toggleTheme, themeTitle, the
 
     return (
         <HeaderContainer>
-            <Link to={authenticated ? "/mynotes": "/"}>
+            <Link to={authenticated ? "/mynotes" : "/"}>
                 <img
                     src={themeTitle === "dark" ? LogoDark : LogoLight}
                     alt="Logo MyNotes"
@@ -39,6 +39,10 @@ const Header: React.FC<HeaderProps> = React.memo(({ toggleTheme, themeTitle, the
                 <nav>
                     {authenticated && document.location.pathname !== "/" ? (
                         <>
+                            <ButtonRound deleteButton={true} onClick={showModalDeleteAllNote} disabled={!thereAreNotes}>
+                                <IconTrash />
+                            </ButtonRound>
+
                             <ButtonRound
                                 onClick={toggleTheme}
                             >
@@ -47,15 +51,7 @@ const Header: React.FC<HeaderProps> = React.memo(({ toggleTheme, themeTitle, the
                                         ? <IconSun />
                                         : <IconMoon />
                                 }
-                            </ButtonRound>
-
-                            {
-                                thereAreNotes && (
-                                    <ButtonRound deleteButton={true} onClick={showModalDeleteAllNote}>
-                                        <IconTrash />
-                                    </ButtonRound>
-                                )
-                            }
+                            </ButtonRound>                         
 
                             <ButtonPrimary
                                 title="New Note"

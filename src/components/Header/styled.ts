@@ -21,7 +21,7 @@ export const HeaderContainer = styled.header`
         
         button {
             cursor: pointer;
-            &:nth-child(2n) {
+            &:nth-child(2n + 1) {
                 svg {
                     transform: scale(1.5);
                 }

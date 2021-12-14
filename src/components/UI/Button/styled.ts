@@ -60,6 +60,18 @@ export const ButtonRoundContainer = styled.button<ButtonRoundContainerProps>`
             }
         }
     }
+
+    &:disabled {
+        opacity: 0.3;
+        background-color: ${variables.grayMedium};     
+        cursor: not-allowed;   
+        
+        svg {
+            path {
+                fill: ${variables.black};
+            }
+        }
+    }
 `
 
 export const ButtonSecodaryContainer = styled.button`
