@@ -164,13 +164,7 @@ const Index: React.FC = () => {
         } catch (error) {
             const errorMessage = error as AxiosError;
             const status = errorMessage.response!.status;
-            //@ts-ignore
-            const message = errorMessage.response!.data.message;
-            setSnackBar({
-                isActive: true,
-                typeMessage: "error",
-                message: `Error: ${message}`
-            })
+            const STATUS_CODE = [422, 401];
 
             if (status === 422) {
                 const messageErro = errorMessage.response!.data;
@@ -186,6 +180,17 @@ const Index: React.FC = () => {
             if (status === 500) {
                 history.push("/");
             }
+
+            if (!STATUS_CODE.includes(status)) {
+                //@ts-ignore
+                const message = errorMessage.response!.data.message;
+                setSnackBar({
+                    isActive: true,
+                    typeMessage: "error",
+                    message: `Error: ${message}`
+                })
+            }
+
             console.error(error);
         }
     }
@@ -301,7 +306,7 @@ const Index: React.FC = () => {
                     <ModalMain
                         onSubmit={saveNote}
                         onChange={handleChange}
-                        noteEditData={noteEditData}                        
+                        noteEditData={noteEditData}
                         deleteNote={() => showModalDelete("delete", noteIdSelected)}
                         titleNoteErro={inputRequired.message_erro_input_required}
                     />
@@ -330,7 +335,7 @@ const Index: React.FC = () => {
                 )
             }
 
-            <div style={{marginBottom: "1rem"}}>
+            <div style={{ marginBottom: "1rem" }}>
                 <Loading isLoading={isLoading} />
             </div>
 
