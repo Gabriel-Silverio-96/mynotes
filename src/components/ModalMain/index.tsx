@@ -89,7 +89,7 @@ const ModalMain: React.FC<ModalMainProps<HTMLInputElement | HTMLTextAreaElement>
                             <textarea
                                 name="observation"
                                 id="observation"
-                                rows={10}
+                                rows={5}
                                 onChange={props.onChange}
                                 defaultValue={modalViewEditNote ? props.noteEditData.observation : ""}
                                 maxLength={500}
