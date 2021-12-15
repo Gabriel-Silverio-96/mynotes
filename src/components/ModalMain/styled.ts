@@ -2,25 +2,27 @@ import styled from "styled-components";
 import * as variables from "assets/styles/variables";
 
 export const ModalWrapper = styled.div`
+    width: -webkit-fill-available;    
+    width: -moz-available;    
     height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
     background-color: ${variables.blackLight};  
+    position: fixed; 
     display: flex;
-    align-items: center;
-    justify-content: center;
+    left: 0;
+    top: 0;
+    overflow: auto; 
     z-index: 1;
+    padding: 1rem;
 `
 
 export const ModalContainer = styled.div`
-    width: 35rem;
+    width: 100%;
+    max-width: 35rem;
     min-height: 15rem;
     padding: 1.5rem;
     background-color: ${props => props.theme.colors.backgroundSecundary};   
     border-radius: 1rem; 
+    margin: auto;
 `
 
 export const ModalHeader = styled.div`

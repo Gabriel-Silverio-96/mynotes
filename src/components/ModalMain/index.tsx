@@ -34,7 +34,6 @@ const ModalMain: React.FC<ModalMainProps<HTMLInputElement | HTMLTextAreaElement>
     return (
         <ModalWrapper data-modal="close" onClick={closeModal}>
             <ModalContainer>
-
                 <ModalHeader>
                     <ModalHeaderTitle>
                         <h2>
@@ -109,7 +108,6 @@ const ModalMain: React.FC<ModalMainProps<HTMLInputElement | HTMLTextAreaElement>
                                     />
                                 )
                         }
-
                         <ButtonPrimary
                             title="Save"
                             type="submit"
