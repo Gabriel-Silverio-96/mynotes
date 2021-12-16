@@ -7,7 +7,7 @@ import Layout from "components/Layout";
 import Header from "components/Header";
 import FormGeneric from "components/FormGeneric";
 import Input from "components/FormFields/Input";
-import { ButtonPrimary } from "components/UI/Button";
+import Button from "components/Button";
 import apiMyNotes from "service/apiMyNotes";
 import { GetUserData, UserData } from "./types";
 import { AxiosError } from "axios";
@@ -140,7 +140,7 @@ const Profile: React.FC = () => {
                                 disabled={true}
                             />
 
-                            <ButtonPrimary type="submit" title="Save" />
+                            <Button type="submit" title="Save" />
                         </form>
                     </FormGeneric>
                 </div>

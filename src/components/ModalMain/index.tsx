@@ -12,7 +12,8 @@ import {
     ModalFooter
 } from "./styled";
 
-import { ButtonDelete, ButtonPrimary, ButtonRound, ButtonSecodary } from "components/UI/Button";
+import Button from "components/Button";
+import { ButtonDelete, ButtonRound, ButtonSecodary } from "components/UI/Button";
 import Badge from "components/Badge";
 
 import { ModalMainProps } from "./types";
@@ -101,14 +102,15 @@ const ModalMain: React.FC<ModalMainProps<HTMLInputElement | HTMLTextAreaElement>
                             modalViewEditNote
                                 ? <ButtonDelete onClick={props.deleteNote} type="button" />
                                 : (
-                                    <ButtonSecodary
+                                    <Button
+                                        variant="secondary"                                        
                                         title="Close"
                                         onClick={closeModal}
                                         data-modal="close"
                                     />
                                 )
                         }
-                        <ButtonPrimary
+                        <Button
                             title="Save"
                             type="submit"
                         />

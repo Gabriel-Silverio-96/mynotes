@@ -8,7 +8,7 @@ import { AuthContext } from "provider/authContext";
 import Layout from "components/Layout";
 import FormGeneric from "components/FormGeneric";
 import Input from "components/FormFields/Input";
-import { ButtonPrimary } from "components/UI/Button";
+import Button from "components/Button";
 import MessageFormError from "components/MessageFormError";
 import Loading from "components/Loading";
 
@@ -110,7 +110,7 @@ const Login: React.FC = () => {
                         erroMessage={errorMessage.message_erro_input_password}
                     />
 
-                    <ButtonPrimary
+                    <Button
                         title={isLoading ? <Loading isLoading={true} justIcon alignCenter/> : "Send"}
                         type="submit"
                         disabled={isLoading ? true : false}

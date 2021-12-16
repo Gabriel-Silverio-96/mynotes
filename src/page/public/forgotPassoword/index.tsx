@@ -8,7 +8,7 @@ import FormGeneric from "components/FormGeneric";
 import Layout from "components/Layout";
 import MessageFormError from "components/MessageFormError";
 import Input from "components/FormFields/Input";
-import { ButtonPrimary } from "components/UI/Button";
+import Button from "components/Button";
 
 import { SendingMessage } from "./styled";
 import { UserData } from "./types";
@@ -90,7 +90,7 @@ const ForgotPassoword: React.FC = () => {
                                 erroMessage={errorMessage.message_erro_input_email}
                             />
 
-                            <ButtonPrimary type="submit" title="Send" />
+                            <Button type="submit" title="Send" />
                         </form>
                     </>
                 ) : (
@@ -100,7 +100,7 @@ const ForgotPassoword: React.FC = () => {
                             with instructions for reset your password.
                         </p>
                         <Link to="/auth/login">
-                            <ButtonPrimary title="Back to login" />
+                            <Button title="Back to login" />
                         </Link>
                     </SendingMessage>
                 )}

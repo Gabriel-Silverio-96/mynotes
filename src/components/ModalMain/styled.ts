@@ -135,10 +135,6 @@ export const ModalFooter = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    button {
-        font-size: 1rem;
-    }
 `
 
 export const ModalHeaderTitle = styled.div`

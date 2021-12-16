@@ -11,7 +11,8 @@ import { HeaderContainer } from "./styled";
 
 //Components
 import { IconMoon, IconSun, IconTrash } from "components/UI/Icons";
-import { ButtonPrimary, ButtonRound, ButtonNoBackground } from "components/UI/Button";
+import Button from "components/Button";
+import { ButtonRound, ButtonNoBackground } from "components/UI/Button";
 import { ContextGlobal } from "provider/context";
 import DropdownHeader from "components/DropdownHeader";
 
@@ -53,7 +54,7 @@ const Header: React.FC<HeaderProps> = React.memo(({ toggleTheme, themeTitle, the
                                 }
                             </ButtonRound>                         
 
-                            <ButtonPrimary
+                            <Button                                
                                 title="New Note"
                                 onClick={showModal}
                             />
@@ -68,7 +69,7 @@ const Header: React.FC<HeaderProps> = React.memo(({ toggleTheme, themeTitle, the
                                 />
                             </Link>
                             <Link to="auth/create-account">
-                                <ButtonPrimary
+                                <Button
                                     title="Create account"
                                 />
                             </Link>

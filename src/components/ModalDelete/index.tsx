@@ -1,6 +1,6 @@
 import React, { MouseEvent, useContext } from "react";
-
-import { ButtonPrimary, ButtonRound, ButtonSecodary } from "components/UI/Button";
+import Button from "components/Button";
+import { ButtonRound, ButtonSecodary } from "components/UI/Button";
 
 import {
     ModalWrapper,
@@ -55,7 +55,7 @@ const ModalDelete: React.FC<ModalDeleteProps> = React.memo(({ actionMain, title,
                         title="No"
                         data-modal="close"
                     />
-                    <ButtonPrimary
+                    <Button
                         title="Yes"
                         onClick={actionMain}
                     />

@@ -8,7 +8,7 @@ import apiMyNotes from "service/apiMyNotes";
 
 import FormGeneric from "components/FormGeneric";
 import Input from "components/FormFields/Input";
-import { ButtonPrimary } from "components/UI/Button";
+import Button from "components/Button";
 
 import { MessageTokenError, Params } from "./types";
 import MessageFormError from "components/MessageFormError";
@@ -82,7 +82,7 @@ const ResetPassword: React.FC = () => {
                                 onChange={handleChange}
                                 erroMessage={errorMessage.message_erro_input_password}
                             />
-                            <ButtonPrimary title="Save" type="submit" />
+                            <Button title="Save" type="submit" />
                         </form>
                     </>
                 ) : (
@@ -91,7 +91,7 @@ const ResetPassword: React.FC = () => {
                             Your password has been reset successfully 😊
                         </p>
                         <Link to="/auth/login">
-                            <ButtonPrimary title="Back to login" />
+                            <Button title="Back to login" />
                         </Link>
                     </SendingMessage>
                 )}

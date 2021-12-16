@@ -7,7 +7,7 @@ import FormGeneric from "components/FormGeneric";
 import Layout from "components/Layout";
 import MessageFormError from "components/MessageFormError";
 import Input from "components/FormFields/Input";
-import { ButtonPrimary } from "components/UI/Button";
+import Button  from "components/Button";
 
 import { AxiosError } from "axios";
 import { ContextGlobalProps } from "provider/types";
@@ -120,7 +120,7 @@ const CreateAccount: React.FC = () => {
                         erroMessage={errorMessage.message_erro_input_password}
                     />
 
-                    <ButtonPrimary type="submit" title="Create" />
+                    <Button type="submit" title="Create" />
                 </form>
             </FormGeneric>
         </Layout>
