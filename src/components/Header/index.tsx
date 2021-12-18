@@ -54,7 +54,7 @@ const Header: React.FC<HeaderProps> = React.memo(({ toggleTheme, themeTitle, the
                                 }
                             </ButtonRound>                         
 
-                            <Button                                
+                            <Button    
                                 title="New Note"
                                 onClick={showModal}
                             />

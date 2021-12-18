@@ -59,10 +59,6 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
     cursor: pointer;
     transition: 0.3s;    
     
-    svg {
-        width: 1rem;
-    }
-
     &:hover {
         background-color: ${({ variant }) => ButtonVariant[variant!]!.backgroundColorHover};        
         color: ${({ variant }) => ButtonVariant[variant!]!.colorHover};  
@@ -72,8 +68,14 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
     &:disabled {
         background-color: ${variables.black} !important;                
         cursor: not-allowed;
-        opacity: 0.4;
+        opacity: 0.5;       
     }
+`
+
+export const IconButton = styled.span`
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
 `
 
 export const ButtonRoundContainer = styled.button<ButtonRoundContainerProps>`

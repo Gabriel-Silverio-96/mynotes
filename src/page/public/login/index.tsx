@@ -111,7 +111,7 @@ const Login: React.FC = () => {
                     />
 
                     <Button
-                        title={isLoading ? <Loading isLoading={true} justIcon alignCenter/> : "Send"}
+                        title={isLoading ? <Loading isLoading={true} justIcon align="center"/> : "Send"}
                         type="submit"
                         disabled={isLoading ? true : false}
                     />
