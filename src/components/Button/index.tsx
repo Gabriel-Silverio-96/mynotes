@@ -1,11 +1,13 @@
 import React from "react";
-import { ButtonProps } from "./types";
-import { ButtonContainer, IconButton } from "./styled";
+
 import Loading from "components/Loading";
+
+import { ButtonContainer, IconButton } from "./styled";
+import { ButtonProps } from "./types";
 
 const Button: React.FC<ButtonProps> = (props) => {
     const { title, iconButton, onClick, variant, type, size, isLoading, ...rest } = props;
-
+    
     return (
         <ButtonContainer
             type={type}

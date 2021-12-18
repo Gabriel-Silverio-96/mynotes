@@ -1,6 +1,12 @@
 import React, { MouseEvent, useContext } from "react";
+
+import { ContextGlobal } from "provider/context";
+import { ContextGlobalProps } from "provider/types";
+
 import Button from "components/Button";
-import { ButtonRound, ButtonSecodary } from "components/UI/Button";
+import { IoIosClose } from "react-icons/io";
+
+import { ModalDeleteProps } from "./types";
 
 import {
     ModalWrapper,
@@ -9,10 +15,6 @@ import {
     ModalBody,
     ModalFooter,
 } from "./styled";
-
-import { ModalDeleteProps } from "./types";
-import { ContextGlobal } from "provider/context";
-import { ContextGlobalProps } from "provider/types";
 
 const ModalDelete: React.FC<ModalDeleteProps> = React.memo(({ actionMain, title, body }) => {
     const { setModalDelete } = useContext<ContextGlobalProps>(ContextGlobal);
@@ -30,18 +32,17 @@ const ModalDelete: React.FC<ModalDeleteProps> = React.memo(({ actionMain, title,
     }
 
     return (
-        <ModalWrapper data-modal="close" onClick={closeModal}> 
+        <ModalWrapper data-modal="close" onClick={closeModal}>
             <ModalContainer>
                 <ModalHeader>
                     <h2>
                         {title}
                     </h2>
-                    <ButtonRound
-                        scale="0.8"
+                    <Button 
                         data-modal="close"
-                    >
-                        X
-                    </ButtonRound>
+                        variant="text" 
+                        iconButton={<IoIosClose size={20} data-modal="close"/>} 
+                    />
                 </ModalHeader>
 
                 <ModalBody>
@@ -51,15 +52,16 @@ const ModalDelete: React.FC<ModalDeleteProps> = React.memo(({ actionMain, title,
                 </ModalBody>
 
                 <ModalFooter>
-                    <ButtonSecodary
+                    <Button
+                        variant="text"
                         title="No"
                         data-modal="close"
+                        style={{ paddingLeft: "0" }}
                     />
                     <Button
                         title="Yes"
                         onClick={actionMain}
                     />
-
                 </ModalFooter>
             </ModalContainer>
         </ModalWrapper>

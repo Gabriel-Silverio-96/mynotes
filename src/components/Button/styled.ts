@@ -8,28 +8,32 @@ const ButtonVariant: ButtonVariantProps = {
         backgroundColorHover: `${variables.primaryColor}`,
         color: `${variables.white}`,
         colorHover: `${variables.white}`,
-        border: (props: any) => props.theme.colors.textColorTitle
+        border: (props: any) => props.theme.colors.textColorTitle,
+        borderHover: (props: any) => props.theme.colors.backgroundPrimary
     },
     secondary: {
         backgroundColor: "transparent",
         backgroundColorHover: `${variables.primaryColor}`,
         color: (props: any) => props.theme.colors.textColorTitle,
         colorHover: `${variables.white}`,
-        border: (props: any) => props.theme.colors.textColorTitle
+        border: (props: any) => props.theme.colors.textColorTitle,
+        borderHover: (props: any) => props.theme.colors.backgroundPrimary
     },
     text: {
         backgroundColor: "transparent",
         backgroundColorHover: "none",
         color: (props: any) => props.theme.colors.textColorTitle,
         colorHover: `${variables.primaryColor}`,
-        border: "transparent"
+        border: "transparent",
+        borderHover: "transparent"
     },    
     delete: {
         backgroundColor: `${variables.redLight}`,
         backgroundColorHover: `${variables.red}`,
         color: `${variables.red}`,
         colorHover: `${variables.white}`,
-        border: "transparent"
+        border: "transparent",
+        borderHover: "transparent"
     },
 };
 
@@ -62,7 +66,7 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
     &:hover {
         background-color: ${({ variant }) => ButtonVariant[variant!]!.backgroundColorHover};        
         color: ${({ variant }) => ButtonVariant[variant!]!.colorHover};  
-        border-color: ${props => props.theme.colors.backgroundPrimary};      
+        border-color: ${({ variant }) => ButtonVariant[variant!]!.borderHover};      
     }
 
     &:disabled {

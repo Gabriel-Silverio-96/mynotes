@@ -42,17 +42,12 @@ export const NoteCardButton = styled.div`
     transition: 0.3s;
     height: 10rem;
     align-items: baseline;
+    gap: 0.5rem;
 
     background: linear-gradient(
-            90deg, rgba(255,0,0,0) 0%, 
-            ${props => props.theme.colors.backgroundSecundary} 100%
-        );
-
-    button {
-        svg {
-            transform: scale(1.5);
-        }
-    }
+        90deg, rgba(255,0,0,0) 0%, 
+        ${props => props.theme.colors.backgroundSecundary} 100%
+    );   
 `
 
 export const NoteCardBody = styled.div`

@@ -32,6 +32,7 @@ type ButtonVariantItensProps = {
     color: string | ((props: any) => string);
     colorHover: string | ((props: any) => string);
     border: string | ((props: any) => string);
+    borderHover: string | ((props: any) => string);
 }
 
 export interface ButtonVariantProps {

@@ -7,15 +7,14 @@ import { ContextGlobalProps } from "provider/types";
 //Assets
 import LogoLight from "assets/images/logo-mynotes-light.svg";
 import LogoDark from "assets/images/logo-mynotes-dark.svg";
-import { HeaderContainer } from "./styled";
 
 //Components
-import { IconMoon, IconSun, IconTrash } from "components/UI/Icons";
+import { FiSun, FiMoon, FiTrash2 } from "react-icons/fi";
 import Button from "components/Button";
-import { ButtonRound, ButtonNoBackground } from "components/UI/Button";
 import { ContextGlobal } from "provider/context";
 import DropdownHeader from "components/DropdownHeader";
 
+import { HeaderContainer } from "./styled";
 import { HeaderProps } from "./types";
 
 const Header: React.FC<HeaderProps> = React.memo(({ toggleTheme, themeTitle, thereAreNotes, showModalDeleteAllNote, isActiveNav }) => {
@@ -40,21 +39,20 @@ const Header: React.FC<HeaderProps> = React.memo(({ toggleTheme, themeTitle, the
                 <nav>
                     {authenticated && document.location.pathname !== "/" ? (
                         <>
-                            <ButtonRound deleteButton={true} onClick={showModalDeleteAllNote} disabled={thereAreNotes}>
-                                <IconTrash />
-                            </ButtonRound>
+                            <Button 
+                                onClick={showModalDeleteAllNote} 
+                                disabled={thereAreNotes}
+                                variant="delete"
+                                iconButton={<FiTrash2 size={17.5}/>}
+                            /> 
 
-                            <ButtonRound
-                                onClick={toggleTheme}
-                            >
-                                {
-                                    themeTitle === "dark"
-                                        ? <IconSun />
-                                        : <IconMoon />
-                                }
-                            </ButtonRound>                         
+                            <Button onClick={toggleTheme} iconButton={
+                                themeTitle === "dark"
+                                    ? <FiSun size={17.5} />
+                                    : <FiMoon size={17.5} />
+                            } />
 
-                            <Button    
+                            <Button
                                 title="New Note"
                                 onClick={showModal}
                             />
@@ -64,7 +62,8 @@ const Header: React.FC<HeaderProps> = React.memo(({ toggleTheme, themeTitle, the
                     ) : (
                         <>
                             <Link to="auth/login">
-                                <ButtonNoBackground
+                                <Button
+                                    variant="text"
                                     title="Login"
                                 />
                             </Link>

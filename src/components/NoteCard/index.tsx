@@ -1,11 +1,10 @@
 import React from "react";
 
-import { ButtonRound } from "components/UI/Button";
+import { FiEye, FiTrash2 } from "react-icons/fi";
+import Button from "components/Button";
 
 import { NoteCardContainer, NoteCardHeader, NoteCardButton, NoteCardBody } from "./styled";
-
 import { NoteCardProps } from "./types";
-import { IconEye, IconTrash } from "components/UI/Icons";
 
 const NoteCard: React.FC<NoteCardProps> = (props) => {
     return (
@@ -20,17 +19,20 @@ const NoteCard: React.FC<NoteCardProps> = (props) => {
                 </h3>
 
                 <NoteCardButton>
-                    <ButtonRound scale="0.7" onClick={props.viewEditNote}>
-                        <IconEye />
-                    </ButtonRound>
 
-                    <ButtonRound scale="0.7"
-                        deleteButton={true}
-                        onClick={props.showModalDeleteThisNote}
+                    <Button
                         id={props.id}
-                    >
-                        <IconTrash />
-                    </ButtonRound>
+                        onClick={props.showModalDeleteThisNote}
+                        variant="delete"
+                        size="small"
+                        iconButton={<FiTrash2 size={15} />}
+                    />
+
+                    <Button
+                        onClick={props.viewEditNote}
+                        size="small"
+                        iconButton={<FiEye size={15} />}
+                    />
                 </NoteCardButton>
             </NoteCardHeader>
 

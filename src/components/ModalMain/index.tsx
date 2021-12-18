@@ -1,5 +1,12 @@
 import React, { MouseEvent, useContext } from "react";
+
 import { ContextGlobal } from "provider/context";
+import { ContextGlobalProps } from "provider/types";
+
+import { IoIosClose } from "react-icons/io";
+import Button from "components/Button";
+import Badge from "components/Badge";
+
 import {
     ModalWrapper,
     ModalContainer,
@@ -12,12 +19,7 @@ import {
     ModalFooter
 } from "./styled";
 
-import Button from "components/Button";
-import { ButtonDelete, ButtonRound, ButtonSecodary } from "components/UI/Button";
-import Badge from "components/Badge";
-
 import { ModalMainProps } from "./types";
-import { ContextGlobalProps } from "provider/types";
 
 const ModalMain: React.FC<ModalMainProps<HTMLInputElement | HTMLTextAreaElement>> = React.memo((props) => {
     const { modalState, setModalState, modalViewEditNote } = useContext<ContextGlobalProps>(ContextGlobal);
@@ -49,13 +51,11 @@ const ModalMain: React.FC<ModalMainProps<HTMLInputElement | HTMLTextAreaElement>
                             <Badge text={`Created at ${dateCreatedAt}`} />
                         )}
                     </ModalHeaderTitle>
-                    <ButtonRound
-                        scale="0.8"
-                        onClick={closeModal}
-                        data-modal="close"
-                    >
-                        X
-                    </ButtonRound>
+                    <Button 
+                        variant="text" 
+                        data-modal="close" 
+                        iconButton={<IoIosClose data-modal="close" size={20} />} 
+                    />
                 </ModalHeader>
 
                 <form onSubmit={props.onSubmit}>
@@ -100,10 +100,17 @@ const ModalMain: React.FC<ModalMainProps<HTMLInputElement | HTMLTextAreaElement>
                     <ModalFooter>
                         {
                             modalViewEditNote
-                                ? <ButtonDelete onClick={props.deleteNote} type="button" />
+                                ? (
+                                    <Button
+                                        variant="delete"
+                                        title="Delete"
+                                        type="button"
+                                        onClick={props.deleteNote}
+                                    />
+                                )
                                 : (
                                     <Button
-                                        variant="secondary"                                        
+                                        variant="secondary"
                                         title="Close"
                                         onClick={closeModal}
                                         data-modal="close"
