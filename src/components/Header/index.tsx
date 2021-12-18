@@ -4,11 +4,8 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "provider/authContext";
 import { ContextGlobalProps } from "provider/types";
 
-//Assets
-import LogoLight from "assets/images/logo-mynotes-light.svg";
-import LogoDark from "assets/images/logo-mynotes-dark.svg";
-
 //Components
+import Logo from "components/Logo";
 import { FiSun, FiMoon, FiTrash2 } from "react-icons/fi";
 import Button from "components/Button";
 import { ContextGlobal } from "provider/context";
@@ -29,22 +26,19 @@ const Header: React.FC<HeaderProps> = React.memo(({ toggleTheme, themeTitle, the
     return (
         <HeaderContainer>
             <Link to={authenticated ? "/mynotes" : "/"}>
-                <img
-                    src={themeTitle === "dark" ? LogoDark : LogoLight}
-                    alt="Logo MyNotes"
-                />
+                <Logo themeTitle={themeTitle} responsive/>
             </Link>
 
             {isActiveNav && (
                 <nav>
                     {authenticated && document.location.pathname !== "/" ? (
                         <>
-                            <Button 
-                                onClick={showModalDeleteAllNote} 
+                            <Button
+                                onClick={showModalDeleteAllNote}
                                 disabled={thereAreNotes}
                                 variant="delete"
-                                iconButton={<FiTrash2 size={17.5}/>}
-                            /> 
+                                iconButton={<FiTrash2 size={17.5} />}
+                            />
 
                             <Button onClick={toggleTheme} iconButton={
                                 themeTitle === "dark"

@@ -1,10 +1,10 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { WrapperGenericProps } from "./types";
 
-//Assets
+import Logo from "components/Logo";
+
 import { Header, FormGenericContainer, FormContainer, BackPage } from "./styled";
-import LogoDark from "assets/images/logo-mynotes-dark.svg";
+import { WrapperGenericProps } from "./types";
 
 const FormGeneric: React.FC<WrapperGenericProps> = ({ title, children, widthModal, isHeaderActive, isActiveBack }) => {
     const history = useHistory();
@@ -14,7 +14,7 @@ const FormGeneric: React.FC<WrapperGenericProps> = ({ title, children, widthModa
             <FormGenericContainer>
                 {isHeaderActive && (
                     <Header>
-                        <img src={LogoDark} alt="Logo MyNotes" />
+                        <Logo themeTitle="dark"/>
                     </Header>
                 )}
 
