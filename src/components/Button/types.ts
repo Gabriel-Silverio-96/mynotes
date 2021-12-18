@@ -16,16 +16,6 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export interface ButtonContainerProps extends ButtonProps { }
 
-export interface ButtonRoundProps extends ButtonProps {
-    deleteButton?: boolean;
-    id?: string;
-}
-
-export interface ButtonRoundContainerProps {
-    scale?: string;
-    deleteButton?: boolean
-}
-
 type ButtonVariantItensProps = {
     backgroundColor: string | ((props: any) => string);
     backgroundColorHover: string | ((props: any) => string);

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import * as variables from "assets/styles/variables";
-import { ButtonContainerProps, ButtonRoundContainerProps, ButtonVariantProps, ButtonSizeProps } from "./types";
+import { ButtonContainerProps, ButtonVariantProps, ButtonSizeProps } from "./types";
 
 const ButtonVariant: ButtonVariantProps = {
     primary: {
