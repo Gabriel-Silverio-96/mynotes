@@ -54,7 +54,8 @@ const ModalMain: React.FC<ModalMainProps<HTMLInputElement | HTMLTextAreaElement>
                     <Button 
                         variant="text" 
                         data-modal="close" 
-                        iconButton={<IoIosClose data-modal="close" size={20} />} 
+                        style={{paddingRight: 0}}
+                        iconButton={<IoIosClose data-modal="close" size={25} />} 
                     />
                 </ModalHeader>
 

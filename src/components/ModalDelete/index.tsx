@@ -6,8 +6,6 @@ import { ContextGlobalProps } from "provider/types";
 import Button from "components/Button";
 import { IoIosClose } from "react-icons/io";
 
-import { ModalDeleteProps } from "./types";
-
 import {
     ModalWrapper,
     ModalContainer,
@@ -15,6 +13,7 @@ import {
     ModalBody,
     ModalFooter,
 } from "./styled";
+import { ModalDeleteProps } from "./types";
 
 const ModalDelete: React.FC<ModalDeleteProps> = React.memo(({ actionMain, title, body }) => {
     const { setModalDelete } = useContext<ContextGlobalProps>(ContextGlobal);
@@ -41,7 +40,8 @@ const ModalDelete: React.FC<ModalDeleteProps> = React.memo(({ actionMain, title,
                     <Button 
                         data-modal="close"
                         variant="text" 
-                        iconButton={<IoIosClose size={20} data-modal="close"/>} 
+                        style={{paddingRight: 0}}
+                        iconButton={<IoIosClose data-modal="close" size={25}/>} 
                     />
                 </ModalHeader>
 
@@ -53,10 +53,9 @@ const ModalDelete: React.FC<ModalDeleteProps> = React.memo(({ actionMain, title,
 
                 <ModalFooter>
                     <Button
-                        variant="text"
                         title="No"
                         data-modal="close"
-                        style={{ paddingLeft: "0" }}
+                        variant="secondary"
                     />
                     <Button
                         title="Yes"
