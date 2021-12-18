@@ -32,7 +32,7 @@ export default createGlobalStyle `
 
     input {
         &:disabled {
-            background-color: ${variables.disabledColor};
+            background-color: ${props => props.theme.title === "dark" ? "#303030" : variables.disabledColor };
             cursor: not-allowed;
         }
     }
