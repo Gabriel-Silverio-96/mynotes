@@ -26,10 +26,13 @@ const ModalMain: React.FC<ModalMainProps<HTMLInputElement | HTMLTextAreaElement>
     const dateCreatedAt = new Date(props.noteEditData.created_at!).toLocaleDateString("en-US");
 
     const closeModal = (e: MouseEvent) => {
+        const [FiberNode] = Object.values(e.target) as any[];
+        const svg = FiberNode.elementType;
+
         const target = e.target as HTMLButtonElement;
         const dataModal = target.dataset.modal;
 
-        if (dataModal === "close") {
+        if (dataModal === "close" || svg === "path") {
             setModalState(!modalState)
         }
     }
@@ -51,11 +54,12 @@ const ModalMain: React.FC<ModalMainProps<HTMLInputElement | HTMLTextAreaElement>
                             <Badge text={`Created at ${dateCreatedAt}`} />
                         )}
                     </ModalHeaderTitle>
-                    <Button 
-                        variant="text" 
-                        data-modal="close" 
-                        style={{paddingRight: 0}}
-                        iconButton={<IoIosClose data-modal="close" size={25} />} 
+                    <Button
+                        onClick={closeModal}
+                        variant="text"
+                        data-modal="close"
+                        style={{ paddingRight: 0 }}
+                        iconButton={<IoIosClose data-modal="close" size={25} />}
                     />
                 </ModalHeader>
 

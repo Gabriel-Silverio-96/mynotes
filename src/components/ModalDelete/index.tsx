@@ -19,10 +19,13 @@ const ModalDelete: React.FC<ModalDeleteProps> = React.memo(({ actionMain, title,
     const { setModalDelete } = useContext<ContextGlobalProps>(ContextGlobal);
 
     const closeModal = (e: MouseEvent) => {
+        const [FiberNode] = Object.values(e.target) as any[];
+        const svg = FiberNode.elementType;
+
         const target = e.target as HTMLButtonElement;
         const dataModal = target.dataset.modal;
 
-        if (dataModal === "close") {
+        if (dataModal === "close" || svg === "path") {
             setModalDelete({
                 modalType: "delete",
                 isActive: false
@@ -37,11 +40,11 @@ const ModalDelete: React.FC<ModalDeleteProps> = React.memo(({ actionMain, title,
                     <h2>
                         {title}
                     </h2>
-                    <Button 
+                    <Button
                         data-modal="close"
-                        variant="text" 
-                        style={{paddingRight: 0}}
-                        iconButton={<IoIosClose data-modal="close" size={25}/>} 
+                        variant="text"
+                        style={{ paddingRight: 0 }}
+                        iconButton={<IoIosClose data-modal="close" size={25} />}
                     />
                 </ModalHeader>
 
