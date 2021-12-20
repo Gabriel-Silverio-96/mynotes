@@ -24,4 +24,14 @@ export const HeaderContainer = styled.header`
             cursor: pointer;
         }
     }
+
+    @media (max-width: 450px) {
+        nav {
+            gap: 0.5rem;
+            
+            .switch-theme {
+                display: none;
+            }
+        }
+    }
 `

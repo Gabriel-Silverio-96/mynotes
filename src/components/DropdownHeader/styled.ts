@@ -72,6 +72,7 @@ export const Dropdown = styled.div`
 
         li {
             margin-bottom: 1rem;
+
             a {
                 color: ${variables.white};            
             }
@@ -80,6 +81,23 @@ export const Dropdown = styled.div`
                 margin-bottom: 0rem;
                 color: ${variables.red};
             }
+
+            &.option-responsive {               
+                display: none;
+                span {
+                   display: flex;
+                   align-items: center;
+                   gap: 0.3rem;
+                   justify-content: end;
+                   align-items: center;              
+               }
+            }
+        }
+    }
+
+    @media (max-width: 450px) {
+        ul li.option-responsive {
+            display: block;
         }
     }
 `

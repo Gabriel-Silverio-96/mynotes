@@ -49,7 +49,7 @@ const Header: React.FC<HeaderProps> = React.memo(({ themeTitle, thereAreNotes, s
                                 iconButton={<FiTrash2 size={17.5} />}
                             />
 
-                            <Button onClick={toggleTheme} iconButton={
+                            <Button onClick={toggleTheme} className="switch-theme" iconButton={
                                 theme.title === "dark"
                                     ? <FiSun size={17.5} />
                                     : <FiMoon size={17.5} />
