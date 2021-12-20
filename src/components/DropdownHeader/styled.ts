@@ -42,11 +42,11 @@ export const DropdownHeaderWrapper = styled.div`
 export const ButtonDropdown = styled.div<ButtonDropdownProps>`
     border: 0.03rem solid ${variables.white};
     font-size: 0.9rem;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    border-radius: 2rem;
+    border-radius: 0.3125rem;
     background-color: ${variables.black};
     position: relative;
     z-index: ${props => props.zIndex && "1"};
@@ -63,7 +63,7 @@ export const Dropdown = styled.div`
     background-color: ${variables.black};   
     color: ${variables.white};   
     border: 0.03rem solid ${variables.white};
-    border-radius: 0.5rem;
+    border-radius: 0.3125rem;
     right: 0.85rem;
 
     ul {

@@ -44,7 +44,6 @@ const DropdownHeader: React.FC = () => {
                 <div>
                     <FiUser color="#fff" size={20} />
                 </div>
-                <span></span>
                 <FiChevronDown color="#fff" size={20} className="arrow-chevron" />
             </ButtonDropdown>
 
