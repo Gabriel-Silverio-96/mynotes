@@ -140,4 +140,5 @@ export const ModalFooter = styled.div`
 export const ModalHeaderTitle = styled.div`
     display: flex;
     gap: 1rem;
+    flex-wrap: wrap;
 `
