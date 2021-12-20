@@ -60,7 +60,7 @@ const Header: React.FC<HeaderProps> = React.memo(({ themeTitle, thereAreNotes, s
                                 onClick={showModal}
                             />
 
-                            <DropdownHeader />
+                            <DropdownHeader toggleTheme={toggleTheme}/>
                         </>
                     ) : (
                         <>
