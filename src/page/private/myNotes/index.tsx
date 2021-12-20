@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext, useCallback, ChangeEvent, FormEvent } from "react";
+import React, { useEffect, useState, useContext, ChangeEvent, FormEvent } from "react";
 
 import { ContextGlobal } from "provider/context";
 import { useHistory } from "react-router";
@@ -15,17 +15,12 @@ import ModalDelete from "components/ModalDelete";
 import NoNotes from "components/NoNotes";
 import Loading from "components/Loading";
 
-//Util
-import useThemeStorage from "util/useThemeStorage";
-
 //Types
 import { InputRequiredProps, NotesListProps, RequestDeleteProps, RequestProps } from "./types";
 import { ContextGlobalProps } from "provider/types";
 
 //Assets
 import { NoteCardWrapper } from "./styled";
-import light from "assets/styles/themes/light";
-import dark from "assets/styles/themes/dark";
 
 const Index: React.FC = () => {
     const {
@@ -39,11 +34,6 @@ const Index: React.FC = () => {
     } = useContext<ContextGlobalProps>(ContextGlobal);
 
     const history = useHistory();
-
-    const [theme, setTheme] = useThemeStorage("theme", dark);
-    const toggleTheme = useCallback(() => {
-        setTheme(theme.title === "light" ? dark : light);
-    }, [theme, setTheme])
 
     const [notesList, setNoteList] = useState([] as NotesListProps[]);
     const [noteIdSelected, setNoteIdSelected] = useState<string>("");
@@ -290,12 +280,9 @@ const Index: React.FC = () => {
             console.error(error);
         }
     }
-
     return (
-        <Layout themeStyle={theme}>
-            <Header
-                toggleTheme={toggleTheme}
-                themeTitle={theme.title}
+        <Layout>
+            <Header               
                 thereAreNotes={noNotesCreated}
                 showModalDeleteAllNote={() => showModalDelete("deleteAll")}
                 isActiveNav={true}

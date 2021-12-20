@@ -67,7 +67,7 @@ const ForgotPassoword: React.FC = () => {
         }
     }
     return (
-        <Layout>
+        <Layout themeSwitch={false}>
             <FormGeneric
                 title={!isSendingMessage ? "Forgot password" : "Check your email"}
                 widthModal="25rem"

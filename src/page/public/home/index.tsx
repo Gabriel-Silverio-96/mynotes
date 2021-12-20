@@ -22,7 +22,7 @@ const HomePagePublic: React.FC = () => {
     sessionUser()
 
     return (
-        <Layout>
+        <Layout themeSwitch={false}>
             <Header themeTitle="dark" isActiveNav={true} />
             <Main src={Background}>
                 <h1>Time to<br /> create new notes</h1>

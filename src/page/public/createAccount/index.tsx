@@ -83,7 +83,7 @@ const CreateAccount: React.FC = () => {
         })
     }
     return (
-        <Layout>
+        <Layout themeSwitch={false}>
             <FormGeneric
                 title="Create account"
                 widthModal="25rem"

@@ -66,7 +66,7 @@ const ResetPassword: React.FC = () => {
     }
 
     return (
-        <Layout>
+        <Layout themeSwitch={false}>
             <FormGeneric title="Reset password" widthModal="25rem" isHeaderActive={true} isActiveBack={false}>
 
                 {!resetPasswordSuccessfully ? (

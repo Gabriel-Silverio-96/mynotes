@@ -1,8 +1,11 @@
-import React, { useContext } from "react";
+import React, { useCallback, useContext } from "react";
 import { Link } from "react-router-dom";
 
 import { AuthContext } from "provider/authContext";
 import { ContextGlobalProps } from "provider/types";
+
+import light from "assets/styles/themes/light";
+import dark from "assets/styles/themes/dark";
 
 //Components
 import Logo from "components/Logo";
@@ -13,8 +16,9 @@ import DropdownHeader from "components/DropdownHeader";
 
 import { HeaderContainer } from "./styled";
 import { HeaderProps } from "./types";
+import useThemeStorage from "util/useThemeStorage";
 
-const Header: React.FC<HeaderProps> = React.memo(({ toggleTheme, themeTitle, thereAreNotes, showModalDeleteAllNote, isActiveNav }) => {
+const Header: React.FC<HeaderProps> = React.memo(({ themeTitle, thereAreNotes, showModalDeleteAllNote, isActiveNav }) => {
     const { setModalState, setModalViewEditNote, modalState } = useContext<ContextGlobalProps>(ContextGlobal);
     const { authenticated } = useContext(AuthContext);
 
@@ -23,10 +27,15 @@ const Header: React.FC<HeaderProps> = React.memo(({ toggleTheme, themeTitle, the
         setModalViewEditNote(false);
     }
 
+    const [theme, setTheme] = useThemeStorage("theme", dark);
+    const toggleTheme = useCallback(() => {
+        setTheme(theme.title === "light" ? dark : light);
+    }, [theme, setTheme])
+
     return (
         <HeaderContainer>
             <Link to={authenticated ? "/mynotes" : "/"}>
-                <Logo themeTitle={themeTitle} responsive/>
+                <Logo themeTitle={theme.title} responsive/>
             </Link>
 
             {isActiveNav && (
@@ -41,7 +50,7 @@ const Header: React.FC<HeaderProps> = React.memo(({ toggleTheme, themeTitle, the
                             />
 
                             <Button onClick={toggleTheme} iconButton={
-                                themeTitle === "dark"
+                                theme.title === "dark"
                                     ? <FiSun size={17.5} />
                                     : <FiMoon size={17.5} />
                             } />

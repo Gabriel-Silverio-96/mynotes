@@ -86,7 +86,7 @@ const Login: React.FC = () => {
     }
 
     return (
-        <Layout>
+        <Layout themeSwitch={false}>
             <FormGeneric title="Login" widthModal="25rem" isHeaderActive={true} isActiveBack={true}>
                 <MessageFormError
                     message={errorMessage.message_erro}

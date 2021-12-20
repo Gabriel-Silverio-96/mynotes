@@ -1,4 +1,5 @@
 import React from "react";
+import { DefaultTheme } from "styled-components";
 
 export interface SnackBarProps {
     isActive: boolean;
@@ -40,4 +41,9 @@ export interface AuthContextProps {
 export interface ModalDeleteProps {
     modalType: "delete" | "deleteAll"
     isActive: boolean;
+}
+
+export interface ContextThemeProps {
+    themeContext: DefaultTheme;
+    setThemeContext: React.Dispatch<React.SetStateAction<DefaultTheme>>;   
 }

@@ -106,7 +106,7 @@ const Profile: React.FC = () => {
     }
 
     return (
-        <Layout themeStyle={theme}>
+        <Layout>
             <Header themeTitle={theme.title} isActiveNav={false} />
             <Loading isLoading={isLoading} />
 

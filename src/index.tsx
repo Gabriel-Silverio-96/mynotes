@@ -4,14 +4,17 @@ import Routes from "./routes";
 
 import { AuthProvider } from "./provider/authContext";
 import { ContextProvider } from "./provider/context";
+import { ThemeNameProvider } from "provider/theme";
 
 ReactDOM.render(
   <React.StrictMode>
-    <AuthProvider>
-      <ContextProvider>
-        <Routes />
-      </ContextProvider>
-    </AuthProvider>
+    <ThemeNameProvider>
+      <AuthProvider>
+        <ContextProvider>
+          <Routes />
+        </ContextProvider>
+      </AuthProvider>
+    </ThemeNameProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
