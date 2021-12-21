@@ -41,6 +41,7 @@ const Index: React.FC = () => {
     const [refreshRequest, setRefreshRequest] = useState<boolean>(true);
     const [noNotesCreated, setNoNotesCreated] = useState<boolean>(true);
     const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [isLoadingSaveEdit, setIsLoadingSaveEdit] = useState<boolean>(false);
 
     const [inputRequired, setInputRequired] = useState<InputRequiredProps>({
         message_erro_input_required: ""
@@ -117,6 +118,7 @@ const Index: React.FC = () => {
 
     const saveNote = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setIsLoadingSaveEdit(true);
         setInputRequired({
             message_erro_input_required: ""
         })
@@ -127,6 +129,7 @@ const Index: React.FC = () => {
 
                 const { status } = await apiMyNotes.put(endPoint, noteEditData);
                 if (status === 200) {
+                    setIsLoadingSaveEdit(false);
                     setModalState(false);
                     setRefreshRequest(prevState => !prevState);
                     setNewNote(newNoteInitialState);
@@ -140,6 +143,7 @@ const Index: React.FC = () => {
             } else {
                 const { status } = await apiMyNotes.post("notes/create", newNote);
                 if (status === 200) {
+                    setIsLoadingSaveEdit(false);
                     setModalState(false);
                     setRefreshRequest(prevState => !prevState);
                     setNewNote(newNoteInitialState);
@@ -182,6 +186,7 @@ const Index: React.FC = () => {
             }
 
             console.error(error);
+            setIsLoadingSaveEdit(false);
         }
     }
 
@@ -291,6 +296,7 @@ const Index: React.FC = () => {
             {
                 modalState && (
                     <ModalMain
+                        isLoadingSaveEdit={isLoadingSaveEdit}
                         onSubmit={saveNote}
                         onChange={handleChange}
                         noteEditData={noteEditData}
@@ -323,7 +329,7 @@ const Index: React.FC = () => {
             }
 
             <div style={{ marginBottom: "1rem" }}>
-                <Loading isLoading={isLoading} />
+                <Loading isLoading={isLoading} messageLoading="Loading"/>
             </div>
 
             <NoteCardWrapper>

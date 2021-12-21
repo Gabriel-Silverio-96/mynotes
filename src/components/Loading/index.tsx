@@ -3,7 +3,7 @@ import React, { memo } from "react";
 import { LoadingContainer, LoadingSvg } from "./styled";
 import { LoadingProps } from "./types";
 
-const Loading: React.FC<LoadingProps> = ({ isLoading, justIcon, align, size }) => {
+const Loading: React.FC<LoadingProps> = ({ isLoading, justIcon, align, messageLoading, size }) => {
     const sizeLoading = size ? size : 25;
 
     return (
@@ -17,7 +17,7 @@ const Loading: React.FC<LoadingProps> = ({ isLoading, justIcon, align, size }) =
                 </svg>
             </LoadingSvg>
 
-            {!justIcon && <p>Loading</p>}
+            {!justIcon && <p>{messageLoading}</p>}
         </LoadingContainer>
     )
 }

@@ -6,8 +6,8 @@ import { ButtonContainer, IconButton } from "./styled";
 import { ButtonProps } from "./types";
 
 const Button: React.FC<ButtonProps> = (props) => {
-    const { title, iconButton, onClick, variant, type, size, isLoading, ...rest } = props;
-    
+    const { title, iconButton, onClick, variant, type, size, isLoading, messageLoading, justIconLoading, ...rest } = props;
+
     return (
         <ButtonContainer
             type={type}
@@ -24,7 +24,7 @@ const Button: React.FC<ButtonProps> = (props) => {
                     title
                 )
             ) : (
-                <Loading isLoading={true} justIcon size={20} align="center" />
+                <Loading isLoading={true} justIcon={justIconLoading} messageLoading={messageLoading} size={20} align="center" />
             )}
         </ButtonContainer>
     )

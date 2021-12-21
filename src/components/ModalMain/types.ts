@@ -8,6 +8,7 @@ type NoteEditData = {
 }
 
 export interface ModalMainProps<T> {
+    isLoadingSaveEdit: boolean;
     onSubmit: (e: FormEvent<HTMLFormElement>) => void;
     onChange: (e: ChangeEvent<T>) => void;
     noteEditData: NoteEditData;

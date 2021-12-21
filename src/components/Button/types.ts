@@ -8,10 +8,12 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     type?: "button" | "reset" | "submit";
     children?: React.ReactNode;
     isLoading?: boolean | any;
+    justIconLoading?: boolean;
     scale?: string;
     size?: "large" | "medium" | "small";
     variant?: VariantButtonProps;
     onClick?: (e: any) => void;    
+    messageLoading?: string;
 }
 
 export interface ButtonContainerProps extends ButtonProps { }

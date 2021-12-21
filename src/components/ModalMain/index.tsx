@@ -31,9 +31,10 @@ const ModalMain: React.FC<ModalMainProps<HTMLInputElement | HTMLTextAreaElement>
 
         const target = e.target as HTMLButtonElement;
         const dataModal = target.dataset.modal;
-
-        if (dataModal === "close" || svg === "path") {
-            setModalState(!modalState)
+        if(!props.isLoadingSaveEdit) {
+            if (dataModal === "close" || svg === "path") {
+                setModalState(!modalState)
+            }
         }
     }
 
@@ -59,7 +60,7 @@ const ModalMain: React.FC<ModalMainProps<HTMLInputElement | HTMLTextAreaElement>
                         variant="text"
                         data-modal="close"
                         style={{ paddingRight: 0 }}
-                        iconButton={<IoIosClose data-modal="close" size={25} />}
+                        iconButton={<IoIosClose data-modal="close" size={25} />}                        
                     />
                 </ModalHeader>
 
@@ -111,6 +112,7 @@ const ModalMain: React.FC<ModalMainProps<HTMLInputElement | HTMLTextAreaElement>
                                         title="Delete"
                                         type="button"
                                         onClick={props.deleteNote}
+                                        disabled={props.isLoadingSaveEdit}
                                     />
                                 )
                                 : (
@@ -119,12 +121,15 @@ const ModalMain: React.FC<ModalMainProps<HTMLInputElement | HTMLTextAreaElement>
                                         title="Close"
                                         onClick={closeModal}
                                         data-modal="close"
+                                        disabled={props.isLoadingSaveEdit}
                                     />
                                 )
                         }
                         <Button
                             title="Save"
                             type="submit"
+                            isLoading={props.isLoadingSaveEdit}
+                            messageLoading="Saving"
                         />
                     </ModalFooter>
                 </form>
