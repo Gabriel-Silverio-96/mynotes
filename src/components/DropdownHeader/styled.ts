@@ -42,7 +42,7 @@ export const DropdownHeaderWrapper = styled.div`
 export const ButtonDropdown = styled.div<ButtonDropdownProps>`
     border: 0.03rem solid ${variables.white};
     font-size: 0.9rem;
-    padding: 0.6rem 0.7rem;
+    padding: 0.57rem 0.7rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
