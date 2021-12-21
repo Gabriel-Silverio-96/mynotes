@@ -42,6 +42,7 @@ const Index: React.FC = () => {
     const [noNotesCreated, setNoNotesCreated] = useState<boolean>(true);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [isLoadingSaveEdit, setIsLoadingSaveEdit] = useState<boolean>(false);
+    const [isLoadingDelete, setIsLoadingDelete] = useState<boolean>(false);
 
     const [inputRequired, setInputRequired] = useState<InputRequiredProps>({
         message_erro_input_required: ""
@@ -217,10 +218,12 @@ const Index: React.FC = () => {
     }
 
     const deleteThisNote = async () => {
+        setIsLoadingDelete(true);
         try {
             const endPoint = `notes/delete-this/note_id=${noteIdSelected}`
             const request = await apiMyNotes.delete(endPoint) as RequestDeleteProps;
             if (request.status === 200) {
+                setIsLoadingDelete(false);
                 setModalDelete({
                     modalType: "delete",
                     isActive: false,
@@ -236,6 +239,7 @@ const Index: React.FC = () => {
             }
 
         } catch (error) {
+            setIsLoadingDelete(false);
             const errorMessage = error as AxiosError;
             const status = errorMessage.response!.status;
 
@@ -253,9 +257,11 @@ const Index: React.FC = () => {
     }
 
     const deleteAllNotes = async () => {
+        setIsLoadingDelete(true);
         try {
             const request = await apiMyNotes.delete("/notes/delete-all") as RequestDeleteProps;
             if (request.status === 200) {
+                setIsLoadingDelete(false);
                 setModalDelete({
                     modalType: "deleteAll",
                     isActive: false,
@@ -270,6 +276,7 @@ const Index: React.FC = () => {
             }
 
         } catch (error) {
+            setIsLoadingDelete(false);
             const errorMessage = error as AxiosError;
             const status = errorMessage.response!.status;
 
@@ -309,6 +316,7 @@ const Index: React.FC = () => {
             {
                 modalDelete.isActive && (
                     <ModalDelete
+                        isLoadingDelete={isLoadingDelete}
                         title={
                             modalDelete.modalType === "delete"
                                 ? "Delete note"

@@ -15,7 +15,7 @@ import {
 } from "./styled";
 import { ModalDeleteProps } from "./types";
 
-const ModalDelete: React.FC<ModalDeleteProps> = React.memo(({ actionMain, title, body }) => {
+const ModalDelete: React.FC<ModalDeleteProps> = React.memo(({ actionMain, title, isLoadingDelete, body }) => {
     const { setModalDelete } = useContext<ContextGlobalProps>(ContextGlobal);
 
     const closeModal = (e: MouseEvent) => {
@@ -24,12 +24,13 @@ const ModalDelete: React.FC<ModalDeleteProps> = React.memo(({ actionMain, title,
 
         const target = e.target as HTMLButtonElement;
         const dataModal = target.dataset.modal;
-
-        if (dataModal === "close" || svg === "path") {
-            setModalDelete({
-                modalType: "delete",
-                isActive: false
-            })
+        if(!isLoadingDelete) {
+            if (dataModal === "close" || svg === "path") {
+                setModalDelete({
+                    modalType: "delete",
+                    isActive: false
+                })
+            }
         }
     }
 
@@ -59,10 +60,13 @@ const ModalDelete: React.FC<ModalDeleteProps> = React.memo(({ actionMain, title,
                         title="No"
                         data-modal="close"
                         variant="secondary"
+                        disabled={isLoadingDelete}
                     />
                     <Button
                         title="Yes"
                         onClick={actionMain}
+                        isLoading={isLoadingDelete}
+                        messageLoading="Deleting"
                     />
                 </ModalFooter>
             </ModalContainer>
