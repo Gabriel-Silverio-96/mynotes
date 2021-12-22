@@ -337,7 +337,7 @@ const Index: React.FC = () => {
             }
 
             <div style={{ marginBottom: "1rem" }}>
-                <Loading isLoading={isLoading} messageLoading="Loading"/>
+                <Loading isLoading={isLoading} messageLoading="Loading" />
             </div>
 
             <NoteCardWrapper>

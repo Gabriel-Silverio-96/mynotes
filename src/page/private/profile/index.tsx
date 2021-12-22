@@ -108,7 +108,7 @@ const Profile: React.FC = () => {
     return (
         <Layout>
             <Header themeTitle={theme.title} isActiveNav={false} />
-            <Loading isLoading={isLoading} />
+            <Loading isLoading={isLoading} messageLoading="Loading" />
 
             {!isLoading && (
                 <div style={{ marginTop: "-3rem" }}>
