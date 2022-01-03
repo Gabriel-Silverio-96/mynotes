@@ -15,7 +15,7 @@ const Page404: React.FC = () => {
         <Layout themeSwitch={false}>
             <Page404Container>
                 <h1>Error 404</h1>
-                <p>The page your are trying to reach doesn't exist</p>
+                <p>The page you are trying to access does not exist</p>
                 <Button title="Back" onClick={back}/>
             </Page404Container>
         </Layout>
