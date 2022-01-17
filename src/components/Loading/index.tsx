@@ -17,7 +17,7 @@ const Loading: React.FC<LoadingProps> = ({ isLoading, justIcon, align, messageLo
                 </svg>
             </LoadingSvg>
 
-            {!justIcon && <p>{messageLoading}</p>}
+            {!justIcon && messageLoading ? <p>{messageLoading}</p> : ""}
         </LoadingContainer>
     )
 }

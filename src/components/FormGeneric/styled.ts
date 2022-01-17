@@ -62,13 +62,14 @@ export const FormContainer = styled.div<FormWrapper>`
     }
 
     form {
-        margin-top: 3rem;
-    }
-
-    form {
+        margin-top: 3rem;        
         button {
             margin-top: 2rem;
             width: 100%;
+
+            p {
+                margin-bottom: 0;
+            }
         }
 
         div {
