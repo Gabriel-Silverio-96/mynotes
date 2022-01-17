@@ -2,7 +2,7 @@ import { BrowserRouter, Switch } from "react-router-dom";
 import CustomRoute from "util/customRoute";
 
 //Pages
-import HomePagePublic from "page/public/home";
+import HomePagePublic from "page/public/Home";
 import Login from "page/public/login";
 import MyNotes from "page/private/myNotes";
 import Profile from "page/private/profile";
