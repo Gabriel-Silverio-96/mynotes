@@ -6,7 +6,7 @@ import HomePagePublic from "page/public/Home";
 import Login from "page/public/login";
 import MyNotes from "page/private/myNotes";
 import Profile from "page/private/profile";
-import CreateAccount from "page/public/createAccount";
+import CreateAccount from "page/public/CreateAccount";
 import ForgotPassoword from "page/public/forgotPassoword";
 import ResetPassword from "page/public/resetPassword";
 import Page404 from "page/error/Page404";
