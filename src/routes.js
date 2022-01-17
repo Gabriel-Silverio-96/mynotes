@@ -3,7 +3,7 @@ import CustomRoute from "util/customRoute";
 
 //Pages
 import HomePagePublic from "page/public/Home";
-import Login from "page/public/login";
+import Login from "page/public/Login";
 import MyNotes from "page/private/myNotes";
 import Profile from "page/private/profile";
 import CreateAccount from "page/public/CreateAccount";
