@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import apiMyNotes from "service/apiMyNotes";
 import LoginView from "./LoginView";
 
-export default function Login() {
+const Login: React.FC = () => {
     const { setAuthenticated, setUserData } = useContext(AuthContext);
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -81,3 +81,5 @@ export default function Login() {
 
     return <LoginView {... { isLoading, handleForm, errorMessage, Login }} />
 }
+
+export default Login;

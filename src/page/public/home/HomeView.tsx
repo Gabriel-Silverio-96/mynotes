@@ -6,7 +6,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Main } from "./styled";
 
-export default function HomeView() {
+const HomeView: React.FC = () => {    
     return (
         <Layout themeSwitch={false}>
             <Header themeTitle="dark" isActiveNav={true} />
@@ -24,3 +24,5 @@ export default function HomeView() {
         </Layout>
     )
 }
+
+export default HomeView;

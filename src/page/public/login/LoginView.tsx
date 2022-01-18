@@ -7,7 +7,7 @@ import MessageFormError from "components/MessageFormError";
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function LoginView(props: any) {
+const LoginView: React.FC<any> = (props) => {
     const { isLoading, handleForm, errorMessage, Login } = props;
     return (
         <Layout themeSwitch={false}>
@@ -50,3 +50,5 @@ export default function LoginView(props: any) {
         </Layout>
     )
 }
+
+export default LoginView;

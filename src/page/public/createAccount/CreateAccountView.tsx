@@ -5,7 +5,7 @@ import Layout from "components/Layout";
 import MessageFormError from "components/MessageFormError";
 import React from "react";
 
-export default function CreateAccountView(props: any) {
+const CreateAccountView: React.FC<any> = (props) => {
     const {alertMessage, createAccount, handleChange, errorMessage} = props
     return (
         <Layout themeSwitch={false}>
@@ -51,3 +51,5 @@ export default function CreateAccountView(props: any) {
         </Layout>
     )
 }
+
+export default CreateAccountView;

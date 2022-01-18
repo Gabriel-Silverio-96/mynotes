@@ -1,7 +1,7 @@
 import { useHistory } from "react-router-dom";
 import HomeView from "./HomeView";
 
-export default function Home() {
+const Home: React.FC = () => {
     const history = useHistory();
     const sessionUser = () => {
         const path = document.location.pathname === "/";
@@ -14,3 +14,5 @@ export default function Home() {
 
     return <HomeView />
 }
+
+export default Home;

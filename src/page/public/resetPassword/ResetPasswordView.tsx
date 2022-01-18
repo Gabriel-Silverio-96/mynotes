@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { SendingMessage } from "./styled";
 import { IResetPasswordView } from "./types";
 
-export default function ResetPasswordView(props: IResetPasswordView) {
+const ResetPasswordView: React.FC<IResetPasswordView> = (props) => {
     const {
         resetPasswordSuccessfully,
         alertMessage,
@@ -52,3 +52,5 @@ export default function ResetPasswordView(props: IResetPasswordView) {
         </Layout>
     )
 }
+
+export default ResetPasswordView;
