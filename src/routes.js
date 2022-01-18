@@ -1,13 +1,13 @@
-import Page404 from "./page/error/Page404";
-import MyNotes from "./page/private/myNotes";
-import Profile from "./page/private/profile";
-import CreateAccount from "./page/public/CreateAccount";
-import ForgotPassword from "./page/public/ForgotPassword";
-import Home from "./page/public/Home";
-import Login from "./page/public/Login";
-import ResetPassword from "./page/public/ResetPassword";
+import Page404 from "page/error/Page404";
+import MyNotes from "page/private/myNotes";
+import Profile from "page/private/profile";
+import CreateAccount from "page/public/CreateAccount";
+import ForgotPassword from "page/public/ForgotPassword";
+import Home from "page/public/Home";
+import Login from "page/public/Login";
+import ResetPassword from "page/public/ResetPassword";
 import { BrowserRouter, Switch } from "react-router-dom";
-import CustomRoute from "./util/customRoute";
+import CustomRoute from "util/customRoute";
 
 const Router = () => {
     return (
