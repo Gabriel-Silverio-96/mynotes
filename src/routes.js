@@ -3,12 +3,12 @@ import CustomRoute from "util/customRoute";
 
 //Pages
 import Home from "page/public/Home/index";
-import Login from "page/public/Login";
+import Login from "page/public/Login/index";
 import MyNotes from "page/private/myNotes";
 import Profile from "page/private/profile";
-import CreateAccount from "page/public/CreateAccount";
-import ForgotPassword from "page/public/ForgotPassword";
-import ResetPassword from "page/public/ResetPassword";
+import CreateAccount from "page/public/CreateAccount/index";
+import ForgotPassword from "page/public/ForgotPassword/index";
+import ResetPassword from "page/public/ResetPassword/index";
 import Page404 from "page/error/Page404";
 
 const Router = () => {
