@@ -1,1 +1,2 @@
-export default import("./CreateAccount");
+export { default } from "./CreateAccount";
+export * from "./CreateAccount";
