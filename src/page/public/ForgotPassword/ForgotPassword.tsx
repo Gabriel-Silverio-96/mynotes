@@ -43,6 +43,7 @@ const ForgotPassword: React.FC = () => {
                 setIsLoading(false);
             }
         } catch (error) {
+            setIsLoading(false);
             const errorLog = error as AxiosError;
             const status = errorLog.response!.status;
             console.log(errorLog.response!);
@@ -58,7 +59,6 @@ const ForgotPassword: React.FC = () => {
                 const { message_erro } = errorLog.response!.data;
                 setAlertMessage(message_erro)
             }
-            setIsLoading(false);
         }
     };
 

@@ -8,7 +8,7 @@ import MyNotes from "page/private/myNotes";
 import Profile from "page/private/profile";
 import CreateAccount from "page/public/CreateAccount";
 import ForgotPassword from "page/public/ForgotPassword";
-import ResetPassword from "page/public/resetPassword";
+import ResetPassword from "page/public/ResetPassword";
 import Page404 from "page/error/Page404";
 
 const Router = () => {
