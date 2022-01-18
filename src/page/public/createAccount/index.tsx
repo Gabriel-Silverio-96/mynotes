@@ -1,1 +1,1 @@
-export * from "./CreateAccount";
+export default import("./CreateAccount");
