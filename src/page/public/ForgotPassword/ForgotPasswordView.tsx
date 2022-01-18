@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { SendingMessage } from "./styled";
 import { IForgotPasswordView } from "./types";
 
-const ForgotPasswordView: React.FC<IForgotPasswordView> = (props) => {
+export default function ForgotPasswordView(props: IForgotPasswordView) {
     const { alertMessage, isSendingMessage, errorMessage, handleChange, ForgotPassowordRequest, userData, isLoading } = props;
     return (
         <Layout themeSwitch={false}>
@@ -34,7 +34,7 @@ const ForgotPasswordView: React.FC<IForgotPasswordView> = (props) => {
                                 erroMessage={errorMessage.message_erro_input_email}
                             />
 
-                            <Button type="submit" title="Send" isLoading={isLoading} messageLoading="Sending"/>
+                            <Button type="submit" title="Send" isLoading={isLoading} messageLoading="Sending" />
                         </form>
                     </>
                 ) : (
@@ -52,5 +52,3 @@ const ForgotPasswordView: React.FC<IForgotPasswordView> = (props) => {
         </Layout>
     )
 }
-
-export default ForgotPasswordView;

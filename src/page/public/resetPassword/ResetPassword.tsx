@@ -5,7 +5,7 @@ import apiMyNotes from "service/apiMyNotes";
 import ResetPasswordView from "./ResetPasswordView";
 import { MessageTokenError, Params } from "./types";
 
-const ResetPassword: React.FC = () => {
+export default function ResetPassword() {
     const { token } = useParams<Params>();
     const [resetPasswordSuccessfully, setResetPasswordSuccessfully] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -61,5 +61,3 @@ const ResetPassword: React.FC = () => {
 
     return <ResetPasswordView {... { resetPasswordSuccessfully, alertMessage, errorMessage, handleChange, isLoading, ResetPasswordRequest }} />
 }
-
-export default ResetPassword;

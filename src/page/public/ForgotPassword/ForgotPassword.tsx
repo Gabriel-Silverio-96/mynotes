@@ -4,7 +4,7 @@ import apiMyNotes from "service/apiMyNotes";
 import ForgotPasswordView from "./ForgotPasswordView";
 import { UserData } from "./types";
 
-const ForgotPassword: React.FC = () => {
+export default function ForgotPassword() {
     const [alertMessage, setAlertMessage] = useState<string>("");
     const [isSendingMessage, SetIsSendingMessage] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -68,5 +68,3 @@ const ForgotPassword: React.FC = () => {
         />
     )
 }
-
-export default ForgotPassword;

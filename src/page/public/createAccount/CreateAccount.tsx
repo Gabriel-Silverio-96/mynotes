@@ -7,7 +7,7 @@ import apiMyNotes from "service/apiMyNotes";
 import CreateAccountView from "./CreateAccountView";
 import { UserData } from "./types";
 
-const CreateAccount: React.FC = () => {
+export default function CreateAccount() {
     const { setSnackBar } = useContext<ContextGlobalProps>(ContextGlobal);
     const history = useHistory();
     const [alertMessage, setAlertMessage] = useState("");
@@ -81,5 +81,3 @@ const CreateAccount: React.FC = () => {
         />
     )
 }
-
-export default CreateAccount;
