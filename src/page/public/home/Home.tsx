@@ -12,7 +12,7 @@ const Home: React.FC = () => {
     }
     sessionUser()
 
-    return <HomeView {... sessionUser} />
+    return <HomeView />
 }
 
 export default Home;

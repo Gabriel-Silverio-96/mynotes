@@ -1,2 +1,2 @@
-import CreateAccount from "./CreateAccount";
-export default CreateAccount;
+export { default } from "./CreateAccount";
+export * from "./CreateAccount";

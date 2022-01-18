@@ -6,7 +6,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Main } from "./styled";
 
-const HomeView: React.FC = (props) => {    
+const HomeView: React.FC = () => {    
     return (
         <Layout themeSwitch={false}>
             <Header themeTitle="dark" isActiveNav={true} />
