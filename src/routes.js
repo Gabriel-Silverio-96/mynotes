@@ -1,4 +1,4 @@
-import Page404 from "page/error/page404";
+import Page404 from "page/error/404";
 import MyNotes from "page/private/myNotes";
 import Profile from "page/private/profile";
 import CreateAccount from "page/public/createAccount";
