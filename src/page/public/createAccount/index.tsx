@@ -1,10 +1,18 @@
-import { AxiosError } from "axios";
-import { ContextGlobal } from "provider/context";
-import { ContextGlobalProps } from "provider/types";
 import React, { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
+
 import apiMyNotes from "service/apiMyNotes";
-import CreateAccountView from "./CreateAccountView";
+
+import FormGeneric from "components/FormGeneric";
+import Layout from "components/Layout";
+import MessageFormError from "components/MessageFormError";
+import Input from "components/FormFields/Input";
+import Button  from "components/Button";
+
+import { AxiosError } from "axios";
+import { ContextGlobalProps } from "provider/types";
+import { ContextGlobal } from "provider/context";
+
 import { UserData } from "./types";
 
 const CreateAccount: React.FC = () => {
@@ -74,11 +82,48 @@ const CreateAccount: React.FC = () => {
             [name]: value
         })
     }
-
     return (
-        <CreateAccountView
-            {...{ alertMessage, createAccount, errorMessage, handleChange }}
-        />
+        <Layout themeSwitch={false}>
+            <FormGeneric
+                title="Create account"
+                widthModal="25rem"
+                isHeaderActive={true}
+                isActiveBack={true}
+            >
+                <MessageFormError
+                    message={alertMessage}
+                />
+
+                <form method="post" onSubmit={createAccount}>
+                    <Input
+                        label="Full name"
+                        typeInput="text"
+                        id="full_name"
+                        name="full_name"
+                        onChange={handleChange}
+                        erroMessage={errorMessage.message_erro_input_full_name}
+                    />
+                    <Input
+                        label="Email"
+                        typeInput="email"
+                        id="email"
+                        name="email"
+                        onChange={handleChange}
+                        erroMessage={errorMessage.message_erro_input_email}
+                    />
+                    <Input
+                        label="Password"
+                        typeInput="password"
+                        id="password"
+                        name="password"
+                        onChange={handleChange}
+                        erroMessage={errorMessage.message_erro_input_password}
+                    />
+
+                    <Button type="submit" title="Create" />
+                </form>
+            </FormGeneric>
+        </Layout>
     )
 }
 

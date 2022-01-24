@@ -1,10 +1,14 @@
-import Background from "assets/images/background.png";
-import Button from "components/Button";
-import Header from "components/Header";
-import Layout from "components/Layout";
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
+
+//Components
+import Header from "components/Header";
+
+//Assets
 import { Main } from "./styled";
+import Button from "components/Button";
+import Background from "assets/images/background.png";
+import Layout from "components/Layout";
 
 const HomePagePublic: React.FC = () => {
     const history = useHistory();
