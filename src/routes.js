@@ -1,10 +1,10 @@
-import Page404 from "page/error/Page404";
+import Page404 from "page/error/page404";
 import MyNotes from "page/private/myNotes";
 import Profile from "page/private/profile";
 import CreateAccount from "page/public/createAccount";
-import ForgotPassword from "page/public/ForgotPassword";
+import ForgotPassword from "page/public/forgotPassword";
 import Home from "page/public/home";
-import Login from "page/public/Login";
+import Login from "page/public/login";
 import ResetPassword from "page/public/resetPassword";
 import { BrowserRouter, Switch } from "react-router-dom";
 import CustomRoute from "util/customRoute";
