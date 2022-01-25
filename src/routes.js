@@ -6,7 +6,7 @@ import CreateAccount from "page/public/CreateAccount/CreateAccount";
 import ForgotPassword from "page/public/ForgotPassword/ForgotPassword";
 import Home from "page/public/Home/Home";
 import Login from "page/public/Login/Login";
-import ResetPassword from "page/public/ResetPassword";
+import ResetPassword from "page/public/ResetPassword/ResetPassword";
 import CustomRoute from "util/customRoute";
 
 const Router = () => {
