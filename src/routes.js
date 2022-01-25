@@ -2,7 +2,7 @@ import { BrowserRouter, Switch } from "react-router-dom";
 import Page404 from "page/error/404";
 import MyNotes from "page/private/myNotes";
 import Profile from "page/private/profile";
-import CreateAccount from "page/public/CreateAccount";
+import CreateAccount from "page/public/CreateAccount/CreateAccount";
 import ForgotPassword from "page/public/ForgotPassword";
 import Home from "page/public/Home";
 import Login from "page/public/Login";
