@@ -1,7 +1,7 @@
 {
   "name": "mynotes",
   "version": "0.1.0",
-  "private": false,
+  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/Gabriel-Silverio-96/mynotes"
