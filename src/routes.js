@@ -3,7 +3,7 @@ import Page404 from "page/error/404";
 import MyNotes from "page/private/myNotes";
 import Profile from "page/private/profile";
 import CreateAccount from "page/public/createAccount";
-import ForgotPassword from "page/public/forgotPassword";
+import ForgotPassword from "page/public/ForgotPassword";
 import Home from "page/public/home";
 import Login from "page/public/login";
 import ResetPassword from "page/public/resetPassword";
