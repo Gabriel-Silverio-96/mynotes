@@ -58,6 +58,7 @@ export const DialogContent = styled.div<IDialogStyled>`
     @media(max-width: 580px) {
         border-radius: 0;
         margin: inherit;
+        max-width: 100%;
         
         form, [aria-label="dialog-body"] {
             position: relative;
