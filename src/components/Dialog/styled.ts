@@ -26,6 +26,10 @@ export const DialogContainer = styled.div<IDialogStyled>`
     overflow: auto; 
     z-index: 1;
     padding: ${({size}) => size === "fullScreen" ? "0" : "1rem"};    
+
+    @media(max-width: 580px) {
+       padding: 0;       
+    }
 `
 
 export const DialogContent = styled.div<IDialogStyled>`
@@ -35,13 +39,13 @@ export const DialogContent = styled.div<IDialogStyled>`
         if(size === "fullScreen") return "100%";
         if(minHeight) return `${minHeight}rem`;
         return "15rem"        
-    }};
+    }};    
     padding: 1.5rem;
     background-color: ${props => props.theme.colors.backgroundSecundary};
     border-radius: ${({size}) => size === "fullScreen" ? "0" : "1rem"};
     margin: auto;
 
-    form {
+    form, [aria-label="dialog-body"] {
         position: ${({size}) => size === "fullScreen" ? "relative" : "inherit"};
         height: ${({size}) => size === "fullScreen" ? "calc(100vh * 0.83)" : "auto"};
     }
@@ -49,5 +53,20 @@ export const DialogContent = styled.div<IDialogStyled>`
     [aria-label="dialog-action"] {
         position: ${({size}) => size === "fullScreen" ? "absolute" : "inherit"};
         bottom: ${({size}) => size === "fullScreen" ? "1.5625rem" : "inherit"};
+    }
+
+    @media(max-width: 580px) {
+        border-radius: 0;
+        margin: inherit;
+        
+        form, [aria-label="dialog-body"] {
+            position: relative;
+            height: calc(100vh * 0.83);
+        }
+
+        [aria-label="dialog-action"] {
+            position: absolute;
+            bottom: 1.5625rem;
+        }
     }
 `
