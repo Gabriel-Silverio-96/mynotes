@@ -6,7 +6,7 @@ const DialogView: React.FC<IDialog> = ({ open = false, minHeight, size, children
     return (
         <>
             {open && (
-                <DialogContainer size={size}>
+                <DialogContainer size={size} aria-label="dialog">
                     <DialogContent {...{ size, minHeight }}>
                         {children}
                     </DialogContent>

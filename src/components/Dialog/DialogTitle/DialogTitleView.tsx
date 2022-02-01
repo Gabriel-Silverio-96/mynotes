@@ -6,7 +6,7 @@ import { IDialogTitle } from "./types";
 
 const DialogTitleView: React.FC<IDialogTitle> = ({ onClick, children }) => {
     return (
-        <DialogTitle>
+        <DialogTitle aria-label="dialog-title">
             <DialogTitleContent>
                 {children}
             </DialogTitleContent>
