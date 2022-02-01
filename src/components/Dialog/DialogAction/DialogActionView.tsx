@@ -3,7 +3,7 @@ import { DialogAction } from "./styled";
 
 const DialogActionView: React.FC = ({ children }) => {
     return (
-        <DialogAction>
+        <DialogAction aria-label="dialog-action">
             {children}
         </DialogAction>
     )

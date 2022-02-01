@@ -5,6 +5,7 @@ export const DialogAction = styled.div`
     justify-content: space-between;
     align-items: center;
     margin-top: 2rem;
+    width: 100%;
 
     div {
         display: flex;

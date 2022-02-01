@@ -40,4 +40,14 @@ export const DialogContent = styled.div<IDialog>`
     background-color: ${props => props.theme.colors.backgroundSecundary};
     border-radius: ${({size}) => size === "fullScreen" ? "0" : "1rem"};
     margin: auto;
+
+    form {
+        position: ${({size}) => size === "fullScreen" ? "relative" : "inherit"};
+        height: ${({size}) => size === "fullScreen" ? "calc(100vh * 0.83)" : "auto"};
+    }
+
+    [aria-label="dialog-action"] {
+        position: ${({size}) => size === "fullScreen" ? "absolute" : "inherit"};
+        bottom: ${({size}) => size === "fullScreen" ? "1.5625rem" : "inherit"};
+    }
 `
