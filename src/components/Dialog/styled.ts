@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import * as variables from "assets/styles/variables";
-import { IDialog, IDialogOptionSize } from "./types";
+import { IDialogOptionSize, IDialogStyled } from "./types";
 
 const DialogSize = (size: string): string => {
     const DialogOptionSize: IDialogOptionSize = {
@@ -14,7 +14,7 @@ const DialogSize = (size: string): string => {
     return DialogOptionSize[size] || DialogOptionSize.default;
 }
 
-export const DialogContainer = styled.div<IDialog>`
+export const DialogContainer = styled.div<IDialogStyled>`
     width: -webkit-fill-available;    
     width: -moz-available;    
     height: 100%;
@@ -28,7 +28,7 @@ export const DialogContainer = styled.div<IDialog>`
     padding: ${({size}) => size === "fullScreen" ? "0" : "1rem"};    
 `
 
-export const DialogContent = styled.div<IDialog>`
+export const DialogContent = styled.div<IDialogStyled>`
     width: 100%;
     max-width: ${({size}) => DialogSize(size!)};
     min-height: ${({size, minHeight}) => {

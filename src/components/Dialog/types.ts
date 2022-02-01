@@ -1,6 +1,10 @@
 export interface IDialog {    
     size?: "lg" | "md" | "xs" | "fullScreen";
     minHeight?: number;
+    open: boolean;
+}
+
+export interface IDialogStyled extends Omit<IDialog, "open">{    
 }
 
 export interface IDialogOptionSize {    
