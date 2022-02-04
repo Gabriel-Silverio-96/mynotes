@@ -1,4 +1,4 @@
-type SnackBarType = "error" | "success" | "alert";
+type SnackBarType = "error" | "success" | "warning";
 
 type Payload = {
     isOpen: boolean;
