@@ -1,14 +1,15 @@
 import { AxiosError } from "axios";
-import { ContextGlobal } from "provider/context";
-import { ContextGlobalProps } from "provider/types";
-import React, { ChangeEvent, FormEvent, useContext, useState } from "react";
+import { snackBar } from "common/store/snackBar/snackBar.action";
+import React, { ChangeEvent, FormEvent, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import apiMyNotes from "service/apiMyNotes";
 import CreateAccountView from "./CreateAccountView";
 import { UserData } from "./types";
 
 const CreateAccount: React.FC = () => {
-    const { setSnackBar } = useContext<ContextGlobalProps>(ContextGlobal);
+    const dispatch = useDispatch();
+    
     const history = useHistory();
     const [alertMessage, setAlertMessage] = useState("");
 
@@ -36,12 +37,8 @@ const CreateAccount: React.FC = () => {
             const { status } = await apiMyNotes.post("/auth/create-account", userData);
 
             if (status === 201) {
-                history.push("/auth/login")
-                setSnackBar({
-                    isActive: true,
-                    typeMessage: "success",
-                    message: "Account created successfully"
-                })
+                history.push("/auth/login");
+                dispatch(snackBar(true, "Account created successfully"));                
             }
         } catch (error) {
             const errorLog = error as AxiosError;
