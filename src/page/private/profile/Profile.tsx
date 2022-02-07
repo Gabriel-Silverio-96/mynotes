@@ -1,17 +1,17 @@
 import dark from "assets/styles/themes/dark";
 import { AxiosError } from "axios";
-import { ContextGlobal } from "provider/context";
-import { ContextGlobalProps } from "provider/types";
-import React, { ChangeEvent, FormEvent, useContext, useEffect, useState } from "react";
+import { snackBar } from "common/store/snackBar/snackBar.action";
+import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import apiMyNotes from "service/apiMyNotes";
 import useThemeStorage from "util/useThemeStorage";
 import Profile2View from "./ProfileView";
-import { GetUserData, UserData, ErrorMessage, IProfile } from "./types";
+import { ErrorMessage, GetUserData, IProfile, UserData } from "./types";
 
 const Profile: React.FC<IProfile> = () => {
     const history = useHistory();
-    const { setSnackBar } = useContext<ContextGlobalProps>(ContextGlobal);
+    const dispatch = useDispatch();
 
     const [theme] = useThemeStorage("theme", dark);
     const [userData, setUserData] = useState({} as UserData);
@@ -69,11 +69,7 @@ const Profile: React.FC<IProfile> = () => {
             if (status === 200) {
                 history.push("/mynotes")
 
-                setSnackBar({
-                    isActive: true,
-                    typeMessage: "success",
-                    message: "Profile edited"
-                })
+                dispatch(snackBar(true, "Profile edited"));
             }
         } catch (error) {
             const errorMessage = error as AxiosError;
