@@ -1,13 +1,17 @@
 import { AxiosError } from "axios";
+import { snackBar } from "common/store/snackBar/snackBar.action";
 import { ContextGlobal } from "provider/context";
 import { ContextGlobalProps } from "provider/types";
 import React, { ChangeEvent, FormEvent, useContext, useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import apiMyNotes from "service/apiMyNotes";
 import MyNotesPageView from "./MyNotesView";
 import { IMyNotes, InputRequiredProps, NotesListProps, RequestDeleteProps, RequestProps } from "./types";
 
 const MyNotesPage: React.FC<IMyNotes> = () => {
+    const dispatch = useDispatch();
+
     const {
         modalState,
         setModalState,
@@ -15,7 +19,6 @@ const MyNotesPage: React.FC<IMyNotes> = () => {
         setModalDelete,
         modalViewEditNote,
         setModalViewEditNote,
-        setSnackBar,
     } = useContext<ContextGlobalProps>(ContextGlobal);
 
     const history = useHistory();
@@ -55,12 +58,7 @@ const MyNotesPage: React.FC<IMyNotes> = () => {
                 const errorMessage = error as AxiosError;
                 //@ts-ignore
                 const message = errorMessage.response!.data.message;
-                setSnackBar({
-                    isActive: true,
-                    typeMessage: "error",
-                    message: `Error: ${message}`
-                })
-
+                dispatch(snackBar(true, `Error: ${message}`, "error"));
                 const status = errorMessage.response!.status;
 
                 if (status === 401) {
@@ -119,11 +117,7 @@ const MyNotesPage: React.FC<IMyNotes> = () => {
                     setModalState(false);
                     setRefreshRequest(prevState => !prevState);
                     setNewNote(newNoteInitialState);
-                    setSnackBar({
-                        isActive: true,
-                        typeMessage: "success",
-                        message: "Note edited"
-                    })
+                    dispatch(snackBar(true, "Note edited"));
                 }
 
             } else {
@@ -133,11 +127,7 @@ const MyNotesPage: React.FC<IMyNotes> = () => {
                     setModalState(false);
                     setRefreshRequest(prevState => !prevState);
                     setNewNote(newNoteInitialState);
-                    setSnackBar({
-                        isActive: true,
-                        typeMessage: "success",
-                        message: "New note created"
-                    })
+                    dispatch(snackBar(true, "New note created"));
                 }
             }
 
@@ -164,11 +154,7 @@ const MyNotesPage: React.FC<IMyNotes> = () => {
             if (!STATUS_CODE.includes(status)) {
                 //@ts-ignore
                 const message = errorMessage.response!.data.message;
-                setSnackBar({
-                    isActive: true,
-                    typeMessage: "error",
-                    message: `Error: ${message}`
-                })
+                dispatch(snackBar(true, `Error: ${message}`, "error"));
             }
 
             console.error(error);
@@ -216,11 +202,7 @@ const MyNotesPage: React.FC<IMyNotes> = () => {
                 setNoteIdSelected("");
                 setRefreshRequest(prevState => !prevState);
                 setModalState(false);
-                setSnackBar({
-                    isActive: true,
-                    typeMessage: "success",
-                    message: "Note successfully deleted"
-                })
+                dispatch(snackBar(true, "Note successfully deleted"));
             }
 
         } catch (error) {
@@ -253,11 +235,7 @@ const MyNotesPage: React.FC<IMyNotes> = () => {
                 })
                 setNoteIdSelected("");
                 setRefreshRequest(prevState => !prevState);
-                setSnackBar({
-                    isActive: true,
-                    typeMessage: "success",
-                    message: "Successfully deleted all notes"
-                })
+                dispatch(snackBar(true, "Successfully deleted all notes"));
             }
 
         } catch (error) {
