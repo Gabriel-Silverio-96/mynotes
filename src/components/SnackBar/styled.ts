@@ -1,9 +1,9 @@
-import styled from "styled-components";
-import { SnackBarContainerProps, TypeMessageProps } from "./types";
 import * as variables from "assets/styles/variables";
+import styled from "styled-components";
+import { ISnackBarStyled, ITypeMessage } from "./types";
 
-const interceptorTypeMessage = (message: string): string => {
-    const typeMessage: TypeMessageProps = {
+const TypeMessage = (message: string): string => {
+    const typeMessage: ITypeMessage = {
         success: variables.success,
         error: variables.red,
         warning: variables.warning,
@@ -11,19 +11,18 @@ const interceptorTypeMessage = (message: string): string => {
     return typeMessage[message] || variables.success
 }
 
-export const SnackBarContainer = styled.div<SnackBarContainerProps>`
+export const SnackBar = styled.div<ISnackBarStyled>`
     position: absolute;
     top: 1rem;
     right: 0;
     left: 0;
     margin: auto;
-
     color: ${variables.white};
-    background-color: ${({ typeMessage }) => interceptorTypeMessage(typeMessage)};
+    background-color: ${({ typeMessage }) => TypeMessage(typeMessage)};
     padding: 1rem;
     border-radius: 0.5rem;
     width: 15rem;
-    border: 0.2rem solid ${({ typeMessage }) => interceptorTypeMessage(typeMessage)};
+    border: 0.2rem solid ${({ typeMessage }) => TypeMessage(typeMessage)};
     border-top: 0;
     border-right: 0;
     border-left: 0;
