@@ -1,12 +1,14 @@
 import React from "react";
 import { SnackBar } from "./styled";
+import { ISnackBar } from "./types";
 
-const SnackBar2View: React.FC<any> = ({ typeMessage, message }) => {
+const SnackBarView: React.FC<ISnackBar> = ({ typeMessage, message, align }) => {
     return (
-        <SnackBar typeMessage={typeMessage}>
-            {message}
+        <SnackBar typeMessage={typeMessage} align={align}>
+            <h4>{typeMessage}</h4>
+            <p>{message}</p>
         </SnackBar>
     )
 }
 
-export default SnackBar2View;
+export default SnackBarView;

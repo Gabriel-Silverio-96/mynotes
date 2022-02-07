@@ -1,19 +1,20 @@
 import { snackBar } from "common/store/snackBar/snackBar.action";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import SnackBar2View from "./SnackBarView";
+import SnackBarView from "./SnackBarView";
+import { ISnackBar } from "./types";
 
-const SnackBar2: React.FC<any> = ({ typeMessage, message }) => { 
+const SnackBar: React.FC<ISnackBar> = ({ typeMessage, message, align = "bottomRight" }) => {
     const dispatch = useDispatch();
-    
+
     useEffect(() => {
         setTimeout(() => {
             dispatch(snackBar(false, ""))
         }, 2000)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-
-    return <SnackBar2View {...{ typeMessage, message }} />
+    
+    return <SnackBarView {...{ typeMessage, message, align }} />
 }
 
-export default SnackBar2;
+export default SnackBar;

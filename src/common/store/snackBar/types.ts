@@ -1,4 +1,4 @@
-import { IPayload, SnackBarType } from "common/types/SnackBar";
+import { IPayload, SnackBarTypeMessage } from "common/types/SnackBar";
 
 export interface ISnackBarResult {
     type: "SNACKBAR_OPEN";
@@ -6,5 +6,5 @@ export interface ISnackBarResult {
 }
 
 export interface ISnackBarAction {
-    (isOpen: boolean, message: string, type?: SnackBarType): ISnackBarResult
+    (isOpen: boolean, message: string, type?: SnackBarTypeMessage): ISnackBarResult
 }
