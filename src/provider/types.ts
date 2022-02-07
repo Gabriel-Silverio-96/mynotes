@@ -1,12 +1,6 @@
 import React from "react";
 import { DefaultTheme } from "styled-components";
 
-export interface SnackBarProps {
-    isActive: boolean;
-    typeMessage: "success" | "error" | "warning";
-    message: string;
-}
-
 export interface ContextGlobalProps {
     modalState: boolean;
     setModalState: (b: boolean) => void;
@@ -16,9 +10,6 @@ export interface ContextGlobalProps {
 
     modalViewEditNote: boolean;
     setModalViewEditNote: (b: boolean) => void;
-
-    snackBar: SnackBarProps;
-    setSnackBar: React.Dispatch<React.SetStateAction<SnackBarProps>>
 }
 
 export interface LoginFieldsProps {

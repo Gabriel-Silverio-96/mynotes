@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react";
-import { ContextGlobalProps, ModalDeleteProps, SnackBarProps } from "./types";
+import { ContextGlobalProps, ModalDeleteProps } from "./types";
 
 export const ContextGlobal = createContext({} as ContextGlobalProps);
 
@@ -10,28 +10,7 @@ export const ContextProvider = (props: any) => {
         isActive: false,
     });
     const [modalViewEditNote, setModalViewEditNote] = useState<boolean>(false);
-    const [snackBar, setSnackBar] = useState<SnackBarProps>({
-        isActive: false,
-        typeMessage: "success",
-        message: ""
-    })
-
-    const closeSnackBar = () => {
-        if (snackBar.isActive) {
-            setTimeout(() => {
-                setSnackBar((prevState: SnackBarProps) => {
-                    return {
-                        ...prevState,
-                        isActive: false
-                    }
-
-                })
-            }, 2500)
-        }
-    }
-    if (snackBar.isActive) {
-        closeSnackBar();
-    }
+  
     return (
         <ContextGlobal.Provider value={
             {
@@ -43,9 +22,6 @@ export const ContextProvider = (props: any) => {
 
                 modalViewEditNote,
                 setModalViewEditNote,
-
-                snackBar,
-                setSnackBar
             }
         }>
             {props.children}
