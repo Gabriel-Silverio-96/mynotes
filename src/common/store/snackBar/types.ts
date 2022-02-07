@@ -1,14 +1,8 @@
-type SnackBarType = "error" | "success" | "warning";
-
-type Payload = {
-    isOpen: boolean;
-    message: string;
-    type?: SnackBarType,
-}
+import { IPayload, SnackBarType } from "common/types/SnackBar";
 
 export interface ISnackBarResult {
     type: "SNACKBAR_OPEN";
-    payload: Payload;
+    payload: IPayload;
 }
 
 export interface ISnackBarAction {

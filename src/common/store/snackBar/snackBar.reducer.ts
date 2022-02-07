@@ -12,7 +12,7 @@ export default function (state = INITIAL_STATE, actions: ISnackBarResult) {
 
     switch (actions.type) {
         case "SNACKBAR_OPEN":
-            if (payload.type === undefined) payload.type = "success"            
+            if (payload.type_message === undefined) payload.type_message = "success"            
             return payload
 
         default:
