@@ -85,6 +85,21 @@ export const SnackBar = styled.div<ISnackBarStyled>`
     p {
         font-size: 0.8rem;
     }
+
+    animation: TopShow 0.5s; 
+    animation-fill-mode: backwards;
+
+    @keyframes TopShow {
+        0% {
+            opacity: 0;
+            bottom: 0;
+        }
+        
+        100% {
+            opacity: 1;
+            bottom: ${({ align }) => AlignSnackBar(align!).bottom};
+        }
+    }
 `
 
 export const SnackBarProgressBar = styled.div<ISnackBarProgressBarStyled>`
@@ -95,10 +110,10 @@ export const SnackBarProgressBar = styled.div<ISnackBarProgressBarStyled>`
     left: 0;
     bottom: -0.15rem;
     border-radius: 0rem 0rem 1rem 1rem;
-    animation: increase ${({delay}) => `${delay!/1000}s`}; 
+    animation: Increase ${({delay}) => `${delay!/1000}s`}; 
     animation-fill-mode: forwards;
 
-    @keyframes increase {
+    @keyframes Increase {
         100% {
             width: 100%;
         }
