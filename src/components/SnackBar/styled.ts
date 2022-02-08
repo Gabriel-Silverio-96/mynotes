@@ -78,8 +78,7 @@ export const SnackBar = styled.div<ISnackBarStyled>`
         display: none;
     }
 
-    h4 {
-        margin-bottom: 0.4rem;    
+    h4 {        
         text-transform: capitalize;    
     }
 
@@ -104,4 +103,11 @@ export const SnackBarProgressBar = styled.div<ISnackBarProgressBarStyled>`
             width: 100%;
         }
     }
+`
+
+export const SnackBarHeader = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.4rem;
 `

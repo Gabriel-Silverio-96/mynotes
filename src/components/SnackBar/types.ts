@@ -13,6 +13,8 @@ export interface ISnackBar  {
     align?: Align;
     progressBar?: boolean;
     delay?: number;
+    closeSnackBar?: () => void;
+    buttonClose?: boolean;
 }
 
 export interface ITypeMessageStyled {
