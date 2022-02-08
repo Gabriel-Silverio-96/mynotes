@@ -11,6 +11,8 @@ export interface ISnackBar  {
     typeMessage: SnackBarTypeMessage;
     message: string;
     align?: Align;
+    progressBar?: boolean;
+    delay?: number;
 }
 
 export interface ITypeMessageStyled {
@@ -35,4 +37,8 @@ export interface IAlignOption {
     bottomRight: Postion;
     bottomLeft: Postion;
     [key: string]: Postion;
+}
+
+export interface ISnackBarProgressBarStyled {
+    delay?: number;
 }

@@ -4,17 +4,17 @@ import { useDispatch } from "react-redux";
 import SnackBarView from "./SnackBarView";
 import { ISnackBar } from "./types";
 
-const SnackBar: React.FC<ISnackBar> = ({ typeMessage, message, align = "bottomRight" }) => {
+const SnackBar: React.FC<ISnackBar> = (props) => {
+    const { typeMessage, message, align = "bottomRight", progressBar = true, delay = 2000 } = props;
     const dispatch = useDispatch();
 
     useEffect(() => {
         setTimeout(() => {
-            dispatch(snackBar(false, ""))
-        }, 2000)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+            dispatch(snackBar(false, ""));
+        }, delay)
+    }, [dispatch, delay]);
     
-    return <SnackBarView {...{ typeMessage, message, align }} />
+    return <SnackBarView {...{ typeMessage, message, align, progressBar, delay }} />
 }
 
 export default SnackBar;

@@ -1,6 +1,6 @@
 import * as variables from "assets/styles/variables";
 import styled from "styled-components";
-import { IAlignOption, ISnackBarStyled, ITypeMessageStyled, Postion } from "./types";
+import { IAlignOption, ISnackBarProgressBarStyled, ISnackBarStyled, ITypeMessageStyled, Postion } from "./types";
 
 const TypeMessage = (message: string): string => {
     const typeMessage: ITypeMessageStyled = {
@@ -85,5 +85,23 @@ export const SnackBar = styled.div<ISnackBarStyled>`
 
     p {
         font-size: 0.8rem;
+    }
+`
+
+export const SnackBarProgressBar = styled.div<ISnackBarProgressBarStyled>`
+    height: 0px;
+    width: 1px;
+    border-bottom: 0.3125rem solid ${variables.white + "ad"};
+    position: absolute;
+    left: 0;
+    bottom: -0.15rem;
+    border-radius: 0rem 0rem 1rem 1rem;
+    animation: increase ${({delay}) => `${delay!/1000}s`}; 
+    animation-fill-mode: forwards;
+
+    @keyframes increase {
+        100% {
+            width: 100%;
+        }
     }
 `
