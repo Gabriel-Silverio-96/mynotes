@@ -3,7 +3,7 @@ import { ISnackBarResult } from "./types";
 const INITIAL_STATE = {
     isOpen: false,
     message: "",
-    type: "success"
+    type_message: "success"
 }
 
 // eslint-disable-next-line

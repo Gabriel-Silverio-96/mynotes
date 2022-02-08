@@ -6,5 +6,5 @@ export interface ISnackBarResult {
 }
 
 export interface ISnackBarAction {
-    (isOpen: boolean, message: string, type?: SnackBarTypeMessage): ISnackBarResult
+    (isOpen: boolean, message: string, type_message?: SnackBarTypeMessage): ISnackBarResult
 }

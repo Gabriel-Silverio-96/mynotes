@@ -2,13 +2,13 @@ import * as variables from "assets/styles/variables";
 import styled from "styled-components";
 import { IAlignOption, ISnackBarProgressBarStyled, ISnackBarStyled, ITypeMessageStyled, Postion } from "./types";
 
-const TypeMessage = (message: string): string => {
-    const typeMessage: ITypeMessageStyled = {
+const TypeMessage = (typeMessage: string): string => {
+    const typeMessageOption: ITypeMessageStyled = {
         success: variables.success,
         error: variables.red,
         warning: variables.warning,
     }
-    return typeMessage[message] || variables.success;
+    return typeMessageOption[typeMessage] || variables.success;
 }
 
 const AlignSnackBar = (align: string): Postion => {
