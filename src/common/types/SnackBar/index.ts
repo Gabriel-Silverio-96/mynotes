@@ -9,3 +9,8 @@ export interface IPayload {
 export interface ISnackBarStore {
     snackBar: IPayload;
 }
+
+export interface ISnackBarResponse {
+    type_message: SnackBarTypeMessage;
+    message: string;
+}
