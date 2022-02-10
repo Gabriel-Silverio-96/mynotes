@@ -1,12 +1,13 @@
+import { IErrorInputMessage } from "common/types/ErrorResponse";
 import Button from "components/Button";
 import Input from "components/FormFields/Input";
 import FormGeneric from "components/FormGeneric";
 import Layout from "components/Layout";
-import MessageFormError from "components/MessageFormError";
 import React from "react";
+import { ICreateAccount } from "./types";
 
-const CreateAccountView: React.FC<any> = (props) => {
-    const {alertMessage, createAccount, handleChange, errorMessage} = props
+const CreateAccountView: React.FC<ICreateAccount> = (props) => {
+    const { createAccount, handleChange, errorInputMessage } = props
     return (
         <Layout themeSwitch={false}>
             <FormGeneric
@@ -15,10 +16,6 @@ const CreateAccountView: React.FC<any> = (props) => {
                 isHeaderActive={true}
                 isActiveBack={true}
             >
-                <MessageFormError
-                    message={alertMessage}
-                />
-
                 <form method="post" onSubmit={createAccount}>
                     <Input
                         label="Full name"
@@ -26,7 +23,11 @@ const CreateAccountView: React.FC<any> = (props) => {
                         id="full_name"
                         name="full_name"
                         onChange={handleChange}
-                        erroMessage={errorMessage.message_erro_input_full_name}
+                        erroMessage={
+                            errorInputMessage.map((errorInputMessage: IErrorInputMessage) => (
+                                errorInputMessage.param === "full_name" ? errorInputMessage.msg : ""
+                            ))
+                        }
                     />
                     <Input
                         label="Email"
@@ -34,7 +35,11 @@ const CreateAccountView: React.FC<any> = (props) => {
                         id="email"
                         name="email"
                         onChange={handleChange}
-                        erroMessage={errorMessage.message_erro_input_email}
+                        erroMessage={
+                            errorInputMessage.map((errorInputMessage: IErrorInputMessage) => (
+                                errorInputMessage.param === "email" ? errorInputMessage.msg : ""
+                            ))
+                        }
                     />
                     <Input
                         label="Password"
@@ -42,7 +47,11 @@ const CreateAccountView: React.FC<any> = (props) => {
                         id="password"
                         name="password"
                         onChange={handleChange}
-                        erroMessage={errorMessage.message_erro_input_password}
+                        erroMessage={
+                            errorInputMessage.map((errorInputMessage: IErrorInputMessage) => (
+                                errorInputMessage.param === "password" ? errorInputMessage.msg : ""
+                            ))
+                        }
                     />
 
                     <Button type="submit" title="Create" />

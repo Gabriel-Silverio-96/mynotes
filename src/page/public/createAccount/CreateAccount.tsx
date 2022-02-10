@@ -1,80 +1,52 @@
-import { AxiosError } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 import { snackBar } from "common/store/snackBar/snackBar.action";
+import { IDataErrorResponse, IErrorInputMessage } from "common/types/ErrorResponse";
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import apiMyNotes from "service/apiMyNotes";
 import CreateAccountView from "./CreateAccountView";
-import { UserData } from "./types";
+import { ICreateAccount, IUserData } from "./types";
 
-const CreateAccount: React.FC = () => {
+const USER_DATA_INPUTS_INITIAL_STATE: IUserData = { full_name: "", email: "", password: "" };
+
+const CreateAccount: React.FC<ICreateAccount> = () => {
     const dispatch = useDispatch();
-    
     const history = useHistory();
-    const [alertMessage, setAlertMessage] = useState("");
 
-    const [errorMessage, setErrorMessage] = useState({
-        message_erro_input_email: "",
-        message_erro_input_password: "",
-        message_erro_input_full_name: "",
-    })
-
-    const [userData, setUserData] = useState<UserData>({
-        full_name: "",
-        email: "",
-        password: ""
-    });
-
-    const createAccount = async (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        setErrorMessage({
-            message_erro_input_email: "",
-            message_erro_input_password: "",
-            message_erro_input_full_name: ""
-        })
-        setAlertMessage("");
-        try {
-            const { status } = await apiMyNotes.post("/auth/create-account", userData);
-
-            if (status === 201) {
-                history.push("/auth/login");
-                dispatch(snackBar(true, "Account created successfully"));                
-            }
-        } catch (error) {
-            const errorLog = error as AxiosError;
-            const status = errorLog.response!.status;
-            const { message_erro_input_email,
-                message_erro_input_password,
-                message_erro_input_full_name,
-                message_erro } = errorLog.response!.data;
-
-            if (status === 422) {
-                setErrorMessage({
-                    message_erro_input_email,
-                    message_erro_input_password,
-                    message_erro_input_full_name,
-                })
-            }
-
-            if (status === 403) {
-                setAlertMessage(message_erro)
-            }
-        }
-    }
+    const [errorInputMessage, setErrorInputMessage] = useState<IErrorInputMessage[]>([]);
+    const [userData, setUserData] = useState<IUserData>(USER_DATA_INPUTS_INITIAL_STATE);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const name = e.target.name;
         const value = e.target.value;
+        setUserData({ ...userData, [name]: value });
+    }
 
-        setUserData({
-            ...userData,
-            [name]: value
-        })
+    const createAccount = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setErrorInputMessage([]);
+        try {
+            await apiMyNotes.post("/auth/create-account", userData);
+            history.push("/auth/login");
+            dispatch(snackBar(true, "Account created successfully"));
+        } catch (err) {
+            const error = err as AxiosError;
+            const { status, data } = error.response as AxiosResponse<IDataErrorResponse>;
+
+            if (status === 400) {
+                setErrorInputMessage(data.errors);
+            };
+
+            if (status === 403 || status === 500) {
+                dispatch(snackBar(true, data.message, data.type_message));
+            };
+        }
     }
 
     return (
         <CreateAccountView
-            {...{ alertMessage, createAccount, errorMessage, handleChange }}
+            {...{ createAccount, errorInputMessage, handleChange }}
         />
     )
 }
