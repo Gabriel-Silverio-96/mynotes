@@ -1,15 +1,15 @@
+import { IErrorInputMessage } from "common/types/ErrorResponse";
 import Button from "components/Button";
 import Input from "components/FormFields/Input";
 import FormGeneric from "components/FormGeneric";
 import Layout from "components/Layout";
-import MessageFormError from "components/MessageFormError";
 import React from "react";
 import { Link } from "react-router-dom";
 import { SendingMessage } from "./styled";
 import { IForgotPasswordView } from "./types";
 
 const ForgotPasswordView: React.FC<IForgotPasswordView> = (props) => {
-    const { alertMessage, isSendingMessage, errorMessage, handleChange, ForgotPassowordRequest, userData, isLoading } = props;
+    const { isSendingMessage, errorInputMessage, handleChange, forgotPassoword, userData, isLoading } = props;
     return (
         <Layout themeSwitch={false}>
             <FormGeneric
@@ -21,20 +21,21 @@ const ForgotPasswordView: React.FC<IForgotPasswordView> = (props) => {
                 {!isSendingMessage ? (
                     <>
                         <p>Which email is registered on MyNotes</p>
-                        <MessageFormError
-                            message={alertMessage}
-                        />
-                        <form method="post" onSubmit={ForgotPassowordRequest}>
+                        <form method="post" onSubmit={forgotPassoword}>
                             <Input
                                 label="Email"
                                 typeInput="email"
                                 id="email"
                                 name="email"
                                 onChange={handleChange}
-                                erroMessage={errorMessage.message_erro_input_email}
+                                erroMessage={
+                                    errorInputMessage.map((errorInputMessage: IErrorInputMessage) => (
+                                        errorInputMessage.param === "email" ? errorInputMessage.msg : ""
+                                    ))
+                                }
                             />
 
-                            <Button type="submit" title="Send" isLoading={isLoading} messageLoading="Sending"/>
+                            <Button type="submit" title="Send" isLoading={isLoading} messageLoading="Sending" />
                         </form>
                     </>
                 ) : (

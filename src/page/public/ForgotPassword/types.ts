@@ -1,17 +1,15 @@
+import { IErrorInputMessage } from "common/types/ErrorResponse";
 import { ChangeEvent, FormEvent } from "react";
 
-export interface UserData {
+export interface IUserData {
     email: string;
 }
 
 export interface IForgotPasswordView {
-    alertMessage: string;
+    errorInputMessage: IErrorInputMessage[];
     isSendingMessage: boolean;
-    errorMessage: {
-        message_erro_input_email: string;
-    }
     handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
-    ForgotPassowordRequest: (e: FormEvent<HTMLFormElement>) => void;    
-    userData: UserData;
+    forgotPassoword: (e: FormEvent<HTMLFormElement>) => void;    
+    userData: IUserData;
     isLoading: boolean;
 }

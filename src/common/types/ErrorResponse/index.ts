@@ -1,5 +1,10 @@
 import { SnackBarTypeMessage } from "../SnackBar";
 
+export interface IDataMessageResponse {
+    type_message: SnackBarTypeMessage;
+    message: string;
+}
+
 export interface IErrorInputMessage {
     value: string;
     msg: string;
@@ -7,8 +12,6 @@ export interface IErrorInputMessage {
     location: string;
 }
 
-export interface IDataErrorResponse {
-    errors: any;
-    type_message: SnackBarTypeMessage;
-    message: string;
+export interface IDataErrorResponse extends IDataMessageResponse{
+    errors: IErrorInputMessage[] | any;
 }

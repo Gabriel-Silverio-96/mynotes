@@ -1,70 +1,52 @@
-import { AxiosError } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
+import { snackBar } from "common/store/snackBar/snackBar.action";
+import { IDataErrorResponse, IDataMessageResponse, IErrorInputMessage } from "common/types/ErrorResponse";
 import React, { ChangeEvent, FormEvent, useState } from "react";
+import { useDispatch } from "react-redux";
 import apiMyNotes from "service/apiMyNotes";
 import ForgotPasswordView from "./ForgotPasswordView";
-import { UserData } from "./types";
+import { IUserData } from "./types";
+
+const USER_DATA_INPUT_INITIAL_STATE = { email: "" };
 
 const ForgotPassword: React.FC = () => {
-    const [alertMessage, setAlertMessage] = useState<string>("");
-    const [isSendingMessage, SetIsSendingMessage] = useState<boolean>(false);
+    const dispatch = useDispatch();
+
     const [isLoading, setIsLoading] = useState<boolean>(false);
-
-    const [errorMessage, setErrorMessage] = useState({
-        message_erro_input_email: "",
-    });
-
-    const [userData, setUserData] = useState<UserData>({
-        email: "",
-    });
+    const [isSendingMessage, setIsSendingMessage] = useState<boolean>(false);
+    const [errorInputMessage, setErrorInputMessage] = useState<IErrorInputMessage[]>([]);
+    const [userData, setUserData] = useState<IUserData>(USER_DATA_INPUT_INITIAL_STATE);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const name = e.target.name;
         const value = e.target.value;
-
-        setUserData({
-            ...userData,
-            [name]: value
-        })
+        setUserData({ ...userData, [name]: value });
     }
 
-    const ForgotPassowordRequest = async (e: FormEvent<HTMLFormElement>) => {
+    const forgotPassoword = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setErrorMessage({
-            message_erro_input_email: ""
-        })
-        
-        setAlertMessage("");
-        
+        setErrorInputMessage([]);
+        setIsLoading(true);
+
         try {
-            setIsLoading(true)
-            const { status } = await apiMyNotes.post("auth/forgot-password", userData);
-            if (status === 200) {
-                SetIsSendingMessage(true);
-                setIsLoading(false);
-            }
-        } catch (error) {
+            const { data } = await apiMyNotes.post("auth/forgot-password", userData) as AxiosResponse<IDataMessageResponse>;
+            setIsSendingMessage(true);
             setIsLoading(false);
-            const errorLog = error as AxiosError;
-            const status = errorLog.response!.status;
-            console.log(errorLog.response!);
+            dispatch(snackBar(true, data.message, data.type_message));
+        } catch (err) {
+            const error = err as AxiosError;
+            const { status, data } = error.response as AxiosResponse<IDataErrorResponse>;
 
-            if (status === 400 || status === 422) {
-                const { message_erro_input_email } = errorLog.response!.data;
-                setErrorMessage({
-                    message_erro_input_email
-                })
-            }
+            if (status === 400) setErrorInputMessage(data.errors);
+            if (status === 403 || status === 500) dispatch(snackBar(true, data.message, data.type_message));
 
-            if (status === 401) {
-                const { message_erro } = errorLog.response!.data;
-                setAlertMessage(message_erro)
-            }
+            return setIsLoading(false);
         }
     };
 
     return (
         <ForgotPasswordView
-            {...{ alertMessage, isSendingMessage, errorMessage, handleChange, ForgotPassowordRequest, userData, isLoading }}
+            {...{ isSendingMessage, errorInputMessage, handleChange, forgotPassoword, userData, isLoading }}
         />
     )
 }
