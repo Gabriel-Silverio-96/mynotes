@@ -9,7 +9,7 @@ export interface InputProps {
     defaultValue?: string;
     id: string,
     typeInput: TypeInputProps;
-    erroMessage?: string;
+    erroMessage?: string | string[];
     onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
     disabled?: boolean;
 }
