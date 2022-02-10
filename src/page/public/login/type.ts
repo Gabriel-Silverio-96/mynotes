@@ -1,4 +1,13 @@
+import { IErrorInputMessage } from "common/types/ErrorResponse";
 import { ISnackBarResponse } from "common/types/SnackBar";
+import { ChangeEvent, FormEvent } from "react";
+
+export interface ILogin {
+    isLoading: boolean;
+    handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    errorInputMessage: IErrorInputMessage[];
+    login: (e: FormEvent<HTMLFormElement>) => void;
+}
 
 export interface ILoginInputs {
     email: string;

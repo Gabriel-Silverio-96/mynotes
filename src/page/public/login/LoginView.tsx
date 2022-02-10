@@ -6,22 +6,23 @@ import Layout from "components/Layout";
 import Loading from "components/Loading";
 import React from "react";
 import { Link } from "react-router-dom";
+import { ILogin } from "./type";
 
-const LoginView: React.FC<any> = (props) => {
-    const { isLoading, handleForm, errorInputMessage, Login } = props;
+const LoginView: React.FC<ILogin> = (props) => {
+    const { isLoading, handleChange, errorInputMessage, login } = props;
     return (
         <Layout themeSwitch={false}>
             <FormGeneric title="Login" widthModal="25rem" isHeaderActive={true} isActiveBack={true}>
-                <form method="POST" onSubmit={Login} >
+                <form method="POST" onSubmit={login} >
                     <Input
                         typeInput="email"
                         name="email"
                         label="Email"
                         id="email"
-                        onChange={handleForm}
+                        onChange={handleChange}
                         erroMessage={
-                            errorInputMessage.map((errorResponse: IErrorInputMessage) => (
-                                errorResponse.param === "email" ? errorResponse.msg : ""
+                            errorInputMessage.map((errorInputResponse: IErrorInputMessage) => (
+                                errorInputResponse.param === "email" ? errorInputResponse.msg : ""
                             ))
                         }
                     />
@@ -30,10 +31,10 @@ const LoginView: React.FC<any> = (props) => {
                         name="password"
                         label="Password"
                         id="password"
-                        onChange={handleForm}
+                        onChange={handleChange}
                         erroMessage={
-                            errorInputMessage.map((errorResponse: IErrorInputMessage) => (
-                                errorResponse.param === "password" ? errorResponse.msg : ""
+                            errorInputMessage.map((errorInputResponse: IErrorInputMessage) => (
+                                errorInputResponse.param === "password" ? errorInputResponse.msg : ""
                             ))
                         }
                     />

@@ -7,31 +7,27 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import apiMyNotes from "service/apiMyNotes";
 import LoginView from "./LoginView";
-import { ILoginResponse, ILoginInputs } from "./type";
+import { ILoginResponse, ILoginInputs, ILogin } from "./type";
 
-const LOGIN_FIELDS_INITIAL_STATE = { email: "", password: "" };
+const LOGIN_INPUTS_INITIAL_STATE: ILoginInputs = { email: "", password: "" };
 
-const Login: React.FC = () => {
+const Login: React.FC<ILogin> = () => {
     const history = useHistory();
     const dispatch = useDispatch();
 
     const { setAuthenticated, setUserData } = useContext(AuthContext);
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [errorInputMessage, setErrorInputMessage] = useState<IErrorInputMessage[]>([])
-    const [loginInputs, setLoginInputs] = useState<ILoginInputs>(LOGIN_FIELDS_INITIAL_STATE);
+    const [errorInputMessage, setErrorInputMessage] = useState<IErrorInputMessage[]>([]);
+    const [loginInputs, setLoginInputs] = useState<ILoginInputs>(LOGIN_INPUTS_INITIAL_STATE);
 
-    const handleForm = (e: ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const name = e.target.name;
         const value = e.target.value;
-
-        setLoginInputs({
-            ...loginInputs,
-            [name]: value
-        })
+        setLoginInputs({ ...loginInputs, [name]: value });
     }
 
-    const Login = async (e: FormEvent<HTMLFormElement>) => {
+    const login = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setErrorInputMessage([]);
         setIsLoading(true);
@@ -63,7 +59,7 @@ const Login: React.FC = () => {
         }
     }
 
-    return <LoginView {... { isLoading, handleForm, errorInputMessage, Login }} />
+    return <LoginView {... { isLoading, handleChange, errorInputMessage, login }} />
 }
 
 export default Login;
