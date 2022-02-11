@@ -1,22 +1,18 @@
+import { IErrorInputMessage } from "common/types/ErrorResponse";
 import { ChangeEvent, FormEvent } from "react";
 
 export interface Params {
     token: string;
 }
 
-export interface MessageTokenError {
-    err: {
-        message: string;
-    }
+export interface INewPasswordInputs {
+    password: string;
 }
 
-export interface IResetPasswordView {
+export interface IResetPassword {
     resetPasswordSuccessfully: boolean;
     isLoading: boolean;
-    alertMessage: string;
-    errorMessage: {
-        message_erro_input_password: string;
-    }
+    errorInputMessage: IErrorInputMessage[];
     handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
-    ResetPasswordRequest: (e: FormEvent<HTMLFormElement>) => void;
+    resetPassword: (e: FormEvent<HTMLFormElement>) => void;
 }

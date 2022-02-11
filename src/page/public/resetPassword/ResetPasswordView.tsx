@@ -2,20 +2,18 @@ import Button from "components/Button";
 import Input from "components/FormFields/Input";
 import FormGeneric from "components/FormGeneric";
 import Layout from "components/Layout";
-import MessageFormError from "components/MessageFormError";
 import React from "react";
 import { Link } from "react-router-dom";
 import { SendingMessage } from "./styled";
-import { IResetPasswordView } from "./types";
+import { IResetPassword } from "./types";
 
-const ResetPasswordView: React.FC<IResetPasswordView> = (props) => {
+const ResetPasswordView: React.FC<IResetPassword> = (props) => {
     const {
         resetPasswordSuccessfully,
-        alertMessage,
-        errorMessage,
+        errorInputMessage,
         handleChange,
         isLoading,
-        ResetPasswordRequest
+        resetPassword
     } = props;
     return (
         <Layout themeSwitch={false}>
@@ -24,15 +22,14 @@ const ResetPasswordView: React.FC<IResetPasswordView> = (props) => {
                 {!resetPasswordSuccessfully ? (
                     <>
                         <p>Enter your new password with at least 8 characters</p>
-                        <MessageFormError message={alertMessage} />
-                        <form method="post" onSubmit={ResetPasswordRequest}>
+                        <form method="post" onSubmit={resetPassword}>
                             <Input
                                 id="password"
                                 label="New password"
                                 name="password"
                                 typeInput="password"
                                 onChange={handleChange}
-                                erroMessage={errorMessage.message_erro_input_password}
+                                erroMessage={errorInputMessage.length > 0 ? errorInputMessage[0].msg : ""}
                             />
                             <Button title="Save" type="submit" isLoading={isLoading} />
                         </form>
@@ -47,7 +44,6 @@ const ResetPasswordView: React.FC<IResetPasswordView> = (props) => {
                         </Link>
                     </SendingMessage>
                 )}
-
             </FormGeneric>
         </Layout>
     )

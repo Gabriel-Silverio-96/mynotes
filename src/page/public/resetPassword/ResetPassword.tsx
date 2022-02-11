@@ -1,65 +1,51 @@
-import { AxiosError } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
+import { snackBar } from "common/store/snackBar/snackBar.action";
+import { IDataErrorResponse, IDataMessageResponse, IErrorInputMessage } from "common/types/ErrorResponse";
 import React, { ChangeEvent, FormEvent, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router";
 import apiMyNotes from "service/apiMyNotes";
 import ResetPasswordView from "./ResetPasswordView";
-import { MessageTokenError, Params } from "./types";
+import { INewPasswordInputs, Params } from "./types";
+
+const RESET_PASSWORD_INPUTS_INITIAL_STATE: INewPasswordInputs = { password: "" };
 
 const ResetPassword: React.FC = () => {
+    const dispatch = useDispatch();
     const { token } = useParams<Params>();
+
     const [resetPasswordSuccessfully, setResetPasswordSuccessfully] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [alertMessage, setAlertMessage] = useState<string>("");
-
-    const [newPassword, setNewPassword] = useState({
-        password: ""
-    })
-
-    const [errorMessage, setErrorMessage] = useState({
-        message_erro_input_password: "",
-    })
+    const [newPassword, setNewPassword] = useState<INewPasswordInputs>(RESET_PASSWORD_INPUTS_INITIAL_STATE);
+    const [errorInputMessage, setErrorInputMessage] = useState<IErrorInputMessage[]>([]);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
-        setNewPassword({
-            password: value
-        })
+        setNewPassword({ password: value });
     }
 
-    const ResetPasswordRequest = async (e: FormEvent<HTMLFormElement>) => {
+    const resetPassword = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setErrorMessage({
-            message_erro_input_password: ""
-        })
-        setAlertMessage("")
+        setErrorInputMessage([]);
+        setIsLoading(true);
+
         try {
-            setIsLoading(true);
-            const { status } = await apiMyNotes.post(`auth/reset-password/token=${token}`, newPassword);
-            if (status === 200) {
-                setResetPasswordSuccessfully(prevState => !prevState);
-                setIsLoading(false);
-            }
-
-        } catch (error) {
+            const { data } = await apiMyNotes.post(`auth/reset-password/token=${token}`, newPassword) as AxiosResponse<IDataMessageResponse>;
+            setResetPasswordSuccessfully(prevState => !prevState);
             setIsLoading(false);
-            const errorLog = error as AxiosError;
-            const status = errorLog.response!.status;
+            dispatch(snackBar(true, data.message, data.type_message));
+        } catch (err) {
+            const error = err as AxiosError;
+            const { status, data } = error.response as AxiosResponse<IDataErrorResponse>;
 
-            if (status === 400 || status === 422) {
-                const { message_erro_input_password } = errorLog.response!.data;
-                setErrorMessage({
-                    message_erro_input_password
-                })
-            }
+            if (status === 400) setErrorInputMessage(data.errors);
+            if (status === 403 || status === 500) dispatch(snackBar(true, data.message, data.type_message));
 
-            if (status === 500) {
-                const messageTokenError = errorLog.response!.data as MessageTokenError;
-                setAlertMessage(messageTokenError.err.message);
-            }            
+            return setIsLoading(false);
         }
     }
 
-    return <ResetPasswordView {... { resetPasswordSuccessfully, alertMessage, errorMessage, handleChange, isLoading, ResetPasswordRequest }} />
+    return <ResetPasswordView {... { resetPasswordSuccessfully, errorInputMessage, handleChange, isLoading, resetPassword }} />
 }
 
 export default ResetPassword;
