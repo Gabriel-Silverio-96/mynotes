@@ -2,9 +2,9 @@ import React from "react";
 import { DialogForm } from "./styled";
 import { IDialogForm } from "./types";
 
-const DialogFormView: React.FC<IDialogForm> = ({ method, children }) => {
+const DialogFormView: React.FC<IDialogForm> = ({ method, onSubmit, children }) => {
     return (
-        <DialogForm {...{ method }}>
+        <DialogForm {...{ method, onSubmit }}>
             {children}
         </DialogForm>
     )
