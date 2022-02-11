@@ -7,9 +7,9 @@ import DialogFormField from "components/DialogFormField";
 import React from "react";
 import { IDialogCreateNote } from "./types";
 
-const DialogCreateNoteView: React.FC<IDialogCreateNote> = ({ onClose, handleChange, onSubmit }) => {
+const DialogCreateNoteView: React.FC<IDialogCreateNote> = ({ open, onClose, handleChange, onSubmit }) => {
     return (
-        <Dialog open>
+        <Dialog open={open}>
             <DialogTitle onClick={onClose}>
                 <h2>Create Note</h2>
             </DialogTitle>
