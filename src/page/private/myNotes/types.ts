@@ -1,5 +1,21 @@
+import { INote } from "common/types/_MyNotes/notes";
 import { ModalDeleteProps } from "provider/types";
 import { ChangeEvent, FormEvent } from "react";
+
+export interface INoteList extends INote {
+    created_at?: string;
+}
+
+export interface INoteListData {
+    list_notes: INoteList[] | [];
+    status: number;
+}
+
+
+
+
+
+
 
 export interface NoteProps {
     id: number;

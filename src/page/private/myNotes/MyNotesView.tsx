@@ -6,10 +6,13 @@ import ModalMain from "components/ModalMain";
 import NoNotes from "components/NoNotes";
 import NoteCard from "components/NoteCard";
 import React from "react";
+import DialogCreateNote from "./DialogCreateNote";
+import DialogDeleteNote from "./DialogDeleteNote";
+import DialogDelete from "./DialogDeleteNote";
 import { NoteCardWrapper } from "./styled";
 import { IMyNotes, NotesListProps } from "./types";
 
-const MyNotesPageView: React.FC<IMyNotes> = (props) => {
+const MyNotesPageView: React.FC<any> = (props) => {
     const {
         noNotesCreated,
         showModalDelete,
@@ -24,17 +27,41 @@ const MyNotesPageView: React.FC<IMyNotes> = (props) => {
         isLoadingDelete,
         deleteThisNote,
         deleteAllNotes,
-        isLoading,
-        notesList,
-        showModalViewEditNote
+        showModalViewEditNote,
+
+        noteList,
+        isLoadingNote,
+
+        isOpenDialogCreateNote,
+        openDialogCreateNote,
+        closeDialogCreateNote,
+        handleChangeCreateNote,
+        createNoteSubmit,
+
+        errorInputMessage,
+        isLoadingRequest
+
     } = props
+
     return (
         <Layout>
             <Header
                 thereAreNotes={noNotesCreated}
                 showModalDeleteAllNote={() => showModalDelete("deleteAll")}
                 isActiveNav={true}
+                openDialogCreateNote={openDialogCreateNote}
             />
+
+            <DialogCreateNote 
+                open={isOpenDialogCreateNote}
+                onClose={closeDialogCreateNote}
+                onSubmit={createNoteSubmit}
+                handleChange={handleChangeCreateNote}
+                errorInputMessage={errorInputMessage}
+                isLoading={isLoadingRequest}
+            />
+
+            <DialogDeleteNote />
 
             {
                 modalState && (
@@ -73,12 +100,12 @@ const MyNotesPageView: React.FC<IMyNotes> = (props) => {
             }
 
             <div style={{ marginBottom: "1rem" }}>
-                <Loading isLoading={isLoading} messageLoading="Loading" />
+                <Loading isLoading={isLoadingNote} messageLoading="Loading" />
             </div>
 
             <NoteCardWrapper>
-                {notesList.length > 0 && !noNotesCreated &&
-                    notesList.map((note: NotesListProps) => (
+                {noteList.length > 0 && !noNotesCreated &&
+                    noteList.map((note: NotesListProps) => (
                         <NoteCard
                             key={note.note_id}
                             id={note.note_id}
@@ -90,7 +117,7 @@ const MyNotesPageView: React.FC<IMyNotes> = (props) => {
                         />
                     ))}
 
-                {noNotesCreated && !isLoading && <NoNotes />}
+                {noNotesCreated && !isLoadingNote && <NoNotes />}
 
             </NoteCardWrapper>
         </Layout>

@@ -1,5 +1,8 @@
-import { AxiosError } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 import { snackBar } from "common/store/snackBar/snackBar.action";
+import { IDataErrorResponse, IErrorInputMessage } from "common/types/ErrorResponse";
+import { ISnackBarResponse } from "common/types/SnackBar";
+import { INote } from "common/types/_MyNotes/notes";
 import { ContextGlobal } from "provider/context";
 import { ContextGlobalProps } from "provider/types";
 import React, { ChangeEvent, FormEvent, useContext, useEffect, useState } from "react";
@@ -7,10 +10,76 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import apiMyNotes from "service/apiMyNotes";
 import MyNotesPageView from "./MyNotesView";
-import { IMyNotes, InputRequiredProps, NotesListProps, RequestDeleteProps, RequestProps } from "./types";
+import { INoteList, INoteListData, InputRequiredProps, NotesListProps, RequestDeleteProps } from "./types";
 
-const MyNotesPage: React.FC<IMyNotes> = () => {
+const CREATE_NOTE_INITIAL_STATE = { color_note: "#9C10FF", title_note: "", observation: "" };
+
+const MyNotesPage: React.FC = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
+
+    const [noteList, setNoteList] = useState([] as INoteList[]);
+    const [noNotesCreated, setNoNotesCreated] = useState<boolean>(true);
+
+    const [isLoadingNote, setIsLoadingNotes] = useState<boolean>(true);
+    const [isLoadingRequest, setIsLoadingRequest] = useState<boolean>(false);
+    const [errorInputMessage, setErrorInputMessage] = useState<IErrorInputMessage[]>([]);
+
+    const [isOpenDialogCreateNote, setOpenDialogCreateNote] = useState<boolean>(false);
+    const openDialogCreateNote = () => setOpenDialogCreateNote((prevState: boolean) => !prevState);
+    const closeDialogCreateNote = () => setOpenDialogCreateNote((prevState: boolean) => !prevState);
+
+    useEffect(() => {
+        const getNoteList = async () => {
+            setIsLoadingNotes(true);
+            try {
+                const { data } = await apiMyNotes.get("notes/list") as AxiosResponse<INoteListData>;
+                if (data.list_notes.length > 0) {
+                    setNoteList(data.list_notes);
+                    setNoNotesCreated(false);
+                }
+
+                return (setIsLoadingNotes(false), setNoNotesCreated(false))
+            } catch (err) {
+                const error = err as AxiosError;
+                const { data } = error.response as AxiosResponse<IDataErrorResponse>;
+                setIsLoadingNotes(false);
+                return dispatch(snackBar(true, data.message, data.type_message));
+            }
+        };
+
+        getNoteList();
+    }, [dispatch, isLoadingRequest]);
+
+    const handleChangeCreateNote = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setCreateNote({
+            ...createNote,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const [createNote, setCreateNote] = useState<INote>(CREATE_NOTE_INITIAL_STATE);
+    const createNoteSubmit = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setErrorInputMessage([]);
+        setIsLoadingRequest(true);
+        try {
+            const { data } = await apiMyNotes.post("notes/create", createNote) as AxiosResponse<ISnackBarResponse>;
+            dispatch(snackBar(true, data.message, data.type_message));
+            setIsLoadingRequest(false);
+            setOpenDialogCreateNote((prevState: boolean) => !prevState);
+        } catch (err) {
+            const error = err as AxiosError;
+            const { status, data } = error.response as AxiosResponse<IDataErrorResponse>;
+
+            if (status === 400) setErrorInputMessage(data.errors);
+            if (status === 403 || status === 500) dispatch(snackBar(true, data.message, data.type_message));
+
+            return setIsLoadingRequest(false);
+        } finally {
+            setIsLoadingRequest(false);
+        }
+    }
 
     const {
         modalState,
@@ -21,14 +90,10 @@ const MyNotesPage: React.FC<IMyNotes> = () => {
         setModalViewEditNote,
     } = useContext<ContextGlobalProps>(ContextGlobal);
 
-    const history = useHistory();
 
-    const [notesList, setNoteList] = useState([] as NotesListProps[]);
     const [noteIdSelected, setNoteIdSelected] = useState<string>("");
     const [noteEditData, setNoteEditData] = useState({} as NotesListProps);
-    const [refreshRequest, setRefreshRequest] = useState<boolean>(true);
-    const [noNotesCreated, setNoNotesCreated] = useState<boolean>(true);
-    const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [refreshRequest, setRefreshRequest] = useState<boolean>(false);
     const [isLoadingSaveEdit, setIsLoadingSaveEdit] = useState<boolean>(false);
     const [isLoadingDelete, setIsLoadingDelete] = useState<boolean>(false);
 
@@ -43,42 +108,42 @@ const MyNotesPage: React.FC<IMyNotes> = () => {
     }
     const [newNote, setNewNote] = useState<NotesListProps>(newNoteInitialState);
 
-    useEffect(() => {
-        const request = async () => {
-            setIsLoading(true);
-            try {
-                const { status, data } = await apiMyNotes.get("notes/list") as RequestProps;
-                if (status === 200 && data.list_notes.length > 0) {
-                    setNoteList(data.list_notes);
-                    setNoNotesCreated(false);
-                } else {
-                    setNoNotesCreated(true);
-                }
-            } catch (error) {
-                const errorMessage = error as AxiosError;
-                //@ts-ignore
-                const message = errorMessage.response!.data.message;
-                dispatch(snackBar(true, `Error: ${message}`, "error"));
-                const status = errorMessage.response!.status;
+    // useEffect(() => {
+    //     const request = async () => {
+    //         setIsLoading(true);
+    //         try {
+    //             const { status, data } = await apiMyNotes.get("notes/list") as RequestProps;
+    //             if (status === 200 && data.list_notes.length > 0) {
+    //                 setNotesList(data.list_notes);
+    //                 setNoNotesCreated(false);
+    //             } else {
+    //                 setNoNotesCreated(true);
+    //             }
+    //         } catch (error) {
+    //             const errorMessage = error as AxiosError;
+    //             //@ts-ignore
+    //             const message = errorMessage.response!.data.message;
+    //             dispatch(snackBar(true, `Error: ${message}`, "error"));
+    //             const status = errorMessage.response!.status;
 
-                if (status === 401) {
-                    localStorage.removeItem("token");
-                    apiMyNotes.defaults.headers!.Authorization = "";
-                    history.push("/");
-                }
+    //             if (status === 401) {
+    //                 localStorage.removeItem("token");
+    //                 apiMyNotes.defaults.headers!.Authorization = "";
+    //                 history.push("/");
+    //             }
 
-                if (status === 500) {
-                    history.push("/");
-                }
-                console.error(error);
-            }
+    //             if (status === 500) {
+    //                 history.push("/");
+    //             }
+    //             console.error(error);
+    //         }
 
-            return setTimeout(() => setIsLoading(false), 500)
-        }
-        request()
+    //         return setTimeout(() => setIsLoading(false), 500)
+    //     }
+    //     request()
 
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [history, refreshRequest, noNotesCreated])
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [history, refreshRequest, noNotesCreated])
 
     useEffect(() => {
         setInputRequired({
@@ -170,7 +235,7 @@ const MyNotesPage: React.FC<IMyNotes> = () => {
             message_erro_input_required: ""
         })
 
-        notesList.filter((note: NotesListProps) => {
+        noteList.filter((note: NotesListProps) => {
             if (note.note_id === noteId) {
                 setNoteEditData(note);
             }
@@ -271,9 +336,20 @@ const MyNotesPage: React.FC<IMyNotes> = () => {
             isLoadingDelete,
             deleteThisNote,
             deleteAllNotes,
-            isLoading,
-            notesList,
-            showModalViewEditNote
+            setNoNotesCreated,
+            showModalViewEditNote,
+
+            noteList,
+            isLoadingNote,
+
+            isOpenDialogCreateNote,
+            openDialogCreateNote,
+            closeDialogCreateNote,
+            handleChangeCreateNote,
+            createNoteSubmit,
+
+            errorInputMessage,
+            isLoadingRequest
         }} />
     )
 }
