@@ -1,10 +1,11 @@
 import React from "react";
+import { DialogBody } from "./styled";
 
 const DialogBodyView: React.FC = ({ children }) => {
     return (
-        <div aria-label="dialog-body">
+        <DialogBody aria-label="dialog-body">
             {children}
-        </div>
+        </DialogBody>
     )
 }
 
