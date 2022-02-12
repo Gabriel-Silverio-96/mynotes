@@ -11,6 +11,10 @@ export interface INoteListData {
     status: number;
 }
 
+export interface IOpenDialogDeleteNote {
+    delete_just_one_note: boolean;
+    open: boolean;
+}
 
 
 
