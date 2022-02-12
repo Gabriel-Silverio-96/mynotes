@@ -23,7 +23,7 @@ const MyNotesPageView: React.FC<any> = (props) => {
         errorInputMessage,
         isLoadingRequest,
 
-        isOpenDialogDeleteNote,
+        isOpenDialogDeleteThisNote,
         openDialogDeleteThisNote,
         closeDialogDeleteThisNote
 
@@ -47,7 +47,7 @@ const MyNotesPageView: React.FC<any> = (props) => {
             />
 
             <DialogDeleteNote
-                open={isOpenDialogDeleteNote.open}
+                open={isOpenDialogDeleteThisNote}
                 onClose={closeDialogDeleteThisNote}
             />
 

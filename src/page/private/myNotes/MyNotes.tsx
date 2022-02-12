@@ -4,7 +4,7 @@ import { IDataErrorResponse } from "common/types/ErrorResponse";
 import React, { ChangeEvent, useContext, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import apiMyNotes from "service/apiMyNotes";
-import { ContextMyNotes, DIALOG_DELETE_NOTE_INITIAL_STATE } from "./Context/MyNotes";
+import { ContextMyNotes } from "./Context/MyNotes";
 import MyNotesPageView from "./MyNotesView";
 import { INoteList, INoteListData } from "./types";
 
@@ -16,15 +16,15 @@ const MyNotesPage: React.FC = () => {
         setNoNotesCreated,
         isLoadingRequest,
         noNotesCreated,
-        isOpenDialogDeleteNote,
-        setOpenDialogDeleteNote,
+        isOpenDialogDeleteThisNote,
+        setOpenDialogDeleteThisNote,
         isOpenDialogCreateNote,
         setOpenDialogCreateNote, 
         noteIdSelected, 
         setNoteIdSelected,
         refreshRequest,
-    } = useContext(ContextMyNotes);
-
+    } = useContext(ContextMyNotes);    
+    
     useEffect(() => {
         const getNoteList = async () => {
             setIsLoadingNotes(true);
@@ -33,9 +33,10 @@ const MyNotesPage: React.FC = () => {
                 if (data.list_notes.length > 0) {
                     setNoteList(data.list_notes);
                     setNoNotesCreated(false);
-                }
-
-                return (setIsLoadingNotes(false), setNoNotesCreated(false))
+                } else {                    
+                    setNoNotesCreated(true);
+                }                       
+                return setIsLoadingNotes(false);
             } catch (err) {
                 const error = err as AxiosError;
                 const { data } = error.response as AxiosResponse<IDataErrorResponse>;
@@ -52,12 +53,12 @@ const MyNotesPage: React.FC = () => {
 
     const openDialogDeleteThisNote = (noteId: string) => {
         setNoteIdSelected(noteId);
-        setOpenDialogDeleteNote({ ...DIALOG_DELETE_NOTE_INITIAL_STATE, open: true });
+        setOpenDialogDeleteThisNote((prevState: boolean) => !prevState);
     }
 
     const closeDialogDeleteThisNote = () => {
         setNoteIdSelected("");
-        setOpenDialogDeleteNote({ ...DIALOG_DELETE_NOTE_INITIAL_STATE, open: false });
+        setOpenDialogDeleteThisNote((prevState: boolean) => !prevState);
     }
 
     const openDialogCreateNote = () => setOpenDialogCreateNote((prevState: boolean) => !prevState);
@@ -86,7 +87,7 @@ const MyNotesPage: React.FC = () => {
 
             isLoadingRequest,
 
-            isOpenDialogDeleteNote,
+            isOpenDialogDeleteThisNote,
             openDialogDeleteThisNote,
             closeDialogDeleteThisNote
         }} />
