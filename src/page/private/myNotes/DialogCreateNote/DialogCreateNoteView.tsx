@@ -1,13 +1,16 @@
+import { IErrorInputMessage } from "common/types/ErrorResponse";
 import Button from "components/Button";
 import Dialog from "components/Dialog";
 import DialogAction from "components/Dialog/DialogAction";
 import DialogForm from "components/Dialog/DialogForm";
 import DialogTitle from "components/Dialog/DialogTitle";
 import DialogFormField from "components/DialogFormField";
+import Input from "components/FormFields/Input";
 import React from "react";
 import { IDialogCreateNote } from "./types";
 
-const DialogCreateNoteView: React.FC<IDialogCreateNote> = ({ open, onClose, handleChange, onSubmit }) => {
+const DialogCreateNoteView: React.FC<IDialogCreateNote> = (props) => {
+    const { open, onClose, handleChange, errorInputMessage, onSubmit, isLoading } = props;
     return (
         <Dialog open={open}>
             <DialogTitle onClick={onClose}>
@@ -16,12 +19,17 @@ const DialogCreateNoteView: React.FC<IDialogCreateNote> = ({ open, onClose, hand
 
             <DialogForm method="post" onSubmit={onSubmit}>
                 <DialogFormField>
-                    <label htmlFor="title_note">Title note</label>
-                    <input
-                        type="text"
+                    <Input
+                        label="Title note"
+                        typeInput="text"
                         name="title_note"
                         id="title_note"
                         onChange={handleChange}
+                        erroMessage={
+                            errorInputMessage.map((errorInputMessage: IErrorInputMessage) => (
+                                errorInputMessage.param === "title_note" ? errorInputMessage.msg : ""
+                            ))
+                        }
                     />
                     <span></span>
                 </DialogFormField>
@@ -34,11 +42,15 @@ const DialogCreateNoteView: React.FC<IDialogCreateNote> = ({ open, onClose, hand
                         maxLength={500}
                         onChange={handleChange}
                     />
-                    <span></span>
+                    <span>
+                        {errorInputMessage.map((errorInputMessage: IErrorInputMessage) => (
+                            errorInputMessage.param === "observation" ? errorInputMessage.msg : ""
+                        ))}
+                    </span>
                 </DialogFormField>
                 <DialogAction>
-                    <Button title="Close" onClick={onClose} variant="secondary"/>
-                    <Button title="Save" variant="primary" />
+                    <Button title="Close" onClick={onClose} variant="secondary" disabled={isLoading} />
+                    <Button title="Save" variant="primary" isLoading={isLoading} messageLoading="Saving"/>
                 </DialogAction>
             </DialogForm>
         </Dialog>
