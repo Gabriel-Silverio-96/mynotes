@@ -1,31 +1,19 @@
-import React, { useCallback, useContext } from "react";
-import { Link } from "react-router-dom";
-
-import { AuthContext } from "provider/authContext";
-import { ContextGlobalProps } from "provider/types";
-
-import light from "assets/styles/themes/light";
 import dark from "assets/styles/themes/dark";
-
-//Components
-import Logo from "components/Logo";
-import { FiSun, FiMoon, FiTrash2 } from "react-icons/fi";
+import light from "assets/styles/themes/light";
 import Button from "components/Button";
-import { ContextGlobal } from "provider/context";
 import DropdownHeader from "components/DropdownHeader";
-
+import Logo from "components/Logo";
+import { AuthContext } from "provider/authContext";
+import React, { useCallback, useContext } from "react";
+import { FiMoon, FiSun, FiTrash2 } from "react-icons/fi";
+import { Link } from "react-router-dom";
+import useThemeStorage from "util/useThemeStorage";
 import { HeaderContainer } from "./styled";
 import { HeaderProps } from "./types";
-import useThemeStorage from "util/useThemeStorage";
 
-const Header: React.FC<HeaderProps> = React.memo(({ themeTitle, thereAreNotes, showModalDeleteAllNote, isActiveNav }) => {
-    const { setModalState, setModalViewEditNote, modalState } = useContext<ContextGlobalProps>(ContextGlobal);
+const Header: React.FC<HeaderProps> = React.memo((props) => {
+    const { openDialogCreateNote, thereAreNotes, showModalDeleteAllNote, isActiveNav } = props;
     const { authenticated } = useContext(AuthContext);
-
-    const showModal = () => {
-        setModalState(!modalState);
-        setModalViewEditNote(false);
-    }
 
     const [theme, setTheme] = useThemeStorage("theme", dark);
     const toggleTheme = useCallback(() => {
@@ -35,7 +23,7 @@ const Header: React.FC<HeaderProps> = React.memo(({ themeTitle, thereAreNotes, s
     return (
         <HeaderContainer>
             <Link to={authenticated ? "/mynotes" : "/"}>
-                <Logo themeTitle={theme.title} responsive/>
+                <Logo themeTitle={theme.title} responsive />
             </Link>
 
             {isActiveNav && (
@@ -57,10 +45,10 @@ const Header: React.FC<HeaderProps> = React.memo(({ themeTitle, thereAreNotes, s
 
                             <Button
                                 title="New Note"
-                                onClick={showModal}
+                                onClick={openDialogCreateNote}
                             />
 
-                            <DropdownHeader toggleTheme={toggleTheme}/>
+                            <DropdownHeader toggleTheme={toggleTheme} />
                         </>
                     ) : (
                         <>
