@@ -9,10 +9,10 @@ import { FiMoon, FiSun, FiTrash2 } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import useThemeStorage from "util/useThemeStorage";
 import { HeaderContainer } from "./styled";
-import { HeaderProps } from "./types";
+import { IHeader } from "./types";
 
-const Header: React.FC<HeaderProps> = React.memo((props) => {
-    const { openDialogCreateNote, thereAreNotes, showModalDeleteAllNote, isActiveNav } = props;
+const Header: React.FC<IHeader> = React.memo((props) => {
+    const { openDialogCreateNote, thereAreNotes, openDialogDeleteAllNotes, isActiveNav } = props;
     const { authenticated } = useContext(AuthContext);
 
     const [theme, setTheme] = useThemeStorage("theme", dark);
@@ -31,7 +31,7 @@ const Header: React.FC<HeaderProps> = React.memo((props) => {
                     {authenticated && document.location.pathname !== "/" ? (
                         <>
                             <Button
-                                onClick={showModalDeleteAllNote}
+                                onClick={openDialogDeleteAllNotes}
                                 disabled={thereAreNotes}
                                 variant="delete"
                                 iconButton={<FiTrash2 size={17.5} />}

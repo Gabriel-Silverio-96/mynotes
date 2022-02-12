@@ -1,7 +1,7 @@
-export interface HeaderProps {
+export interface IHeader {
     openDialogCreateNote?: () => void;
     themeTitle?: string;
     thereAreNotes?: boolean;
-    showModalDeleteAllNote?: () => void;
+    openDialogDeleteAllNotes?: () => void;
     isActiveNav: boolean;
 }
