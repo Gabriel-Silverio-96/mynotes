@@ -3,7 +3,9 @@ import { AuthContext } from "provider/authContext";
 import { Redirect, Route } from "react-router";
 
 interface CustomRouteProps {
-    isPrivate: boolean;
+    isPrivate?: boolean;
+    path?: string;
+    component: React.FC;
 }
 
 const CustomRoute:React.FC<CustomRouteProps> = ({ isPrivate, ...rest }) => {
