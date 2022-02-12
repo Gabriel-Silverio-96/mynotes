@@ -5,11 +5,12 @@ import NoNotes from "components/NoNotes";
 import NoteCard from "components/NoteCard";
 import React from "react";
 import DialogCreateNote from "./DialogCreateNote";
+import DialogDeleteAllNotes from "./DialogDeleteAllNotes";
 import DialogDeleteNote from "./DialogDeleteThisNote";
 import { NoteCardWrapper } from "./styled";
 import { NotesListProps } from "./types";
 
-const MyNotesPageView: React.FC<any> = (props) => {    
+const MyNotesPageView: React.FC<any> = (props) => {
     const {
         noNotesCreated,
         noteList,
@@ -25,7 +26,11 @@ const MyNotesPageView: React.FC<any> = (props) => {
 
         isOpenDialogDeleteThisNote,
         openDialogDeleteThisNote,
-        closeDialogDeleteThisNote
+        closeDialogDeleteThisNote,
+
+        isOpenDialogDeleteAllNotes,
+        openDialogDeleteAllNotes,
+        closeDialogDeleteAllNotes,
 
     } = props
 
@@ -33,7 +38,7 @@ const MyNotesPageView: React.FC<any> = (props) => {
         <Layout>
             <Header
                 thereAreNotes={noNotesCreated}
-                showModalDeleteAllNote={() => ""}
+                openDialogDeleteAllNotes={openDialogDeleteAllNotes}
                 isActiveNav={true}
                 openDialogCreateNote={openDialogCreateNote}
             />
@@ -49,6 +54,11 @@ const MyNotesPageView: React.FC<any> = (props) => {
             <DialogDeleteNote
                 open={isOpenDialogDeleteThisNote}
                 onClose={closeDialogDeleteThisNote}
+            />
+
+            <DialogDeleteAllNotes
+                open={isOpenDialogDeleteAllNotes}
+                onClose={closeDialogDeleteAllNotes}
             />
 
             <div style={{ marginBottom: "1rem" }}>

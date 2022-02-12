@@ -10,7 +10,7 @@ import { INoteList, INoteListData } from "./types";
 
 const MyNotesPage: React.FC = () => {
     const dispatch = useDispatch();
-    const { 
+    const {
         createNote,
         setCreateNote,
         setNoNotesCreated,
@@ -19,12 +19,14 @@ const MyNotesPage: React.FC = () => {
         isOpenDialogDeleteThisNote,
         setOpenDialogDeleteThisNote,
         isOpenDialogCreateNote,
-        setOpenDialogCreateNote, 
-        noteIdSelected, 
+        setOpenDialogCreateNote,
+        noteIdSelected,
         setNoteIdSelected,
         refreshRequest,
-    } = useContext(ContextMyNotes);    
-    
+        isOpenDialogDeleteAllNotes,
+        setOpenDialogDeleteAllNotes,
+    } = useContext(ContextMyNotes);
+
     useEffect(() => {
         const getNoteList = async () => {
             setIsLoadingNotes(true);
@@ -33,9 +35,9 @@ const MyNotesPage: React.FC = () => {
                 if (data.list_notes.length > 0) {
                     setNoteList(data.list_notes);
                     setNoNotesCreated(false);
-                } else {                    
+                } else {
                     setNoNotesCreated(true);
-                }                       
+                }
                 return setIsLoadingNotes(false);
             } catch (err) {
                 const error = err as AxiosError;
@@ -48,7 +50,7 @@ const MyNotesPage: React.FC = () => {
         getNoteList();
     }, [dispatch, setNoNotesCreated, refreshRequest]);
 
-    const [noteList, setNoteList] = useState([] as INoteList[]);    
+    const [noteList, setNoteList] = useState([] as INoteList[]);
     const [isLoadingNote, setIsLoadingNotes] = useState<boolean>(true);
 
     const openDialogDeleteThisNote = (noteId: string) => {
@@ -59,6 +61,14 @@ const MyNotesPage: React.FC = () => {
     const closeDialogDeleteThisNote = () => {
         setNoteIdSelected("");
         setOpenDialogDeleteThisNote((prevState: boolean) => !prevState);
+    }
+
+    const openDialogDeleteAllNotes = (noteId: string) => {
+        setOpenDialogDeleteAllNotes((prevState: boolean) => !prevState);
+    }
+
+    const closeDialogDeleteAllNotes = () => {
+        setOpenDialogDeleteAllNotes((prevState: boolean) => !prevState);
     }
 
     const openDialogCreateNote = () => setOpenDialogCreateNote((prevState: boolean) => !prevState);
@@ -89,7 +99,11 @@ const MyNotesPage: React.FC = () => {
 
             isOpenDialogDeleteThisNote,
             openDialogDeleteThisNote,
-            closeDialogDeleteThisNote
+            closeDialogDeleteThisNote,
+            
+            isOpenDialogDeleteAllNotes,
+            openDialogDeleteAllNotes,
+            closeDialogDeleteAllNotes,
         }} />
 
     )

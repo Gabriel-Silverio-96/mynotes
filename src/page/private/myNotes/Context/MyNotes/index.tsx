@@ -12,9 +12,12 @@ export const ContextMyNotesProvider = (props: any) => {
     const [errorInputMessage, setErrorInputMessage] = useState<IErrorInputMessage[]>([]);
     const [isLoadingRequest, setIsLoadingRequest] = useState<boolean>(false);
     const [noNotesCreated, setNoNotesCreated] = useState<boolean>(true);
-    const [isOpenDialogDeleteThisNote, setOpenDialogDeleteThisNote] = useState<boolean>(false);
+
     const [isOpenDialogCreateNote, setOpenDialogCreateNote] = useState<boolean>(false);
+    const [isOpenDialogDeleteThisNote, setOpenDialogDeleteThisNote] = useState<boolean>(false);
+    const [isOpenDialogDeleteAllNotes, setOpenDialogDeleteAllNotes] = useState<boolean>(false);
     const [noteIdSelected, setNoteIdSelected] = useState<string>("");
+
     const [refreshRequest, setRefreshRequest] = useState<boolean>(false);
 
     return (
@@ -32,10 +35,15 @@ export const ContextMyNotesProvider = (props: any) => {
                 isOpenDialogDeleteThisNote, 
                 setOpenDialogDeleteThisNote,
 
+                isOpenDialogDeleteAllNotes, 
+                setOpenDialogDeleteAllNotes,
+
                 isOpenDialogCreateNote,
                 setOpenDialogCreateNote,
+
                 noteIdSelected, 
                 setNoteIdSelected,
+
                 refreshRequest, 
                 setRefreshRequest
             }
