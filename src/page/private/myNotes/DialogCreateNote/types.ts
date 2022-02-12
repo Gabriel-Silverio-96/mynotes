@@ -5,7 +5,7 @@ export interface IDialogCreateNote {
     open: boolean;
     onClose: () => void;
     handleChange: () => void;
-    errorInputMessage: IErrorInputMessage[];
-    onSubmit: (e: FormEvent<HTMLFormElement>) => void;
     isLoading: boolean;
+    errorInputMessage: IErrorInputMessage[];
+    onSubmit?: (e: FormEvent<HTMLFormElement>) => void;
 }

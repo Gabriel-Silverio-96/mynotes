@@ -16,7 +16,6 @@ const DialogCreateNoteView: React.FC<IDialogCreateNote> = (props) => {
             <DialogTitle onClick={onClose}>
                 <h2>Create Note</h2>
             </DialogTitle>
-
             <DialogForm method="post" onSubmit={onSubmit}>
                 <DialogFormField>
                     <Input
@@ -26,12 +25,11 @@ const DialogCreateNoteView: React.FC<IDialogCreateNote> = (props) => {
                         id="title_note"
                         onChange={handleChange}
                         erroMessage={
-                            errorInputMessage.map((errorInputMessage: IErrorInputMessage) => (
+                            errorInputMessage!.map((errorInputMessage: IErrorInputMessage) => (
                                 errorInputMessage.param === "title_note" ? errorInputMessage.msg : ""
                             ))
                         }
                     />
-                    <span></span>
                 </DialogFormField>
                 <DialogFormField>
                     <label htmlFor="observation">Observation</label>
@@ -43,7 +41,7 @@ const DialogCreateNoteView: React.FC<IDialogCreateNote> = (props) => {
                         onChange={handleChange}
                     />
                     <span>
-                        {errorInputMessage.map((errorInputMessage: IErrorInputMessage) => (
+                        {errorInputMessage!.map((errorInputMessage: IErrorInputMessage) => (
                             errorInputMessage.param === "observation" ? errorInputMessage.msg : ""
                         ))}
                     </span>
