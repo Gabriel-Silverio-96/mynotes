@@ -3,7 +3,6 @@ import Button from "components/Button";
 import Input from "components/FormFields/Input";
 import FormGeneric from "components/FormGeneric";
 import Layout from "components/Layout";
-import Loading from "components/Loading";
 import React from "react";
 import { Link } from "react-router-dom";
 import { ILogin } from "./type";
@@ -39,7 +38,8 @@ const LoginView: React.FC<ILogin> = (props) => {
                         }
                     />
                     <Button
-                        title={isLoading ? <Loading isLoading={true} justIcon align="center" /> : "Sign in"}
+                        title="Sing in"
+                        isLoading={isLoading}
                         type="submit"
                         disabled={isLoading}
                     />
