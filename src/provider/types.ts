@@ -1,17 +1,6 @@
 import React from "react";
 import { DefaultTheme } from "styled-components";
 
-export interface ContextGlobalProps {
-    modalState: boolean;
-    setModalState: (b: boolean) => void;
-
-    modalDelete: ModalDeleteProps;
-    setModalDelete: (ModalDeleteProps: ModalDeleteProps) => void;
-
-    modalViewEditNote: boolean;
-    setModalViewEditNote: (b: boolean) => void;
-}
-
 export interface LoginFieldsProps {
     email: string;
     password: string;
@@ -27,11 +16,6 @@ export interface AuthContextProps {
     loading: boolean;
     userData: UserDataProps;
     setUserData: React.Dispatch<React.SetStateAction<UserDataProps>>;
-}
-
-export interface ModalDeleteProps {
-    modalType: "delete" | "deleteAll"
-    isActive: boolean;
 }
 
 export interface ContextThemeProps {
