@@ -6,7 +6,6 @@ import MyNotesPageView from "./MyNotesView";
 const MyNotesPage: React.FC = () => {
     const {
         openDialogCreateNote,
-        closeDialogCreateNote,
         openDialogDeleteThisNote,
         closeDialogDeleteThisNote,
         openDialogDeleteAllNotes,
@@ -16,16 +15,13 @@ const MyNotesPage: React.FC = () => {
     const {
         noNotesCreated,
         isOpenDialogDeleteThisNote,
-        isOpenDialogCreateNote,
         isOpenDialogDeleteAllNotes,
     } = useContext(ContextMyNotes);
 
     return (
         <MyNotesPageView {... {
             noNotesCreated,
-            isOpenDialogCreateNote,
             openDialogCreateNote,
-            closeDialogCreateNote,
             isOpenDialogDeleteThisNote,
             openDialogDeleteThisNote,
             closeDialogDeleteThisNote,

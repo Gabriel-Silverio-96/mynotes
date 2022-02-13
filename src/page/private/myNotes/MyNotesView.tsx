@@ -9,9 +9,7 @@ import NoteList from "./NoteList";
 const MyNotesPageView: React.FC<any> = (props) => {
     const {
         noNotesCreated,
-        isOpenDialogCreateNote,
         openDialogCreateNote,
-        closeDialogCreateNote,        
         isOpenDialogDeleteThisNote,
         closeDialogDeleteThisNote,
         isOpenDialogDeleteAllNotes,
@@ -28,10 +26,7 @@ const MyNotesPageView: React.FC<any> = (props) => {
                 openDialogCreateNote={openDialogCreateNote}
             />
 
-            <DialogCreateNote
-                open={isOpenDialogCreateNote}
-                onClose={closeDialogCreateNote}               
-            />
+            <DialogCreateNote />
 
             <DialogDeleteThisNote
                 open={isOpenDialogDeleteThisNote}
