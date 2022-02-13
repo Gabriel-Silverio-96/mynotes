@@ -3,7 +3,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { AuthProvider } from "./provider/authContext";
-import { ContextProvider } from "./provider/context";
 import Routes from "./routes";
 import { store } from "common/store";
 
@@ -12,9 +11,7 @@ ReactDOM.render(
     <Provider store={store}>
       <ThemeNameProvider>
         <AuthProvider>
-          <ContextProvider>
-            <Routes />
-          </ContextProvider>
+          <Routes />
         </AuthProvider>
       </ThemeNameProvider>
     </Provider>
