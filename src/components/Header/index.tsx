@@ -3,6 +3,8 @@ import light from "assets/styles/themes/light";
 import Button from "components/Button";
 import DropdownHeader from "components/DropdownHeader";
 import Logo from "components/Logo";
+import useDialogMynotes from "page/private/myNotes/common/hooks/useDialogMynotes";
+import { ContextMyNotes } from "page/private/myNotes/Context/MyNotes";
 import { AuthContext } from "provider/authContext";
 import React, { useCallback, useContext } from "react";
 import { FiMoon, FiSun, FiTrash2 } from "react-icons/fi";
@@ -11,9 +13,10 @@ import useThemeStorage from "util/useThemeStorage";
 import { HeaderContainer } from "./styled";
 import { IHeader } from "./types";
 
-const Header: React.FC<IHeader> = React.memo((props) => {
-    const { openDialogCreateNote, thereAreNotes, openDialogDeleteAllNotes, isActiveNav } = props;
+const Header: React.FC<IHeader> = React.memo(({ isActiveNav }) => {
     const { authenticated } = useContext(AuthContext);
+    const { noNotesCreated } = useContext(ContextMyNotes);
+    const { openDialogDeleteAllNotes, openDialogCreateNote } = useDialogMynotes();
 
     const [theme, setTheme] = useThemeStorage("theme", dark);
     const toggleTheme = useCallback(() => {
@@ -32,7 +35,7 @@ const Header: React.FC<IHeader> = React.memo((props) => {
                         <>
                             <Button
                                 onClick={openDialogDeleteAllNotes}
-                                disabled={thereAreNotes}
+                                disabled={noNotesCreated}
                                 variant="delete"
                                 iconButton={<FiTrash2 size={17.5} />}
                             />
