@@ -3,8 +3,8 @@ export interface NoteCardProps {
     colorNote: string;
     titleNote: string;
     observation: string;    
-    showModalDeleteThisNote: () => void;
-    viewEditNote: () => void;
+    openDialogDeleteThisNote: () => void;
+    editNote: () => void;
 }
 
 export interface NoteCardContainerProps {
