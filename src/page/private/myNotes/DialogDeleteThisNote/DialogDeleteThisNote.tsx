@@ -5,13 +5,16 @@ import { ISnackBarResponse } from "common/types/SnackBar";
 import React, { useContext } from "react";
 import { useDispatch } from "react-redux";
 import apiMyNotes from "service/apiMyNotes";
+import useDialogMynotes from "../common/hooks/useDialogMynotes";
 import { ContextMyNotes } from "../Context/MyNotes";
 import DialogDeleteNoteView from "./DialogDeleteThisNoteView";
-import { IDialogDeleteThisNote } from "./types";
 
-const DialogDeleteThisNote: React.FC<IDialogDeleteThisNote> = ({ open, onClose }) => {
+const DialogDeleteThisNote: React.FC = () => {
     const dispatch = useDispatch();
-    const { noteIdSelected, setOpenDialogDeleteThisNote, setRefreshRequest } = useContext(ContextMyNotes);
+    const { closeDialogDeleteThisNote } = useDialogMynotes();
+    const { noteIdSelected, setOpenDialogDeleteThisNote, setRefreshRequest, isOpenDialogDeleteThisNote } = useContext(ContextMyNotes);
+
+    const onClose = () => closeDialogDeleteThisNote();
 
     const deleteThisNote = async () => {
         try {
@@ -26,7 +29,7 @@ const DialogDeleteThisNote: React.FC<IDialogDeleteThisNote> = ({ open, onClose }
             return dispatch(snackBar(true, data.message, data.type_message));
         }
     }
-    return <DialogDeleteNoteView {... { open, onClose, deleteThisNote }} />
+    return <DialogDeleteNoteView {... { onClose, deleteThisNote }} open={isOpenDialogDeleteThisNote} />
 }
 
 export default DialogDeleteThisNote;

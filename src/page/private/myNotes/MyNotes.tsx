@@ -4,32 +4,15 @@ import { ContextMyNotes } from "./Context/MyNotes";
 import MyNotesPageView from "./MyNotesView";
 
 const MyNotesPage: React.FC = () => {
-    const {
-        openDialogCreateNote,
-        openDialogDeleteThisNote,
-        closeDialogDeleteThisNote,
-        openDialogDeleteAllNotes,
-        closeDialogDeleteAllNotes 
-    } = useDialogMynotes();
-    
-    const {
-        noNotesCreated,
-        isOpenDialogDeleteThisNote,
-        isOpenDialogDeleteAllNotes,
-    } = useContext(ContextMyNotes);
+    const { openDialogCreateNote, openDialogDeleteAllNotes } = useDialogMynotes();
+    const { noNotesCreated } = useContext(ContextMyNotes);
 
     return (
         <MyNotesPageView {... {
             noNotesCreated,
             openDialogCreateNote,
-            isOpenDialogDeleteThisNote,
-            openDialogDeleteThisNote,
-            closeDialogDeleteThisNote,
-            isOpenDialogDeleteAllNotes,
             openDialogDeleteAllNotes,
-            closeDialogDeleteAllNotes,
         }} />
-
     )
 }
 

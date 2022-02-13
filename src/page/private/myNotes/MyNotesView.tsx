@@ -10,11 +10,7 @@ const MyNotesPageView: React.FC<any> = (props) => {
     const {
         noNotesCreated,
         openDialogCreateNote,
-        isOpenDialogDeleteThisNote,
-        closeDialogDeleteThisNote,
-        isOpenDialogDeleteAllNotes,
         openDialogDeleteAllNotes,
-        closeDialogDeleteAllNotes,
     } = props;
 
     return (
@@ -27,16 +23,8 @@ const MyNotesPageView: React.FC<any> = (props) => {
             />
 
             <DialogCreateNote />
-
-            <DialogDeleteThisNote
-                open={isOpenDialogDeleteThisNote}
-                onClose={closeDialogDeleteThisNote}
-            />
-
-            <DialogDeleteAllNotes
-                open={isOpenDialogDeleteAllNotes}
-                onClose={closeDialogDeleteAllNotes}
-            />     
+            <DialogDeleteThisNote />
+            <DialogDeleteAllNotes />
 
             <NoteList />           
         </Layout>
