@@ -1,37 +1,25 @@
 import Header from "components/Header/index";
 import Layout from "components/Layout";
-import Loading from "components/Loading";
-import NoNotes from "components/NoNotes";
-import NoteCard from "components/NoteCard";
 import React from "react";
 import DialogCreateNote from "./DialogCreateNote";
 import DialogDeleteAllNotes from "./DialogDeleteAllNotes";
-import DialogDeleteNote from "./DialogDeleteThisNote";
-import { NoteCardWrapper } from "./styled";
-import { NotesListProps } from "./types";
+import DialogDeleteThisNote from "./DialogDeleteThisNote";
+import NoteList from "./NoteList";
 
 const MyNotesPageView: React.FC<any> = (props) => {
     const {
         noNotesCreated,
-        noteList,
-        isLoadingNote,
-
         isOpenDialogCreateNote,
         openDialogCreateNote,
         closeDialogCreateNote,
         handleChangeCreateNote,
-
         errorInputMessage,
         isLoadingRequest,
-
         isOpenDialogDeleteThisNote,
-        openDialogDeleteThisNote,
         closeDialogDeleteThisNote,
-
         isOpenDialogDeleteAllNotes,
         openDialogDeleteAllNotes,
         closeDialogDeleteAllNotes,
-
     } = props
 
     return (
@@ -51,7 +39,7 @@ const MyNotesPageView: React.FC<any> = (props) => {
                 isLoading={isLoadingRequest}
             />
 
-            <DialogDeleteNote
+            <DialogDeleteThisNote
                 open={isOpenDialogDeleteThisNote}
                 onClose={closeDialogDeleteThisNote}
             />
@@ -59,29 +47,9 @@ const MyNotesPageView: React.FC<any> = (props) => {
             <DialogDeleteAllNotes
                 open={isOpenDialogDeleteAllNotes}
                 onClose={closeDialogDeleteAllNotes}
-            />
+            />     
 
-            <div style={{ marginBottom: "1rem" }}>
-                <Loading isLoading={isLoadingNote} messageLoading="Loading" />
-            </div>
-
-            <NoteCardWrapper>
-                {noteList.length > 0 && !noNotesCreated &&
-                    noteList.map((note: NotesListProps) => (
-                        <NoteCard
-                            key={note.note_id}
-                            id={note.note_id}
-                            colorNote={note.color_note}
-                            titleNote={note.title_note}
-                            observation={note.observation}
-                            showModalDeleteThisNote={() => openDialogDeleteThisNote(note.note_id)}
-                            viewEditNote={() => ""}
-                        />
-                    ))}
-
-                {noNotesCreated && !isLoadingNote && <NoNotes />}
-
-            </NoteCardWrapper>
+            <NoteList />           
         </Layout>
     )
 }
