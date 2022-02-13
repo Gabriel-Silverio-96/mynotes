@@ -19,17 +19,16 @@ const NoteCard: React.FC<NoteCardProps> = (props) => {
                 </h3>
 
                 <NoteCardButton>
-
                     <Button
                         id={props.id}
-                        onClick={props.showModalDeleteThisNote}
+                        onClick={props.openDialogDeleteThisNote}
                         variant="delete"
                         size="small"
                         iconButton={<FiTrash2 size={15} />}
                     />
 
                     <Button
-                        onClick={props.viewEditNote}
+                        onClick={props.editNote}
                         size="small"
                         iconButton={<FiEye size={15} />}
                     />
@@ -45,7 +44,6 @@ const NoteCard: React.FC<NoteCardProps> = (props) => {
                     }
                 </p>
             </NoteCardBody>
-
         </NoteCardContainer>
     );
 }
