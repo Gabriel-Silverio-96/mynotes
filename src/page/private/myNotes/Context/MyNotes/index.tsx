@@ -1,12 +1,13 @@
 import { IErrorInputMessage } from "common/types/ErrorResponse";
 import { INote } from "common/types/_MyNotes/notes";
 import React, { createContext, useState } from "react";
+import { IContextMyNotes } from "./types";
 
-export const ContextMyNotes = createContext({} as any);
+export const ContextMyNotes = createContext({} as IContextMyNotes);
 
 export const CREATE_NOTE_INITIAL_STATE: INote = { color_note: "#9C10FF", title_note: "", observation: "" };
 
-export const ContextMyNotesProvider = (props: any) => {
+export const ContextMyNotesProvider: React.FC = ({ children }) => {
     const [createNote, setCreateNote] = useState<INote>(CREATE_NOTE_INITIAL_STATE);
     const [errorInputMessage, setErrorInputMessage] = useState<IErrorInputMessage[]>([]);
     const [isLoadingRequest, setIsLoadingRequest] = useState<boolean>(false);
@@ -24,31 +25,34 @@ export const ContextMyNotesProvider = (props: any) => {
             {
                 createNote,
                 setCreateNote,
+
                 errorInputMessage,
                 setErrorInputMessage,
+
                 isLoadingRequest,
                 setIsLoadingRequest,
+                
                 noNotesCreated,
                 setNoNotesCreated,
 
-                isOpenDialogDeleteThisNote, 
+                isOpenDialogDeleteThisNote,
                 setOpenDialogDeleteThisNote,
 
-                isOpenDialogDeleteAllNotes, 
+                isOpenDialogDeleteAllNotes,
                 setOpenDialogDeleteAllNotes,
 
                 isOpenDialogCreateNote,
                 setOpenDialogCreateNote,
 
-                noteIdSelected, 
+                noteIdSelected,
                 setNoteIdSelected,
 
-                refreshRequest, 
+                refreshRequest,
                 setRefreshRequest
             }
         }
         >
-            {props.children}
+            {children}
         </ContextMyNotes.Provider>
     )
 }
