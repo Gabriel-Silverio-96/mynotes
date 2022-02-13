@@ -7,12 +7,12 @@ import { LoadingWrapper, NoteList } from "./styled";
 import { INoteList } from "./types";
 
 const NoteListView: React.FC<INoteList> = (props) => {
-    const { notes, isLoadingNote, noNotesCreated, openDialogDeleteThisNote } = props;
+    const { notes, isLoading, noNotesCreated, openDialogDeleteThisNote } = props;
 
     return (
         <div>
             <LoadingWrapper>
-                <Loading isLoading={isLoadingNote} messageLoading="Loading" />
+                <Loading isLoading={isLoading} messageLoading="Loading" />
             </LoadingWrapper>
             <NoteList>
                 {notes.length > 0 && !noNotesCreated &&
@@ -28,7 +28,7 @@ const NoteListView: React.FC<INoteList> = (props) => {
                         />
                     ))}
             </NoteList>
-            {noNotesCreated && !isLoadingNote && <NoNotes />}
+            {noNotesCreated && !isLoading && <NoNotes />}
         </div>
     )
 }

@@ -2,7 +2,7 @@ import { INote } from "common/types/_MyNotes/notes";
 
 export interface INoteList {
     notes: INote[];
-    isLoadingNote: boolean;
+    isLoading: boolean;
     noNotesCreated: boolean;
     openDialogDeleteThisNote: (noteId: string) => void;
 }

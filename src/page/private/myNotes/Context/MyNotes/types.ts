@@ -1,16 +1,5 @@
-import { IErrorInputMessage } from "common/types/ErrorResponse";
-import { INote } from "common/types/_MyNotes/notes";
 
-export interface IContextMyNotes {
-    createNote: INote;
-    setCreateNote: React.Dispatch<React.SetStateAction<INote>>;
-
-    errorInputMessage: IErrorInputMessage[];
-    setErrorInputMessage: React.Dispatch<React.SetStateAction<IErrorInputMessage[]>>;
-
-    isLoadingRequest: boolean;
-    setIsLoadingRequest: React.Dispatch<React.SetStateAction<boolean>>;
-
+export interface IContextMyNotes { 
     noNotesCreated: boolean;
     setNoNotesCreated: React.Dispatch<React.SetStateAction<boolean>>;
 

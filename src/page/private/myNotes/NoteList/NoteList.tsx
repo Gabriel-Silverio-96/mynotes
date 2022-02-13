@@ -12,15 +12,15 @@ import { INoteListData } from "./types";
 
 const NoteList: React.FC = () => {
     const dispatch = useDispatch();
-    const { noNotesCreated, setNoNotesCreated, refreshRequest } = useContext(ContextMyNotes);
-    const { openDialogDeleteThisNote } = useDialogMynotes();
 
     const [notes, setNotes] = useState([] as INote[]);
-    const [isLoadingNote, setIsLoadingNotes] = useState<boolean>(true);
+    const { refreshRequest, noNotesCreated, setNoNotesCreated } = useContext(ContextMyNotes);
+    const { openDialogDeleteThisNote } = useDialogMynotes();
+    const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {
         const getNoteList = async () => {
-            setIsLoadingNotes(true);
+            setIsLoading(true);
             try {
                 const { data } = await apiMyNotes.get("notes/list") as AxiosResponse<INoteListData>;
                 if (data.list_notes.length > 0) {
@@ -29,11 +29,11 @@ const NoteList: React.FC = () => {
                 } else {
                     setNoNotesCreated(true);
                 }
-                return setIsLoadingNotes(false);
+                return setIsLoading(false);
             } catch (err) {
                 const error = err as AxiosError;
                 const { data } = error.response as AxiosResponse<IDataErrorResponse>;
-                setIsLoadingNotes(false);
+                setIsLoading(false);
                 return dispatch(snackBar(true, data.message, data.type_message));
             }
         };
@@ -41,7 +41,7 @@ const NoteList: React.FC = () => {
         getNoteList();
     }, [dispatch, setNoNotesCreated, refreshRequest]);
 
-    return <NoteListView {...{ notes, isLoadingNote, openDialogDeleteThisNote, noNotesCreated }} />
+    return <NoteListView {...{ notes, isLoading, openDialogDeleteThisNote, noNotesCreated }} />
 }
 
 export default NoteList;
