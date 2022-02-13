@@ -7,7 +7,7 @@ import React from "react";
 import { ICreateAccount } from "./types";
 
 const CreateAccountView: React.FC<ICreateAccount> = (props) => {
-    const { createAccount, handleChange, errorInputMessage } = props
+    const { createAccount, handleChange, errorInputMessage, isLoading } = props
     return (
         <Layout themeSwitch={false}>
             <FormGeneric
@@ -54,7 +54,7 @@ const CreateAccountView: React.FC<ICreateAccount> = (props) => {
                         }
                     />
 
-                    <Button type="submit" title="Create" />
+                    <Button title="Create" type="submit" isLoading={isLoading} />
                 </form>
             </FormGeneric>
         </Layout>

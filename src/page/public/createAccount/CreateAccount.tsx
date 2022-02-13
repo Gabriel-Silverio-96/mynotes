@@ -14,6 +14,7 @@ const CreateAccount: React.FC<ICreateAccount> = () => {
     const dispatch = useDispatch();
     const history = useHistory();
 
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     const [errorInputMessage, setErrorInputMessage] = useState<IErrorInputMessage[]>([]);
     const [userData, setUserData] = useState<IUserData>(USER_DATA_INPUTS_INITIAL_STATE);
 
@@ -26,27 +27,27 @@ const CreateAccount: React.FC<ICreateAccount> = () => {
     const createAccount = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setErrorInputMessage([]);
+        setIsLoading(true);
+        
         try {
             await apiMyNotes.post("/auth/create-account", userData);
-            history.push("/auth/login");
             dispatch(snackBar(true, "Account created successfully"));
+            setIsLoading(false);
+            return history.push("/auth/login");
         } catch (err) {
             const error = err as AxiosError;
             const { status, data } = error.response as AxiosResponse<IDataErrorResponse>;
-
-            if (status === 400) {
-                setErrorInputMessage(data.errors);
-            };
-
-            if (status === 403 || status === 500) {
-                dispatch(snackBar(true, data.message, data.type_message));
-            };
+                
+            if (status === 400) setErrorInputMessage(data.errors);
+            if (status === 403 || status === 500) dispatch(snackBar(true, data.message, data.type_message));
+            
+            return setIsLoading(false);
         }
     }
 
     return (
         <CreateAccountView
-            {...{ createAccount, errorInputMessage, handleChange }}
+            {...{ createAccount, errorInputMessage, handleChange, isLoading }}
         />
     )
 }
