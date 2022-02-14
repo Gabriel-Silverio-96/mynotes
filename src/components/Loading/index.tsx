@@ -3,11 +3,11 @@ import React, { memo } from "react";
 import { LoadingContainer, LoadingSvg } from "./styled";
 import { LoadingProps } from "./types";
 
-const Loading: React.FC<LoadingProps> = ({ isLoading, justIcon, align, messageLoading, size }) => {
+const Loading: React.FC<LoadingProps> = ({ isLoading, justIcon, align, messageLoading, size, className }) => {
     const sizeLoading = size ? size : 25;
 
     return (
-        <LoadingContainer isLoading={isLoading} align={align}>
+        <LoadingContainer isLoading={isLoading} align={align} className={className}>
             <LoadingSvg>
                 <svg xmlns="http://www.w3.org/2000/svg" width={sizeLoading} height={sizeLoading} viewBox="0 0 72.996 73">
                     <g id="Path_50" transform="translate(0 -1234)" fill="none">

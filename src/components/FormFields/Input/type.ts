@@ -12,4 +12,5 @@ export interface InputProps {
     erroMessage?: string | string[];
     onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
     disabled?: boolean;
+    isLoadingData?: boolean;
 }
