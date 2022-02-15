@@ -6,6 +6,7 @@ import DialogForm from "components/Dialog/DialogForm";
 import DialogTitle from "components/Dialog/DialogTitle";
 import DialogFormField from "components/DialogFormField";
 import Input from "components/FormFields/Input";
+import TextArea from "components/FormFields/TextArea";
 import React from "react";
 
 const DialogEditNoteView: React.FC<any> = (props) => {
@@ -24,7 +25,7 @@ const DialogEditNoteView: React.FC<any> = (props) => {
                         name="title_note"
                         id="title_note"
                         isLoadingData={isLoading}
-                        defaultValue={!isLoading ? editNote.title_note : ""}
+                        defaultValue={editNote.title_note}
                         onChange={handleChange}
                         erroMessage={
                             errorInputMessage!.map((errorInputMessage: IErrorInputMessage) => (
@@ -34,20 +35,19 @@ const DialogEditNoteView: React.FC<any> = (props) => {
                     />
                 </DialogFormField>
                 <DialogFormField>
-                    <label htmlFor="observation">Observation</label>
-                    <textarea
-                        name="observation"
+                    <TextArea 
+                        label="Observation"
                         id="observation"
+                        name="observation"                        
                         rows={5}
-                        maxLength={500}
-                        onChange={handleChange}
                         defaultValue={editNote.observation}
-                    />
-                    <span>
-                        {errorInputMessage!.map((errorInputMessage: IErrorInputMessage) => (
+                        maxLength={500}
+                        isLoadingData={isLoading}
+                        errorMessage={errorInputMessage!.map((errorInputMessage: IErrorInputMessage) => (
                             errorInputMessage.param === "observation" ? errorInputMessage.msg : ""
                         ))}
-                    </span>
+                        onChange={handleChange}
+                    />            
                 </DialogFormField>
                 <DialogAction>
                     <Button title="Delete" variant="delete" disabled={isLoading} />
