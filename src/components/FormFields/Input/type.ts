@@ -2,12 +2,11 @@ import { ChangeEvent } from "react";
 
 type TypeInputProps = "text" | "number" | "email" | "date" | "password";
 
-export interface InputProps {
+export interface IInput {
     label: string;
     name: string;
-    value?: string;
     defaultValue?: string;
-    id: string,
+    id: string;
     typeInput: TypeInputProps;
     erroMessage?: string | string[];
     onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
