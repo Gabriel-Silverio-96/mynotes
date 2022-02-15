@@ -30,7 +30,7 @@ export default createGlobalStyle `
         outline-style: dotted;
     }
 
-    input {
+    input, textarea, select {
         &:disabled {
             background-color: ${props => props.theme.title === "dark" ? "#303030" : variables.disabledColor };
             cursor: not-allowed;
