@@ -25,7 +25,7 @@ const Input: React.FC<IInput> = (props) => {
                     id={id}
                     name={name}
                     onChange={onChange}
-                    defaultValue={defaultValue}
+                    defaultValue={!isLoadingData ? defaultValue : ""}
                     disabled={disabled || isLoadingData}
                 />
                 <Loading className="loading-input" isLoading={isLoadingData} messageLoading="Loading data" />
