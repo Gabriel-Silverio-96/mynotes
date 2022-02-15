@@ -6,8 +6,22 @@ export default function useDialogMynotes() {
         setOpenDialogDeleteThisNote,
         setOpenDialogCreateNote,
         setNoteIdSelected,
+        setNoteEditIdSelected,
         setOpenDialogDeleteAllNotes,
+        setIsOpenDialogEditNote
     } = useContext(ContextMyNotes);
+
+    const openDialogCreateNote = () => setOpenDialogCreateNote((prevState: boolean) => !prevState);
+    const closeDialogCreateNote = () => setOpenDialogCreateNote((prevState: boolean) => !prevState);
+
+    const openDialogEditNote = (noteId: string) => {
+        setNoteEditIdSelected(noteId);
+        setIsOpenDialogEditNote((prevState: boolean) => !prevState);
+    }
+    const closeDialogEditNote = () => {
+        setNoteEditIdSelected("");
+        setIsOpenDialogEditNote((prevState: boolean) => !prevState);
+    }
 
     const openDialogDeleteThisNote = (noteId: string) => {
         setNoteIdSelected(noteId);
@@ -25,17 +39,19 @@ export default function useDialogMynotes() {
 
     const closeDialogDeleteAllNotes = () => {
         setOpenDialogDeleteAllNotes((prevState: boolean) => !prevState);
-    }
+    }   
 
-    const openDialogCreateNote = () => setOpenDialogCreateNote((prevState: boolean) => !prevState);
-    const closeDialogCreateNote = () => setOpenDialogCreateNote((prevState: boolean) => !prevState);
+    return {       
+        openDialogCreateNote,
+        closeDialogCreateNote,
 
-    return {
+        openDialogEditNote,
+        closeDialogEditNote,
+
         openDialogDeleteThisNote,
         closeDialogDeleteThisNote,
+
         openDialogDeleteAllNotes,
-        closeDialogDeleteAllNotes,
-        openDialogCreateNote,
-        closeDialogCreateNote
+        closeDialogDeleteAllNotes
     }
 }

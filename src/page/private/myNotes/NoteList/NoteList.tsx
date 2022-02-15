@@ -15,7 +15,7 @@ const NoteList: React.FC = () => {
 
     const [notes, setNotes] = useState([] as INote[]);
     const { refreshRequest, noNotesCreated, setNoNotesCreated } = useContext(ContextMyNotes);
-    const { openDialogDeleteThisNote } = useDialogMynotes();
+    const { openDialogDeleteThisNote, openDialogEditNote } = useDialogMynotes();
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {
@@ -41,7 +41,7 @@ const NoteList: React.FC = () => {
         getNoteList();
     }, [dispatch, setNoNotesCreated, refreshRequest]);
 
-    return <NoteListView {...{ notes, isLoading, openDialogDeleteThisNote, noNotesCreated }} />
+    return <NoteListView {...{ notes, isLoading, openDialogDeleteThisNote, openDialogEditNote, noNotesCreated }} />
 }
 
 export default NoteList;

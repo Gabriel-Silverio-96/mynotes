@@ -7,7 +7,7 @@ import { LoadingWrapper, NoteList } from "./styled";
 import { INoteList } from "./types";
 
 const NoteListView: React.FC<INoteList> = (props) => {
-    const { notes, isLoading, noNotesCreated, openDialogDeleteThisNote } = props;
+    const { notes, isLoading, noNotesCreated, openDialogDeleteThisNote, openDialogEditNote } = props;
 
     return (
         <div>
@@ -24,7 +24,7 @@ const NoteListView: React.FC<INoteList> = (props) => {
                             titleNote={note.title_note}
                             observation={note.observation}
                             openDialogDeleteThisNote={() => openDialogDeleteThisNote(note.note_id!)}
-                            editNote={() => ""}
+                            editNote={() => openDialogEditNote(note.note_id!)}
                         />
                     ))}
             </NoteList>

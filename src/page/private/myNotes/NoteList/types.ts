@@ -5,6 +5,7 @@ export interface INoteList {
     isLoading: boolean;
     noNotesCreated: boolean;
     openDialogDeleteThisNote: (noteId: string) => void;
+    openDialogEditNote: (noteId: string) => void;
 }
 
 export interface INoteListData {
