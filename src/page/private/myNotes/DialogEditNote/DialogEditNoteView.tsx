@@ -1,4 +1,5 @@
 import { IErrorInputMessage } from "common/types/ErrorResponse";
+import Badge from "components/Badge";
 import Button from "components/Button";
 import Dialog from "components/Dialog";
 import { DialogAction } from "components/Dialog/DialogAction/styled";
@@ -10,12 +11,13 @@ import TextArea from "components/FormFields/TextArea";
 import React from "react";
 
 const DialogEditNoteView: React.FC<any> = (props) => {
-    const { editNote, errorInputMessage, onClose, onSubmit, handleChange, isLoading, open } = props;
-
+    const { editNote, errorInputMessage, onClose, onSubmit, handleChange, isLoadingEdit, isLoadingData, open } = props;
+    const dateCreatedAt =  new Date(editNote.created_at).toLocaleDateString("en-US");
     return (
         <Dialog open={open}>
             <DialogTitle onClick={onClose}>
                 <h2>Edit Note</h2>
+                <Badge text={`Create at ${dateCreatedAt}`}/>
             </DialogTitle>
             <DialogForm method="post" onSubmit={onSubmit}>
                 <DialogFormField>
@@ -24,7 +26,7 @@ const DialogEditNoteView: React.FC<any> = (props) => {
                         typeInput="text"
                         name="title_note"
                         id="title_note"
-                        isLoadingData={isLoading}
+                        isLoadingData={isLoadingData}
                         defaultValue={editNote.title_note}
                         onChange={handleChange}
                         erroMessage={
@@ -42,7 +44,7 @@ const DialogEditNoteView: React.FC<any> = (props) => {
                         rows={5}
                         defaultValue={editNote.observation}
                         maxLength={500}
-                        isLoadingData={isLoading}
+                        isLoadingData={isLoadingData}
                         errorMessage={errorInputMessage!.map((errorInputMessage: IErrorInputMessage) => (
                             errorInputMessage.param === "observation" ? errorInputMessage.msg : ""
                         ))}
@@ -50,8 +52,8 @@ const DialogEditNoteView: React.FC<any> = (props) => {
                     />            
                 </DialogFormField>
                 <DialogAction>
-                    <Button title="Delete" variant="delete" disabled={isLoading} />
-                    <Button title="Save" variant="primary" disabled={isLoading} messageLoading="Saving" />
+                    <Button title="Delete" variant="delete" disabled={isLoadingEdit || isLoadingData} />
+                    <Button title="Save" variant="primary" disabled={isLoadingData || isLoadingEdit} isLoading={isLoadingEdit} messageLoading="Saving" />
                 </DialogAction>
             </DialogForm>
         </Dialog>
