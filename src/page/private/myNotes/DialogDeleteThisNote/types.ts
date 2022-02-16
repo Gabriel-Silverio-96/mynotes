@@ -1,5 +1,6 @@
 export interface IDialogDeleteThisNote {
     open: boolean;
-    onClose: () => void;
+    isLoading: boolean;
     deleteThisNote?: () => void;
+    onClose: () => void;
 }

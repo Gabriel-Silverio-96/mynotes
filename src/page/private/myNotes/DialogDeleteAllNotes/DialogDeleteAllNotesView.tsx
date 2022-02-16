@@ -7,7 +7,7 @@ import React from "react";
 import { IDeleteAllNote } from "./types";
 
 const DialogDeleteAllNotesView: React.FC<IDeleteAllNote> = (props) => {
-    const { open, onClose, deleteAllNotes } = props;
+    const { open, onClose, deleteAllNotes, isLoading } = props;
     return (
         <Dialog open={open} size="xs" minHeight={1}>
             <DialogTitle onClick={onClose}>
@@ -17,8 +17,8 @@ const DialogDeleteAllNotesView: React.FC<IDeleteAllNote> = (props) => {
                 <p>Do you want to delete all notes?</p>
             </DialogBody>
             <DialogAction>
-                <Button title="No" variant="secondary" onClick={onClose} />
-                <Button title="Yes" onClick={deleteAllNotes} />
+                <Button title="No" variant="secondary" onClick={onClose} disabled={isLoading} />
+                <Button title="Yes" onClick={deleteAllNotes} isLoading={isLoading} messageLoading="Deleting"/>
             </DialogAction>
         </Dialog>
     )
