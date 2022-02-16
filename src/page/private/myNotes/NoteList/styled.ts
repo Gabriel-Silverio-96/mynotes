@@ -4,7 +4,8 @@ export const NoteList = styled.section`
     display: grid;  
     grid-template-columns: repeat(5, 1fr);
     gap: 1rem;
-
+    padding-bottom: 1rem;
+    
     @media (min-width: 1920px) {
         grid-template-columns: repeat(8, 1fr) !important;
     }
