@@ -54,7 +54,6 @@ export const FormContainer = styled.div<FormWrapper>`
     
     p {
         color: ${props => props.theme.colors.textColorParagraph};
-        margin-bottom: 2rem;   
         
         strong {
             color: ${variables.primaryColor}
