@@ -9,8 +9,9 @@ import DialogFormField from "components/DialogFormField";
 import Input from "components/FormFields/Input";
 import TextArea from "components/FormFields/TextArea";
 import React from "react";
+import { IDialogEditNote } from "./types";
 
-const DialogEditNoteView: React.FC<any> = (props) => {
+const DialogEditNoteView: React.FC<IDialogEditNote> = (props) => {
     const { editNote,
         errorInputMessage,
         onClose,
@@ -21,7 +22,7 @@ const DialogEditNoteView: React.FC<any> = (props) => {
         open,
         openDialogDeleteThisNoteInDialogEditNote
     } = props;
-    const dateCreatedAt = new Date(editNote.created_at).toLocaleDateString("en-US");
+    const dateCreatedAt = new Date(editNote.created_at!).toLocaleDateString("en-US");
     return (
         <Dialog open={open}>
             <DialogTitle onClick={onClose}>
