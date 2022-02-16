@@ -24,7 +24,7 @@ const DialogCreateNoteView: React.FC<IDialogCreateNote> = (props) => {
                         name="title_note"
                         id="title_note"
                         onChange={handleChange}
-                        erroMessage={
+                        errorMessage={
                             errorInputMessage!.map((errorInputMessage: IErrorInputMessage) => (
                                 errorInputMessage.param === "title_note" ? errorInputMessage.msg : ""
                             ))

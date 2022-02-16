@@ -23,7 +23,7 @@ const CreateAccountView: React.FC<ICreateAccount> = (props) => {
                         id="full_name"
                         name="full_name"
                         onChange={handleChange}
-                        erroMessage={
+                        errorMessage={
                             errorInputMessage.map((errorInputMessage: IErrorInputMessage) => (
                                 errorInputMessage.param === "full_name" ? errorInputMessage.msg : ""
                             ))
@@ -35,7 +35,7 @@ const CreateAccountView: React.FC<ICreateAccount> = (props) => {
                         id="email"
                         name="email"
                         onChange={handleChange}
-                        erroMessage={
+                        errorMessage={
                             errorInputMessage.map((errorInputMessage: IErrorInputMessage) => (
                                 errorInputMessage.param === "email" ? errorInputMessage.msg : ""
                             ))
@@ -47,7 +47,7 @@ const CreateAccountView: React.FC<ICreateAccount> = (props) => {
                         id="password"
                         name="password"
                         onChange={handleChange}
-                        erroMessage={
+                        errorMessage={
                             errorInputMessage.map((errorInputMessage: IErrorInputMessage) => (
                                 errorInputMessage.param === "password" ? errorInputMessage.msg : ""
                             ))

@@ -29,7 +29,7 @@ const ResetPasswordView: React.FC<IResetPassword> = (props) => {
                                 name="password"
                                 typeInput="password"
                                 onChange={handleChange}
-                                erroMessage={errorInputMessage.length > 0 ? errorInputMessage[0].msg : ""}
+                                errorMessage={errorInputMessage.length > 0 ? errorInputMessage[0].msg : ""}
                             />
                             <Button title="Save" type="submit" isLoading={isLoading} />
                         </form>

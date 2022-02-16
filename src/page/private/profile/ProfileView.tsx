@@ -27,7 +27,7 @@ const ProfileView: React.FC<IProfile> = (props) => {
                         isLoadingData={isLoadingData}
                         defaultValue={userData.full_name}
                         onChange={handleChange}
-                        erroMessage={ 
+                        errorMessage={ 
                             errorInputMessage!.map((errorInputMessage: IErrorInputMessage) => (
                             errorInputMessage.param === "full_name" ? errorInputMessage.msg : ""
                         ))}

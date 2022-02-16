@@ -39,7 +39,7 @@ const DialogEditNoteView: React.FC<IDialogEditNote> = (props) => {
                         isLoadingData={isLoadingData}
                         defaultValue={editNote.title_note}
                         onChange={handleChange}
-                        erroMessage={
+                        errorMessage={
                             errorInputMessage!.map((errorInputMessage: IErrorInputMessage) => (
                                 errorInputMessage.param === "title_note" ? errorInputMessage.msg : ""
                             ))

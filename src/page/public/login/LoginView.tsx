@@ -19,7 +19,7 @@ const LoginView: React.FC<ILogin> = (props) => {
                         label="Email"
                         id="email"
                         onChange={handleChange}
-                        erroMessage={
+                        errorMessage={
                             errorInputMessage.map((errorInputResponse: IErrorInputMessage) => (
                                 errorInputResponse.param === "email" ? errorInputResponse.msg : ""
                             ))
@@ -31,7 +31,7 @@ const LoginView: React.FC<ILogin> = (props) => {
                         label="Password"
                         id="password"
                         onChange={handleChange}
-                        erroMessage={
+                        errorMessage={
                             errorInputMessage.map((errorInputResponse: IErrorInputMessage) => (
                                 errorInputResponse.param === "password" ? errorInputResponse.msg : ""
                             ))

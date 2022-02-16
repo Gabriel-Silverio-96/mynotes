@@ -28,7 +28,7 @@ const ForgotPasswordView: React.FC<IForgotPasswordView> = (props) => {
                                 id="email"
                                 name="email"
                                 onChange={handleChange}
-                                erroMessage={
+                                errorMessage={
                                     errorInputMessage.map((errorInputMessage: IErrorInputMessage) => (
                                         errorInputMessage.param === "email" ? errorInputMessage.msg : ""
                                     ))
