@@ -11,13 +11,22 @@ import TextArea from "components/FormFields/TextArea";
 import React from "react";
 
 const DialogEditNoteView: React.FC<any> = (props) => {
-    const { editNote, errorInputMessage, onClose, onSubmit, handleChange, isLoadingEdit, isLoadingData, open } = props;
-    const dateCreatedAt =  new Date(editNote.created_at).toLocaleDateString("en-US");
+    const { editNote,
+        errorInputMessage,
+        onClose,
+        onSubmit,
+        handleChange,
+        isLoadingEdit,
+        isLoadingData,
+        open,
+        openDialogDeleteThisNoteInDialogEditNote
+    } = props;
+    const dateCreatedAt = new Date(editNote.created_at).toLocaleDateString("en-US");
     return (
         <Dialog open={open}>
             <DialogTitle onClick={onClose}>
                 <h2>Edit Note</h2>
-                <Badge text={`Create at ${dateCreatedAt}`}/>
+                <Badge text={`Create at ${dateCreatedAt}`} />
             </DialogTitle>
             <DialogForm method="post" onSubmit={onSubmit}>
                 <DialogFormField>
@@ -37,10 +46,10 @@ const DialogEditNoteView: React.FC<any> = (props) => {
                     />
                 </DialogFormField>
                 <DialogFormField>
-                    <TextArea 
+                    <TextArea
                         label="Observation"
                         id="observation"
-                        name="observation"                        
+                        name="observation"
                         rows={5}
                         defaultValue={editNote.observation}
                         maxLength={500}
@@ -49,11 +58,22 @@ const DialogEditNoteView: React.FC<any> = (props) => {
                             errorInputMessage.param === "observation" ? errorInputMessage.msg : ""
                         ))}
                         onChange={handleChange}
-                    />            
+                    />
                 </DialogFormField>
                 <DialogAction>
-                    <Button title="Delete" variant="delete" disabled={isLoadingEdit || isLoadingData} />
-                    <Button title="Save" variant="primary" disabled={isLoadingData || isLoadingEdit} isLoading={isLoadingEdit} messageLoading="Saving" />
+                    <Button 
+                        title="Delete" 
+                        variant="delete" 
+                        disabled={isLoadingEdit || isLoadingData} 
+                        onClick={openDialogDeleteThisNoteInDialogEditNote} 
+                    />
+                    <Button 
+                        title="Save" 
+                        variant="primary" 
+                        disabled={isLoadingData || isLoadingEdit} 
+                        isLoading={isLoadingEdit} 
+                        messageLoading="Saving" 
+                    />
                 </DialogAction>
             </DialogForm>
         </Dialog>

@@ -18,7 +18,7 @@ const DialogEditNote: React.FC = () => {
 
     const [editNote, setEditNote] = useState<INote>(EDIT_NOTE_INITIAL_STATE);
 
-    const { closeDialogEditNote } = useDialogMynotes();
+    const { closeDialogEditNote, openDialogDeleteThisNote } = useDialogMynotes();
     const { noteEditIdSelected, isOpenDialogEditNote, setRefreshRequest } = useContext(ContextMyNotes);
 
     const [errorInputMessage, setErrorInputMessage] = useState<IErrorInputMessage[]>([]);
@@ -44,7 +44,7 @@ const DialogEditNote: React.FC = () => {
                     const { data } = error.response as AxiosResponse<IDataErrorResponse>;
                     return dispatch(snackBar(true, data.message, data.type_message));
                 } finally {
-                    setIsLoadingData(false);
+                    setTimeout(() => setIsLoadingData(false), 500);
                 }
             }
         };
@@ -82,11 +82,17 @@ const DialogEditNote: React.FC = () => {
         }
     }
 
+    const openDialogDeleteThisNoteInDialogEditNote = () => {
+        openDialogDeleteThisNote(noteEditIdSelected);
+        closeDialogEditNote();
+    }
+
     return (
         <DialogEditNoteView
             {... { handleChange, isLoadingEdit, isLoadingData, errorInputMessage, editNote, onClose }}
             open={isOpenDialogEditNote}
             onSubmit={putEditNote}
+            openDialogDeleteThisNoteInDialogEditNote={openDialogDeleteThisNoteInDialogEditNote}
         />
     )
 }
