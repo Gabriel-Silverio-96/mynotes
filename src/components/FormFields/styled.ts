@@ -44,7 +44,9 @@ export const InputElement = styled.div`
     }
 
     input {        
+        width: intrinsic;
         width: -webkit-fill-available;
+        width: -moz-available;
         padding: 0.6rem 0.5rem;
         border: 0.2rem solid ${props => props.theme.colors.inputBorder};
         border-radius: 0.5rem;
