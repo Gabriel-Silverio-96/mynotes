@@ -1,98 +1,78 @@
 import dark from "assets/styles/themes/dark";
-import { AxiosError } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 import { snackBar } from "common/store/snackBar/snackBar.action";
+import { IDataErrorResponse, IErrorInputMessage } from "common/types/ErrorResponse";
+import { ISnackBarResponse } from "common/types/SnackBar";
 import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import apiMyNotes from "service/apiMyNotes";
 import useThemeStorage from "util/useThemeStorage";
-import Profile2View from "./ProfileView";
-import { ErrorMessage, GetUserData, IProfile, UserData } from "./types";
+import ProfileView from "./ProfileView";
+import { IProfile, IUserData } from "./types";
 
 const Profile: React.FC<IProfile> = () => {
     const history = useHistory();
     const dispatch = useDispatch();
 
     const [theme] = useThemeStorage("theme", dark);
-    const [userData, setUserData] = useState({} as UserData);
-    const [isLoading, setIsLoading] = useState<boolean>(true);
-
-    const [errorMessage, setErrorMessage] = useState<ErrorMessage>({
-        message_erro_input_full_name: "",
-        message_error: "",
-    })
+    const [userData, setUserData] = useState({} as IUserData);
+    const [isLoadingData, setIsLoadingData] = useState<boolean>(true);
+    const [isLoadingRequestEditing, setIsLoadingRequestEdit] = useState<boolean>(false);
+    const [errorInputMessage, setErrorInputMessage] = useState<IErrorInputMessage[]>([]);
 
     useEffect(() => {
         const getUserData = async () => {
-            setIsLoading(true);
+            setIsLoadingData(true);
             try {
-                const { data, status } = await apiMyNotes.get("/auth/account") as GetUserData;
-                if (status === 200) {
-                    setUserData(data);
-                }
-            } catch (error) {
-                const errorMessage = error as AxiosError;
-                const status = errorMessage.response!.status;
+                const { data } = await apiMyNotes.get("/auth/account") as AxiosResponse<IUserData>;
+                setUserData(data);
+            } catch (err) {
+                const error = err as AxiosError;
+                const { data, status } = error.response as AxiosResponse<IDataErrorResponse>;
+                if (status >= 404) dispatch(snackBar(true, data.message, data.type_message));
 
-                if (status === 401) {
-                    localStorage.removeItem("token");
-                    apiMyNotes.defaults.headers!.Authorization = "";
-                    history.push("/");
-                }
-
-                if (status === 500) {
-                    history.push("/");
-                }
+            } finally {
+                setIsLoadingData(false);
             }
-            return setIsLoading(false);
         }
-        getUserData()
-    }, [history])
+        getUserData();
+        
+    }, [dispatch]);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const name = e.target.name;
         const value = e.target.value;
-        setUserData({
-            ...userData,
-            [name]: value
-        })
-    }
+        setUserData({ ...userData, [name]: value });
+    };
 
-    const saveData = async (e: FormEvent<HTMLFormElement>) => {
+    const putEditProfile = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setErrorMessage({
-            message_erro_input_full_name: "",
-            message_error: "",
-        })
+        setErrorInputMessage([]);
+        setIsLoadingRequestEdit(true);
         try {
-            const { status } = await apiMyNotes.put("auth/account", userData);
-            if (status === 200) {
-                history.push("/mynotes")
-
-                dispatch(snackBar(true, "Profile edited"));
-            }
-        } catch (error) {
-            const errorMessage = error as AxiosError;
-            const { message_erro_input_full_name, message_erro } = errorMessage.response!.data as any;
-            const status = errorMessage.response!.status;
-
-            if (status === 422) {
-                setErrorMessage({
-                    message_erro_input_full_name,
-                    message_error: "",
-                })
-            }
-
-            if (status === 403) {
-                setErrorMessage({
-                    message_erro_input_full_name: "",
-                    message_error: message_erro
-                })
-            }
-        }
+            const { data } = await apiMyNotes.put("auth/account", userData) as AxiosResponse<ISnackBarResponse>;
+            dispatch(snackBar(true, data.message, data.type_message));
+            history.push("/mynotes");
+        } catch (err) {
+            const error = err as AxiosError;
+            const { data, status } = error.response as AxiosResponse<IDataErrorResponse>;
+            if (status === 400) setErrorInputMessage(data.errors);
+            setIsLoadingRequestEdit(false);
+        } 
     }
 
-    return <Profile2View {... {theme, isLoading, errorMessage, saveData, userData, handleChange}} />
+    return (
+        <ProfileView
+            {...{
+                theme,
+                errorInputMessage,
+                isLoadingData,
+                isLoadingRequestEditing, userData, handleChange
+            }}
+            onSubmit={putEditProfile}
+        />
+    )
 }
 
 export default Profile;
