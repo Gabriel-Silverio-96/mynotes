@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { DefaultTheme, ThemeProps } from "styled-components";
 import * as variables from "assets/styles/variables";
 import { ButtonContainerProps, ButtonVariantProps, ButtonSizeProps } from "./types";
 
@@ -8,21 +8,21 @@ const ButtonVariant: ButtonVariantProps = {
         backgroundColorHover: `${variables.primaryColor}`,
         color: `${variables.white}`,
         colorHover: `${variables.white}`,
-        border: (props: any) => props.theme.colors.textColorTitle,
-        borderHover: (props: any) => props.theme.colors.backgroundPrimary
+        border: (props: ThemeProps<DefaultTheme>) => props.theme.colors.buttonBorder,
+        borderHover: (props: ThemeProps<DefaultTheme>) => props.theme.colors.backgroundPrimary
     },
     secondary: {
         backgroundColor: "transparent",
         backgroundColorHover: `${variables.primaryColor}`,
-        color: (props: any) => props.theme.colors.textColorTitle,
+        color: (props: ThemeProps<DefaultTheme>) => props.theme.colors.textColorTitle,
         colorHover: `${variables.white}`,
-        border: (props: any) => props.theme.colors.textColorTitle,
-        borderHover: (props: any) => props.theme.colors.backgroundPrimary
+        border: (props: ThemeProps<DefaultTheme>) => props.theme.colors.buttonBorder,
+        borderHover: (props: ThemeProps<DefaultTheme>) => props.theme.colors.backgroundPrimary
     },
     text: {
         backgroundColor: "transparent",
         backgroundColorHover: "none",
-        color: (props: any) => props.theme.colors.textColorTitle,
+        color: (props: ThemeProps<DefaultTheme>) => props.theme.colors.textColorTitle,
         colorHover: `${variables.primaryColor}`,
         border: "transparent",
         borderHover: "transparent"

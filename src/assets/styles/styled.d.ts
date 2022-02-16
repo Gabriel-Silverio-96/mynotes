@@ -14,6 +14,7 @@ declare module "styled-components" {
             textColorTitle: string;
             textColorParagraph: string;
             inputBorder: string;
+            buttonBorder: string;
         }
     }
 }
