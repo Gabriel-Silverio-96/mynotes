@@ -85,6 +85,7 @@ const DialogEditNote: React.FC = () => {
     const openDialogDeleteThisNoteInDialogEditNote = () => {
         openDialogDeleteThisNote(noteEditIdSelected);
         closeDialogEditNote();
+        setEditNote(EDIT_NOTE_INITIAL_STATE);
     }
 
     return (

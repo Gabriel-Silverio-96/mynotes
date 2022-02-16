@@ -27,7 +27,7 @@ const DialogEditNoteView: React.FC<IDialogEditNote> = (props) => {
         <Dialog open={open}>
             <DialogTitle onClick={onClose}>
                 <h2>Edit Note</h2>
-                <Badge text={`Create at ${dateCreatedAt}`} />
+                {!isLoadingData && <Badge text={`Create at ${dateCreatedAt}`} />}
             </DialogTitle>
             <DialogForm method="post" onSubmit={onSubmit}>
                 <DialogFormField>
