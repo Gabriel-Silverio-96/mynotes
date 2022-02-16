@@ -34,6 +34,7 @@ const DialogEditNote: React.FC = () => {
 
     useEffect(() => {
         const getNote = async () => {
+            setErrorInputMessage([]);
             if (noteEditIdSelected) {
                 setIsLoadingData(true);
                 try {
@@ -69,6 +70,8 @@ const DialogEditNote: React.FC = () => {
             const { data } = await apiMyNotes.put(`notes/edit/note_id=${noteEditIdSelected}`, editNoteBody) as AxiosResponse<ISnackBarResponse>;
             dispatch(snackBar(true, data.message, data.type_message));
             setRefreshRequest((prevState: boolean) => !prevState);
+            closeDialogEditNote();
+            setEditNote(EDIT_NOTE_INITIAL_STATE);
         } catch (err) {
             const error = err as AxiosError;
             const { status, data } = error.response as AxiosResponse<IDataErrorResponse>;
@@ -77,11 +80,9 @@ const DialogEditNote: React.FC = () => {
             if (status > 403) dispatch(snackBar(true, data.message, data.type_message));
         } finally {
             setIsLoadingEdit(false);
-            closeDialogEditNote();
-            setEditNote(EDIT_NOTE_INITIAL_STATE);
         }
     }
-
+    
     const openDialogDeleteThisNoteInDialogEditNote = () => {
         openDialogDeleteThisNote(noteEditIdSelected);
         closeDialogEditNote();
