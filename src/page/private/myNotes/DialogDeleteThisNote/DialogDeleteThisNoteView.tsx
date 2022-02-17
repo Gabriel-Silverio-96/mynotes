@@ -1,6 +1,6 @@
 import Button from "components/Button";
 import Dialog from "components/Dialog";
-import { DialogAction } from "components/Dialog/DialogAction/styled";
+import DialogAction  from "components/Dialog/DialogAction";
 import DialogBody from "components/Dialog/DialogBody";
 import DialogTitle from "components/Dialog/DialogTitle";
 import React from "react";

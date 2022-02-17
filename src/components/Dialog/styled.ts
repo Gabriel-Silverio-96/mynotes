@@ -28,7 +28,7 @@ export const DialogContainer = styled.div<IDialogStyled>`
     padding: ${({size}) => size === "fullScreen" ? "0" : "1rem"};    
 
     @media(max-width: 580px) {
-       padding: 0;       
+       padding: 0;     
     }
 `
 
@@ -43,31 +43,23 @@ export const DialogContent = styled.div<IDialogStyled>`
     padding: 1.5rem;
     background-color: ${props => props.theme.colors.backgroundSecundary};
     border-radius: ${({size}) => size === "fullScreen" ? "0" : "1rem"};
-    margin: auto;
+    margin: ${({size}) => size === "fullScreen" ? "inherit" : "auto"};
+    display: ${({size}) => size === "fullScreen" ? "flex" : "block"};
+    flex-direction: ${({size}) => size === "fullScreen" ? "column" : "inherit"};
 
-    form, [aria-label="dialog-body"] {
-        position: ${({size}) => size === "fullScreen" ? "relative" : "inherit"};
-        height: ${({size}) => size === "fullScreen" ? "calc(100vh * 0.83)" : "auto"};
-    }
-
-    [aria-label="dialog-action"] {
-        position: ${({size}) => size === "fullScreen" ? "absolute" : "inherit"};
-        bottom: ${({size}) => size === "fullScreen" ? "1.5625rem" : "inherit"};
+    .dialog-action {        
+        margin-top: margin: ${({size}) => size === "fullScreen" ? "inherit" : "auto"};;
     }
 
     @media(max-width: 580px) {
+        display: flex;
+        flex-direction: column;
         border-radius: 0;
         margin: inherit;
         max-width: 100%;
-        
-        form, [aria-label="dialog-body"] {
-            position: relative;
-            height: calc(100vh * 0.83);
-        }
 
-        [aria-label="dialog-action"] {
-            position: absolute;
-            bottom: 1.5625rem;
+        .dialog-action {
+            margin-top: auto;
         }
     }
 `

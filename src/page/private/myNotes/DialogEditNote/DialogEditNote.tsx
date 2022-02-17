@@ -3,7 +3,7 @@ import { snackBar } from "common/store/snackBar/snackBar.action";
 import { IDataErrorResponse, IErrorInputMessage } from "common/types/ErrorResponse";
 import { ISnackBarResponse } from "common/types/SnackBar";
 import { INote } from "common/types/_MyNotes/notes";
-import React, { ChangeEvent, FormEvent, useContext, useEffect, useState } from "react";
+import React, { ChangeEvent, useContext, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import apiMyNotes from "service/apiMyNotes";
 import useDialogMynotes from "../common/hooks/useDialogMynotes";
@@ -60,8 +60,7 @@ const DialogEditNote: React.FC = () => {
         setErrorInputMessage([]);
     }
 
-    const putEditNote = async (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+    const putEditNote = async () => {
         setErrorInputMessage([]);
         setIsLoadingEdit(true);
 
@@ -82,7 +81,7 @@ const DialogEditNote: React.FC = () => {
             setIsLoadingEdit(false);
         }
     }
-    
+
     const openDialogDeleteThisNoteInDialogEditNote = () => {
         openDialogDeleteThisNote(noteEditIdSelected);
         closeDialogEditNote();
@@ -91,10 +90,17 @@ const DialogEditNote: React.FC = () => {
 
     return (
         <DialogEditNoteView
-            {... { handleChange, isLoadingEdit, isLoadingData, errorInputMessage, editNote, onClose }}
-            open={isOpenDialogEditNote}
-            onSubmit={putEditNote}
-            openDialogDeleteThisNoteInDialogEditNote={openDialogDeleteThisNoteInDialogEditNote}
+            {... {
+                handleChange,
+                isLoadingEdit,
+                isLoadingData,
+                errorInputMessage,
+                editNote,
+                putEditNote,
+                isOpenDialogEditNote,
+                openDialogDeleteThisNoteInDialogEditNote,
+                onClose
+            }}
         />
     )
 }

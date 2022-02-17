@@ -1,11 +1,11 @@
 import { IErrorInputMessage } from "common/types/ErrorResponse";
-import { ChangeEvent, FormEvent } from "react";
+import { ChangeEvent } from "react";
 
 export interface IDialogCreateNote {
-    open: boolean;
+    isOpenDialogCreateNote: boolean;
     onClose: () => void;
     handleChange?: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
     isLoading?: boolean;
     errorInputMessage?: IErrorInputMessage[];
-    onSubmit?: (e: FormEvent<HTMLFormElement>) => void;
+    postSaveNote?: () => void;
 }

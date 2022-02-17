@@ -2,7 +2,7 @@ import { IErrorInputMessage } from "common/types/ErrorResponse";
 import Badge from "components/Badge";
 import Button from "components/Button";
 import Dialog from "components/Dialog";
-import { DialogAction } from "components/Dialog/DialogAction/styled";
+import DialogAction from "components/Dialog/DialogAction";
 import DialogForm from "components/Dialog/DialogForm";
 import DialogTitle from "components/Dialog/DialogTitle";
 import DialogFormField from "components/DialogFormField";
@@ -15,21 +15,21 @@ const DialogEditNoteView: React.FC<IDialogEditNote> = (props) => {
     const { editNote,
         errorInputMessage,
         onClose,
-        onSubmit,
+        putEditNote,
         handleChange,
         isLoadingEdit,
         isLoadingData,
-        open,
+        isOpenDialogEditNote,
         openDialogDeleteThisNoteInDialogEditNote
     } = props;
     const dateCreatedAt = new Date(editNote.created_at!).toLocaleDateString("en-US");
     return (
-        <Dialog open={open}>
+        <Dialog open={isOpenDialogEditNote}>
             <DialogTitle onClick={onClose}>
                 <h2>Edit Note</h2>
                 {!isLoadingData && <Badge text={`Create at ${dateCreatedAt}`} />}
             </DialogTitle>
-            <DialogForm method="post" onSubmit={onSubmit}>
+            <DialogForm method="post">
                 <DialogFormField>
                     <Input
                         label="Title note"
@@ -61,22 +61,23 @@ const DialogEditNoteView: React.FC<IDialogEditNote> = (props) => {
                         onChange={handleChange}
                     />
                 </DialogFormField>
-                <DialogAction>
-                    <Button 
-                        title="Delete" 
-                        variant="delete" 
-                        disabled={isLoadingEdit || isLoadingData} 
-                        onClick={openDialogDeleteThisNoteInDialogEditNote} 
-                    />
-                    <Button 
-                        title="Save" 
-                        variant="primary" 
-                        disabled={isLoadingData || isLoadingEdit} 
-                        isLoading={isLoadingEdit} 
-                        messageLoading="Saving" 
-                    />
-                </DialogAction>
             </DialogForm>
+            <DialogAction>
+                <Button
+                    title="Delete"
+                    variant="delete"
+                    disabled={isLoadingEdit || isLoadingData}
+                    onClick={openDialogDeleteThisNoteInDialogEditNote}
+                />
+                <Button
+                    title="Save"
+                    variant="primary"
+                    disabled={isLoadingData || isLoadingEdit}
+                    isLoading={isLoadingEdit}
+                    messageLoading="Saving"
+                    onClick={putEditNote}
+                />
+            </DialogAction>
         </Dialog>
     )
 }

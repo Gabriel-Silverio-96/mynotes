@@ -10,13 +10,13 @@ import React from "react";
 import { IDialogCreateNote } from "./types";
 
 const DialogCreateNoteView: React.FC<IDialogCreateNote> = (props) => {
-    const { open, onClose, handleChange, errorInputMessage, onSubmit, isLoading } = props;
+    const { isOpenDialogCreateNote, onClose, handleChange, errorInputMessage, postSaveNote, isLoading } = props;
     return (
-        <Dialog open={open}>
+        <Dialog open={isOpenDialogCreateNote}>
             <DialogTitle onClick={onClose}>
                 <h2>Create Note</h2>
             </DialogTitle>
-            <DialogForm method="post" onSubmit={onSubmit}>
+            <DialogForm method="post">
                 <DialogFormField>
                     <Input
                         label="Title note"
@@ -46,11 +46,11 @@ const DialogCreateNoteView: React.FC<IDialogCreateNote> = (props) => {
                         ))}
                     </span>
                 </DialogFormField>
-                <DialogAction>
-                    <Button title="Close" onClick={onClose} variant="secondary" disabled={isLoading} />
-                    <Button title="Save" variant="primary" isLoading={isLoading} messageLoading="Saving"/>
-                </DialogAction>
             </DialogForm>
+            <DialogAction>
+                <Button title="Close" onClick={onClose} variant="secondary" disabled={isLoading} />
+                <Button title="Save" variant="primary" isLoading={isLoading} messageLoading="Saving" onClick={postSaveNote} />
+            </DialogAction>
         </Dialog>
     )
 }

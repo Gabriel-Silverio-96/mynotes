@@ -3,7 +3,7 @@ import { snackBar } from "common/store/snackBar/snackBar.action";
 import { IDataErrorResponse, IErrorInputMessage } from "common/types/ErrorResponse";
 import { ISnackBarResponse } from "common/types/SnackBar";
 import { INote } from "common/types/_MyNotes/notes";
-import React, { ChangeEvent, FormEvent, useContext, useState } from "react";
+import React, { ChangeEvent, useContext, useState } from "react";
 import { useDispatch } from "react-redux";
 import apiMyNotes from "service/apiMyNotes";
 import useDialogMynotes from "../common/hooks/useDialogMynotes";
@@ -34,8 +34,7 @@ const DialogCreateNote: React.FC = () => {
         closeDialogCreateNote();
     }
 
-    const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+    const postSaveNote = async () => {
         setErrorInputMessage([]);
         setIsLoading(true);
         try {
@@ -58,8 +57,7 @@ const DialogCreateNote: React.FC = () => {
 
     return (
         <DialogCreateNoteView
-            {... { onClose, handleChange, errorInputMessage, onSubmit, isLoading }}
-            open={isOpenDialogCreateNote}
+            {... { onClose, handleChange, isOpenDialogCreateNote, errorInputMessage, postSaveNote, isLoading }}
         />
     )
 }
