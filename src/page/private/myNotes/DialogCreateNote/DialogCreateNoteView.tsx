@@ -49,7 +49,7 @@ const DialogCreateNoteView: React.FC<IDialogCreateNote> = (props) => {
             </DialogForm>
             <DialogAction>
                 <Button title="Close" onClick={onClose} variant="secondary" disabled={isLoading} />
-                <Button title="Save" variant="primary" isLoading={isLoading} messageLoading="Saving" onClick={postSaveNote} />
+                <Button title="Save"  isLoading={isLoading} messageLoading="Saving" onClick={postSaveNote} />
             </DialogAction>
         </Dialog>
     )

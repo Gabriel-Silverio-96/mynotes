@@ -71,7 +71,6 @@ const DialogEditNoteView: React.FC<IDialogEditNote> = (props) => {
                 />
                 <Button
                     title="Save"
-                    variant="primary"
                     disabled={isLoadingData || isLoadingEdit}
                     isLoading={isLoadingEdit}
                     messageLoading="Saving"
