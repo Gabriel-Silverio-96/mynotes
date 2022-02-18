@@ -13,7 +13,7 @@ const Button: React.FC<ButtonProps> = (props) => {
             type={type}
             onClick={onClick}
             size={size || "medium"}
-            variant={variant || "primary"}
+            variant={variant || "default"}
             disabled={isLoading}
             {...rest}
         >

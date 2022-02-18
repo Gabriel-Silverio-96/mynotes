@@ -1,6 +1,6 @@
 import React, { ButtonHTMLAttributes } from "react";
 
-type VariantButtonProps = "primary" | "secondary" | "delete" | "success" | "text";
+type VariantButtonProps = "default" | "primary" | "secondary" | "delete" | "success" | "text";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     title?: string | any;
@@ -28,6 +28,7 @@ type ButtonVariantItensProps = {
 }
 
 export interface ButtonVariantProps {
+    default: ButtonVariantItensProps;
     primary: ButtonVariantItensProps;
     secondary: ButtonVariantItensProps;
     text?: ButtonVariantItensProps;

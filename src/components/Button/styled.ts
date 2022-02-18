@@ -3,13 +3,21 @@ import * as variables from "assets/styles/variables";
 import { ButtonContainerProps, ButtonVariantProps, ButtonSizeProps } from "./types";
 
 const ButtonVariant: ButtonVariantProps = {
-    primary: {
+    default: {
         backgroundColor: `${variables.black}`,
         backgroundColorHover: `${variables.primaryColor}`,
         color: `${variables.white}`,
         colorHover: `${variables.white}`,
         border: (props: ThemeProps<DefaultTheme>) => props.theme.colors.buttonBorder,
         borderHover: (props: ThemeProps<DefaultTheme>) => props.theme.colors.backgroundPrimary
+    },
+    primary: {
+        backgroundColor: `${variables.primaryColor}`,
+        backgroundColorHover: `${variables.black}`,
+        color: `${variables.white}`,
+        colorHover: `${variables.white}`,
+        border: `${variables.primaryColor}`,
+        borderHover: `${variables.grayBorder}`
     },
     secondary: {
         backgroundColor: "transparent",
@@ -44,7 +52,7 @@ const ButtonSize: ButtonSizeProps = {
     },
     medium: {
         fontSize:"0.9rem",
-        padding: "0.75rem 1rem",
+        padding: "0.65rem 0.8rem",
     },
     small: {
         fontSize:"0.7rem",
