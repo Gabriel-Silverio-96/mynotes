@@ -1,3 +1,4 @@
+import Layout from "components/Layout";
 import Page404 from "page/error/404";
 import MyNotesPage from "page/private/myNotes";
 import Profile from "page/private/profile";
@@ -12,18 +13,20 @@ import CustomRoute from "util/customRoute";
 const Router = () => {
     return (
         <BrowserRouter>
-            <Switch>
-                <CustomRoute exact path="/" component={Home} />             
-                <CustomRoute path="/auth/login" component={Login} />             
-                <CustomRoute path="/auth/create-account" component={CreateAccount} />
-                <CustomRoute path="/auth/forgot-password" component={ForgotPassword} />
-                <CustomRoute path="/auth/reset-password/token=:token" component={ResetPassword} />
-                             
-                <CustomRoute isPrivate path="/myNotes" component={MyNotesPage} />             
-                <CustomRoute isPrivate path="/profile" component={Profile} />         
+            <Layout>
+                <Switch>
+                    <CustomRoute exact path="/" component={Home} />
+                    <CustomRoute path="/auth/login" component={Login} />
+                    <CustomRoute path="/auth/create-account" component={CreateAccount} />
+                    <CustomRoute path="/auth/forgot-password" component={ForgotPassword} />
+                    <CustomRoute path="/auth/reset-password/token=:token" component={ResetPassword} />
 
-                <CustomRoute path="*" component={Page404} />
-            </Switch>
+                    <CustomRoute isPrivate path="/myNotes" component={MyNotesPage} />
+                    <CustomRoute isPrivate path="/profile" component={Profile} />
+
+                    <CustomRoute path="*" component={Page404} />
+                </Switch>
+            </Layout>
         </BrowserRouter>
     )
 }
