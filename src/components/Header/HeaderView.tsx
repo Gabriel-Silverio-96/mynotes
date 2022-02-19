@@ -1,5 +1,5 @@
 import Button from "components/Button";
-import DropdownHeader from "components/DropdownHeader";
+import DropdownHeader from "components/Header/DropdownHeader";
 import { IHeader } from "components/Header/types";
 import Logo from "components/Logo";
 import React from "react";
@@ -7,8 +7,8 @@ import { FiMoon, FiSun } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { HeaderContainer } from "./styled";
 
-const HeaderView: React.FC<any> = (props) => {
-    const { authenticated, toggleTheme, theme } = props;
+const HeaderView: React.FC<IHeader> = (props) => {
+    const { authenticated, toggleTheme, theme } = props;    
     return (
         <HeaderContainer>
             <Link to={authenticated ? "/mynotes" : "/"}>
@@ -23,7 +23,7 @@ const HeaderView: React.FC<any> = (props) => {
                                 ? <FiSun size={17.5} />
                                 : <FiMoon size={17.5} />
                         } />
-                        <DropdownHeader toggleTheme={toggleTheme} />
+                        <DropdownHeader />
                     </>
                 ) : (
                     <>
@@ -38,7 +38,7 @@ const HeaderView: React.FC<any> = (props) => {
                                 title="Create account"
                             />
                         </Link>
-                        <Button onClick={toggleTheme} className="switch-theme" iconButton={
+                        <Button onClick={toggleTheme} iconButton={
                             theme.title === "dark"
                                 ? <FiSun size={17.5} />
                                 : <FiMoon size={17.5} />

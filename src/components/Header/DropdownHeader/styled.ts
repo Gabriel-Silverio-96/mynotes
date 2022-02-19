@@ -42,7 +42,7 @@ export const DropdownHeaderWrapper = styled.div`
 export const ButtonDropdown = styled.div<ButtonDropdownProps>`
     border: 0.03rem solid ${variables.grayBorder};
     font-size: 0.9rem;
-    padding: 0.5rem 0.6rem;
+    padding: 0.45rem 0.6rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -81,23 +81,6 @@ export const Dropdown = styled.div`
                 margin-bottom: 0rem;
                 color: ${variables.red};
             }
-
-            &.option-responsive {               
-                display: none;
-                span {
-                   display: flex;
-                   align-items: center;
-                   gap: 0.3rem;
-                   justify-content: end;
-                   align-items: center;              
-               }
-            }
-        }
-    }
-
-    @media (max-width: 450px) {
-        ul li.option-responsive {
-            display: block;
         }
     }
 `

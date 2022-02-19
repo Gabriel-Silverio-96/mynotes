@@ -1,10 +1,11 @@
+import { ContextTheme } from "provider/theme";
+import { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import HomeView from "./HomeView";
 
 const Home: React.FC = () => {
-    const theme = localStorage.getItem("theme");
-    const themeTitle = JSON.parse(theme!).title;
-
+    const { themeContext } = useContext(ContextTheme);
+    
     const history = useHistory();
     const sessionUser = () => {
         const path = document.location.pathname === "/";
@@ -15,7 +16,7 @@ const Home: React.FC = () => {
     }
     sessionUser()
 
-    return <HomeView {...{themeTitle}}/>
+    return <HomeView />
 }
 
 export default Home;

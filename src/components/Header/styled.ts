@@ -28,10 +28,6 @@ export const HeaderContainer = styled.header`
     @media (max-width: 450px) {
         nav {
             gap: 0.5rem;
-            
-            .switch-theme {
-                display: none;
-            }
         }
     }
 `
