@@ -15,6 +15,7 @@ declare module "styled-components" {
             textColorParagraph: string;
             inputBorder: string;
             buttonBorder: string;
+            noteCardBorder: string;
         }
     }
 }

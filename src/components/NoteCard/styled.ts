@@ -1,19 +1,17 @@
 import styled from "styled-components";
-import * as variable from "assets/styles/variables";
-import { NoteCardContainerProps } from "./types";
+import { INoteCardStyled } from "./types";
 
-export const NoteCardContainer = styled.div<NoteCardContainerProps>`
+export const NoteCard = styled.div<INoteCardStyled>`
     padding: 1rem;
     background-color: ${props => props.theme.colors.backgroundSecundary};
     min-height: 10rem;
     border-radius: 0.5rem;
-    border: 0.09rem solid ${variable.black};
-    border-top-color: ${variable.black};    
-    border-left-color: ${variable.black};
-    border-right-color: ${variable.black};
+    border: 0.09rem solid ${props => props.theme.colors.noteCardBorder};
+    border-top-color: ${props => props.theme.colors.noteCardBorder};    
+    border-left-color: ${props => props.theme.colors.noteCardBorder};
+    border-right-color: ${props => props.theme.colors.noteCardBorder};
     cursor: pointer;
     word-break: break-all;
-
     border-bottom: 0.3rem solid ${props => props.colorNote};
 
     h3 {
@@ -44,8 +42,7 @@ export const NoteCardButton = styled.div`
     align-items: baseline;
     gap: 0.5rem;
 
-    background: linear-gradient(
-        90deg, rgba(255,0,0,0) 0%, 
+    background: linear-gradient(90deg, rgba(255,0,0,0) 0%,        
         ${props => props.theme.colors.backgroundSecundary} 100%
     );   
 `

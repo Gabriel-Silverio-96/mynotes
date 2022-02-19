@@ -1,4 +1,4 @@
-export interface NoteCardProps {
+export interface INoteCard {
     id: any;
     colorNote: string;
     titleNote: string;
@@ -7,6 +7,6 @@ export interface NoteCardProps {
     editNote: () => void;
 }
 
-export interface NoteCardContainerProps {
+export interface INoteCardStyled {
     colorNote: string;
 }

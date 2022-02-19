@@ -12,6 +12,7 @@ export const grayDark = "#161414"
 export const grayMedium = "#EBEBEB"
 export const grayLight = "#F8F8F8";
 export const grayBorder = "#484848";
+export const grayLightBorder = "#c7c7c7";
 export const black = "#000000";
 export const blackLight = "#00000075";
 export const white = "#FFFFFF";
