@@ -1,5 +1,4 @@
 import Header from "components/Header";
-import Layout from "components/Layout";
 import Page404 from "page/error/404";
 import MyNotesPage from "page/private/myNotes";
 import Profile from "page/private/profile";
