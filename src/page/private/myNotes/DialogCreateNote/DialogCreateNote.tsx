@@ -43,6 +43,7 @@ const DialogCreateNote: React.FC = () => {
             setIsLoading(false);
             closeDialogCreateNote();
             setRefreshRequest((prevState: boolean) => !prevState);
+            setCreateNote(CREATE_NOTE_INITIAL_STATE);
         } catch (err) {
             const error = err as AxiosError;
             const { status, data } = error.response as AxiosResponse<IDataErrorResponse>;
@@ -50,7 +51,6 @@ const DialogCreateNote: React.FC = () => {
             if (status === 400) setErrorInputMessage(data.errors);
             if (status > 403) dispatch(snackBar(true, data.message, data.type_message));            
         } finally {
-            setCreateNote(CREATE_NOTE_INITIAL_STATE);
             setIsLoading(false);
         }
     }
