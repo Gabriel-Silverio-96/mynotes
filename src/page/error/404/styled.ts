@@ -10,7 +10,7 @@ export const Page404Container = styled.div`
     gap: 1rem;
 
     h1 {
-        color: ${variables.white};
+        color: ${props => props.theme.colors.textColorTitle};
         font-size: 5rem;
     }
 
