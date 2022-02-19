@@ -13,15 +13,16 @@ export const Main = styled.main<MainProps>`
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    background-color: ${props => props.theme.colors.backgroundPrimary};
 
     h1 {
-        color: ${variables.white};
+        color: ${props => props.theme.colors.textColorTitle};
         font-size: 4.6875rem;
     }
     
     p {
         margin-top: 1rem;
-        color: ${variables.white};
+        color: ${props => props.theme.colors.textColorParagraph};
     }
     
     div {

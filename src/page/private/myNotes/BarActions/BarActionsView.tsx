@@ -2,8 +2,9 @@ import Button from "components/Button";
 import React from "react";
 import { FiTrash2 } from "react-icons/fi";
 import { Actions, BarActions } from "./styled";
+import { IBarAction } from "./types";
 
-const BarActionsView: React.FC<any> = (props) => {
+const BarActionsView: React.FC<IBarAction> = (props) => {
     const { openDialogDeleteAllNotes, noNotesCreated, openDialogCreateNote } = props;
     return (
         <BarActions>

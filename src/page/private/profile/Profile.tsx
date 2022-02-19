@@ -1,4 +1,3 @@
-import dark from "assets/styles/themes/dark";
 import { AxiosError, AxiosResponse } from "axios";
 import { snackBar } from "common/store/snackBar/snackBar.action";
 import { IDataErrorResponse, IErrorInputMessage } from "common/types/ErrorResponse";
@@ -7,7 +6,6 @@ import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import apiMyNotes from "service/apiMyNotes";
-import useThemeStorage from "util/useThemeStorage";
 import ProfileView from "./ProfileView";
 import { IProfile, IUserData } from "./types";
 
@@ -15,7 +13,6 @@ const Profile: React.FC<IProfile> = () => {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    const [theme] = useThemeStorage("theme", dark);
     const [userData, setUserData] = useState({} as IUserData);
     const [isLoadingData, setIsLoadingData] = useState<boolean>(true);
     const [isLoadingRequestEditing, setIsLoadingRequestEdit] = useState<boolean>(false);
@@ -65,12 +62,13 @@ const Profile: React.FC<IProfile> = () => {
     return (
         <ProfileView
             {...{
-                theme,
                 errorInputMessage,
                 isLoadingData,
-                isLoadingRequestEditing, userData, handleChange
+                isLoadingRequestEditing,
+                userData, 
+                handleChange,
+                putEditProfile
             }}
-            onSubmit={putEditProfile}
         />
     )
 }

@@ -7,11 +7,10 @@ export type IUserData = {
 }
 
 export interface IProfile {
-    theme: any;    
     isLoadingData: boolean;
     isLoadingRequestEditing: boolean;
     errorInputMessage: IErrorInputMessage[];    
-    onSubmit: (e: FormEvent<HTMLFormElement>) => void;
+    putEditProfile: (e: FormEvent<HTMLFormElement>) => void;
     userData: IUserData;
     handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }

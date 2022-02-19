@@ -1,3 +1,5 @@
 export interface MainProps {
-    src: string;
+    src?: string;
 }
+
+export interface IHome {}

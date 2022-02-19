@@ -8,16 +8,16 @@ import { useSelector } from "react-redux";
 import { ThemeProvider } from "styled-components";
 import { LayoutProps } from "./types";
 
-const Layout: React.FC<LayoutProps> = ({ children, themeSwitch = true }) => {
+const Layout: React.FC<LayoutProps> = ({ children }) => {
     const { themeContext } = useContext(ContextTheme);
     const { snackBar } = useSelector((state: ISnackBarStore) => state);
     const { isOpen, message, type_message } = snackBar;
 
     return (
-        <ThemeProvider theme={themeSwitch ? themeContext : dark}>
+        <ThemeProvider theme={themeContext ? themeContext : dark}>
             <GlobalStyles />
-            {isOpen && <SnackBar typeMessage={type_message} message={message} />}
-            {children}
+            {isOpen && <SnackBar typeMessage={type_message} message={message} align="bottomCenter" />}
+            {children}            
         </ThemeProvider>
     )
 }
