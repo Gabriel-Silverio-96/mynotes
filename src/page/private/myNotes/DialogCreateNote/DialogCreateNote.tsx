@@ -30,8 +30,9 @@ const DialogCreateNote: React.FC = () => {
     }
 
     const onClose = () => {
-        setCreateNote(CREATE_NOTE_INITIAL_STATE);
         closeDialogCreateNote();
+        setCreateNote(CREATE_NOTE_INITIAL_STATE);
+        setErrorInputMessage([]);
     }
 
     const postSaveNote = async () => {
