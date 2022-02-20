@@ -18,7 +18,7 @@ const BarActionsView: React.FC<IBarAction> = (props) => {
                 <Button
                     onClick={openDialogDeleteAllNotes}
                     disabled={noNotesCreated}
-                    variant="delete"
+                    variant="danger"
                     iconButton={<FiTrash2 size={17.5} />}
                 />
             </Actions>

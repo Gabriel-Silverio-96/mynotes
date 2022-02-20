@@ -21,7 +21,7 @@ const NoteCardView: React.FC<INoteCard> = (props) => {
                     <Button
                         id={id}
                         onClick={openDialogDeleteThisNote}
-                        variant="delete"
+                        variant="danger"
                         size="small"
                         iconButton={<FiTrash2 size={15} />}
                     />

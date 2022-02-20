@@ -65,7 +65,7 @@ const DialogEditNoteView: React.FC<IDialogEditNote> = (props) => {
             <DialogAction>
                 <Button
                     title="Delete"
-                    variant="delete"
+                    variant="danger"
                     disabled={isLoadingEdit || isLoadingData}
                     onClick={openDialogDeleteThisNoteInDialogEditNote}
                 />
