@@ -8,7 +8,7 @@ import apiMyNotes from "service/apiMyNotes";
 import useDialogMynotes from "../common/hooks/useDialogMynotes";
 import { ContextMyNotes } from "../Context/MyNotes";
 import NoteListView from "./NoteListView";
-import { INoteListData } from "./types";
+import { INoteListData } from "./types/types.component";
 
 const NoteList: React.FC = () => {
     const dispatch = useDispatch();

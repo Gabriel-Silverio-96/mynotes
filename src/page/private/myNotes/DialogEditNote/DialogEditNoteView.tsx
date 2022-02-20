@@ -5,11 +5,11 @@ import Dialog from "components/Dialog";
 import DialogAction from "components/Dialog/DialogAction";
 import DialogForm from "components/Dialog/DialogForm";
 import DialogTitle from "components/Dialog/DialogTitle";
-import DialogFormField from "components/DialogFormField";
+import DialogFormField from "components/Dialog/DialogFormField";
 import Input from "components/FormFields/Input";
 import TextArea from "components/FormFields/TextArea";
 import React from "react";
-import { IDialogEditNote } from "./types";
+import { IDialogEditNote } from "./types/types.component";
 
 const DialogEditNoteView: React.FC<IDialogEditNote> = (props) => {
     const { editNote,

@@ -4,7 +4,7 @@ import DialogAction from "components/Dialog/DialogAction";
 import DialogBody from "components/Dialog/DialogBody";
 import DialogTitle from "components/Dialog/DialogTitle";
 import React from "react";
-import { IDeleteAllNote } from "./types";
+import { IDeleteAllNote } from "./types/types.component";
 
 const DialogDeleteAllNotesView: React.FC<IDeleteAllNote> = (props) => {
     const { open, onClose, deleteAllNotes, isLoading } = props;

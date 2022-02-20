@@ -4,7 +4,7 @@ import NoNotes from "components/NoNotes";
 import NoteCard from "components/NoteCard";
 import React from "react";
 import { LoadingWrapper, NoteList } from "./styled";
-import { INoteList } from "./types";
+import { INoteList } from "./types/types.component";
 
 const NoteListView: React.FC<INoteList> = (props) => {
     const { notes, isLoading, noNotesCreated, openDialogDeleteThisNote, openDialogEditNote } = props;

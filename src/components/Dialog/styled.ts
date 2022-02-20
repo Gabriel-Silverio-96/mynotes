@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import * as variables from "assets/styles/variables";
-import { IDialogOptionSize, IDialogStyled } from "./types";
+import { IDialogOptionSize, IDialogStyled } from "./types/types.styled";
 
 const DialogSize = (size: string): string => {
     const DialogOptionSize: IDialogOptionSize = {
