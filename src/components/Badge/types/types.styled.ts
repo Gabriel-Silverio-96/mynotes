@@ -1,7 +1,7 @@
 import { DefaultTheme, ThemeProps } from "styled-components";
 import { IBadge } from "./types.component";
 
-export interface IBadgeStyled extends IBadge { }
+export interface IBadgeStyled extends Omit<IBadge, "text">{}
 
 type BadgeVariantStyled = {
     backgroundColor: string;
