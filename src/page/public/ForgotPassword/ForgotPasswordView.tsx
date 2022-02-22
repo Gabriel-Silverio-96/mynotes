@@ -1,9 +1,8 @@
 import { IErrorInputMessage } from "common/types/ErrorResponse";
 import Button from "components/Button";
-import Input from "components/FormFields/Input";
 import FormContainer from "components/FormContainer";
+import Input from "components/FormFields/Input";
 import React from "react";
-import { Link } from "react-router-dom";
 import { SendingMessage } from "./styled";
 import { IForgotPasswordView } from "./types";
 
