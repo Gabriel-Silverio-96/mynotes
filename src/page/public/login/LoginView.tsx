@@ -1,7 +1,7 @@
 import { IErrorInputMessage } from "common/types/ErrorResponse";
 import Button from "components/Button";
 import Input from "components/FormFields/Input";
-import FormGeneric from "components/FormGeneric";
+import FormContainer from "components/FormContainer";
 import React from "react";
 import { Link } from "react-router-dom";
 import { ILogin } from "./type";
@@ -9,7 +9,7 @@ import { ILogin } from "./type";
 const LoginView: React.FC<ILogin> = (props) => {
     const { isLoading, handleChange, errorInputMessage, login } = props;
     return (
-        <FormGeneric title="Login" widthModal="25rem" isHeaderActive={false} isActiveBack={true}>
+        <FormContainer title="Login">
             <form method="POST" onSubmit={login} >
                 <Input
                     typeInput="email"
@@ -47,7 +47,7 @@ const LoginView: React.FC<ILogin> = (props) => {
                     </Link>
                 </div>
             </form>
-        </FormGeneric>
+        </FormContainer>
     )
 }
 
