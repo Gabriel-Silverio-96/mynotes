@@ -25,6 +25,10 @@ export const FormContainer = styled.section`
         align-items: baseline;
         height: 100%;
     } 
+    
+    button {
+        margin-top: 1rem;
+    }
 `
 
 export const BackPage = styled.div`

@@ -9,4 +9,5 @@ export interface IFormContainer {
     widthModal?: string;
     isLogoVisible?: boolean;
     isActiveButtonBack?: boolean;
+    disabledButtonBack?: boolean;    
 }

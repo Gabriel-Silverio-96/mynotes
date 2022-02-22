@@ -5,7 +5,7 @@ import {FormContainer, FormContent, Header} from "./styled";
 import { IFormContainer } from "./types/types.component";
 
 const FormContainerView: React.FC<IFormContainer> = (props) => {
-    const { history, title, themeTitle, children, widthModal, isLogoVisible, isActiveButtonBack } = props;
+    const { history, title, themeTitle, children, widthModal, isLogoVisible, isActiveButtonBack, disabledButtonBack } = props;
     return (
         <FormContainer>
             {isLogoVisible && (
@@ -20,7 +20,7 @@ const FormContainerView: React.FC<IFormContainer> = (props) => {
             </FormContent>
 
             {isActiveButtonBack && (
-                <Button title="Back" variant="text" onClick={() => history.goBack()} />
+                <Button title="Back" variant="text" onClick={() => history.goBack()} disabled={disabledButtonBack} />
             )}
         </FormContainer>
     )

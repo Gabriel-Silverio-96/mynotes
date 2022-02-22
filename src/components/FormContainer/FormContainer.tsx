@@ -8,9 +8,30 @@ const FormContainer: React.FC<Omit<IFormContainer, "history" | "themeTitle">> = 
     const history = useHistory();
     const { themeContext } = useContext(ContextTheme);
     const themeTitle = themeContext.title;
-    const { title, children, widthModal = "25rem", isLogoVisible = false, isActiveButtonBack = true } = props;
 
-    return <FormContainerView {... { history, title, themeTitle, children, widthModal, isLogoVisible, isActiveButtonBack }} />
+    const { 
+        title,
+        children,
+        widthModal = "25rem",
+        isLogoVisible = false,
+        isActiveButtonBack = true,
+        disabledButtonBack = false
+    } = props;
+
+    return (
+        <FormContainerView
+            {... {
+                history,
+                title,
+                themeTitle,
+                children,
+                widthModal,
+                isLogoVisible,
+                isActiveButtonBack,
+                disabledButtonBack
+            }}
+        />
+    )
 }
 
 export default FormContainer;
