@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { LoadingContainerProps } from "./types";
+import { ILoadingContainerStyled } from "./types/types.styled";
 
-export const LoadingContainer = styled.div<LoadingContainerProps>`
+export const LoadingContainer = styled.div<ILoadingContainerStyled>`
     font-size: 0;
     display: flex;
     align-items: center;
