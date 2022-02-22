@@ -1,7 +1,7 @@
 import { IErrorInputMessage } from "common/types/ErrorResponse";
 import Button from "components/Button";
 import Input from "components/FormFields/Input";
-import FormGeneric from "components/FormGeneric";
+import FormContainer from "components/FormContainer";
 import React from "react";
 import { Link } from "react-router-dom";
 import { SendingMessage } from "./styled";
@@ -10,12 +10,7 @@ import { IForgotPasswordView } from "./types";
 const ForgotPasswordView: React.FC<IForgotPasswordView> = (props) => {
     const { isSendingMessage, errorInputMessage, handleChange, forgotPassoword, userData, isLoading } = props;
     return (
-        <FormGeneric
-            title={!isSendingMessage ? "Forgot password" : "Check your email"}
-            widthModal="25rem"
-            isHeaderActive={false}
-            isActiveBack={!isSendingMessage ? true : false}
-        >
+        <FormContainer title={!isSendingMessage ? "Forgot password" : "Check your email"} disabledButtonBack={isLoading}>
             {!isSendingMessage ? (
                 <>
                     <p>Which email is registered on MyNotes</p>
@@ -41,13 +36,10 @@ const ForgotPasswordView: React.FC<IForgotPasswordView> = (props) => {
                     <p>An email is on its way to
                         <strong> {userData.email} </strong>
                         with instructions for reset your password.
-                    </p>
-                    <Link to="/auth/login">
-                        <Button title="Back to login" />
-                    </Link>
+                    </p>                    
                 </SendingMessage>
             )}
-        </FormGeneric>
+        </FormContainer>
     )
 }
 
