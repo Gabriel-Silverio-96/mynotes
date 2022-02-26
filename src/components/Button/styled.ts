@@ -1,8 +1,8 @@
 import styled, { DefaultTheme, ThemeProps } from "styled-components";
 import * as variables from "assets/styles/variables";
-import { ButtonContainerProps, ButtonVariantProps, ButtonSizeProps } from "./types";
+import { IButtonStyled, IButtonVariantProps, IButtonSizeProps } from "./types/types.styled";
 
-const ButtonVariant: ButtonVariantProps = {
+const ButtonVariant: IButtonVariantProps = {
     default: {
         backgroundColor: `${variables.black}`,
         backgroundColorHover: `${variables.primaryColor}`,
@@ -35,7 +35,7 @@ const ButtonVariant: ButtonVariantProps = {
         border: "transparent",
         borderHover: "transparent"
     },    
-    delete: {
+    danger: {
         backgroundColor: `${variables.redLight}`,
         backgroundColorHover: `${variables.red}`,
         color: `${variables.red}`,
@@ -45,7 +45,7 @@ const ButtonVariant: ButtonVariantProps = {
     },
 };
 
-const ButtonSize: ButtonSizeProps = {
+const ButtonSize: IButtonSizeProps = {
     large: {
         fontSize: "1rem",
         padding: "1rem 1.2rem",
@@ -60,7 +60,7 @@ const ButtonSize: ButtonSizeProps = {
     },
 };
 
-export const ButtonContainer = styled.button<ButtonContainerProps>`
+export const Button = styled.button<IButtonStyled>`
     background-color: ${({ variant }) => ButtonVariant[variant!]!.backgroundColor}};
     color: ${({ variant }) => ButtonVariant[variant!]!.color}};
     border: 0.03rem solid ${({ variant }) => ButtonVariant[variant!]!.border}};;

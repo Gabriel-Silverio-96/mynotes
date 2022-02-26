@@ -9,7 +9,7 @@ import apiMyNotes from "service/apiMyNotes";
 import useDialogMynotes from "../common/hooks/useDialogMynotes";
 import { ContextMyNotes } from "../Context/MyNotes";
 import DialogEditNoteView from "./DialogEditNoteView";
-import { TEditNote } from "./types";
+import { TEditNote } from "./types/types.component";
 
 const EDIT_NOTE_INITIAL_STATE: TEditNote = { color_note: "", title_note: "", observation: "" };
 

@@ -1,4 +1,4 @@
-import { black, grayBorder, grayMedium, primaryColor, secondaryColor, textColorParagraph, white } from "../variables"
+import { black, grayBorder, grayLightBorder, grayMedium, primaryColor, secondaryColor, textColorParagraph, white } from "../variables"
 
 const light = {
     title: "light",
@@ -13,7 +13,8 @@ const light = {
         textColorTitle: black,
         textColorParagraph: textColorParagraph,
         inputBorder: grayMedium,
-        buttonBorder: grayBorder
+        buttonBorder: grayBorder,
+        noteCardBorder: grayLightBorder
     }
 }
 

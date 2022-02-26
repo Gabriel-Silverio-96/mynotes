@@ -13,7 +13,8 @@ const dark = {
         textColorTitle: white,
         textColorParagraph: textColorParagraph,
         inputBorder: grayDark,
-        buttonBorder: grayBorder
+        buttonBorder: grayBorder,
+        noteCardBorder: "transparent"
     }
 }
 

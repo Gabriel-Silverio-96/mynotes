@@ -4,7 +4,7 @@ import DialogAction  from "components/Dialog/DialogAction";
 import DialogBody from "components/Dialog/DialogBody";
 import DialogTitle from "components/Dialog/DialogTitle";
 import React from "react";
-import { IDialogDeleteThisNote } from "./types";
+import { IDialogDeleteThisNote } from "./types/types.component";
 
 const DialogDeleteThisNote: React.FC<IDialogDeleteThisNote> = ({ open, onClose, isLoading, deleteThisNote }) => {
     return (

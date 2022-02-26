@@ -4,10 +4,10 @@ import Dialog from "components/Dialog";
 import DialogAction from "components/Dialog/DialogAction";
 import DialogForm from "components/Dialog/DialogForm";
 import DialogTitle from "components/Dialog/DialogTitle";
-import DialogFormField from "components/DialogFormField";
+import DialogFormField from "components/Dialog/DialogFormField";
 import Input from "components/FormFields/Input";
 import React from "react";
-import { IDialogCreateNote } from "./types";
+import { IDialogCreateNote } from "./types/types.component";
 
 const DialogCreateNoteView: React.FC<IDialogCreateNote> = (props) => {
     const { isOpenDialogCreateNote, onClose, handleChange, errorInputMessage, postSaveNote, isLoading } = props;

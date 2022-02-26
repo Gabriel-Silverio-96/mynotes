@@ -1,8 +1,8 @@
 import React from "react";
 import { DialogContainer, DialogContent } from "./styled";
-import { IDialog } from "./types";
+import { IDialog } from "./types/types.component";
 
-const DialogView: React.FC<IDialog> = ({ open = false, minHeight, size, children }) => {
+const DialogView: React.FC<IDialog> = ({ open, minHeight, size, children }) => {
     return (
         <>
             {open && (

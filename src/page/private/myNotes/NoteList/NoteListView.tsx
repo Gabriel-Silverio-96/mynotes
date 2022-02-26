@@ -1,10 +1,10 @@
 import { INote } from "common/types/_MyNotes/notes";
 import Loading from "components/Loading";
-import NoNotes from "components/NoNotes";
+import NoNotesCreated from "components/NoNotesCreated";
 import NoteCard from "components/NoteCard";
 import React from "react";
 import { LoadingWrapper, NoteList } from "./styled";
-import { INoteList } from "./types";
+import { INoteList } from "./types/types.component";
 
 const NoteListView: React.FC<INoteList> = (props) => {
     const { notes, isLoading, noNotesCreated, openDialogDeleteThisNote, openDialogEditNote } = props;
@@ -28,7 +28,7 @@ const NoteListView: React.FC<INoteList> = (props) => {
                         />
                     ))}
             </NoteList>
-            {noNotesCreated && !isLoading && <NoNotes />}
+            {noNotesCreated && !isLoading && <NoNotesCreated />}
         </div>
     )
 }
