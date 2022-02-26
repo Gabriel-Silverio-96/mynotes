@@ -28,5 +28,5 @@ export const NoteList = styled.section`
 `
 
 export const LoadingWrapper = styled.div`
-    margin-bottom: 1rem;
+    margin: 1rem 0;
 `
