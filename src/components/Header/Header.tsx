@@ -2,7 +2,7 @@ import dark from "assets/styles/themes/dark";
 import light from "assets/styles/themes/light";
 import { AuthContext } from "provider/authContext";
 import React, { useCallback, useContext } from "react";
-import useThemeStorage from "util/useThemeStorage";
+import useThemeStorage from "common/hooks/useThemeStorage";
 import HeaderView from "./HeaderView";
 
 const Header: React.FC = () => {
