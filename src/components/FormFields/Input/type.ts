@@ -13,5 +13,7 @@ export interface IInput extends InputHTMLAttributes<HTMLInputElement> {
     onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
     disabled?: boolean;
     isLoadingData?: boolean;
+    isVisiblePassword: boolean;
+    visiblePassword: () => void;
     messageLoading?: string;
 }

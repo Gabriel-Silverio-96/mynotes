@@ -59,4 +59,12 @@ export const InputElement = styled.div`
             outline: 0;            
         }
     }
+
+    .button-eye-password {
+        position: absolute;
+        width: min-content;
+        right: 0rem;
+        top: 0.2rem;
+        margin-top: 0;        
+    }
 `

@@ -1,8 +1,9 @@
 import React from "react";
+import { useState } from "react";
 import InputView from "./InputView";
 import { IInput } from "./type";
 
-const Input: React.FC<IInput> = (props) => {
+const Input: React.FC<Omit<IInput, "isVisiblePassword" | "visiblePassword">> = (props) => {
     const {
         label,
         id,
@@ -17,6 +18,11 @@ const Input: React.FC<IInput> = (props) => {
         ...rest
     } = props;
 
+    const [isVisiblePassword, setIsVisiblePassword] = useState<boolean>(false);
+    const visiblePassword = () => {
+        setIsVisiblePassword((prevState: boolean) => !prevState);
+    };
+
     return (
         <InputView {... {
             label,
@@ -29,6 +35,8 @@ const Input: React.FC<IInput> = (props) => {
             disabled,
             isLoadingData,
             messageLoading,
+            isVisiblePassword,
+            visiblePassword,
             ...rest
         }} />
     )
