@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { INoteCardStyled } from "./types";
+import { INoteCardStyled } from "./types/types.styled";
 
 export const NoteCard = styled.div<INoteCardStyled>`
     padding: 1rem;

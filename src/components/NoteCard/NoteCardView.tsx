@@ -2,7 +2,7 @@ import Button from "components/Button";
 import React from "react";
 import { FiEye, FiTrash2 } from "react-icons/fi";
 import { NoteCardBody, NoteCardButton, NoteCard, NoteCardHeader } from "./styled";
-import { INoteCard } from "./types";
+import { INoteCard } from "./types/types.component";
 
 const NoteCardView: React.FC<INoteCard> = (props) => {
     const { colorNote, editNote, id, observation, openDialogDeleteThisNote, titleNote } = props;

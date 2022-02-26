@@ -6,7 +6,3 @@ export interface INoteCard {
     openDialogDeleteThisNote: () => void;
     editNote: () => void;
 }
-
-export interface INoteCardStyled {
-    colorNote: string;
-}
