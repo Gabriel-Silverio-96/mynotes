@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const NoNotesCenter = styled.div`
+export const NoNotesCreated = styled.div`
     width: 100%;
     height: 60vh;
     display: flex;
@@ -9,7 +9,7 @@ export const NoNotesCenter = styled.div`
     grid-column: 1 / -1;
 `
 
-export const NoNotesContainer = styled.div`
+export const NoNotesCreatedContent = styled.div`
     text-align: center;
 
     span {
