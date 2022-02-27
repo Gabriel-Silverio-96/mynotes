@@ -36,7 +36,7 @@ const LoginView: React.FC<ILogin> = (props) => {
                     }
                 />
                 <Button
-                    title="Sing in"
+                    title="Login"
                     isLoading={isLoading}
                     type="submit"
                     disabled={isLoading}
