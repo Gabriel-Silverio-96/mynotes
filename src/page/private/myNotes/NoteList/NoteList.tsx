@@ -1,6 +1,4 @@
-import { AxiosError, AxiosResponse } from "axios";
-import { snackBar } from "common/store/snackBar/snackBar.action";
-import { IDataErrorResponse } from "common/types/ErrorResponse";
+import { AxiosResponse } from "axios";
 import { INote } from "common/types/_MyNotes/notes";
 import React, { useContext, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
@@ -28,13 +26,10 @@ const NoteList: React.FC = () => {
                     setNoNotesCreated(false);
                 } else {
                     setNoNotesCreated(true);
-                }
-                return setIsLoading(false);
-            } catch (err) {
-                const error = err as AxiosError;
-                const { data } = error.response as AxiosResponse<IDataErrorResponse>;
+                }                
+            } catch (err) {                               
+            } finally {
                 setIsLoading(false);
-                return dispatch(snackBar(true, data.message, data.type_message));
             }
         };
 
