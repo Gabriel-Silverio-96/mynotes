@@ -38,6 +38,10 @@ const SetupInterceptors = (history: any, store: any) => {
                 store.dispatch(snackBar(true, data.message, data.type_message));
                 break;
 
+            case 404:
+                store.dispatch(snackBar(true, data.message, data.type_message));
+                break;
+
             case 500:
                 store.dispatch(snackBar(true, data.message, data.type_message));
                 break;
