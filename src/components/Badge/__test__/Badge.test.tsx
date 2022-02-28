@@ -5,7 +5,7 @@ import Badge from "../Badge";
 
 const BADGE_TEXT = "Hi, i'm Badge";
 
-describe("<Button />", () => {
+describe("<Badge />", () => {
     it("Should render the component", () => {
         const { container } = render(<Badge text={BADGE_TEXT} />);
         expect(container).toBeDefined();
