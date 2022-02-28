@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import LoadingView from "./LoadingView";
 import { ILoading } from "./types/types.component";
 
@@ -7,4 +7,4 @@ const Loading: React.FC<ILoading> = (props) => {
     return <LoadingView {... { isLoading, justIcon, align, messageLoading, size, ...rest }} />
 }
 
-export default Loading;
+export default memo(Loading);

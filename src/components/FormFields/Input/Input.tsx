@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { useState } from "react";
 import InputView from "./InputView";
 import { IInput } from "./type";
@@ -42,4 +42,4 @@ const Input: React.FC<Omit<IInput, "isVisiblePassword" | "visiblePassword">> = (
     )
 }
 
-export default Input;
+export default memo(Input);

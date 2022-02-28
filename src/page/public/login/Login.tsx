@@ -42,7 +42,6 @@ const Login: React.FC<ILogin> = () => {
             const error = err as AxiosError;
             const { status, data } = error.response as AxiosResponse<IDataErrorResponse>;                
             if (status === 400) setErrorInputMessage(data.errors);             
-        } finally {
             setIsLoading(false);
         }
     }
