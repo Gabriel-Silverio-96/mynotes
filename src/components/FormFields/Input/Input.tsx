@@ -1,9 +1,9 @@
-import React, { memo } from "react";
+import React, { forwardRef, memo } from "react";
 import { useState } from "react";
 import InputView from "./InputView";
 import { IInput } from "./type";
 
-const Input: React.FC<Omit<IInput, "isVisiblePassword" | "visiblePassword">> = (props) => {
+const Input = forwardRef<HTMLInputElement, Omit<IInput, "isVisiblePassword" | "visiblePassword" | "ref">>((props, ref) => {
     const {
         label,
         id,
@@ -14,7 +14,7 @@ const Input: React.FC<Omit<IInput, "isVisiblePassword" | "visiblePassword">> = (
         onChange,
         disabled,
         isLoadingData,
-        messageLoading,
+        messageLoading,                
         ...rest
     } = props;
 
@@ -37,9 +37,10 @@ const Input: React.FC<Omit<IInput, "isVisiblePassword" | "visiblePassword">> = (
             messageLoading,
             isVisiblePassword,
             visiblePassword,
+            ref,
             ...rest
         }} />
     )
-}
+})
 
 export default memo(Input);
