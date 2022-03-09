@@ -10,12 +10,12 @@ import Input from "../Input";
 const INPUT_VALUE = "mynotes";
 const MESSAGE_ERROR = "Name is required";
 
-const InputRender: React.FC = () => {
+const InputRender: React.FC<{ isLoadingData?: boolean }> = ({ isLoadingData = false }) => {
     const inputRef = useRef<HTMLInputElement>(null);
     const [name, setName] = useState<null | string>(null);
 
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault(); 
+        e.preventDefault();
         setName(inputRef.current!.value);
     }
 
@@ -23,13 +23,13 @@ const InputRender: React.FC = () => {
         <ThemeProviderTest>
             <FormContainer title="Name user">
                 <form onSubmit={onSubmit}>
-                    <Input          
+                    <Input
                         ref={inputRef}
                         label="Name"
                         name="name"
                         id="name"
                         typeInput="text"
-                        isLoadingData={false}
+                        isLoadingData={isLoadingData}
                         errorMessage={name === "" ? MESSAGE_ERROR : ""}
                     />
                     <Button variant="primary" title="Send" />
@@ -78,5 +78,19 @@ describe("<Input />", () => {
 
         const errorMessage = queryByText(MESSAGE_ERROR);
         expect(errorMessage).not.toBeInTheDocument();
+    });
+
+    it("Should show loading with hidden visibility", () => {
+        const { getByText } = render(<InputRender />);
+        const loading = getByText(/loading data/i) as HTMLParagraphElement;
+        
+        expect(getComputedStyle(loading.parentElement!).visibility).toBe("hidden");
+    });
+
+    it("Should show loading with visible visibility", () => {
+        const { getByText } = render(<InputRender isLoadingData/>);
+        const loading = getByText(/loading data/i) as HTMLParagraphElement;
+        
+        expect(getComputedStyle(loading.parentElement!).visibility).toBe("visible");
     });
 })
