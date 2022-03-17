@@ -22,7 +22,10 @@ const SetupInterceptors = (history: any, store: any) => {
 
         return response;
     }, error => {
-        const { status, data } = error.response as AxiosResponse<IDataMessageResponse>;
+        const messageError = "An unexpected error has occurred, please try again later";
+        if(error.response === undefined) store.dispatch(snackBar(true, messageError, "error")); 
+        
+        const { status, data } = error.response as AxiosResponse<IDataMessageResponse>;        
 
         switch (status) {
             case 401:

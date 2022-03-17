@@ -36,7 +36,7 @@ const DropdownHeader: React.FC = () => {
 
             {isActiveDropDown && (
                 <DropdownHeaderContainer>
-                    <Dropdown>
+                    <Dropdown data-testid="dropdown-header">
                         <ul>
                             <li role="button">
                                 <Link to="profile">
@@ -44,7 +44,7 @@ const DropdownHeader: React.FC = () => {
                                 </Link>
                             </li>
 
-                            <li onClick={logout} role="button">Sair</li>
+                            <li onClick={logout} role="button">Exit</li>
                         </ul>
                     </Dropdown>
                 </DropdownHeaderContainer>

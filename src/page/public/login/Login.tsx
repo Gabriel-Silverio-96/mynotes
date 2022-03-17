@@ -39,10 +39,10 @@ const Login: React.FC<ILogin> = () => {
             setAuthenticated(true);
             return history.push("/mynotes");
         } catch (err) {
+            setIsLoading(false);
             const error = err as AxiosError;
             const { status, data } = error.response as AxiosResponse<IDataErrorResponse>;                
             if (status === 400) setErrorInputMessage(data.errors);             
-            setIsLoading(false);
         }
     }
 

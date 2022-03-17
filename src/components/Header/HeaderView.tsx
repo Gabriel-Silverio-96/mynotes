@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { HeaderContainer } from "./styled";
 
 const HeaderView: React.FC<IHeader> = (props) => {
-    const { authenticated, toggleTheme, theme } = props;    
+    const { authenticated, toggleTheme, theme } = props;
     return (
         <HeaderContainer>
             <Link to={authenticated ? "/mynotes" : "/"}>
@@ -16,8 +16,8 @@ const HeaderView: React.FC<IHeader> = (props) => {
             </Link>
 
             <nav>
-                {authenticated && document.location.pathname !== "/" ? (
-                    <>                       
+                {authenticated ? (
+                    <>
                         <Button onClick={toggleTheme} className="switch-theme" iconButton={
                             theme.title === "dark"
                                 ? <FiSun size={17.5} />
