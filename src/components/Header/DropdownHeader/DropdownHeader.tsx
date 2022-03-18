@@ -9,16 +9,14 @@ const DropdownHeader: React.FC = () => {
     const { setAuthenticated } = useContext(AuthContext);
     const [isActiveDropDown, setIsActiveDropDown] = useState<boolean>(false);
 
-    const toogleDropdown = () => {
-        setIsActiveDropDown(prevState => !prevState);
-    }
+    const toogleDropdown = () => setIsActiveDropDown(prevState => !prevState);
 
     const logout = () => {
         setAuthenticated(false);
         localStorage.removeItem("token");
         localStorage.removeItem("userData");
         apiMyNotes.defaults.headers!.Authorization = "";
-        history.push("/")
+        history.push("/");
     }
 
     return <DropdownHeaderView {... { toogleDropdown, logout, isActiveDropDown }} />
