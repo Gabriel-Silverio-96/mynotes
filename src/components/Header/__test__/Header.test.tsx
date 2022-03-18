@@ -11,10 +11,10 @@ import rgbToHex from "util/test/RgbToHex";
 import ThemeProviderTest from "util/test/ThemeProviderTest";
 import Header from "../Header";
 
-const HeaderRender: React.FC<{ authenticated?: boolean, theme?: DefaultTheme }> = ({ authenticated, theme }) => {
+const HeaderRender: React.FC<{ isAuthenticated?: boolean, theme?: DefaultTheme }> = ({ isAuthenticated, theme }) => {
     return (
         <BrowserRouter>
-            <AuthProviderTest authenticated={authenticated ? authenticated : false}>
+            <AuthProviderTest isAuthenticated={isAuthenticated ? isAuthenticated : false}>
                 <ThemeProviderTest theme={theme}>
                     <Header />
                 </ThemeProviderTest>
@@ -52,7 +52,7 @@ describe("<Header />", () => {
     });
 
     it("Should show not visible button Login and Create account when authentication is true", () => {
-        const { queryByText } = render(<HeaderRender authenticated />);
+        const { queryByText } = render(<HeaderRender isAuthenticated />);
         const buttonLogin = queryByText(/login/i) as HTMLButtonElement;
         const buttonCreateAccount = queryByText(/create account/i) as HTMLButtonElement;
 
@@ -61,7 +61,7 @@ describe("<Header />", () => {
     });
 
     it("Should show dropdown when authentication is true", () => {
-        const { getByTestId, container } = render(<HeaderRender authenticated />);
+        const { getByTestId, container } = render(<HeaderRender isAuthenticated />);
         const dropdown = container.querySelector(".dropdown") as HTMLDivElement;
         userEvent.click(dropdown!);
         const dropdownHeader = getByTestId("dropdown-header");
@@ -77,7 +77,7 @@ describe("<Header />", () => {
     });
 
     it("Should show href logo '/mynotes' when authenticated is true", () => {
-        const { container } = render(<HeaderRender authenticated/>);
+        const { container } = render(<HeaderRender isAuthenticated/>);
         const hrefLogo = container.querySelector("a") as HTMLAnchorElement;
 
         expect(hrefLogo.pathname).toBe("/mynotes");
