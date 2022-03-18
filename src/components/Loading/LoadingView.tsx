@@ -5,7 +5,7 @@ import { ILoading } from "./types/types.component";
 const LoadingView: React.FC<ILoading> = (props) => {
     const { isLoading, justIcon, align, messageLoading, size, ...rest } = props;
     return (
-        <LoadingContainer isLoading={isLoading} align={align} {...rest}>
+        <LoadingContainer isLoading={isLoading} align={align} {...rest} data-testid="loading">
             <LoadingSvg>
                 <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 72.996 73">
                     <g id="Path_50" transform="translate(0 -1234)" fill="none">
