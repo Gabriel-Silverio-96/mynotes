@@ -6,7 +6,7 @@ const NoNotesCreatedView: React.FC<any> = () => {
         <NoNotesCreated>
             <NoNotesCreatedContent>
                 <span>😄</span>
-                <h1>You didn't create<br />any notes</h1>
+                <h1>You didn't create any notes</h1>
                 <p>Create a new note</p>
             </NoNotesCreatedContent>
         </NoNotesCreated>

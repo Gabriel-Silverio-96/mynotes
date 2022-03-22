@@ -21,6 +21,8 @@ export const NoNotesCreatedContent = styled.div`
         font-weight: 800;               
         margin: 1rem 0;
         color: ${props => props.theme.colors.textColorTitle};
+        width: auto;
+        max-width: 22rem;
     }
 
     p {
