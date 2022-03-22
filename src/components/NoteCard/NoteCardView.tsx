@@ -7,7 +7,7 @@ import { INoteCard } from "./types/types.component";
 const NoteCardView: React.FC<INoteCard> = (props) => {
     const { colorNote, editNote, id, observation, openDialogDeleteThisNote, titleNote } = props;
     return (
-        <NoteCard colorNote={colorNote}>
+        <NoteCard colorNote={colorNote} data-testid="note-card">
             <NoteCardHeader>
                 <h3>
                     {
@@ -24,12 +24,14 @@ const NoteCardView: React.FC<INoteCard> = (props) => {
                         variant="danger"
                         size="small"
                         iconButton={<FiTrash2 size={15} />}
+                        data-testid="button-open-dialog-delete-this-note"
                     />
 
                     <Button
                         onClick={editNote}
                         size="small"
                         iconButton={<FiEye size={15} />}
+                        data-testid="button-edit-note"
                     />
                 </NoteCardButton>
             </NoteCardHeader>
