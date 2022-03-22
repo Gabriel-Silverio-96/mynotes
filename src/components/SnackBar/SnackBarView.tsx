@@ -1,7 +1,7 @@
 import Button from "components/Button";
 import React from "react";
 import { SnackBar, SnackBarProgressBar, SnackBarHeader } from "./styled";
-import { ISnackBar } from "./types";
+import { ISnackBar } from "./types/types.component";
 import { FiX } from "react-icons/fi";
 
 const SnackBarView: React.FC<ISnackBar> = (props) => {

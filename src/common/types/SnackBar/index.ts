@@ -1,4 +1,5 @@
 export type SnackBarTypeMessage = "error" | "success" | "warning";
+export type AlignSnackBar = "topCenter" | "topRight" | "topLeft" | "bottomCenter" | "bottomRight" | "bottomLeft";
 
 export interface IPayload {
     isOpen: boolean;

@@ -1,21 +1,4 @@
-import { SnackBarTypeMessage } from "common/types/SnackBar";
-
-type Align = "topCenter" | "topRight" | "topLeft" | "bottomCenter" | "bottomRight" | "bottomLeft";
-
-export interface ISnackBarStyled {
-    typeMessage: SnackBarTypeMessage;    
-    align?: Align;
-}
-
-export interface ISnackBar  {
-    typeMessage: SnackBarTypeMessage;
-    message: string;
-    align?: Align;
-    progressBar?: boolean;
-    delay?: number;
-    closeSnackBar?: () => void;
-    buttonClose?: boolean;
-}
+import { AlignSnackBar, SnackBarTypeMessage } from "common/types/SnackBar";
 
 export interface ITypeMessageStyled {
     success: string;
@@ -43,4 +26,9 @@ export interface IAlignOption {
 
 export interface ISnackBarProgressBarStyled {
     delay?: number;
+}
+
+export interface ISnackBarStyled {
+    typeMessage: SnackBarTypeMessage;    
+    align?: AlignSnackBar;
 }

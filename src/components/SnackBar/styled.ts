@@ -1,6 +1,6 @@
 import * as variables from "assets/styles/variables";
 import styled from "styled-components";
-import { IAlignOption, ISnackBarProgressBarStyled, ISnackBarStyled, ITypeMessageStyled, Postion } from "./types";
+import { IAlignOption, ISnackBarProgressBarStyled, ISnackBarStyled, ITypeMessageStyled, Postion } from "./types/types.styled";
 
 const TypeMessage = (typeMessage: string): string => {
     const typeMessageOption: ITypeMessageStyled = {

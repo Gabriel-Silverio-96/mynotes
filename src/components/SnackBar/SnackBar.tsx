@@ -2,7 +2,7 @@ import { snackBar } from "common/store/snackBar/snackBar.action";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import SnackBarView from "./SnackBarView";
-import { ISnackBar } from "./types";
+import { ISnackBar } from "./types/types.component";
 
 const SnackBar: React.FC<ISnackBar> = (props) => {
     const { typeMessage,
