@@ -7,7 +7,7 @@ import { FiX } from "react-icons/fi";
 const SnackBarView: React.FC<ISnackBar> = (props) => {
     const { typeMessage, message, align, progressBar, delay, closeSnackBar, buttonClose} = props;
     return (
-        <SnackBar typeMessage={typeMessage} align={align}>
+        <SnackBar typeMessage={typeMessage} align={align} data-testid="snack-bar">
             <SnackBarHeader>
                 <h4>{typeMessage}</h4>
                 
@@ -17,6 +17,7 @@ const SnackBarView: React.FC<ISnackBar> = (props) => {
                         variant="text"
                         style={{padding: 0}}
                         onClick={closeSnackBar}
+                        aria-label="button-close-snack-bar"
                     />
                 )}
             </SnackBarHeader>
