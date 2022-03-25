@@ -40,6 +40,7 @@ const LoginView: React.FC<ILogin> = (props) => {
                     isLoading={isLoading}
                     type="submit"
                     disabled={isLoading}
+                    data-testid="button-login"
                 />
                 <div style={{ marginTop: "1rem" }}>
                     <Link to="/auth/forgot-password">

@@ -9,7 +9,7 @@ import { ILogin, ILoginInputs, ILoginResponse } from "./type";
 
 const LOGIN_INPUTS_INITIAL_STATE: ILoginInputs = { email: "", password: "" };
 
-const Login: React.FC<ILogin> = () => {
+const Login = () => {
     const history = useHistory();
     const { setAuthenticated, setUserData } = useContext(AuthContext);
 
@@ -35,7 +35,7 @@ const Login: React.FC<ILogin> = () => {
             localStorage.setItem("token", token);
             localStorage.setItem("userData", JSON.stringify(user_data));
             apiMyNotes.defaults.headers!.Authorization = `Bearer ${token}`;
-            setUserData(user_data)
+            setUserData(user_data);
             setAuthenticated(true);
             return history.push("/mynotes");
         } catch (err) {
