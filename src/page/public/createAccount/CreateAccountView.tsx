@@ -47,7 +47,7 @@ const CreateAccountView: React.FC<ICreateAccount> = (props) => {
                     }
                 />
 
-                <Button title="Create" type="submit" isLoading={isLoading} />
+                <Button title="Create" type="submit" isLoading={isLoading} data-testid="button-create"/>
             </form>
         </FormContainer>
     )

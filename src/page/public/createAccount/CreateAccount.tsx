@@ -4,11 +4,11 @@ import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useHistory } from "react-router-dom";
 import apiMyNotes from "service/apiMyNotes";
 import CreateAccountView from "./CreateAccountView";
-import { ICreateAccount, IUserData } from "./types";
+import { IUserData } from "./types";
 
 const USER_DATA_INPUTS_INITIAL_STATE: IUserData = { full_name: "", email: "", password: "" };
 
-const CreateAccount: React.FC<ICreateAccount> = () => {
+const CreateAccount = () => {
     const history = useHistory();
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
