@@ -8,7 +8,7 @@ const errorsInputMessage = {
     ]
 };
 
-const userAlreadyExist: IDataMessageResponse = {
+const userNotExist: IDataMessageResponse = {
     type_message: "warning",
     message: "Unregistered user, create an account"
 };
@@ -27,4 +27,4 @@ const loggedSuccess: ILoginResponse = {
     }
 };
 
-export { errorsInputMessage, userAlreadyExist, incorrectEmailorPassword, loggedSuccess };
+export { errorsInputMessage, userNotExist, incorrectEmailorPassword, loggedSuccess };

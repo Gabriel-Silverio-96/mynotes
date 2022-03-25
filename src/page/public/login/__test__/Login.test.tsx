@@ -11,7 +11,7 @@ import { BrowserRouter } from "react-router-dom";
 import apiMyNotes from "service/apiMyNotes";
 import ThemeProviderTest from "util/test/ThemeProviderTest";
 import Login from "../Login";
-import { errorsInputMessage, incorrectEmailorPassword, userAlreadyExist, loggedSuccess } from "./mock";
+import { errorsInputMessage, incorrectEmailorPassword, userNotExist, loggedSuccess } from "./mock";
 
 const EMAIL_MOCK = "email@email.com";
 const PASSWORD_MOCK = "123456789";
@@ -59,8 +59,8 @@ describe("Page <Login />", () => {
         })
     });
 
-    it(`Should show message in snackBar '${userAlreadyExist.message}'`, async () => {
-        mock.onPost("auth/login").reply(403, userAlreadyExist);
+    it(`Should show message in snackBar '${userNotExist.message}'`, async () => {
+        mock.onPost("auth/login").reply(403, userNotExist);
 
         const { container, getByTestId, queryByText } = render(<LoginRender />);
         const inputEmail = container.querySelector("[name='email']") as HTMLInputElement;
@@ -71,11 +71,11 @@ describe("Page <Login />", () => {
 
         const buttonLogin = getByTestId("button-login") as HTMLButtonElement;
         userEvent.click(buttonLogin!);
-        const { message, type_message } = userAlreadyExist;
+        const { message, type_message } = userNotExist;
         store.dispatch(snackBar(true, message, type_message));
 
         await waitFor(() => {
-            expect(queryByText(userAlreadyExist.message)).toBeInTheDocument();
+            expect(queryByText(userNotExist.message)).toBeInTheDocument();
         })
     });
 
