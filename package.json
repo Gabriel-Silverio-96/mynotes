@@ -54,6 +54,7 @@
   },
   "devDependencies": {
     "@types/react-router-dom": "^5.3.0",
-    "@types/styled-components": "^5.1.20"
+    "@types/styled-components": "^5.1.20",
+    "axios-mock-adapter": "^1.20.0"
   }
 }
