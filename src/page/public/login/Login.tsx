@@ -5,7 +5,7 @@ import React, { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import apiMyNotes from "service/apiMyNotes";
 import LoginView from "./LoginView";
-import { ILogin, ILoginInputs, ILoginResponse } from "./type";
+import { ILoginInputs, ILoginResponse } from "./type";
 
 const LOGIN_INPUTS_INITIAL_STATE: ILoginInputs = { email: "", password: "" };
 
