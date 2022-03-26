@@ -83,13 +83,14 @@ describe("<TextArea />", () => {
         const { getByText } = render(<TextAreaRender />);
         const loading = getByText(/loading data/i) as HTMLParagraphElement;
         
-        expect(getComputedStyle(loading.parentElement!).visibility).toBe("hidden");
+        expect(loading.parentElement).toHaveStyle({ visibility: "hidden" });
     });
 
     it("Should show loading with visible visibility", () => {
-        const { getByText } = render(<TextAreaRender isLoadingData/>);
+        const { container, getByText } = render(<TextAreaRender isLoadingData/>);
         const loading = getByText(/loading data/i) as HTMLParagraphElement;
         
-        expect(getComputedStyle(loading.parentElement!).visibility).toBe("visible");
+        expect(container.querySelector("textarea")).toBeDisabled();
+        expect(loading.parentElement).toHaveStyle({ visibility: "visible" });
     });
 })
