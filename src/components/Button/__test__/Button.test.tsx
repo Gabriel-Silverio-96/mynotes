@@ -45,7 +45,7 @@ describe("<Button />", () => {
         expect(buttonTitle).toContainElement(svgIcon);
     });
 
-    it(`Should have button is loading`, () => {
+    it("Should have button is loading", () => {
         const { getByText, container } = render(<ButtonRender variant="primary" isLoading messageLoading="Loading" />);
         const buttonMessageLoading = getByText(/loading/i);        
         const buttonElement = container.querySelector("button");
@@ -53,10 +53,10 @@ describe("<Button />", () => {
         
         expect(buttonMessageLoading).toBeInTheDocument();
         expect(buttonElement).toContainElement(svgIconLoading);        
-        expect(buttonElement?.disabled).toBe(true);        
+        expect(buttonElement).toBeDisabled();
     });
 
-    it(`Should have one called click button`, () => {
+    it("Should have one called click button", () => {
         const onClick = jest.fn();
         const { getByText } = render(<ButtonRender variant="primary" title={BUTTON_TITLE} onClick={onClick}/>);
         const buttonElement = getByText(BUTTON_TITLE);
