@@ -83,14 +83,15 @@ describe("<Input />", () => {
     it("Should show loading with hidden visibility", () => {
         const { getByText } = render(<InputRender />);
         const loading = getByText(/loading data/i) as HTMLParagraphElement;
-        
-        expect(getComputedStyle(loading.parentElement!).visibility).toBe("hidden");
+
+        expect(loading.parentElement).toHaveStyle({ visibility: "hidden" });
     });
 
     it("Should show loading with visible visibility", () => {
-        const { getByText } = render(<InputRender isLoadingData/>);
+        const { container, getByText } = render(<InputRender isLoadingData />);
         const loading = getByText(/loading data/i) as HTMLParagraphElement;
-        
-        expect(getComputedStyle(loading.parentElement!).visibility).toBe("visible");
+
+        expect(container.querySelector("input")).toBeDisabled();
+        expect(loading.parentElement).toHaveStyle({ visibility: "visible" });
     });
 })
