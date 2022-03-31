@@ -23,10 +23,7 @@ import {
 const { title_note, observation } = NEW_NOTE_MOCK;
 
 const mock = new MockAdapter(apiMyNotes);
-beforeAll(() => {
-    mock.reset()
-    cleanup()
-});
+beforeAll(() => mock.reset());    
 afterEach(cleanup);
 
 const MyNotesRender = () => {
