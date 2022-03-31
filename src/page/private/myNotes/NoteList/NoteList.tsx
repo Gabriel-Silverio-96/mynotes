@@ -26,14 +26,16 @@ const NoteList: React.FC = () => {
                     setNoNotesCreated(false);
                 } else {
                     setNoNotesCreated(true);
-                }                
-            } catch (err) {                               
+                }
+            } catch (err) {
             } finally {
                 setIsLoading(false);
             }
         };
 
         getNoteList();
+
+        return () => setIsLoading(false);
     }, [dispatch, setNoNotesCreated, refreshRequest]);
 
     return <NoteListView {...{ notes, isLoading, openDialogDeleteThisNote, openDialogEditNote, noNotesCreated }} />
