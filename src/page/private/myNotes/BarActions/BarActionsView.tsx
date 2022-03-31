@@ -20,6 +20,7 @@ const BarActionsView: React.FC<IBarAction> = (props) => {
                     disabled={noNotesCreated}
                     variant="danger"
                     iconButton={<FiTrash2 size={17.5} />}
+                    data-testid="button-delete-all-notes"
                 />
             </Actions>
         </BarActions>

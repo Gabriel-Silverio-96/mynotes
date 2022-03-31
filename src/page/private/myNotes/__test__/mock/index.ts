@@ -61,7 +61,12 @@ const editNoteSuccess: IDataMessageResponse = {
     message: "Note edited successfully"
 };
 
-const deleteThiNoteSuccess: IDataMessageResponse = {
+const deleteOneNoteSuccess: IDataMessageResponse = {
+    type_message: "success",
+    message: "Note deleted"
+};
+
+const deleteAllNoteSuccess: IDataMessageResponse = {
     type_message: "success",
     message: "Note deleted"
 };
@@ -72,7 +77,8 @@ export {
     listNotes, 
     createNoteSuccess,
     editNoteSuccess,
-    deleteThiNoteSuccess,
+    deleteOneNoteSuccess,
+    deleteAllNoteSuccess,
     NEW_NOTE_MOCK,
     EDIT_NOTE_MOCK,
 };
