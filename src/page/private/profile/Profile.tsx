@@ -5,9 +5,9 @@ import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import apiMyNotes from "service/apiMyNotes";
 import ProfileView from "./ProfileView";
-import { IProfile, IUserData } from "./types";
+import { IUserData } from "./types";
 
-const Profile: React.FC<IProfile> = () => {
+const Profile: React.FC = () => {
     const history = useHistory();
 
     const [userData, setUserData] = useState({} as IUserData);
@@ -28,6 +28,7 @@ const Profile: React.FC<IProfile> = () => {
         }
         getUserData();
         
+        return () => setIsLoadingData(false);
     }, []);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
