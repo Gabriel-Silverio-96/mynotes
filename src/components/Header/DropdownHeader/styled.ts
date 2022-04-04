@@ -62,7 +62,7 @@ export const Dropdown = styled.div`
     padding: 2rem;
     background-color: ${variables.black};   
     color: ${variables.white};   
-    border: 0.03rem solid ${variables.white};
+    border: 0.03rem solid ${variables.grayBorder};
     border-radius: 0.3125rem;
     right: 0.85rem;
 
