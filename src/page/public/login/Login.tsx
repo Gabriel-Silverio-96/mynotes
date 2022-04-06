@@ -13,7 +13,6 @@ const Login = () => {
     const history = useHistory();
     const { setAuthenticated, setUserData } = useContext(AuthContext);
     
-    const recaptchaRef = React.useRef<any>();
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [errorInputMessage, setErrorInputMessage] = useState<IErrorInputMessage[]>([]);
     const [loginInputs, setLoginInputs] = useState<ILoginInputs>(LOGIN_INPUTS_INITIAL_STATE);
@@ -25,10 +24,7 @@ const Login = () => {
     }
 
     const login = async (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        const token = await recaptchaRef.current.executeAsync();
-        console.log(token);
-        
+        e.preventDefault();        
         setErrorInputMessage([]);
         setIsLoading(true);
 
@@ -50,7 +46,7 @@ const Login = () => {
         }
     }
 
-    return <LoginView {... { isLoading, handleChange, errorInputMessage, login, recaptchaRef }} />
+    return <LoginView {... { isLoading, handleChange, errorInputMessage, login }} />
 }
 
 export default Login;
