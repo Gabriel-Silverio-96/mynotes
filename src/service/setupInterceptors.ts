@@ -26,7 +26,7 @@ const SetupInterceptors = (history: any, store: any) => {
         if(error.response === undefined) store.dispatch(snackBar(true, messageError, "error")); 
         
         const { status, data } = error.response as AxiosResponse<IDataMessageResponse>;        
-
+        
         switch (status) {
             case 401:
                 store.dispatch(snackBar(true, data.message, data.type_message));
@@ -42,6 +42,10 @@ const SetupInterceptors = (history: any, store: any) => {
                 break;
 
             case 404:
+                store.dispatch(snackBar(true, data.message, data.type_message));
+                break;
+
+            case 429:
                 store.dispatch(snackBar(true, data.message, data.type_message));
                 break;
 
