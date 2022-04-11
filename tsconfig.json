@@ -18,6 +18,7 @@
       "esnext"
     ],
     "allowJs": true,
+    "types": ["cypress"],
     "allowSyntheticDefaultImports": true,
     "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
