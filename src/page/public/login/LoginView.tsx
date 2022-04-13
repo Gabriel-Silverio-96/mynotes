@@ -17,6 +17,7 @@ const LoginView: React.FC<ILogin> = (props) => {
                     label="Email"
                     id="email"
                     onChange={handleChange}
+                    data-cy="input-email"
                     errorMessage={
                         errorInputMessage.map((errorInputResponse: IErrorInputMessage) => (
                             errorInputResponse.param === "email" ? errorInputResponse.msg : ""
@@ -29,6 +30,7 @@ const LoginView: React.FC<ILogin> = (props) => {
                     label="Password"
                     id="password"
                     onChange={handleChange}
+                    data-cy="input-password"
                     errorMessage={
                         errorInputMessage.map((errorInputResponse: IErrorInputMessage) => (
                             errorInputResponse.param === "password" ? errorInputResponse.msg : ""
@@ -41,6 +43,7 @@ const LoginView: React.FC<ILogin> = (props) => {
                     type="submit"
                     disabled={isLoading}
                     data-testid="button-login"
+                    data-cy="button-login"
                 />
                 <div style={{ marginTop: "1rem" }}>
                     <Link to="/auth/forgot-password">
