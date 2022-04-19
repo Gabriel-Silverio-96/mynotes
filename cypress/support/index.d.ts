@@ -3,6 +3,10 @@ declare namespace Cypress {
         /**
          * @example cy.login(email: string, password: string, success?: boolean)
          */
-        login(email: string, password: string, success?: boolean): void;
+        login(email?: string, password?: string, success?: boolean): void;
+
+        deleteAllNotes(): void;
+
+        loginRequest(): void;
     }
 }
