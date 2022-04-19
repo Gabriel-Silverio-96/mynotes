@@ -1,8 +1,17 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["es5", "dom"],
-    "types": ["cypress"]
+    "lib": [
+      "ES2015",
+      "ES2016",
+      "dom"
+    ],
+    "types": [
+      "cypress"
+    ]
   },
-  "include": ["**/*.ts", "support/index.js"]
+  "include": [
+    "**/*.ts",
+    "support/index.js"
+  ]
 }
