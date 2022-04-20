@@ -1,6 +1,6 @@
 beforeEach(() => cy.loginRequest());
 
-describe("Smoke testing", () => {
+describe("Smoke testing pages private", () => {
     it("When doing smoke testing over all page, should load them all successfully", () => {
         cy.visit("/mynotes");
         cy.get("[data-cy=title-board]").should("have.length", 1);
