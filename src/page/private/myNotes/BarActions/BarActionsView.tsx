@@ -8,7 +8,7 @@ const BarActionsView: React.FC<IBarAction> = (props) => {
     const { openDialogDeleteAllNotes, noNotesCreated, openDialogCreateNote } = props;
     return (
         <BarActions>
-            <h2>Board</h2>
+            <h2 data-cy="title-board">Board</h2>
             <Actions>
                 <Button
                     title="New"
