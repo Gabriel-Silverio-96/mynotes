@@ -22,7 +22,7 @@ const Router = () => {
                 <CustomRoute isPrivate path="/myNotes" component={MyNotesPage} />
                 <CustomRoute isPrivate path="/profile" component={Profile} />
 
-                <CustomRoute path="*" component={Page404} />
+                <CustomRoute path="*" isHeaderVisible={false} component={Page404} />
             </Switch>
         </BrowserRouter>
     )
