@@ -17,7 +17,7 @@ const Router = () => {
                 <CustomRoute path="/auth/login" component={Login} />
                 <CustomRoute path="/auth/create-account" component={CreateAccount} />
                 <CustomRoute path="/auth/forgot-password" component={ForgotPassword} />
-                <CustomRoute path="/auth/reset-password/token=:token" component={ResetPassword} />
+                <CustomRoute path="/auth/reset-password/token=:token" isHeaderVisible={false} component={ResetPassword} />
 
                 <CustomRoute isPrivate path="/myNotes" component={MyNotesPage} />
                 <CustomRoute isPrivate path="/profile" component={Profile} />
