@@ -13,9 +13,9 @@ Cypress.Commands.add("login",
             return;
         }
         cy.url().should("contain", "/auth/login");
-    });    
-    
-Cypress.Commands.add("loginRequest", () => {    
+    });
+
+Cypress.Commands.add("loginRequest", () => {
     let storageToken;
     let userData;
 
@@ -39,9 +39,9 @@ Cypress.Commands.add("loginRequest", () => {
 })
 
 Cypress.Commands.add("deleteAllNotes", () => {
-    cy.get("[data-cy=button-delete-all-notes]").then(jquery => {
+    cy.get("[data-cy=button-delete-all-notes]").wait(5000).then(jquery => {
         const [button] = jquery as any;
-        if (button.disabled === false) {
+        if (!button.disabled) {
             cy.get("[data-cy=button-delete-all-notes]").click();
             cy.contains("Yes").click();
             cy.get("[data-cy=note-card]").should("have.length", 0);

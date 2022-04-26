@@ -1,4 +1,4 @@
-beforeEach(() => cy.login());   
+beforeEach(() => cy.loginRequest());   
 
 describe("Mynotes page", () => {
     it("Create new note and delete note", () => {    
