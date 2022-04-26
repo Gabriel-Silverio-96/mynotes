@@ -46,6 +46,7 @@ const ProfileView: React.FC<IProfile> = (props) => {
                     disabled={isLoadingData} 
                     isLoading={isLoadingRequestEditing} 
                     messageLoading="Saving" 
+                    data-cy="button-save"
                 />
             </form>
         </FormContainer>
