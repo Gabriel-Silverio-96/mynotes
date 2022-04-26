@@ -10,7 +10,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter, Route } from "react-router-dom";
 import apiMyNotes from "service/apiMyNotes";
 import customRender from "util/test/customRender";
-import ThemeProviderTest from "util/test/ThemeProviderTest";
+import ThemeProviderTest from "util/test/themeProviderTest";
 import ResetPassword from "../ResetPassword";
 import { errorsInputMessage, invalidToken, resetPasswordSuccess } from "./mock";
 

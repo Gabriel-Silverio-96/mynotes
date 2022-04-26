@@ -6,7 +6,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import apiMyNotes from "service/apiMyNotes";
-import ThemeProviderTest from "util/test/ThemeProviderTest";
+import ThemeProviderTest from "util/test/themeProviderTest";
 import MyNotes from "../index";
 import { listNotes } from "./mock";
 

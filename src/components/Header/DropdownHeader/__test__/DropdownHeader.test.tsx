@@ -5,7 +5,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import apiMyNotes from "service/apiMyNotes";
 import AuthProviderTest from "util/test/AuthProviderTest";
-import ThemeProviderTest from "util/test/ThemeProviderTest";
+import ThemeProviderTest from "util/test/themeProviderTest";
 import DropdownHeader from "../DropdownHeader";
 
 const DropdownHeaderRender = () => {

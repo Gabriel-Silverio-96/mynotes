@@ -8,7 +8,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import apiMyNotes from "service/apiMyNotes";
-import ThemeProviderTest from "util/test/ThemeProviderTest";
+import ThemeProviderTest from "util/test/themeProviderTest";
 import Profile from "../Profile";
 import { errorsInputMessage, FULL_NAME_MOCK, profileEditSuccess, userData } from "./mock";
 

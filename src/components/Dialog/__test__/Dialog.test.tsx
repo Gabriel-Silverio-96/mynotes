@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import Button from "components/Button";
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import ThemeProviderTest from "util/test/ThemeProviderTest";
+import ThemeProviderTest from "util/test/themeProviderTest";
 import Dialog from "../Dialog";
 import { DialogAction } from "../DialogAction/styled";
 import DialogBody from "../DialogBody";

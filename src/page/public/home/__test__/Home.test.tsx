@@ -2,7 +2,7 @@ import { render } from "@testing-library/react";
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-import ThemeProviderTest from "util/test/ThemeProviderTest";
+import ThemeProviderTest from "util/test/themeProviderTest";
 import Home from "../Home";
 
 const PRIMARY_TEXT = "Time to create new notes";

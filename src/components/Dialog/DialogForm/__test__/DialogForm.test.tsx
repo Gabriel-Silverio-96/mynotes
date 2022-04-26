@@ -4,7 +4,7 @@ import { DialogFormField } from "components/Dialog/DialogFormField/styled";
 import Input from "components/FormFields/Input";
 import React from "react";
 import ReactDOM from "react-dom";
-import ThemeProviderTest from "util/test/ThemeProviderTest";
+import ThemeProviderTest from "util/test/themeProviderTest";
 import DialogForm from "../DialogForm";
 import { IDialogForm } from "../types";
 

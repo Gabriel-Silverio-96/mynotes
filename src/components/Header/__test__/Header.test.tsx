@@ -7,7 +7,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { DefaultTheme } from "styled-components";
 import AuthProviderTest from "util/test/AuthProviderTest";
-import ThemeProviderTest from "util/test/ThemeProviderTest";
+import ThemeProviderTest from "util/test/themeProviderTest";
 import Header from "../Header";
 
 const HeaderRender: React.FC<{ isAuthenticated?: boolean, theme?: DefaultTheme }> = ({ isAuthenticated, theme }) => {

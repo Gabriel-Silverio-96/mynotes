@@ -2,7 +2,7 @@ import { render } from "@testing-library/react";
 import Input from "components/FormFields/Input";
 import React from "react";
 import ReactDOM from "react-dom";
-import ThemeProviderTest from "util/test/ThemeProviderTest";
+import ThemeProviderTest from "util/test/themeProviderTest";
 import FormContainer from "../FormContainer";
 
 const FORM_TITLE = "Create account";

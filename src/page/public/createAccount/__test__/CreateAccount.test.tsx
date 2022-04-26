@@ -9,7 +9,7 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import apiMyNotes from "service/apiMyNotes";
-import ThemeProviderTest from "util/test/ThemeProviderTest";
+import ThemeProviderTest from "util/test/themeProviderTest";
 import CreateAccount from "../CreateAccount";
 import { createAccountSuccess, errorsInputMessage, userAlreadyExist } from "./mock";
 

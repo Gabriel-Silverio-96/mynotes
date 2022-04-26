@@ -4,7 +4,7 @@ import Button from "components/Button";
 import FormContainer from "components/FormContainer";
 import React, { FormEvent, useRef, useState } from "react";
 import ReactDOM from "react-dom";
-import ThemeProviderTest from "util/test/ThemeProviderTest";
+import ThemeProviderTest from "util/test/themeProviderTest";
 import Input from "../Input";
 
 const INPUT_VALUE = "mynotes";
