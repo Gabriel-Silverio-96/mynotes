@@ -7,7 +7,6 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { DefaultTheme } from "styled-components";
 import AuthProviderTest from "util/test/AuthProviderTest";
-import rgbToHex from "util/test/RgbToHex";
 import ThemeProviderTest from "util/test/ThemeProviderTest";
 import Header from "../Header";
 
@@ -38,17 +37,15 @@ describe("<Header />", () => {
     it(`Should show background color ${variables.black} when theme dark`, () => {
         const { container } = render(<HeaderRender />);
         const header = container.querySelector("header") as HTMLDivElement;
-        const headerBackgroundColor = rgbToHex(getComputedStyle(header).backgroundColor);
 
-        expect(headerBackgroundColor).toBe(variables.black);
+        expect(header).toHaveStyle({ backgroundColor: variables.black });
     });
 
     it(`Should show background color ${variables.white} when theme light`, () => {
         const { container } = render(<HeaderRender theme={light} />);
         const header = container.querySelector("header") as HTMLHeadingElement;
-        const headerBackgroundColor = rgbToHex(getComputedStyle(header).backgroundColor);
 
-        expect(headerBackgroundColor.toLocaleUpperCase()).toBe(variables.white);
+        expect(header).toHaveStyle({ backgroundColor: variables.white });
     });
 
     it("Should show not visible button Login and Create account when authentication is true", () => {
@@ -77,7 +74,7 @@ describe("<Header />", () => {
     });
 
     it("Should show href logo '/mynotes' when authenticated is true", () => {
-        const { container } = render(<HeaderRender isAuthenticated/>);
+        const { container } = render(<HeaderRender isAuthenticated />);
         const hrefLogo = container.querySelector("a") as HTMLAnchorElement;
 
         expect(hrefLogo.pathname).toBe("/mynotes");
