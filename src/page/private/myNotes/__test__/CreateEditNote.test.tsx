@@ -7,7 +7,7 @@ import Layout from "components/Layout";
 import React from "react";
 import { Provider } from "react-redux";
 import apiMyNotes from "service/apiMyNotes";
-import ThemeProviderTest from "util/test/ThemeProviderTest";
+import ThemeProviderTest from "util/test/themeProviderTest";
 import MyNotes from "../index";
 import {
     errorsInputMessage, 

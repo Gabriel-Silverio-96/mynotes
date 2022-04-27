@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import React from "react";
 import ReactDOM from "react-dom";
 import { FiBookmark } from "react-icons/fi";
-import ThemeProviderTest from "util/test/ThemeProviderTest";
+import ThemeProviderTest from "util/test/themeProviderTest";
 import Button from "../Button";
 import { IButton } from "../types/types.component";
 

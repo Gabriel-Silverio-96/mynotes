@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import React from "react";
 import ReactDOM from "react-dom";
-import ThemeProviderTest from "util/test/ThemeProviderTest";
+import ThemeProviderTest from "util/test/themeProviderTest";
 import DialogBody from "../DialogBody";
 
 const DialogBodyRender: React.FC = ({ children }) => {

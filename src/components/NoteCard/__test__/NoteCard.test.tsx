@@ -2,7 +2,7 @@ import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
 import ReactDOM from "react-dom";
-import ThemeProviderTest from "util/test/ThemeProviderTest";
+import ThemeProviderTest from "util/test/themeProviderTest";
 import NoteCard from "../NoteCard";
 import { INoteCard } from "../types/types.component";
 

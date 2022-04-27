@@ -6,7 +6,7 @@ import Button from "components/Button";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import ThemeProviderTest from "util/test/ThemeProviderTest";
+import ThemeProviderTest from "util/test/themeProviderTest";
 import SnackBar from "../SnackBar";
 
 const MESSAGE_SNACK_BAR = "Message test";

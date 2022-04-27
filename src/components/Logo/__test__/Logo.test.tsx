@@ -2,7 +2,7 @@ import { render } from "@testing-library/react";
 import * as variables from "assets/styles/variables";
 import React from "react";
 import ReactDOM from "react-dom";
-import ThemeProviderTest from "util/test/ThemeProviderTest";
+import ThemeProviderTest from "util/test/themeProviderTest";
 import Logo from "../Logo";
 import { ILogo } from "../types/types.component";
 
