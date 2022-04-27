@@ -6,7 +6,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { DefaultTheme } from "styled-components";
-import AuthProviderTest from "util/test/AuthProviderTest";
+import AuthProviderTest from "util/test/authProviderTest";
 import ThemeProviderTest from "util/test/themeProviderTest";
 import Header from "../Header";
 
