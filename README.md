@@ -1,5 +1,5 @@
 <p align="center">
-    <img alt="Logo MyNotes" src="https://user-images.githubusercontent.com/53228013/133528578-605cf457-42b4-420a-9932-3d9b50da7abc.png" />
+    <img alt="Logo MyNotes" src="https://user-images.githubusercontent.com/53228013/165417199-a866722b-6736-4077-baa4-99cde97bad50.png" />
 </p>
 
 <h1 align="center">
@@ -7,39 +7,26 @@
 </h1>
 
 <p align="center">
-    <img alt="Banner MyNotes" src="https://user-images.githubusercontent.com/53228013/133530361-7df5ff9e-ad0c-4032-97b1-ce7e20bae2e6.gif" />
+    <img alt="Banner MyNotes" src="https://user-images.githubusercontent.com/53228013/165416746-5f2e1ed8-f152-4f20-9e31-c5716decc36a.gif" />
 </p>
 
 ## 📝 About 
 
-🌐 Lets go, now create your notes > https://gabriel-silverio-96.github.io/mynotes/
-
+🌐 Lets go, now create your notes >> https://mynotes-beta.vercel.app
 You know when you need to take that quick note, MyNotes is for you.
 
-## 📁 Clone
+This is project was create with reactjs. Contains unit test and test E2E(End to end).
 
-With project clone, go file folder
+## 📝 Stack 
 
-```
-$ cd mynotes
-```
-
-Install dependencies
-[NodeJS](https://nodejs.org/en/)
-
-Package manager yarn (not obligatory)
-[Download Yarn](https://yarnpkg.com/getting-started/install)
-
-```
-$ npm 
-or
-$ yarn
-```
-
-Run project
-
-```
-$ npm start 
-or
-$yarn start
-```
+* [cypress](https://www.cypress.io/)
+* [testing-library](https://testing-library.com/)
+* [axios-mock-adapter](https://www.npmjs.com/package/axios-mock-adapter)
+* [jest](https://jestjs.io/)
+* [reactjs](https://reactjs.org/)
+* [typescript](typescriptlang.org)
+* [redux](https://www.npmjs.com/package/redux)
+* [react-redux](https://react-redux.js.org/)
+* [axios](https://www.npmjs.com/package/axios)
+* [react-router-dom](https://reactrouter.com/web/guides/quick-start)
+* [styled-components](https://styled-components.com/)
