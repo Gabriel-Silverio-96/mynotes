@@ -12,9 +12,9 @@
 
 ## 📝 About 
 
-🌐 Lets go, now create your notes >> https://mynotes-beta.vercel.app
-You know when you need to take that quick note, MyNotes is for you.
+🌐 Lets go, now create your notes >> https://mynotes-beta.vercel.app <br/> 
 
+You know when you need to take that quick note, MyNotes is for you. <br/>
 This is project was create with reactjs. Contains unit test and test E2E(End to end).
 
 ## 📝 Stack 
