@@ -63,11 +63,9 @@
     "@typescript-eslint/eslint-plugin": "^5.21.0",
     "@typescript-eslint/parser": "^5.21.0",
     "axios-mock-adapter": "^1.20.0",
-    "cypress": "^9.5.4",
-    "eslint": "^8.14.0",
+    "cypress": "^9.5.4",  
+    "eslint": "^7.11.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-react": "^7.29.4",
-    "eslint-plugin-react-hooks": "^4.5.0",
     "prettier": "^2.6.2"
   }
 }
