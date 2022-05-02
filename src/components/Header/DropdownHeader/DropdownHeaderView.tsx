@@ -5,36 +5,36 @@ import { ButtonDropdown, Dropdown, DropdownHeaderContainer, DropdownHeaderWrappe
 import { IDropdownHeader } from "./types/types.component";
 
 const DropdownHeaderView: React.FC<IDropdownHeader> = (props) => {
-    const { toogleDropdown, logout, isActiveDropDown } = props;
-    return (
-        <DropdownHeaderWrapper
-            className={isActiveDropDown ? "active-dropdown" : "dropdown"}
-            onClick={toogleDropdown}
-        >
-            <ButtonDropdown role="button" zIndex={isActiveDropDown}>
-                <div>
-                    <FiUser color="#fff" size={20} />
-                </div>
-                <FiChevronDown color="#fff" size={20} className="arrow-chevron" />
-            </ButtonDropdown>
+	const { toogleDropdown, logout, isActiveDropDown } = props;
+	return (
+		<DropdownHeaderWrapper
+			className={isActiveDropDown ? "active-dropdown" : "dropdown"}
+			onClick={toogleDropdown}
+		>
+			<ButtonDropdown role="button" zIndex={isActiveDropDown}>
+				<div>
+					<FiUser color="#fff" size={20} />
+				</div>
+				<FiChevronDown color="#fff" size={20} className="arrow-chevron" />
+			</ButtonDropdown>
 
-            {isActiveDropDown && (
-                <DropdownHeaderContainer>
-                    <Dropdown data-testid="dropdown-header">
-                        <ul>
-                            <li role="button">
-                                <Link to="profile">
+			{isActiveDropDown && (
+				<DropdownHeaderContainer>
+					<Dropdown data-testid="dropdown-header">
+						<ul>
+							<li role="button">
+								<Link to="profile">
                                     My profile
-                                </Link>
-                            </li>
+								</Link>
+							</li>
 
-                            <li onClick={logout} role="button">Exit</li>
-                        </ul>
-                    </Dropdown>
-                </DropdownHeaderContainer>
-            )}
-        </DropdownHeaderWrapper>
-    )
-}
+							<li onClick={logout} role="button">Exit</li>
+						</ul>
+					</Dropdown>
+				</DropdownHeaderContainer>
+			)}
+		</DropdownHeaderWrapper>
+	);
+};
 
 export default DropdownHeaderView;

@@ -40,4 +40,4 @@ export default createGlobalStyle `
     a {
         cursor: pointer;
     }
-`
+`;

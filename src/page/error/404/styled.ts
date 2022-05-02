@@ -18,4 +18,4 @@ export const Page404Container = styled.div`
         color: ${variables.textColorParagraph};
     }
 
-`
+`;

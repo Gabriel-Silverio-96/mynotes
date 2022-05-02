@@ -7,24 +7,23 @@ type useThemeStorageProps<T> = [
 ]
 
 function useThemeStorage<T>(key: string, initialState?: T): useThemeStorageProps<T> {
-    const { setThemeContext } = useContext(ContextTheme);
-    const [state, setState] = useState(() => {
-        const storage = localStorage.getItem(key);
+	const { setThemeContext } = useContext(ContextTheme);
+	const [state, setState] = useState(() => {
+		const storage = localStorage.getItem(key);
 
-        if (storage) {
-            return JSON.parse(storage)
-        } else {
-            return initialState
-        }
-    });
+		if (storage) {
+			return JSON.parse(storage);
+		} else {
+			return initialState;
+		}
+	});
 
-    useEffect(() => {
-        localStorage.setItem(key, JSON.stringify(state))
-        if(setThemeContext) setThemeContext(state);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [key, state])
+	useEffect(() => {
+		localStorage.setItem(key, JSON.stringify(state));
+		if(setThemeContext) setThemeContext(state);
+	}, [key, state]);
 
-    return [state, setState]
+	return [state, setState];
 }
 
 export default useThemeStorage;

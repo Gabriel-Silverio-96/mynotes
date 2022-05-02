@@ -3,16 +3,16 @@ import * as variables from "assets/styles/variables";
 import { IDialogOptionSize, IDialogStyled } from "./types/types.styled";
 
 const DialogSize = (size: string): string => {
-    const DialogOptionSize: IDialogOptionSize = {
-        fullScreen: "100%",
-        lg: "45rem",
-        md: "35rem",
-        xs: "20rem",
-        default: "35rem"
-    };
+	const DialogOptionSize: IDialogOptionSize = {
+		fullScreen: "100%",
+		lg: "45rem",
+		md: "35rem",
+		xs: "20rem",
+		default: "35rem"
+	};
 
-    return DialogOptionSize[size] || DialogOptionSize.default;
-}
+	return DialogOptionSize[size] || DialogOptionSize.default;
+};
 
 export const DialogContainer = styled.div<IDialogStyled>`
     width: -webkit-fill-available;    
@@ -30,16 +30,16 @@ export const DialogContainer = styled.div<IDialogStyled>`
     @media(max-width: 580px) {
        padding: 0;     
     }
-`
+`;
 
 export const DialogContent = styled.div<IDialogStyled>`
     width: 100%;
     max-width: ${({size}) => DialogSize(size!)};
     min-height: ${({size, minHeight}) => {
-        if(size === "fullScreen") return "100%";
-        if(minHeight) return `${minHeight}rem`;
-        return "15rem"        
-    }};    
+		if(size === "fullScreen") return "100%";
+		if(minHeight) return `${minHeight}rem`;
+		return "15rem";        
+	}};    
     padding: 1.5rem;
     background-color: ${props => props.theme.colors.backgroundSecundary};
     border-radius: ${({size}) => size === "fullScreen" ? "0" : "1rem"};
@@ -62,4 +62,4 @@ export const DialogContent = styled.div<IDialogStyled>`
             margin-top: auto;
         }
     }
-`
+`;

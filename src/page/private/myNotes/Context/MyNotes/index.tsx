@@ -4,47 +4,47 @@ import { IContextMyNotes } from "./types";
 export const ContextMyNotes = createContext({} as IContextMyNotes);
 
 export const ContextMyNotesProvider: React.FC = ({ children }) => {
-    const [noteIdSelected, setNoteIdSelected] = useState<string>("");
-    const [noteEditIdSelected, setNoteEditIdSelected] = useState<string>("");
-    const [noNotesCreated, setNoNotesCreated] = useState<boolean>(true);
+	const [noteIdSelected, setNoteIdSelected] = useState<string>("");
+	const [noteEditIdSelected, setNoteEditIdSelected] = useState<string>("");
+	const [noNotesCreated, setNoNotesCreated] = useState<boolean>(true);
 
-    const [isOpenDialogCreateNote, setOpenDialogCreateNote] = useState<boolean>(false);
-    const [isOpenDialogEditNote, setIsOpenDialogEditNote] = useState<boolean>(false);
-    const [isOpenDialogDeleteThisNote, setOpenDialogDeleteThisNote] = useState<boolean>(false);
-    const [isOpenDialogDeleteAllNotes, setOpenDialogDeleteAllNotes] = useState<boolean>(false);
+	const [isOpenDialogCreateNote, setOpenDialogCreateNote] = useState<boolean>(false);
+	const [isOpenDialogEditNote, setIsOpenDialogEditNote] = useState<boolean>(false);
+	const [isOpenDialogDeleteThisNote, setOpenDialogDeleteThisNote] = useState<boolean>(false);
+	const [isOpenDialogDeleteAllNotes, setOpenDialogDeleteAllNotes] = useState<boolean>(false);
 
-    const [refreshRequest, setRefreshRequest] = useState<boolean>(false);
+	const [refreshRequest, setRefreshRequest] = useState<boolean>(false);
 
-    return (
-        <ContextMyNotes.Provider value={
-            {
-                noteIdSelected,
-                setNoteIdSelected,
+	return (
+		<ContextMyNotes.Provider value={
+			{
+				noteIdSelected,
+				setNoteIdSelected,
 
-                noteEditIdSelected, 
-                setNoteEditIdSelected,
+				noteEditIdSelected, 
+				setNoteEditIdSelected,
 
-                noNotesCreated,
-                setNoNotesCreated,
+				noNotesCreated,
+				setNoNotesCreated,
 
-                isOpenDialogCreateNote,
-                setOpenDialogCreateNote,
+				isOpenDialogCreateNote,
+				setOpenDialogCreateNote,
 
-                isOpenDialogEditNote, 
-                setIsOpenDialogEditNote,
+				isOpenDialogEditNote, 
+				setIsOpenDialogEditNote,
 
-                isOpenDialogDeleteThisNote,
-                setOpenDialogDeleteThisNote,
+				isOpenDialogDeleteThisNote,
+				setOpenDialogDeleteThisNote,
 
-                isOpenDialogDeleteAllNotes,
-                setOpenDialogDeleteAllNotes,
+				isOpenDialogDeleteAllNotes,
+				setOpenDialogDeleteAllNotes,
 
-                refreshRequest,
-                setRefreshRequest
-            }
-        }
-        >
-            {children}
-        </ContextMyNotes.Provider>
-    )
-}
+				refreshRequest,
+				setRefreshRequest
+			}
+		}
+		>
+			{children}
+		</ContextMyNotes.Provider>
+	);
+};

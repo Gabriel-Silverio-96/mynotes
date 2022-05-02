@@ -3,26 +3,26 @@ import { IAlertSeverityOption, IAlertSeverityOptionStyled, IAlertStyled } from "
 import * as variables from "assets/styles/variables";
 
 const AlertSeverity = (severity: string): IAlertSeverityOptionStyled => {
-    const alertSeverityOption: IAlertSeverityOption = {
-        success: {
-            backgroundColor: variables.greenLight,
-            color: variables.success
-        },
-        error: {
-            backgroundColor: variables.redLight,
-            color: variables.red
-        },
-        warning: {
-            backgroundColor: variables.yellowLight,
-            color: variables.warning
-        },
-        info: {
-            backgroundColor: variables.blueLight,
-            color: variables.info
-        }
-    }
-    return alertSeverityOption[severity];
-}
+	const alertSeverityOption: IAlertSeverityOption = {
+		success: {
+			backgroundColor: variables.greenLight,
+			color: variables.success
+		},
+		error: {
+			backgroundColor: variables.redLight,
+			color: variables.red
+		},
+		warning: {
+			backgroundColor: variables.yellowLight,
+			color: variables.warning
+		},
+		info: {
+			backgroundColor: variables.blueLight,
+			color: variables.info
+		}
+	};
+	return alertSeverityOption[severity];
+};
 
 export const Alert = styled.div<IAlertStyled>`
     width: auto;
@@ -39,7 +39,7 @@ export const Alert = styled.div<IAlertStyled>`
     ul {
         margin-left: 1.5rem;
     }
-`
+`;
 
 export const AlertHeader = styled.div<IAlertStyled>`
     display: flex;
@@ -51,4 +51,4 @@ export const AlertHeader = styled.div<IAlertStyled>`
         text-transform: capitalize;        
         color: ${({ severity }) => AlertSeverity(severity).color};
     }
-`
+`;

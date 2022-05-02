@@ -23,10 +23,10 @@ export const NoteCard = styled.div<INoteCardStyled>`
             opacity: 1;
         }
     }
-`
+`;
 export const NoteCardHeader = styled.div`
     position: relative;
-`
+`;
 
 export const NoteCardButton = styled.div`
     display: flex;
@@ -45,7 +45,7 @@ export const NoteCardButton = styled.div`
     background: linear-gradient(90deg, rgba(255,0,0,0) 0%,        
         ${props => props.theme.colors.backgroundSecundary} 100%
     );   
-`
+`;
 
 export const NoteCardBody = styled.div`
     margin-top: 2rem;
@@ -54,4 +54,4 @@ export const NoteCardBody = styled.div`
         color: ${props => props.theme.colors.textColorParagraph};
         font-size: 0.9rem;        
     }
-`
+`;

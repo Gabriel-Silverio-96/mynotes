@@ -18,7 +18,7 @@ export const LoadingContainer = styled.div<ILoadingContainerStyled>`
         color: ${props => props.theme.colors.textColorParagraph};
         margin-left: 0.2rem;
     }  
-`
+`;
 
 export const LoadingSvg = styled.div`
     svg {
@@ -40,4 +40,4 @@ export const LoadingSvg = styled.div`
             }
         }
     }
-`
+`;

@@ -5,7 +5,7 @@ import { IFormContentStyled } from "./types/types.styled";
 export const Header = styled.header`
     padding: 1rem;
     text-align: center;
-`
+`;
 
 export const FormContainer = styled.section`
     display: flex;
@@ -29,7 +29,7 @@ export const FormContainer = styled.section`
     button {
         margin-top: 1rem;
     }
-`
+`;
 
 export const BackPage = styled.div`
     margin-top: 2rem;
@@ -41,7 +41,7 @@ export const BackPage = styled.div`
     &:hover {
         color: ${variables.primaryColor};
     }
-`
+`;
 
 export const FormContent = styled.div<IFormContentStyled>`
     width: ${props => props.widthModal};
@@ -98,4 +98,4 @@ export const FormContent = styled.div<IFormContentStyled>`
         width: intrinsic;
         padding: 2rem 1rem;
     } 
-`
+`;

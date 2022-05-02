@@ -12,7 +12,7 @@ export const DropdownHeaderContainer = styled.div`
     top: 0;
     display: flex;
     justify-content: end;
-`
+`;
 
 export const DropdownHeaderWrapper = styled.div`
     display: grid;
@@ -37,7 +37,7 @@ export const DropdownHeaderWrapper = styled.div`
             }
         }
     }   
-`
+`;
 
 export const ButtonDropdown = styled.div<IButtonDropdownStyled>`
     border: 0.03rem solid ${variables.grayBorder};
@@ -54,7 +54,7 @@ export const ButtonDropdown = styled.div<IButtonDropdownStyled>`
     span {
         color: ${variables.white};            
     } 
-`
+`;
 
 export const Dropdown = styled.div`
     position: absolute;
@@ -83,4 +83,4 @@ export const Dropdown = styled.div`
             }
         }
     }
-`
+`;

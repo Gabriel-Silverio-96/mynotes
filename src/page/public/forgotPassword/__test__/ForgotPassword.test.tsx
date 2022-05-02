@@ -20,79 +20,79 @@ beforeAll(() => mock.reset());
 afterEach(cleanup);
 
 const ForgotPasswordRender = () => {
-    return (
-        <BrowserRouter>
-            <Provider store={store}>
-                <ThemeProviderTest>
-                    <Layout>
-                        <ForgotPassword />
-                    </Layout>
-                </ThemeProviderTest>
-            </Provider>
-        </BrowserRouter>
-    )
-}
+	return (
+		<BrowserRouter>
+			<Provider store={store}>
+				<ThemeProviderTest>
+					<Layout>
+						<ForgotPassword />
+					</Layout>
+				</ThemeProviderTest>
+			</Provider>
+		</BrowserRouter>
+	);
+};
 
 describe("Page <ForgotPassword />", () => {
-    it("Should render the component", () => {
-        const { container } = render(<ForgotPasswordRender />);
-        expect(container).toBeDefined();
-    });
+	it("Should render the component", () => {
+		const { container } = render(<ForgotPasswordRender />);
+		expect(container).toBeDefined();
+	});
 
-    it("Should unmount the component", () => {
-        const div = document.createElement("div")
-        ReactDOM.render(<ForgotPasswordRender />, div);
-        ReactDOM.unmountComponentAtNode(div);
-    });
+	it("Should unmount the component", () => {
+		const div = document.createElement("div");
+		ReactDOM.render(<ForgotPasswordRender />, div);
+		ReactDOM.unmountComponentAtNode(div);
+	});
 
-    it("Should show message error input email", async () => {
-        mock.onPost("auth/forgot-password").reply(400, errorsInputMessage);
+	it("Should show message error input email", async () => {
+		mock.onPost("auth/forgot-password").reply(400, errorsInputMessage);
 
-        const { queryByText, getByText } = render(<ForgotPasswordRender />);
-        const buttonSend = getByText(/send/i) as HTMLButtonElement;
-        userEvent.click(buttonSend);
+		const { queryByText, getByText } = render(<ForgotPasswordRender />);
+		const buttonSend = getByText(/send/i) as HTMLButtonElement;
+		userEvent.click(buttonSend);
 
-        await waitFor(() => {
-            expect(queryByText("Email is required")).toBeInTheDocument();
-        })
-    });
+		await waitFor(() => {
+			expect(queryByText("Email is required")).toBeInTheDocument();
+		});
+	});
 
-    it(`Should show message in snackBar '${unregisteredUser.message}'`, async () => {
-        mock.onPost("auth/forgot-password").reply(403, unregisteredUser);
+	it(`Should show message in snackBar '${unregisteredUser.message}'`, async () => {
+		mock.onPost("auth/forgot-password").reply(403, unregisteredUser);
 
-        const { container, queryByText, getByText } = render(<ForgotPasswordRender />);
-        const inputEmail = container.querySelector("[name='email']") as HTMLInputElement;
-        userEvent.type(inputEmail!, EMAIL_MOCK);
+		const { container, queryByText, getByText } = render(<ForgotPasswordRender />);
+		const inputEmail = container.querySelector("[name='email']") as HTMLInputElement;
+		userEvent.type(inputEmail!, EMAIL_MOCK);
 
-        const buttonSend = getByText(/send/i) as HTMLButtonElement;
-        userEvent.click(buttonSend);
+		const buttonSend = getByText(/send/i) as HTMLButtonElement;
+		userEvent.click(buttonSend);
 
-        const { message, type_message } = unregisteredUser;
-        store.dispatch(snackBar(true, message, type_message));
+		const { message, type_message } = unregisteredUser;
+		store.dispatch(snackBar(true, message, type_message));
 
-        await waitFor(() => {
-            expect(queryByText(unregisteredUser.message)).toBeInTheDocument();
-        })
-    });
+		await waitFor(() => {
+			expect(queryByText(unregisteredUser.message)).toBeInTheDocument();
+		});
+	});
 
-    it("Send email to user reset password", async () => {
-        mock.onPost("auth/forgot-password").reply(200, sendEmail);
+	it("Send email to user reset password", async () => {
+		mock.onPost("auth/forgot-password").reply(200, sendEmail);
 
-        const { container, queryByText, getByText } = render(<ForgotPasswordRender />);
-        const inputEmail = container.querySelector("[name='email']") as HTMLInputElement;
-        userEvent.type(inputEmail!, EMAIL_MOCK);
+		const { container, queryByText, getByText } = render(<ForgotPasswordRender />);
+		const inputEmail = container.querySelector("[name='email']") as HTMLInputElement;
+		userEvent.type(inputEmail!, EMAIL_MOCK);
 
-        const buttonSend = getByText(/send/i) as HTMLButtonElement;
-        userEvent.click(buttonSend);
+		const buttonSend = getByText(/send/i) as HTMLButtonElement;
+		userEvent.click(buttonSend);
         
-        const { message, type_message } = sendEmail;
-        store.dispatch(snackBar(true, message, type_message));
+		const { message, type_message } = sendEmail;
+		store.dispatch(snackBar(true, message, type_message));
         
-        expect(getByText(/sending/i)).toBeInTheDocument();
-        await waitFor(() => {
-            expect(queryByText(sendEmail.message)).toBeInTheDocument();
-            expect(queryByText(/check your email/i)).toBeInTheDocument();
-            expect(queryByText(EMAIL_MOCK)).toBeInTheDocument();
-        })
-    });
-})
+		expect(getByText(/sending/i)).toBeInTheDocument();
+		await waitFor(() => {
+			expect(queryByText(sendEmail.message)).toBeInTheDocument();
+			expect(queryByText(/check your email/i)).toBeInTheDocument();
+			expect(queryByText(EMAIL_MOCK)).toBeInTheDocument();
+		});
+	});
+});

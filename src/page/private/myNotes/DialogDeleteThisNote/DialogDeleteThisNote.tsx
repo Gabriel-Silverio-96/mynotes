@@ -7,25 +7,26 @@ import { ContextMyNotes } from "../Context/MyNotes";
 import DialogDeleteNoteView from "./DialogDeleteThisNoteView";
 
 const DialogDeleteThisNote: React.FC = () => {
-    const { closeDialogDeleteThisNote } = useDialogMynotes();
-    
-    const [isLoading, setIsLoading] = useState<boolean>(false);
-    const { noteIdSelected, setOpenDialogDeleteThisNote, setRefreshRequest, isOpenDialogDeleteThisNote } = useContext(ContextMyNotes);
+	const { closeDialogDeleteThisNote } = useDialogMynotes();
 
-    const onClose = () => closeDialogDeleteThisNote();
+	const [isLoading, setIsLoading] = useState<boolean>(false);
+	const { noteIdSelected, setOpenDialogDeleteThisNote, setRefreshRequest, isOpenDialogDeleteThisNote } = useContext(ContextMyNotes);
 
-    const deleteThisNote = async () => {
-        setIsLoading(true);
-        try {
+	const onClose = () => closeDialogDeleteThisNote();
+
+	const deleteThisNote = async () => {
+		setIsLoading(true);
+		try {
             await apiMyNotes.delete(`notes/delete-this/note_id=${noteIdSelected}`) as AxiosResponse<ISnackBarResponse>;
             setRefreshRequest((prevState: boolean) => !prevState);
-        } catch (err) {
-        } finally {
-            setIsLoading(false);
-            setOpenDialogDeleteThisNote((prevState: boolean) => !prevState);
-        }
-    }
-    return <DialogDeleteNoteView {... { onClose, isLoading, deleteThisNote }} open={isOpenDialogDeleteThisNote} />
-}
+		} catch (err) {
+			console.error("DialogDeleteThisNotes:", err);
+		} finally {
+			setIsLoading(false);
+			setOpenDialogDeleteThisNote((prevState: boolean) => !prevState);
+		}
+	};
+	return <DialogDeleteNoteView {... { onClose, isLoading, deleteThisNote }} open={isOpenDialogDeleteThisNote} />;
+};
 
 export default DialogDeleteThisNote;

@@ -12,4 +12,4 @@ export const DialogAction = styled.div`
         align-items: center;
         gap: 1rem;
     }
-`
+`;

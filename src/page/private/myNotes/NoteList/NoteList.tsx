@@ -9,36 +9,37 @@ import NoteListView from "./NoteListView";
 import { INoteListData } from "./types/types.component";
 
 const NoteList: React.FC = () => {
-    const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-    const [notes, setNotes] = useState([] as INote[]);
-    const { refreshRequest, noNotesCreated, setNoNotesCreated } = useContext(ContextMyNotes);
-    const { openDialogDeleteThisNote, openDialogEditNote } = useDialogMynotes();
-    const [isLoading, setIsLoading] = useState<boolean>(true);
+	const [notes, setNotes] = useState([] as INote[]);
+	const { refreshRequest, noNotesCreated, setNoNotesCreated } = useContext(ContextMyNotes);
+	const { openDialogDeleteThisNote, openDialogEditNote } = useDialogMynotes();
+	const [isLoading, setIsLoading] = useState<boolean>(true);
 
-    useEffect(() => {
-        const getNoteList = async () => {
-            setIsLoading(true);
-            try {
-                const { data } = await apiMyNotes.get("notes/list") as AxiosResponse<INoteListData>;
-                if (data.list_notes.length > 0) {
-                    setNotes(data.list_notes);
-                    setNoNotesCreated(false);
-                } else {
-                    setNoNotesCreated(true);
-                }
-            } catch (err) {
-            } finally {
-                setIsLoading(false);
-            }
-        };
+	useEffect(() => {
+		const getNoteList = async () => {
+			setIsLoading(true);
+			try {
+				const { data } = await apiMyNotes.get("notes/list") as AxiosResponse<INoteListData>;
+				if (data.list_notes.length > 0) {
+					setNotes(data.list_notes);
+					setNoNotesCreated(false);
+				} else {
+					setNoNotesCreated(true);
+				}
+			} catch (err) {
+				console.error("NoteList:", err);
+			} finally {
+				setIsLoading(false);
+			}
+		};
 
-        getNoteList();
+		getNoteList();
 
-        return () => setIsLoading(false);
-    }, [dispatch, setNoNotesCreated, refreshRequest]);
+		return () => setIsLoading(false);
+	}, [dispatch, setNoNotesCreated, refreshRequest]);
 
-    return <NoteListView {...{ notes, isLoading, openDialogDeleteThisNote, openDialogEditNote, noNotesCreated }} />
-}
+	return <NoteListView {...{ notes, isLoading, openDialogDeleteThisNote, openDialogEditNote, noNotesCreated }} />;
+};
 
 export default NoteList;

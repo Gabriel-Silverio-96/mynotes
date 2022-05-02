@@ -13,16 +13,16 @@ const history = createBrowserHistory();
 setupInterceptors(history, store);
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <ThemeNameProvider>
-        <AuthProvider>
-          <Layout>
-            <Routes />
-          </Layout>
-        </AuthProvider>
-      </ThemeNameProvider>
-    </Provider>
-  </React.StrictMode>,
-  document.getElementById("root")
+	<React.StrictMode>
+		<Provider store={store}>
+			<ThemeNameProvider>
+				<AuthProvider>
+					<Layout>
+						<Routes />
+					</Layout>
+				</AuthProvider>
+			</ThemeNameProvider>
+		</Provider>
+	</React.StrictMode>,
+	document.getElementById("root")
 );

@@ -5,4 +5,4 @@ export const DialogBody = styled.div`
     p {
         color: ${variables.textColorParagraph};
     }
-`
+`;

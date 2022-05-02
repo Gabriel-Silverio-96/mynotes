@@ -9,10 +9,10 @@ export const BarActions = styled.div`
     h2 {
         color: ${props => props.theme.colors.textColorTitle};
     }
-`
+`;
 
 export const Actions = styled.div`
     display: flex;
     align-items: center;
     gap: 1rem;
-`
+`;

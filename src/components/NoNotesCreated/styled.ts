@@ -7,7 +7,7 @@ export const NoNotesCreated = styled.div`
     justify-content: center;
     align-items: center;
     grid-column: 1 / -1;
-`
+`;
 
 export const NoNotesCreatedContent = styled.div`
     text-align: center;
@@ -28,4 +28,4 @@ export const NoNotesCreatedContent = styled.div`
     p {
         color: ${props => props.theme.colors.textColorParagraph};
     }
-`
+`;

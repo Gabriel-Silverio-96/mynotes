@@ -5,33 +5,33 @@ import FormContainerView from "./FormContainerView";
 import { IFormContainer } from "./types/types.component";
 
 const FormContainer: React.FC<Omit<IFormContainer, "history" | "themeTitle">> = (props) => {
-    const history = useHistory();
-    const { themeContext } = useContext(ContextTheme);
-    const themeTitle = themeContext.title;
+	const history = useHistory();
+	const { themeContext } = useContext(ContextTheme);
+	const themeTitle = themeContext.title;
 
-    const { 
-        title,
-        children,
-        widthModal = "25rem",
-        isLogoVisible = false,
-        isActiveButtonBack = true,
-        disabledButtonBack = false
-    } = props;
+	const { 
+		title,
+		children,
+		widthModal = "25rem",
+		isLogoVisible = false,
+		isActiveButtonBack = true,
+		disabledButtonBack = false
+	} = props;
 
-    return (
-        <FormContainerView
-            {... {
-                history,
-                title,
-                themeTitle,
-                children,
-                widthModal,
-                isLogoVisible,
-                isActiveButtonBack,
-                disabledButtonBack
-            }}
-        />
-    )
-}
+	return (
+		<FormContainerView
+			{... {
+				history,
+				title,
+				themeTitle,
+				children,
+				widthModal,
+				isLogoVisible,
+				isActiveButtonBack,
+				disabledButtonBack
+			}}
+		/>
+	);
+};
 
 export default FormContainer;
