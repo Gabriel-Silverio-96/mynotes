@@ -36,7 +36,11 @@
         ],
         "react/prop-types": "off",
         "react/jsx-uses-react": "off",
-        "react/react-in-jsx-scope": "off"
+        "react/react-in-jsx-scope": "off",
+        "react/display-name": "off",
+        "react/no-unescaped-entities": 0,
+        "no-mixed-spaces-and-tabs": 0,
+        "@typescript-eslint/no-non-null-assertion": "off"        
     },
     "ignorePatterns": ["**/src/assets/images/**"]
 }
