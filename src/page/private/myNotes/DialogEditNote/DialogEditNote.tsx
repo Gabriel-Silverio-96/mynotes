@@ -1,7 +1,7 @@
 import { AxiosError, AxiosResponse } from "axios";
 import { IDataErrorResponse, IErrorInputMessage } from "common/types/ErrorResponse";
 import { ISnackBarResponse } from "common/types/SnackBar";
-import { INote } from "common/types/_MyNotes/notes";
+import { INote } from "common/types/myNotes/notes";
 import React, { ChangeEvent, useContext, useEffect, useState } from "react";
 import apiMyNotes from "service/apiMyNotes";
 import useDialogMynotes from "../common/hooks/useDialogMynotes";

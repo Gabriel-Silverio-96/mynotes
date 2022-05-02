@@ -1,5 +1,5 @@
 import { IErrorInputMessage } from "common/types/ErrorResponse";
-import { INote } from "common/types/_MyNotes/notes";
+import { INote } from "common/types/myNotes/notes";
 import { ChangeEvent } from "react";
 
 export type TEditNote = Omit<INote, "created_at" | "note_id">;

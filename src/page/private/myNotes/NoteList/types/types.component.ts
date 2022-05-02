@@ -1,4 +1,4 @@
-import { INote } from "common/types/_MyNotes/notes";
+import { INote } from "common/types/myNotes/notes";
 
 export interface INoteList {
     notes: INote[];
