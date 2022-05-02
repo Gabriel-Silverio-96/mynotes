@@ -5,20 +5,20 @@ import { DialogTitle, DialogTitleContent } from "./styled";
 import { IDialogTitle } from "./types";
 
 const DialogTitleView: React.FC<IDialogTitle> = ({ onClick, children }) => {
-    return (
-        <DialogTitle aria-label="dialog-title">
-            <DialogTitleContent>
-                {children}
-            </DialogTitleContent>
+	return (
+		<DialogTitle aria-label="dialog-title">
+			<DialogTitleContent>
+				{children}
+			</DialogTitleContent>
 
-            <Button
-                variant="text"
-                data-modal="close"                
-                iconButton={<IoIosClose data-modal="close" size={25} />}
-                onClick={onClick}
-            />
-        </DialogTitle>
-    )
-}
+			<Button
+				variant="text"
+				data-modal="close"                
+				iconButton={<IoIosClose data-modal="close" size={25} />}
+				onClick={onClick}
+			/>
+		</DialogTitle>
+	);
+};
 
 export default DialogTitleView;

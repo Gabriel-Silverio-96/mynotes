@@ -32,7 +32,7 @@ export const InputGroup = styled.div`
         margin-left: 0.2rem;
         font-size: 0.8rem;
     }
-`
+`;
 
 export const InputElement = styled.div`    
     position: relative;
@@ -67,4 +67,4 @@ export const InputElement = styled.div`
         top: 0.2rem;
         margin-top: 0;        
     }
-`
+`;

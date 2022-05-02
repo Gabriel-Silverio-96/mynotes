@@ -10,49 +10,49 @@ import React from "react";
 import { IDialogCreateNote } from "./types/types.component";
 
 const DialogCreateNoteView: React.FC<IDialogCreateNote> = (props) => {
-    const { isOpenDialogCreateNote, onClose, handleChange, errorInputMessage, postSaveNote, isLoading } = props;
-    return (
-        <Dialog open={isOpenDialogCreateNote}>
-            <DialogTitle onClick={onClose}>
-                <h2>Create Note</h2>
-            </DialogTitle>
-            <DialogForm method="post">
-                <DialogFormField>
-                    <Input
-                        label="Title note"
-                        typeInput="text"
-                        name="title_note"
-                        id="title_note"
-                        onChange={handleChange}
-                        errorMessage={
+	const { isOpenDialogCreateNote, onClose, handleChange, errorInputMessage, postSaveNote, isLoading } = props;
+	return (
+		<Dialog open={isOpenDialogCreateNote}>
+			<DialogTitle onClick={onClose}>
+				<h2>Create Note</h2>
+			</DialogTitle>
+			<DialogForm method="post">
+				<DialogFormField>
+					<Input
+						label="Title note"
+						typeInput="text"
+						name="title_note"
+						id="title_note"
+						onChange={handleChange}
+						errorMessage={
                             errorInputMessage!.map((errorInputMessage: IErrorInputMessage) => (
-                                errorInputMessage.param === "title_note" ? errorInputMessage.msg : ""
+                            	errorInputMessage.param === "title_note" ? errorInputMessage.msg : ""
                             ))
-                        }
-                    />
-                </DialogFormField>
-                <DialogFormField>
-                    <label htmlFor="observation">Observation</label>
-                    <textarea
-                        name="observation"
-                        id="observation"
-                        rows={5}
-                        maxLength={500}
-                        onChange={handleChange}
-                    />
-                    <span>
-                        {errorInputMessage!.map((errorInputMessage: IErrorInputMessage) => (
-                            errorInputMessage.param === "observation" ? errorInputMessage.msg : ""
-                        ))}
-                    </span>
-                </DialogFormField>
-            </DialogForm>
-            <DialogAction>
-                <Button title="Close" onClick={onClose} variant="secondary" disabled={isLoading} />
-                <Button title="Save"  isLoading={isLoading} messageLoading="Saving" onClick={postSaveNote} />
-            </DialogAction>
-        </Dialog>
-    )
-}
+						}
+					/>
+				</DialogFormField>
+				<DialogFormField>
+					<label htmlFor="observation">Observation</label>
+					<textarea
+						name="observation"
+						id="observation"
+						rows={5}
+						maxLength={500}
+						onChange={handleChange}
+					/>
+					<span>
+						{errorInputMessage!.map((errorInputMessage: IErrorInputMessage) => (
+							errorInputMessage.param === "observation" ? errorInputMessage.msg : ""
+						))}
+					</span>
+				</DialogFormField>
+			</DialogForm>
+			<DialogAction>
+				<Button title="Close" onClick={onClose} variant="secondary" disabled={isLoading} />
+				<Button title="Save"  isLoading={isLoading} messageLoading="Saving" onClick={postSaveNote} />
+			</DialogAction>
+		</Dialog>
+	);
+};
 
 export default DialogCreateNoteView;

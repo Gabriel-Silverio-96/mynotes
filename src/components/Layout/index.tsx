@@ -9,17 +9,17 @@ import { ThemeProvider } from "styled-components";
 import { LayoutProps } from "./types";
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-    const { themeContext } = useContext(ContextTheme);
-    const { snackBar } = useSelector((state: ISnackBarStore) => state);
-    const { isOpen, message, type_message } = snackBar;
+	const { themeContext } = useContext(ContextTheme);
+	const { snackBar } = useSelector((state: ISnackBarStore) => state);
+	const { isOpen, message, type_message } = snackBar;
 
-    return (
-        <ThemeProvider theme={themeContext ? themeContext : dark}>
-            <GlobalStyles />
-            {isOpen && <SnackBar typeMessage={type_message} message={message} align="bottomCenter" />}
-            {children}            
-        </ThemeProvider>
-    )
-}
+	return (
+		<ThemeProvider theme={themeContext ? themeContext : dark}>
+			<GlobalStyles />
+			{isOpen && <SnackBar typeMessage={type_message} message={message} align="bottomCenter" />}
+			{children}            
+		</ThemeProvider>
+	);
+};
 
 export default Layout;

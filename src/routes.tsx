@@ -10,22 +10,22 @@ import { BrowserRouter, Switch } from "react-router-dom";
 import CustomRoute from "util/customRoute";
 
 const Router = () => {
-    return (
-        <BrowserRouter>
-            <Switch>
-                <CustomRoute exact path="/" component={Home} />
-                <CustomRoute path="/auth/login" component={Login} />
-                <CustomRoute path="/auth/create-account" component={CreateAccount} />
-                <CustomRoute path="/auth/forgot-password" component={ForgotPassword} />
-                <CustomRoute path="/auth/reset-password/token=:token" isHeaderVisible={false} component={ResetPassword} />
+	return (
+		<BrowserRouter>
+			<Switch>
+				<CustomRoute exact path="/" component={Home} />
+				<CustomRoute path="/auth/login" component={Login} />
+				<CustomRoute path="/auth/create-account" component={CreateAccount} />
+				<CustomRoute path="/auth/forgot-password" component={ForgotPassword} />
+				<CustomRoute path="/auth/reset-password/token=:token" isHeaderVisible={false} component={ResetPassword} />
 
-                <CustomRoute isPrivate path="/myNotes" component={MyNotesPage} />
-                <CustomRoute isPrivate path="/profile" component={Profile} />
+				<CustomRoute isPrivate path="/myNotes" component={MyNotesPage} />
+				<CustomRoute isPrivate path="/profile" component={Profile} />
 
-                <CustomRoute path="*" isHeaderVisible={false} component={Page404} />
-            </Switch>
-        </BrowserRouter>
-    )
-}
+				<CustomRoute path="*" isHeaderVisible={false} component={Page404} />
+			</Switch>
+		</BrowserRouter>
+	);
+};
 
 export default Router;

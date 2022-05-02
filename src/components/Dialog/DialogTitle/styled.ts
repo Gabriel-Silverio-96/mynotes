@@ -15,10 +15,10 @@ export const DialogTitle = styled.div`
     h2 {
         color: ${props => props.theme.colors.textColorTitle};
     }
-`
+`;
 
 export const DialogTitleContent = styled.div`
     display: flex;
     align-items: center;
     gap: 0.5rem;
-`
+`;

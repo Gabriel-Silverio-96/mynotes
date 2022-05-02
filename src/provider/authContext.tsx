@@ -7,45 +7,45 @@ import { AuthContextProps, UserDataProps } from "./types";
 const AuthContext = createContext({} as AuthContextProps);
 
 const AuthProvider: React.FC = ({ children }) => {
-    const history = useHistory();
-    const [authenticated, setAuthenticated] = useState<boolean>(false);
-    const [loading, setLoading] = useState<boolean>(true);
-    const [userData, setUserData] = useState({} as UserDataProps);
+	const history = useHistory();
+	const [authenticated, setAuthenticated] = useState<boolean>(false);
+	const [loading, setLoading] = useState<boolean>(true);
+	const [userData, setUserData] = useState({} as UserDataProps);
 
-    useEffect(() => {
-        const token: string | null = localStorage.getItem(("token") || null);
+	useEffect(() => {
+		const token: string | null = localStorage.getItem(("token") || null);
 
-        if (token) {
-            apiMyNotes.defaults.headers!.Authorization = `Bearer ${token}`
+		if (token) {
+            apiMyNotes.defaults.headers!.Authorization = `Bearer ${token}`;
             setAuthenticated(true);
-            setLoading(false)
-        }
+            setLoading(false);
+		}
 
-        return setLoading(false)
-    }, [history]);
+		return setLoading(false);
+	}, [history]);
 
-    useEffect(() => {
-        const userData: string | null = localStorage.getItem(("userData") || null);
-        if(userData) {
-            setUserData(JSON.parse(userData));
-        }
-    }, [history])
+	useEffect(() => {
+		const userData: string | null = localStorage.getItem(("userData") || null);
+		if(userData) {
+			setUserData(JSON.parse(userData));
+		}
+	}, [history]);
 
-    if (loading) {
-        return <p>Loading...</p>
-    }
+	if (loading) {
+		return <p>Loading...</p>;
+	}
 
-    return (
-        <AuthContext.Provider value={{
-            authenticated,
-            setAuthenticated,
-            loading,
-            userData,
-            setUserData,
-        }}>
-            {children}
-        </AuthContext.Provider>
-    )
-}
+	return (
+		<AuthContext.Provider value={{
+			authenticated,
+			setAuthenticated,
+			loading,
+			userData,
+			setUserData,
+		}}>
+			{children}
+		</AuthContext.Provider>
+	);
+};
 
 export { AuthContext, AuthProvider };

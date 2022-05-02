@@ -7,16 +7,16 @@ import DialogEditNote from "./DialogEditNote";
 import NoteList from "./NoteList";
 
 const MyNotesPageView: React.FC = () => {
-    return (
-        <>
-            <BarActions />
-            <DialogCreateNote />
-            <DialogEditNote />
-            <DialogDeleteThisNote />
-            <DialogDeleteAllNotes />
-            <NoteList />
-        </>
-    )
-}
+	return (
+		<>
+			<BarActions />
+			<DialogCreateNote />
+			<DialogEditNote />
+			<DialogDeleteThisNote />
+			<DialogDeleteAllNotes />
+			<NoteList />
+		</>
+	);
+};
 
 export default MyNotesPageView;

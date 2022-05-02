@@ -1,7 +1,7 @@
 import { DefaultTheme, ThemeProps } from "styled-components";
 import { IButton } from "./types.component";
 
-export interface IButtonStyled extends IButton { }
+export type IButtonStyled = IButton
 
 type IButtonVariantStyled = {
     backgroundColor: string | ((props: ThemeProps<DefaultTheme>) => string);

@@ -8,51 +8,51 @@ import { IAlert } from "../types/types.component";
 const MESSAGE = "My message";
 
 const AlertRenderComponent = ({ children, severity, alertHeader }: IAlert) => {
-    const [isOpenAlert, setIsOpenAlert] = useState<boolean>(true);
-    const onClick = () => setIsOpenAlert((prevState: boolean) => !prevState);
+	const [isOpenAlert, setIsOpenAlert] = useState<boolean>(true);
+	const onClick = () => setIsOpenAlert((prevState: boolean) => !prevState);
 
-    return (
-        <>
-            <button onClick={onClick}>Close</button>
-            <Alert open={isOpenAlert} severity={severity} alertHeader={alertHeader}>{children}</Alert>
-        </>
-    )
-}
+	return (
+		<>
+			<button onClick={onClick}>Close</button>
+			<Alert open={isOpenAlert} severity={severity} alertHeader={alertHeader}>{children}</Alert>
+		</>
+	);
+};
 
 describe("<Alert />", () => {
-    it("Should render the component", () => {
-        const { container } = render(<Alert severity="success">{MESSAGE}</Alert>);
-        expect(container).toBeDefined();
-    });
+	it("Should render the component", () => {
+		const { container } = render(<Alert severity="success">{MESSAGE}</Alert>);
+		expect(container).toBeDefined();
+	});
 
-    it("Should unmount the component", () => {
-        const div = document.createElement("div")
-        ReactDOM.render(<Alert severity="success">{MESSAGE}</Alert>, div);
-        ReactDOM.unmountComponentAtNode(div);
-    });
+	it("Should unmount the component", () => {
+		const div = document.createElement("div");
+		ReactDOM.render(<Alert severity="success">{MESSAGE}</Alert>, div);
+		ReactDOM.unmountComponentAtNode(div);
+	});
 
-    it("Should have show message alert", () => {
-        const { getByText } = render(<AlertRenderComponent severity="success">{MESSAGE}</AlertRenderComponent>);
-        const messageAlert = getByText(MESSAGE);
+	it("Should have show message alert", () => {
+		const { getByText } = render(<AlertRenderComponent severity="success">{MESSAGE}</AlertRenderComponent>);
+		const messageAlert = getByText(MESSAGE);
 
-        expect(messageAlert).toBeInTheDocument();
-    });
+		expect(messageAlert).toBeInTheDocument();
+	});
 
-    it("Should have active header", () => {
-        const { getByText, container } = render(<AlertRenderComponent alertHeader severity="success">{MESSAGE}</AlertRenderComponent>);
-        const svgIcon = container.querySelector("svg");
-        const severitySuccess = getByText(/success/i);
+	it("Should have active header", () => {
+		const { getByText, container } = render(<AlertRenderComponent alertHeader severity="success">{MESSAGE}</AlertRenderComponent>);
+		const svgIcon = container.querySelector("svg");
+		const severitySuccess = getByText(/success/i);
 
-        expect(svgIcon).toBeInTheDocument();
-        expect(severitySuccess).toBeInTheDocument();
-    });
+		expect(svgIcon).toBeInTheDocument();
+		expect(severitySuccess).toBeInTheDocument();
+	});
 
-    it("Should with closed alert", () => {
-        const { getByText } = render(<AlertRenderComponent children={MESSAGE} severity="error" />)
-        const buttonEl = getByText(/close/i);
-        const severityError = getByText(MESSAGE);
-        userEvent.click(buttonEl);
+	it("Should with closed alert", () => {
+		const { getByText } = render(<AlertRenderComponent children={MESSAGE} severity="error" />);
+		const buttonEl = getByText(/close/i);
+		const severityError = getByText(MESSAGE);
+		userEvent.click(buttonEl);
 
-        expect(severityError).not.toBeInTheDocument();
-    });
-})
+		expect(severityError).not.toBeInTheDocument();
+	});
+});

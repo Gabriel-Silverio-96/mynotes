@@ -6,22 +6,22 @@ import { ContextThemeProps } from "./types";
 export const ContextTheme = createContext({} as ContextThemeProps);
 
 export const ThemeNameProvider: React.FC = ({ children }) => {
-    const [themeContext, setThemeContext] = useState<DefaultTheme>(() => {
-        const themeStorage = localStorage.getItem("theme");
-        if (themeStorage) {
-            return JSON.parse(themeStorage)
-        }
-        return dark
-    });
+	const [themeContext, setThemeContext] = useState<DefaultTheme>(() => {
+		const themeStorage = localStorage.getItem("theme");
+		if (themeStorage) {
+			return JSON.parse(themeStorage);
+		}
+		return dark;
+	});
 
-    return (
-        <ContextTheme.Provider value={
-            {
-                themeContext,
-                setThemeContext
-            }
-        }>
-            {children}
-        </ContextTheme.Provider>
-    )
-}
+	return (
+		<ContextTheme.Provider value={
+			{
+				themeContext,
+				setThemeContext
+			}
+		}>
+			{children}
+		</ContextTheme.Provider>
+	);
+};

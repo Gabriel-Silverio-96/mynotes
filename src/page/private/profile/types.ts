@@ -1,5 +1,5 @@
-import { IErrorInputMessage } from "common/types/ErrorResponse"
-import { ChangeEvent, FormEvent } from "react"
+import { IErrorInputMessage } from "common/types/ErrorResponse";
+import { ChangeEvent, FormEvent } from "react";
 
 export type IUserData = {
     full_name: string;

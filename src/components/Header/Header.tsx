@@ -6,14 +6,14 @@ import useThemeStorage from "common/hooks/useThemeStorage";
 import HeaderView from "./HeaderView";
 
 const Header: React.FC = () => {
-    const { authenticated } = useContext(AuthContext);   
+	const { authenticated } = useContext(AuthContext);   
 
-    const [theme, setTheme] = useThemeStorage("theme", dark);
-    const toggleTheme = useCallback(() => {
-        setTheme(theme.title === "light" ? dark : light);
-    }, [theme, setTheme])
+	const [theme, setTheme] = useThemeStorage("theme", dark);
+	const toggleTheme = useCallback(() => {
+		setTheme(theme.title === "light" ? dark : light);
+	}, [theme, setTheme]);
 
-    return <HeaderView {...{ authenticated, toggleTheme, theme }} />
-}
+	return <HeaderView {...{ authenticated, toggleTheme, theme }} />;
+};
 
 export default memo(Header);

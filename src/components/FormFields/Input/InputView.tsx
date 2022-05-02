@@ -7,58 +7,58 @@ import { IInput } from "./type";
 import * as variables from "assets/styles/variables";
 
 const InputView = forwardRef<HTMLInputElement, IInput>((props, ref) => {
-    const {
-        label,
-        id,
-        name,
-        typeInput,
-        defaultValue,
-        errorMessage,
-        onChange,
-        disabled,
-        isLoadingData,
-        messageLoading,
-        isVisiblePassword,
-        visiblePassword,
-        ...rest
-    } = props;
+	const {
+		label,
+		id,
+		name,
+		typeInput,
+		defaultValue,
+		errorMessage,
+		onChange,
+		disabled,
+		isLoadingData,
+		messageLoading,
+		isVisiblePassword,
+		visiblePassword,
+		...rest
+	} = props;
 
-    return (
-        <InputGroup>
-            <label htmlFor={id}>{label}</label>
-            <InputElement>
-                <input
-                    ref={ref}
-                    type={typeInput === "password" && isVisiblePassword ? "text" : typeInput}
-                    id={id}
-                    name={name}
-                    onChange={onChange}
-                    defaultValue={!isLoadingData ? defaultValue : ""}
-                    disabled={disabled || isLoadingData}
-                    {...rest}
-                />
-                <Loading className="loading-input" isLoading={isLoadingData}
-                    messageLoading={messageLoading || "Loading data"}
-                />
-                {typeInput === "password" && (
-                    <Button
-                        type="button"
-                        variant="text"
-                        iconButton={
-                            isVisiblePassword ? (
-                                <FiEye size={18} stroke={variables.primaryColor} />
-                            ) : (
-                                <FiEyeOff size={18} stroke={variables.primaryColor} />
-                            )
-                        }
-                        className="button-eye-password"
-                        onClick={visiblePassword}
-                    />
-                )}
-            </InputElement>
-            <span>{errorMessage}</span>
-        </InputGroup>
-    )
-})
+	return (
+		<InputGroup>
+			<label htmlFor={id}>{label}</label>
+			<InputElement>
+				<input
+					ref={ref}
+					type={typeInput === "password" && isVisiblePassword ? "text" : typeInput}
+					id={id}
+					name={name}
+					onChange={onChange}
+					defaultValue={!isLoadingData ? defaultValue : ""}
+					disabled={disabled || isLoadingData}
+					{...rest}
+				/>
+				<Loading className="loading-input" isLoading={isLoadingData}
+					messageLoading={messageLoading || "Loading data"}
+				/>
+				{typeInput === "password" && (
+					<Button
+						type="button"
+						variant="text"
+						iconButton={
+							isVisiblePassword ? (
+								<FiEye size={18} stroke={variables.primaryColor} />
+							) : (
+								<FiEyeOff size={18} stroke={variables.primaryColor} />
+							)
+						}
+						className="button-eye-password"
+						onClick={visiblePassword}
+					/>
+				)}
+			</InputElement>
+			<span>{errorMessage}</span>
+		</InputGroup>
+	);
+});
 
 export default InputView;

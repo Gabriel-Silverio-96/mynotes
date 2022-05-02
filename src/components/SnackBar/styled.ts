@@ -3,57 +3,57 @@ import styled from "styled-components";
 import { IAlignOption, ISnackBarProgressBarStyled, ISnackBarStyled, ITypeMessageStyled, Postion } from "./types/types.styled";
 
 const TypeMessage = (typeMessage: string): string => {
-    const typeMessageOption: ITypeMessageStyled = {
-        success: variables.success,
-        error: variables.red,
-        warning: variables.warning,
-    }
-    return typeMessageOption[typeMessage] || variables.success;
-}
+	const typeMessageOption: ITypeMessageStyled = {
+		success: variables.success,
+		error: variables.red,
+		warning: variables.warning,
+	};
+	return typeMessageOption[typeMessage] || variables.success;
+};
 
 const AlignSnackBar = (align: string): Postion => {
-    const DEFAULT_POSITION = "1rem";
-    const alignOption: IAlignOption = {
-        topCenter: {
-            top: DEFAULT_POSITION,
-            bottom: "inherit",
-            right: "0",
-            left: "0",
-        },       
-        topRight: {
-            top: DEFAULT_POSITION,
-            bottom: "inherit",
-            right: DEFAULT_POSITION,
-            left: "inherit",
-        },       
-        topLeft: {
-            top: DEFAULT_POSITION,
-            bottom: "inherit",
-            right: "inherit",
-            left: DEFAULT_POSITION,
-        },       
-        bottomCenter: {
-            top: "inherit",
-            bottom: DEFAULT_POSITION,
-            right: "0",
-            left: "0",
-        },       
-        bottomRight: {
-            top: "inherit",
-            bottom: DEFAULT_POSITION,
-            right: DEFAULT_POSITION,
-            left: "inherit",
-        },       
-        bottomLeft: {
-            top: "inherit",
-            bottom: DEFAULT_POSITION,
-            right: "inherit",
-            left: DEFAULT_POSITION,
-        },       
-    }
+	const DEFAULT_POSITION = "1rem";
+	const alignOption: IAlignOption = {
+		topCenter: {
+			top: DEFAULT_POSITION,
+			bottom: "inherit",
+			right: "0",
+			left: "0",
+		},       
+		topRight: {
+			top: DEFAULT_POSITION,
+			bottom: "inherit",
+			right: DEFAULT_POSITION,
+			left: "inherit",
+		},       
+		topLeft: {
+			top: DEFAULT_POSITION,
+			bottom: "inherit",
+			right: "inherit",
+			left: DEFAULT_POSITION,
+		},       
+		bottomCenter: {
+			top: "inherit",
+			bottom: DEFAULT_POSITION,
+			right: "0",
+			left: "0",
+		},       
+		bottomRight: {
+			top: "inherit",
+			bottom: DEFAULT_POSITION,
+			right: DEFAULT_POSITION,
+			left: "inherit",
+		},       
+		bottomLeft: {
+			top: "inherit",
+			bottom: DEFAULT_POSITION,
+			right: "inherit",
+			left: DEFAULT_POSITION,
+		},       
+	};
 
-    return alignOption[align]
-}
+	return alignOption[align];
+};
 
 export const SnackBar = styled.div<ISnackBarStyled>`
     position: absolute;
@@ -100,7 +100,7 @@ export const SnackBar = styled.div<ISnackBarStyled>`
             bottom: ${({ align }) => AlignSnackBar(align!).bottom};
         }
     }
-`
+`;
 
 export const SnackBarProgressBar = styled.div<ISnackBarProgressBarStyled>`
     height: 0px;
@@ -118,11 +118,11 @@ export const SnackBarProgressBar = styled.div<ISnackBarProgressBarStyled>`
             width: 100%;
         }
     }
-`
+`;
 
 export const SnackBarHeader = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 0.4rem;
-`
+`;

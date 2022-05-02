@@ -5,13 +5,13 @@ import { ICustomRoute } from "./types/types.component";
 import Header from "components/Header";
 
 const CustomRoute:React.FC<ICustomRoute> = ({ isPrivate, isHeaderVisible = true, ...rest }) => {
-    const { authenticated } = useContext(AuthContext);
+	const { authenticated } = useContext(AuthContext);
 
-    if (isPrivate && !authenticated) {
-        return <Redirect to="/" />
-    }
+	if (isPrivate && !authenticated) {
+		return <Redirect to="/" />;
+	}
 
-    return <>{isHeaderVisible && <Header />}<Route {...rest} /></>
-}
+	return <>{isHeaderVisible && <Header />}<Route {...rest} /></>;
+};
 
 export default CustomRoute;

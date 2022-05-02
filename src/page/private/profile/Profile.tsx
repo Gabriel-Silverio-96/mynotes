@@ -8,62 +8,63 @@ import ProfileView from "./ProfileView";
 import { IUserData } from "./types";
 
 const Profile: React.FC = () => {
-    const history = useHistory();
+	const history = useHistory();
 
-    const [userData, setUserData] = useState({} as IUserData);
-    const [isLoadingData, setIsLoadingData] = useState<boolean>(true);
-    const [isLoadingRequestEditing, setIsLoadingRequestEdit] = useState<boolean>(false);
-    const [errorInputMessage, setErrorInputMessage] = useState<IErrorInputMessage[]>([]);
+	const [userData, setUserData] = useState({} as IUserData);
+	const [isLoadingData, setIsLoadingData] = useState<boolean>(true);
+	const [isLoadingRequestEditing, setIsLoadingRequestEdit] = useState<boolean>(false);
+	const [errorInputMessage, setErrorInputMessage] = useState<IErrorInputMessage[]>([]);
 
-    useEffect(() => {
-        const getUserData = async () => {
-            setIsLoadingData(true);
-            try {
-                const { data } = await apiMyNotes.get("/auth/account") as AxiosResponse<IUserData>;
-                setUserData(data);
-            } catch (err) {
-            } finally {
-                setIsLoadingData(false);
-            }
-        }
-        getUserData();
-        
-        return () => setIsLoadingData(false);
-    }, []);
+	useEffect(() => {
+		const getUserData = async () => {
+			setIsLoadingData(true);
+			try {
+				const { data } = await apiMyNotes.get("/auth/account") as AxiosResponse<IUserData>;
+				setUserData(data);
+			} catch (err) {
+				console.error("Profile:", err);
+			} finally {
+				setIsLoadingData(false);
+			}
+		};
+		getUserData();
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const name = e.target.name;
-        const value = e.target.value;
-        setUserData({ ...userData, [name]: value });
-    };
+		return () => setIsLoadingData(false);
+	}, []);
 
-    const putEditProfile = async (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        setErrorInputMessage([]);
-        setIsLoadingRequestEdit(true);
-        try {
+	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+		const name = e.target.name;
+		const value = e.target.value;
+		setUserData({ ...userData, [name]: value });
+	};
+
+	const putEditProfile = async (e: FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		setErrorInputMessage([]);
+		setIsLoadingRequestEdit(true);
+		try {
             await apiMyNotes.put("auth/account", userData) as AxiosResponse<ISnackBarResponse>;
             history.push("/mynotes");
-        } catch (err) {
-            const error = err as AxiosError;
-            const { data, status } = error.response as AxiosResponse<IDataErrorResponse>;
-            if (status === 400) setErrorInputMessage(data.errors);
-            setIsLoadingRequestEdit(false);
-        } 
-    }
+		} catch (err) {
+			const error = err as AxiosError;
+			const { data, status } = error.response as AxiosResponse<IDataErrorResponse>;
+			if (status === 400) setErrorInputMessage(data.errors);
+			setIsLoadingRequestEdit(false);
+		}
+	};
 
-    return (
-        <ProfileView
-            {...{
-                errorInputMessage,
-                isLoadingData,
-                isLoadingRequestEditing,
-                userData, 
-                handleChange,
-                putEditProfile
-            }}
-        />
-    )
-}
+	return (
+		<ProfileView
+			{...{
+				errorInputMessage,
+				isLoadingData,
+				isLoadingRequestEditing,
+				userData,
+				handleChange,
+				putEditProfile
+			}}
+		/>
+	);
+};
 
 export default Profile;

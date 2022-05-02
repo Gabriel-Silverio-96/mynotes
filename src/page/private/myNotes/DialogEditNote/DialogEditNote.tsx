@@ -12,87 +12,88 @@ import { TEditNote } from "./types/types.component";
 const EDIT_NOTE_INITIAL_STATE: TEditNote = { color_note: "", title_note: "", observation: "" };
 
 const DialogEditNote: React.FC = () => {
-    const [editNote, setEditNote] = useState<INote>(EDIT_NOTE_INITIAL_STATE);
+	const [editNote, setEditNote] = useState<INote>(EDIT_NOTE_INITIAL_STATE);
 
-    const { closeDialogEditNote, openDialogDeleteThisNote } = useDialogMynotes();
-    const { noteEditIdSelected, isOpenDialogEditNote, setRefreshRequest } = useContext(ContextMyNotes);
+	const { closeDialogEditNote, openDialogDeleteThisNote } = useDialogMynotes();
+	const { noteEditIdSelected, isOpenDialogEditNote, setRefreshRequest } = useContext(ContextMyNotes);
 
-    const [errorInputMessage, setErrorInputMessage] = useState<IErrorInputMessage[]>([]);
-    const [isLoadingData, setIsLoadingData] = useState<boolean>(false);
-    const [isLoadingEdit, setIsLoadingEdit] = useState<boolean>(false);
+	const [errorInputMessage, setErrorInputMessage] = useState<IErrorInputMessage[]>([]);
+	const [isLoadingData, setIsLoadingData] = useState<boolean>(false);
+	const [isLoadingEdit, setIsLoadingEdit] = useState<boolean>(false);
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setEditNote({
-            ...editNote,
-            [e.target.name]: e.target.value
-        })
-    }
+	const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+		setEditNote({
+			...editNote,
+			[e.target.name]: e.target.value
+		});
+	};
 
-    useEffect(() => {
-        const getNote = async () => {
-            setErrorInputMessage([]);
-            if (noteEditIdSelected) {
-                setIsLoadingData(true);
-                try {
-                    const { data } = await apiMyNotes.get(`notes/note_id=${noteEditIdSelected}`) as AxiosResponse<{ note: INote }>;
-                    setEditNote(data.note);
-                } catch (err) {
-                } finally {
-                    setTimeout(() => setIsLoadingData(false), 500);
-                }
-            }
-        };
+	useEffect(() => {
+		const getNote = async () => {
+			setErrorInputMessage([]);
+			if (noteEditIdSelected) {
+				setIsLoadingData(true);
+				try {
+					const { data } = await apiMyNotes.get(`notes/note_id=${noteEditIdSelected}`) as AxiosResponse<{ note: INote }>;
+					setEditNote(data.note);
+				} catch (err) {
+					console.error("DialogEditNote:", err);
+				} finally {
+					setTimeout(() => setIsLoadingData(false), 500);
+				}
+			}
+		};
 
-        getNote();
-    }, [noteEditIdSelected]);
+		getNote();
+	}, [noteEditIdSelected]);
 
-    const onClose = () => {
-        closeDialogEditNote();
-        setEditNote(EDIT_NOTE_INITIAL_STATE);
-        setIsLoadingEdit(false);
-        setErrorInputMessage([]);
-    }
+	const onClose = () => {
+		closeDialogEditNote();
+		setEditNote(EDIT_NOTE_INITIAL_STATE);
+		setIsLoadingEdit(false);
+		setErrorInputMessage([]);
+	};
 
-    const putEditNote = async () => {
-        setErrorInputMessage([]);
-        setIsLoadingEdit(true);
+	const putEditNote = async () => {
+		setErrorInputMessage([]);
+		setIsLoadingEdit(true);
 
-        const editNoteBody = { color_note: editNote.color_note, title_note: editNote.title_note, observation: editNote.observation };
-        try {
+		const editNoteBody = { color_note: editNote.color_note, title_note: editNote.title_note, observation: editNote.observation };
+		try {
             await apiMyNotes.put(`notes/edit/note_id=${noteEditIdSelected}`, editNoteBody) as AxiosResponse<ISnackBarResponse>;
             setRefreshRequest((prevState: boolean) => !prevState);
             closeDialogEditNote();
             setEditNote(EDIT_NOTE_INITIAL_STATE);
-        } catch (err) {
-            const error = err as AxiosError;
-            const { status, data } = error.response as AxiosResponse<IDataErrorResponse>;
-            if (status === 400) setErrorInputMessage(data.errors);
-        } finally {
-            setIsLoadingEdit(false);
-        }
-    }
+		} catch (err) {
+			const error = err as AxiosError;
+			const { status, data } = error.response as AxiosResponse<IDataErrorResponse>;
+			if (status === 400) setErrorInputMessage(data.errors);
+		} finally {
+			setIsLoadingEdit(false);
+		}
+	};
 
-    const openDialogDeleteThisNoteInDialogEditNote = () => {
-        openDialogDeleteThisNote(noteEditIdSelected);
-        closeDialogEditNote();
-        setEditNote(EDIT_NOTE_INITIAL_STATE);
-    }
+	const openDialogDeleteThisNoteInDialogEditNote = () => {
+		openDialogDeleteThisNote(noteEditIdSelected);
+		closeDialogEditNote();
+		setEditNote(EDIT_NOTE_INITIAL_STATE);
+	};
 
-    return (
-        <DialogEditNoteView
-            {... {
-                handleChange,
-                isLoadingEdit,
-                isLoadingData,
-                errorInputMessage,
-                editNote,
-                putEditNote,
-                isOpenDialogEditNote,
-                openDialogDeleteThisNoteInDialogEditNote,
-                onClose
-            }}
-        />
-    )
-}
+	return (
+		<DialogEditNoteView
+			{... {
+				handleChange,
+				isLoadingEdit,
+				isLoadingData,
+				errorInputMessage,
+				editNote,
+				putEditNote,
+				isOpenDialogEditNote,
+				openDialogDeleteThisNoteInDialogEditNote,
+				onClose
+			}}
+		/>
+	);
+};
 
 export default DialogEditNote;

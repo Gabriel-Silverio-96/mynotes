@@ -33,4 +33,4 @@ export const Main = styled.main<MainProps>`
             border: 0;
         }
     }   
-`
+`;

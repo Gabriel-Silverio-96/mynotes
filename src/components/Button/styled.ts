@@ -3,61 +3,61 @@ import * as variables from "assets/styles/variables";
 import { IButtonStyled, IButtonVariantProps, IButtonSizeProps } from "./types/types.styled";
 
 const ButtonVariant: IButtonVariantProps = {
-    default: {
-        backgroundColor: `${variables.black}`,
-        backgroundColorHover: `${variables.primaryColor}`,
-        color: `${variables.white}`,
-        colorHover: `${variables.white}`,
-        border: (props: ThemeProps<DefaultTheme>) => props.theme.colors.buttonBorder,
-        borderHover: (props: ThemeProps<DefaultTheme>) => props.theme.colors.backgroundPrimary
-    },
-    primary: {
-        backgroundColor: `${variables.primaryColor}`,
-        backgroundColorHover: `${variables.black}`,
-        color: `${variables.white}`,
-        colorHover: `${variables.white}`,
-        border: `${variables.primaryColor}`,
-        borderHover: `${variables.grayBorder}`
-    },
-    secondary: {
-        backgroundColor: "transparent",
-        backgroundColorHover: `${variables.primaryColor}`,
-        color: (props: ThemeProps<DefaultTheme>) => props.theme.colors.textColorTitle,
-        colorHover: `${variables.white}`,
-        border: (props: ThemeProps<DefaultTheme>) => props.theme.colors.buttonBorder,
-        borderHover: (props: ThemeProps<DefaultTheme>) => props.theme.colors.backgroundPrimary
-    },
-    text: {
-        backgroundColor: "transparent",
-        backgroundColorHover: "none",
-        color: (props: ThemeProps<DefaultTheme>) => props.theme.colors.textColorTitle,
-        colorHover: `${variables.primaryColor}`,
-        border: "transparent",
-        borderHover: "transparent"
-    },    
-    danger: {
-        backgroundColor: `${variables.redLight}`,
-        backgroundColorHover: `${variables.red}`,
-        color: `${variables.red}`,
-        colorHover: `${variables.white}`,
-        border: "transparent",
-        borderHover: "transparent"
-    },
+	default: {
+		backgroundColor: `${variables.black}`,
+		backgroundColorHover: `${variables.primaryColor}`,
+		color: `${variables.white}`,
+		colorHover: `${variables.white}`,
+		border: (props: ThemeProps<DefaultTheme>) => props.theme.colors.buttonBorder,
+		borderHover: (props: ThemeProps<DefaultTheme>) => props.theme.colors.backgroundPrimary
+	},
+	primary: {
+		backgroundColor: `${variables.primaryColor}`,
+		backgroundColorHover: `${variables.black}`,
+		color: `${variables.white}`,
+		colorHover: `${variables.white}`,
+		border: `${variables.primaryColor}`,
+		borderHover: `${variables.grayBorder}`
+	},
+	secondary: {
+		backgroundColor: "transparent",
+		backgroundColorHover: `${variables.primaryColor}`,
+		color: (props: ThemeProps<DefaultTheme>) => props.theme.colors.textColorTitle,
+		colorHover: `${variables.white}`,
+		border: (props: ThemeProps<DefaultTheme>) => props.theme.colors.buttonBorder,
+		borderHover: (props: ThemeProps<DefaultTheme>) => props.theme.colors.backgroundPrimary
+	},
+	text: {
+		backgroundColor: "transparent",
+		backgroundColorHover: "none",
+		color: (props: ThemeProps<DefaultTheme>) => props.theme.colors.textColorTitle,
+		colorHover: `${variables.primaryColor}`,
+		border: "transparent",
+		borderHover: "transparent"
+	},    
+	danger: {
+		backgroundColor: `${variables.redLight}`,
+		backgroundColorHover: `${variables.red}`,
+		color: `${variables.red}`,
+		colorHover: `${variables.white}`,
+		border: "transparent",
+		borderHover: "transparent"
+	},
 };
 
 const ButtonSize: IButtonSizeProps = {
-    large: {
-        fontSize: "1rem",
-        padding: "1rem 1.2rem",
-    },
-    medium: {
-        fontSize:"0.9rem",
-        padding: "0.65rem 0.8rem",
-    },
-    small: {
-        fontSize:"0.7rem",
-        padding: "0.5rem 0.75rem",
-    },
+	large: {
+		fontSize: "1rem",
+		padding: "1rem 1.2rem",
+	},
+	medium: {
+		fontSize:"0.9rem",
+		padding: "0.65rem 0.8rem",
+	},
+	small: {
+		fontSize:"0.7rem",
+		padding: "0.5rem 0.75rem",
+	},
 };
 
 export const Button = styled.button<IButtonStyled>`
@@ -82,10 +82,10 @@ export const Button = styled.button<IButtonStyled>`
         color: #6e6e6e;
         cursor: not-allowed;        
     }
-`
+`;
 
 export const IconButton = styled.span`
     display: flex;
     align-items: center;
     gap: 0.8rem;
-`
+`;

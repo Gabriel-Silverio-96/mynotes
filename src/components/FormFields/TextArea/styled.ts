@@ -15,7 +15,7 @@ export const TextAreaGroup = styled.div`
         margin-left: 0.2rem;
         font-size: 0.8rem;
     }
-`
+`;
 
 export const TextAreaElement = styled.div`    
     position: relative;
@@ -42,4 +42,4 @@ export const TextAreaElement = styled.div`
             outline: 0;            
         }
     }
-`
+`;

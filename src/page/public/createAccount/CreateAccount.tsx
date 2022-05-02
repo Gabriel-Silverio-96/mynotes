@@ -9,41 +9,41 @@ import { IUserData } from "./types";
 const USER_DATA_INPUTS_INITIAL_STATE: IUserData = { full_name: "", email: "", password: "" };
 
 const CreateAccount = () => {
-    const history = useHistory();
+	const history = useHistory();
 
-    const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [errorInputMessage, setErrorInputMessage] = useState<IErrorInputMessage[]>([]);
-    const [userData, setUserData] = useState<IUserData>(USER_DATA_INPUTS_INITIAL_STATE);
+	const [isLoading, setIsLoading] = useState<boolean>(false);
+	const [errorInputMessage, setErrorInputMessage] = useState<IErrorInputMessage[]>([]);
+	const [userData, setUserData] = useState<IUserData>(USER_DATA_INPUTS_INITIAL_STATE);
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const name = e.target.name;
-        const value = e.target.value;
-        setUserData({ ...userData, [name]: value });
-    }
+	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+		const name = e.target.name;
+		const value = e.target.value;
+		setUserData({ ...userData, [name]: value });
+	};
 
-    const createAccount = async (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        setErrorInputMessage([]);
-        setIsLoading(true);
+	const createAccount = async (e: FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		setErrorInputMessage([]);
+		setIsLoading(true);
         
-        try {
-            await apiMyNotes.post("/auth/create-account", userData);
-            return history.push("/auth/login");
-        } catch (err) {
-            const error = err as AxiosError;
-            const { status, data } = error.response as AxiosResponse<IDataErrorResponse>;
+		try {
+			await apiMyNotes.post("/auth/create-account", userData);
+			return history.push("/auth/login");
+		} catch (err) {
+			const error = err as AxiosError;
+			const { status, data } = error.response as AxiosResponse<IDataErrorResponse>;
                 
-            if (status === 400) setErrorInputMessage(data.errors);            
-        } finally {
-            setIsLoading(false);
-        }
-    }
+			if (status === 400) setErrorInputMessage(data.errors);            
+		} finally {
+			setIsLoading(false);
+		}
+	};
 
-    return (
-        <CreateAccountView
-            {...{ createAccount, errorInputMessage, handleChange, isLoading }}
-        />
-    )
-}
+	return (
+		<CreateAccountView
+			{...{ createAccount, errorInputMessage, handleChange, isLoading }}
+		/>
+	);
+};
 
 export default CreateAccount;

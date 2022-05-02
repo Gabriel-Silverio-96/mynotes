@@ -30,4 +30,4 @@ export const HeaderContainer = styled.header`
             gap: 0.5rem;
         }
     }
-`
+`;

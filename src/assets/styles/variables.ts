@@ -9,8 +9,8 @@ export const warning = "#ffbc00";
 export const info = "#0087e7";
 
 //Neutral colors
-export const grayDark = "#161414"
-export const grayMedium = "#EBEBEB"
+export const grayDark = "#161414";
+export const grayMedium = "#EBEBEB";
 export const grayLight = "#F8F8F8";
 export const grayBorder = "#484848";
 export const grayLightBorder = "#c7c7c7";

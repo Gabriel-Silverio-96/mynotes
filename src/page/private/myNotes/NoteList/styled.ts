@@ -25,8 +25,8 @@ export const NoteList = styled.section`
     @media (max-width: 576px) {
         grid-template-columns: repeat(1, 1fr);
     }
-`
+`;
 
 export const LoadingWrapper = styled.div`
     margin: 1rem 0;
-`
+`;

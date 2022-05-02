@@ -11,49 +11,49 @@ import DialogCreateNoteView from "./DialogCreateNoteView";
 const CREATE_NOTE_INITIAL_STATE: INote = { color_note: "#9C10FF", title_note: "", observation: "" };
 
 const DialogCreateNote: React.FC = () => {
-    const { closeDialogCreateNote } = useDialogMynotes();
-    const { setRefreshRequest, isOpenDialogCreateNote } = useContext(ContextMyNotes);
+	const { closeDialogCreateNote } = useDialogMynotes();
+	const { setRefreshRequest, isOpenDialogCreateNote } = useContext(ContextMyNotes);
 
-    const [errorInputMessage, setErrorInputMessage] = useState<IErrorInputMessage[]>([]);
-    const [createNote, setCreateNote] = useState<INote>(CREATE_NOTE_INITIAL_STATE);
-    const [isLoading, setIsLoading] = useState<boolean>(false);
+	const [errorInputMessage, setErrorInputMessage] = useState<IErrorInputMessage[]>([]);
+	const [createNote, setCreateNote] = useState<INote>(CREATE_NOTE_INITIAL_STATE);
+	const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setCreateNote({
-            ...createNote,
-            [e.target.name]: e.target.value
-        })
-    }
+	const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+		setCreateNote({
+			...createNote,
+			[e.target.name]: e.target.value
+		});
+	};
 
-    const onClose = () => {
-        closeDialogCreateNote();
-        setCreateNote(CREATE_NOTE_INITIAL_STATE);
-        setErrorInputMessage([]);
-    }
+	const onClose = () => {
+		closeDialogCreateNote();
+		setCreateNote(CREATE_NOTE_INITIAL_STATE);
+		setErrorInputMessage([]);
+	};
 
-    const postSaveNote = async () => {
-        setErrorInputMessage([]);
-        setIsLoading(true);
-        try {
+	const postSaveNote = async () => {
+		setErrorInputMessage([]);
+		setIsLoading(true);
+		try {
             await apiMyNotes.post("notes/create", createNote) as AxiosResponse<ISnackBarResponse>;
             closeDialogCreateNote();
             setRefreshRequest((prevState: boolean) => !prevState);
             setCreateNote(CREATE_NOTE_INITIAL_STATE);
-        } catch (err) {
-            const error = err as AxiosError;
-            const { status, data } = error.response as AxiosResponse<IDataErrorResponse>;
+		} catch (err) {
+			const error = err as AxiosError;
+			const { status, data } = error.response as AxiosResponse<IDataErrorResponse>;
 
-            if (status === 400) setErrorInputMessage(data.errors);
-        } finally {
-            setIsLoading(false);
-        }
-    }
+			if (status === 400) setErrorInputMessage(data.errors);
+		} finally {
+			setIsLoading(false);
+		}
+	};
 
-    return (
-        <DialogCreateNoteView
-            {... { onClose, handleChange, isOpenDialogCreateNote, errorInputMessage, postSaveNote, isLoading }}
-        />
-    )
-}
+	return (
+		<DialogCreateNoteView
+			{... { onClose, handleChange, isOpenDialogCreateNote, errorInputMessage, postSaveNote, isLoading }}
+		/>
+	);
+};
 
 export default DialogCreateNote;

@@ -1,6 +1,6 @@
 import { IDialog } from "./types.component";
 
-export interface IDialogStyled extends Omit<IDialog, "open">{ }
+export type IDialogStyled = Omit<IDialog, "open">
 
 export interface IDialogOptionSize {    
     fullScreen: string;
