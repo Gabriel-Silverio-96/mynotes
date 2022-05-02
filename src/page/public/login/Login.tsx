@@ -9,10 +9,10 @@ import { ILoginInputs, ILoginResponse } from "./type";
 
 const LOGIN_INPUTS_INITIAL_STATE: ILoginInputs = { email: "", password: "" };
 
-const Login = () => {
+const Login:React.FC = () => {
 	const history = useHistory();
 	const { setAuthenticated, setUserData } = useContext(AuthContext);
-    
+
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const [errorInputMessage, setErrorInputMessage] = useState<IErrorInputMessage[]>([]);
 	const [loginInputs, setLoginInputs] = useState<ILoginInputs>(LOGIN_INPUTS_INITIAL_STATE);
@@ -24,7 +24,7 @@ const Login = () => {
 	};
 
 	const login = async (e: FormEvent<HTMLFormElement>) => {
-		e.preventDefault();        
+		e.preventDefault();
 		setErrorInputMessage([]);
 		setIsLoading(true);
 
@@ -41,8 +41,8 @@ const Login = () => {
 		} catch (err) {
 			setIsLoading(false);
 			const error = err as AxiosError;
-			const { status, data } = error.response as AxiosResponse<IDataErrorResponse>;                
-			if (status === 400) setErrorInputMessage(data.errors);             
+			const { status, data } = error.response as AxiosResponse<IDataErrorResponse>;
+			if (status === 400) setErrorInputMessage(data.errors);
 		}
 	};
 

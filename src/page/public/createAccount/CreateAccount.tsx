@@ -8,7 +8,7 @@ import { IUserData } from "./types";
 
 const USER_DATA_INPUTS_INITIAL_STATE: IUserData = { full_name: "", email: "", password: "" };
 
-const CreateAccount = () => {
+const CreateAccount:React.FC = () => {
 	const history = useHistory();
 
 	const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -25,15 +25,15 @@ const CreateAccount = () => {
 		e.preventDefault();
 		setErrorInputMessage([]);
 		setIsLoading(true);
-        
+
 		try {
 			await apiMyNotes.post("/auth/create-account", userData);
 			return history.push("/auth/login");
 		} catch (err) {
 			const error = err as AxiosError;
 			const { status, data } = error.response as AxiosResponse<IDataErrorResponse>;
-                
-			if (status === 400) setErrorInputMessage(data.errors);            
+
+			if (status === 400) setErrorInputMessage(data.errors);
 		} finally {
 			setIsLoading(false);
 		}

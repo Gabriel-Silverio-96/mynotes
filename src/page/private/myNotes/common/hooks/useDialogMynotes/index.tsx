@@ -1,7 +1,9 @@
 import { useContext } from "react";
+import { unstable_batchedUpdates } from "react-dom";
 import { ContextMyNotes } from "../../../Context/MyNotes";
+import { IUseDialogMynotes } from "./types/types.hook";
 
-export default function useDialogMynotes() {
+export default function useDialogMynotes(): IUseDialogMynotes {
 	const {
 		setOpenDialogDeleteThisNote,
 		setOpenDialogCreateNote,
@@ -15,22 +17,31 @@ export default function useDialogMynotes() {
 	const closeDialogCreateNote = () => setOpenDialogCreateNote((prevState: boolean) => !prevState);
 
 	const openDialogEditNote = (noteId: string) => {
-		setNoteEditIdSelected(noteId);
-		setIsOpenDialogEditNote((prevState: boolean) => !prevState);
+		unstable_batchedUpdates(() => {
+			setNoteEditIdSelected(noteId);
+			setIsOpenDialogEditNote((prevState: boolean) => !prevState);
+		});
 	};
+
 	const closeDialogEditNote = () => {
-		setNoteEditIdSelected("");
-		setIsOpenDialogEditNote((prevState: boolean) => !prevState);
+		unstable_batchedUpdates(() => {
+			setNoteEditIdSelected("");
+			setIsOpenDialogEditNote((prevState: boolean) => !prevState);
+		});
 	};
 
 	const openDialogDeleteThisNote = (noteId: string) => {
-		setNoteIdSelected(noteId);
-		setOpenDialogDeleteThisNote((prevState: boolean) => !prevState);
+		unstable_batchedUpdates(() => {
+			setNoteIdSelected(noteId);
+			setOpenDialogDeleteThisNote((prevState: boolean) => !prevState);
+		});
 	};
 
 	const closeDialogDeleteThisNote = () => {
-		setNoteIdSelected("");
-		setOpenDialogDeleteThisNote((prevState: boolean) => !prevState);
+		unstable_batchedUpdates(() => {
+			setNoteIdSelected("");
+			setOpenDialogDeleteThisNote((prevState: boolean) => !prevState);
+		});
 	};
 
 	const openDialogDeleteAllNotes = () => {
@@ -39,9 +50,9 @@ export default function useDialogMynotes() {
 
 	const closeDialogDeleteAllNotes = () => {
 		setOpenDialogDeleteAllNotes((prevState: boolean) => !prevState);
-	};   
+	};
 
-	return {       
+	return {
 		openDialogCreateNote,
 		closeDialogCreateNote,
 
