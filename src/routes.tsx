@@ -9,7 +9,7 @@ import ResetPassword from "page/public/resetPassword";
 import { BrowserRouter, Switch } from "react-router-dom";
 import CustomRoute from "util/customRoute";
 
-const Router = () => {
+const Router:React.FC = () => {
 	return (
 		<BrowserRouter>
 			<Switch>

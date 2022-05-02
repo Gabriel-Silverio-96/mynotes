@@ -1,7 +1,7 @@
 import { ContextMyNotesProvider } from "./Context/MyNotes";
 import MyNotes from "./MyNotes";
 
-const MyNotesPage = () => {
+const MyNotesPage: React.FC = () => {
 	return (
 		<ContextMyNotesProvider>
 			<MyNotes />

@@ -1,9 +1,10 @@
+/* eslint-disable */
 import { AxiosResponse } from "axios";
 import { snackBar } from "common/store/snackBar/snackBar.action";
 import { IDataMessageResponse } from "common/types/ErrorResponse";
 import apiMyNotes from "./apiMyNotes";
 
-const SetupInterceptors = (history: any, store: any) => {
+const SetupInterceptors = (history: any, store: any): void => {
 	apiMyNotes.interceptors.response.use(response => {
 		const { status, data } = response as AxiosResponse<IDataMessageResponse>;
 		if (data.type_message || data.message) {
@@ -23,10 +24,10 @@ const SetupInterceptors = (history: any, store: any) => {
 		return response;
 	}, error => {
 		const messageError = "An unexpected error has occurred, please try again later";
-		if(error.response === undefined) store.dispatch(snackBar(true, messageError, "error")); 
-        
-		const { status, data } = error.response as AxiosResponse<IDataMessageResponse>;        
-        
+		if(error.response === undefined) store.dispatch(snackBar(true, messageError, "error"));
+
+		const { status, data } = error.response as AxiosResponse<IDataMessageResponse>;
+
 		switch (status) {
 		case 401:
 			store.dispatch(snackBar(true, data.message, data.type_message));

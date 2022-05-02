@@ -1,7 +1,7 @@
 import React from "react";
 import { NoNotesCreated, NoNotesCreatedContent } from "./styled";
 
-const NoNotesCreatedView = () => {
+const NoNotesCreatedView:React.FC = () => {
 	return (
 		<NoNotesCreated>
 			<NoNotesCreatedContent>
