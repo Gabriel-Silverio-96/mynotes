@@ -41,7 +41,7 @@
         "react/no-unescaped-entities": 0,
         "no-mixed-spaces-and-tabs": 0,
         "@typescript-eslint/no-non-null-assertion": "off",
-        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-explicit-any": "off"
     },
     "ignorePatterns": ["**/src/assets/images/**"]
 }
