@@ -1,5 +1,5 @@
 import { AxiosError, AxiosResponse } from "axios";
-import { IDataErrorResponse, IDataMessageResponse, IErrorInputMessage } from "common/types/ErrorResponse";
+import { IDataErrorResponse, IDataMessageResponse, IErrorInputMessage } from "common/types/errorResponse";
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useParams } from "react-router";
 import apiMyNotes from "service/apiMyNotes";
@@ -32,7 +32,7 @@ const ResetPassword: React.FC = () => {
 		} catch (err) {
 			const error = err as AxiosError;
 			const { status, data } = error.response as AxiosResponse<IDataErrorResponse>;
-			if (status === 400) setErrorInputMessage(data.errors);            
+			if (status === 400) setErrorInputMessage(data.errors);
 		} finally {
 			setIsLoading(false);
 		}

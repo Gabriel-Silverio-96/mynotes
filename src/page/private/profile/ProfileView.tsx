@@ -1,4 +1,4 @@
-import { IErrorInputMessage } from "common/types/ErrorResponse";
+import { IErrorInputMessage } from "common/types/errorResponse";
 import Button from "components/Button";
 import Input from "components/FormFields/Input";
 import FormContainer from "components/FormContainer";
@@ -40,12 +40,12 @@ const ProfileView: React.FC<IProfile> = (props) => {
 					disabled={true}
 				/>
 
-				<Button 
-					type="submit" 
-					title="Save" 
-					disabled={isLoadingData} 
-					isLoading={isLoadingRequestEditing} 
-					messageLoading="Saving" 
+				<Button
+					type="submit"
+					title="Save"
+					disabled={isLoadingData}
+					isLoading={isLoadingRequestEditing}
+					messageLoading="Saving"
 					data-cy="button-save"
 				/>
 			</form>

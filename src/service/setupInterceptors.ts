@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { AxiosResponse } from "axios";
 import { snackBar } from "common/store/snackBar/snackBar.action";
-import { IDataMessageResponse } from "common/types/ErrorResponse";
+import { IDataMessageResponse } from "common/types/errorResponse";
 import apiMyNotes from "./apiMyNotes";
 
 const SetupInterceptors = (history: any, store: any): void => {

@@ -1,4 +1,4 @@
-import { IDataMessageResponse } from "common/types/ErrorResponse";
+import { IDataMessageResponse } from "common/types/errorResponse";
 import { IUserData } from "../../types";
 
 const FULL_NAME_MOCK = "Bob Kyley";

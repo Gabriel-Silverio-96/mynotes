@@ -1,4 +1,4 @@
-import { IErrorInputMessage } from "common/types/ErrorResponse";
+import { IErrorInputMessage } from "common/types/errorResponse";
 import { ChangeEvent, FormEvent } from "react";
 
 export interface ICreateAccount {

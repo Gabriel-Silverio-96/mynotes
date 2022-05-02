@@ -1,5 +1,5 @@
 import { AxiosError, AxiosResponse } from "axios";
-import { IDataErrorResponse, IErrorInputMessage } from "common/types/ErrorResponse";
+import { IDataErrorResponse, IErrorInputMessage } from "common/types/errorResponse";
 import { ISnackBarResponse } from "common/types/SnackBar";
 import { INote } from "common/types/myNotes/notes";
 import React, { ChangeEvent, useContext, useState } from "react";

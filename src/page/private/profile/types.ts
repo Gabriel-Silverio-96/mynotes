@@ -1,4 +1,4 @@
-import { IErrorInputMessage } from "common/types/ErrorResponse";
+import { IErrorInputMessage } from "common/types/errorResponse";
 import { ChangeEvent, FormEvent } from "react";
 
 export type IUserData = {
@@ -9,7 +9,7 @@ export type IUserData = {
 export interface IProfile {
     isLoadingData: boolean;
     isLoadingRequestEditing: boolean;
-    errorInputMessage: IErrorInputMessage[];    
+    errorInputMessage: IErrorInputMessage[];
     putEditProfile: (e: FormEvent<HTMLFormElement>) => void;
     userData: IUserData;
     handleChange: (e: ChangeEvent<HTMLInputElement>) => void;

@@ -1,4 +1,4 @@
-import { IErrorInputMessage } from "common/types/ErrorResponse";
+import { IErrorInputMessage } from "common/types/errorResponse";
 import Button from "components/Button";
 import FormContainer from "components/FormContainer";
 import Input from "components/FormFields/Input";

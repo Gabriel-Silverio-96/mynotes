@@ -1,5 +1,5 @@
 import { AxiosError, AxiosResponse } from "axios";
-import { IDataErrorResponse, IErrorInputMessage } from "common/types/ErrorResponse";
+import { IDataErrorResponse, IErrorInputMessage } from "common/types/errorResponse";
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useHistory } from "react-router-dom";
 import apiMyNotes from "service/apiMyNotes";

@@ -1,5 +1,5 @@
 import { AxiosError, AxiosResponse } from "axios";
-import { IDataErrorResponse, IErrorInputMessage } from "common/types/ErrorResponse";
+import { IDataErrorResponse, IErrorInputMessage } from "common/types/errorResponse";
 import { AuthContext } from "provider/authContext";
 import React, { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { useHistory } from "react-router-dom";

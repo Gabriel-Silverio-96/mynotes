@@ -1,4 +1,4 @@
-import { IErrorInputMessage } from "common/types/ErrorResponse";
+import { IErrorInputMessage } from "common/types/errorResponse";
 import { ISnackBarResponse } from "common/types/SnackBar";
 import React, { ChangeEvent, FormEvent } from "react";
 

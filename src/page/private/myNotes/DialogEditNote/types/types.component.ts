@@ -1,4 +1,4 @@
-import { IErrorInputMessage } from "common/types/ErrorResponse";
+import { IErrorInputMessage } from "common/types/errorResponse";
 import { INote } from "common/types/myNotes/notes";
 import { ChangeEvent } from "react";
 

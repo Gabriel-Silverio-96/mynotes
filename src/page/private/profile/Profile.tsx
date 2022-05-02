@@ -1,5 +1,5 @@
 import { AxiosError, AxiosResponse } from "axios";
-import { IDataErrorResponse, IErrorInputMessage } from "common/types/ErrorResponse";
+import { IDataErrorResponse, IErrorInputMessage } from "common/types/errorResponse";
 import { ISnackBarResponse } from "common/types/SnackBar";
 import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useHistory } from "react-router";

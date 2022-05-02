@@ -1,4 +1,4 @@
-import { IErrorInputMessage } from "common/types/ErrorResponse";
+import { IErrorInputMessage } from "common/types/errorResponse";
 import Button from "components/Button";
 import Dialog from "components/Dialog";
 import DialogAction from "components/Dialog/DialogAction";
