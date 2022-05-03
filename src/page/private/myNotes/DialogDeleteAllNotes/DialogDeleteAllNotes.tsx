@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import { ISnackBarResponse } from "common/types/SnackBar";
+import { ISnackBarResponse } from "common/types/snackBar";
 import React, { useContext, useState } from "react";
 import apiMyNotes from "service/apiMyNotes";
 import useDialogMynotes from "../common/hooks/useDialogMynotes";

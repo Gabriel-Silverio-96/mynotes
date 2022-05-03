@@ -1,4 +1,4 @@
-import { SnackBarTypeMessage } from "../SnackBar";
+import { SnackBarTypeMessage } from "../snackBar";
 
 export interface IDataMessageResponse {
     type_message: SnackBarTypeMessage;

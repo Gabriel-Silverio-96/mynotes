@@ -1,6 +1,6 @@
 import GlobalStyles from "assets/styles/global";
 import dark from "assets/styles/themes/dark";
-import { ISnackBarStore } from "common/types/SnackBar";
+import { ISnackBarStore } from "common/types/snackBar";
 import SnackBar from "components/SnackBar";
 import { ContextTheme } from "provider/theme";
 import React, { useContext } from "react";
@@ -17,7 +17,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 		<ThemeProvider theme={themeContext ? themeContext : dark}>
 			<GlobalStyles />
 			{isOpen && <SnackBar typeMessage={type_message} message={message} align="bottomCenter" />}
-			{children}            
+			{children}
 		</ThemeProvider>
 	);
 };

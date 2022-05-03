@@ -1,4 +1,4 @@
-import { IPayload, SnackBarTypeMessage } from "common/types/SnackBar";
+import { IPayload, SnackBarTypeMessage } from "common/types/snackBar";
 
 export interface ISnackBarResult {
     type: "SNACKBAR_OPEN";
