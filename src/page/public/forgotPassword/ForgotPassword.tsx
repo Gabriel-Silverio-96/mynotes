@@ -1,5 +1,5 @@
 import { AxiosError, AxiosResponse } from "axios";
-import { IDataErrorResponse, IDataMessageResponse, IErrorInputMessage } from "common/types/ErrorResponse";
+import { IDataErrorResponse, IDataMessageResponse, IErrorInputMessage } from "common/types/errorResponse";
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import apiMyNotes from "service/apiMyNotes";
 import ForgotPasswordView from "./ForgotPasswordView";

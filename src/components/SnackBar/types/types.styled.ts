@@ -1,4 +1,4 @@
-import { AlignSnackBar, SnackBarTypeMessage } from "common/types/SnackBar";
+import { AlignSnackBar, SnackBarTypeMessage } from "common/types/snackBar";
 
 export interface ITypeMessageStyled {
     success: string;
@@ -29,6 +29,6 @@ export interface ISnackBarProgressBarStyled {
 }
 
 export interface ISnackBarStyled {
-    typeMessage: SnackBarTypeMessage;    
+    typeMessage: SnackBarTypeMessage;
     align?: AlignSnackBar;
 }

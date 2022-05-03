@@ -1,4 +1,4 @@
-import { IErrorInputMessage } from "common/types/ErrorResponse";
+import { IErrorInputMessage } from "common/types/errorResponse";
 import { ChangeEvent, InputHTMLAttributes } from "react";
 
 type TypeInputProps = "text" | "number" | "email" | "date" | "password";

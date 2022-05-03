@@ -1,6 +1,6 @@
-import { IErrorInputMessage } from "common/types/ErrorResponse";
-import { ISnackBarResponse } from "common/types/SnackBar";
-import React, { ChangeEvent, FormEvent } from "react";
+import { IErrorInputMessage } from "common/types/errorResponse";
+import { ISnackBarResponse } from "common/types/snackBar";
+import { ChangeEvent, FormEvent } from "react";
 
 export interface ILogin {
     isLoading: boolean;

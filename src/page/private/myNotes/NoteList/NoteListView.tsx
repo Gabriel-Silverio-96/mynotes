@@ -1,4 +1,4 @@
-import { INote } from "common/types/_MyNotes/notes";
+import { INote } from "common/types/myNotes/notes";
 import Loading from "components/Loading";
 import NoNotesCreated from "components/NoNotesCreated";
 import NoteCard from "components/NoteCard";

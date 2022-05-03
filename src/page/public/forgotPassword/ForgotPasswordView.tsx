@@ -1,4 +1,4 @@
-import { IErrorInputMessage } from "common/types/ErrorResponse";
+import { IErrorInputMessage } from "common/types/errorResponse";
 import Button from "components/Button";
 import FormContainer from "components/FormContainer";
 import Input from "components/FormFields/Input";
@@ -35,7 +35,7 @@ const ForgotPasswordView: React.FC<IForgotPasswordView> = (props) => {
 					<p>An email is on its way to
 						<strong> {userData.email} </strong>
                         with instructions for reset your password.
-					</p>                    
+					</p>
 				</SendingMessage>
 			)}
 		</FormContainer>

@@ -1,5 +1,4 @@
-import { IDataMessageResponse, IErrorInputMessage } from "common/types/ErrorResponse";
-import { INoteList, INoteListData } from "../../NoteList/types/types.component";
+import { IDataMessageResponse } from "common/types/errorResponse";
 
 const errorsInputMessage = {
 	errors: [
@@ -74,7 +73,7 @@ const deleteAllNoteSuccess: IDataMessageResponse = {
 export {
 	errorsInputMessage,
 	listWithOneNote,
-	listNotes, 
+	listNotes,
 	createNoteSuccess,
 	editNoteSuccess,
 	deleteOneNoteSuccess,
@@ -82,3 +81,4 @@ export {
 	NEW_NOTE_MOCK,
 	EDIT_NOTE_MOCK,
 };
+

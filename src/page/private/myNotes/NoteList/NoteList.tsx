@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import { INote } from "common/types/_MyNotes/notes";
+import { INote } from "common/types/myNotes/notes";
 import React, { useContext, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import apiMyNotes from "service/apiMyNotes";

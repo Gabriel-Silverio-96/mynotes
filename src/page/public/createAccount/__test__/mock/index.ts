@@ -1,4 +1,4 @@
-import { IDataMessageResponse } from "common/types/ErrorResponse";
+import { IDataMessageResponse } from "common/types/errorResponse";
 
 const errorsInputMessage = {
 	errors: [

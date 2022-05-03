@@ -1,4 +1,4 @@
-import { IErrorInputMessage } from "common/types/ErrorResponse";
+import { IErrorInputMessage } from "common/types/errorResponse";
 import { ChangeEvent } from "react";
 
 export interface IDialogCreateNote {

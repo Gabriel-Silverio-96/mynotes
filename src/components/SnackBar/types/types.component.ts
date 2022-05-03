@@ -1,4 +1,4 @@
-import { AlignSnackBar, SnackBarTypeMessage } from "common/types/SnackBar";
+import { AlignSnackBar, SnackBarTypeMessage } from "common/types/snackBar";
 
 export interface ISnackBar  {
     typeMessage: SnackBarTypeMessage;
