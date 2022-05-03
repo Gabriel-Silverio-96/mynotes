@@ -20,7 +20,6 @@ const DialogDeleteThisNote: React.FC = () => {
             await apiMyNotes.delete(`notes/delete-this/note_id=${noteIdSelected}`) as AxiosResponse<ISnackBarResponse>;
             setRefreshRequest((prevState: boolean) => !prevState);
 		} catch (err) {
-			console.error("DialogDeleteThisNotes:", err);
 		} finally {
 			setIsLoading(false);
 			setOpenDialogDeleteThisNote((prevState: boolean) => !prevState);

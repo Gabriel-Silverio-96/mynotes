@@ -22,7 +22,6 @@ const Profile: React.FC = () => {
 				const { data } = await apiMyNotes.get("/auth/account") as AxiosResponse<IUserData>;
 				setUserData(data);
 			} catch (err) {
-				console.error("Profile:", err);
 			} finally {
 				setIsLoadingData(false);
 			}

@@ -20,7 +20,7 @@
         "react",
         "@typescript-eslint"
     ],
-    "rules": {
+    "rules": {        
         "indent": [
             "error",
             "tab"
@@ -41,7 +41,8 @@
         "react/no-unescaped-entities": 0,
         "no-mixed-spaces-and-tabs": 0,
         "@typescript-eslint/no-non-null-assertion": "off",
-        "@typescript-eslint/no-explicit-any": "off"
+        "@typescript-eslint/no-explicit-any": "off",
+        "no-empty": [2, { "methods": true } ]
     },
     "ignorePatterns": ["**/src/assets/images/**"]
 }
