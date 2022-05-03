@@ -42,7 +42,7 @@
         "no-mixed-spaces-and-tabs": 0,
         "@typescript-eslint/no-non-null-assertion": "off",
         "@typescript-eslint/no-explicit-any": "off",
-        "no-empty": [2, { "methods": true } ]
+        "no-empty": [2, { "allowEmptyCatch": true }]
     },
     "ignorePatterns": ["**/src/assets/images/**"]
 }
