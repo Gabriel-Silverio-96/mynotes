@@ -27,17 +27,17 @@ const MyNotesRender = () => {
 	);
 };
 
-describe("Delete notes <MyNotesRender />", () => { 
+describe("Delete notes <MyNotesRender />", () => {
 	it("Delete one note", async () => {
 		mock.onGet("notes/list").reply(200, listNotes);
-		mock.onGet("notes/delete-this/note_id=2").reply(200, deleteOneNoteSuccess);
+		mock.onDelete("notes/delete-this/note_id=2").reply(200, deleteOneNoteSuccess);
 
 		const { queryByText, container } = render(<MyNotesRender />);
 
 		await waitFor(() => {
 			const buttonDeleteThisNote = container.querySelector("[id='2']") as HTMLButtonElement;
 			userEvent.click(buttonDeleteThisNote);
-            
+
 			const isOpenDialogDeleteOneNote = queryByText("Delete this note");
 			expect(isOpenDialogDeleteOneNote).toBeInTheDocument();
 
@@ -46,20 +46,20 @@ describe("Delete notes <MyNotesRender />", () => {
 		});
 
 		const { message, type_message } = deleteOneNoteSuccess;
-		store.dispatch(snackBar(true, message, type_message));   
-		expect(queryByText(deleteOneNoteSuccess.message)).toBeInTheDocument();        
+		store.dispatch(snackBar(true, message, type_message));
+		expect(queryByText(deleteOneNoteSuccess.message)).toBeInTheDocument();
 	});
 
 	it("Delete all note", async () => {
 		mock.onGet("notes/list").reply(200, listNotes);
-		mock.onGet("notes/delete-all").reply(200, deleteAllNoteSuccess);
+		mock.onDelete("notes/delete-all").reply(200, deleteAllNoteSuccess);
 
 		const { queryByText, getByTestId } = render(<MyNotesRender />);
 
 		await waitFor(() => {
 			const buttonDeleteThisNote = getByTestId("button-delete-all-notes") as HTMLButtonElement;
 			userEvent.click(buttonDeleteThisNote);
-            
+
 			const isOpenDialogDeleteOneNote = queryByText("Delete all notes");
 			expect(isOpenDialogDeleteOneNote).toBeInTheDocument();
 
@@ -68,7 +68,7 @@ describe("Delete notes <MyNotesRender />", () => {
 		});
 
 		const { message, type_message } = deleteAllNoteSuccess;
-		store.dispatch(snackBar(true, message, type_message));   
-		expect(queryByText(deleteAllNoteSuccess.message)).toBeInTheDocument();        
+		store.dispatch(snackBar(true, message, type_message));
+		expect(queryByText(deleteAllNoteSuccess.message)).toBeInTheDocument();
 	});
 });

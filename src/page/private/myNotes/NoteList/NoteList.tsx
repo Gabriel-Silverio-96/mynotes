@@ -28,7 +28,6 @@ const NoteList: React.FC = () => {
 					setNoNotesCreated(true);
 				}
 			} catch (err) {
-				console.error("NoteList:", err);
 			} finally {
 				setIsLoading(false);
 			}

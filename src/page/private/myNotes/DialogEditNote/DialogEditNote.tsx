@@ -37,7 +37,6 @@ const DialogEditNote: React.FC = () => {
 					const { data } = await apiMyNotes.get(`notes/note_id=${noteEditIdSelected}`) as AxiosResponse<{ note: INote }>;
 					setEditNote(data.note);
 				} catch (err) {
-					console.error("DialogEditNote:", err);
 				} finally {
 					setTimeout(() => setIsLoadingData(false), 500);
 				}
