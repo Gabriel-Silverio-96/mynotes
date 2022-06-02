@@ -7,9 +7,9 @@ import { IAlert } from "../types/types.component";
 
 const MESSAGE = "My message";
 
-const AlertRenderComponent = ({ children, severity, alertHeader }: IAlert) => {
+const AlertRenderComponent: React.FC<IAlert> = ({ children, severity, alertHeader }) => {
 	const [isOpenAlert, setIsOpenAlert] = useState<boolean>(true);
-	const onClick = () => setIsOpenAlert((prevState: boolean) => !prevState);
+	const onClick = () => setIsOpenAlert((prevState: boolean) => !prevState) ;
 
 	return (
 		<>
@@ -21,13 +21,13 @@ const AlertRenderComponent = ({ children, severity, alertHeader }: IAlert) => {
 
 describe("<Alert />", () => {
 	it("Should render the component", () => {
-		const { container } = render(<Alert severity="success">{MESSAGE}</Alert>);
+		const { container } = render(<AlertRenderComponent severity="success">{MESSAGE}</AlertRenderComponent>);
 		expect(container).toBeDefined();
 	});
 
 	it("Should unmount the component", () => {
 		const div = document.createElement("div");
-		ReactDOM.render(<Alert severity="success">{MESSAGE}</Alert>, div);
+		ReactDOM.render(<AlertRenderComponent severity="success">{MESSAGE}</AlertRenderComponent>, div);
 		ReactDOM.unmountComponentAtNode(div);
 	});
 
@@ -48,7 +48,7 @@ describe("<Alert />", () => {
 	});
 
 	it("Should with closed alert", () => {
-		const { getByText } = render(<AlertRenderComponent children={MESSAGE} severity="error" />);
+		const { getByText } = render(<AlertRenderComponent severity="error">{MESSAGE}</AlertRenderComponent>);
 		const buttonEl = getByText(/close/i);
 		const severityError = getByText(MESSAGE);
 		userEvent.click(buttonEl);
