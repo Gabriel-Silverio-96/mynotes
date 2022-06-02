@@ -14,6 +14,7 @@ const BarActionsView: React.FC<IBarAction> = (props) => {
 					title="New"
 					variant="primary"
 					onClick={openDialogCreateNote}
+					data-testid="button-new-note"
 					data-cy="button-new-note"
 				/>
 				<Button
