@@ -1,5 +1,5 @@
 <p align="center">
-    <img alt="Logo MyNotes" src="https://user-images.githubusercontent.com/53228013/165417199-a866722b-6736-4077-baa4-99cde97bad50.png" />
+    <img alt="Logo MyNotes" src="https://user-images.githubusercontent.com/53228013/172028971-87ef7158-75fd-416b-8696-116dae33b516.png" />
 </p>
 
 <h1 align="center">
