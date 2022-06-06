@@ -24,6 +24,7 @@ const DialogCreateNoteView: React.FC<IDialogCreateNote> = (props) => {
 						name="title_note"
 						id="title_note"
 						onChange={handleChange}
+						data-testid="create-dialog-title"
 						errorMessage={
                             errorInputMessage!.map((errorInputMessage: IErrorInputMessage) => (
                             	errorInputMessage.param === "title_note" ? errorInputMessage.msg : ""
@@ -39,6 +40,7 @@ const DialogCreateNoteView: React.FC<IDialogCreateNote> = (props) => {
 						rows={5}
 						maxLength={500}
 						onChange={handleChange}
+						data-testid="create-dialog-observation"
 					/>
 					<span>
 						{errorInputMessage!.map((errorInputMessage: IErrorInputMessage) => (
