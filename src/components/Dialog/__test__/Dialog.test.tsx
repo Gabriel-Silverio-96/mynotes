@@ -48,16 +48,16 @@ describe("<Dialog />", () => {
 		ReactDOM.unmountComponentAtNode(div);
 	});
 
-	it(`Should have closed dialog being ${DIALOG_TITLE} and ${DIALOG_BODY} not visible`, () => {
+	it(`Should have closed dialog being ${DIALOG_TITLE} and ${DIALOG_BODY} not visible when open equal false`, () => {
 		const { queryByText } = render(<DialogRender />);
 
 		expect(queryByText(DIALOG_TITLE)).toBeNull();
 		expect(queryByText(DIALOG_BODY)).toBeNull();
 	});
 
-	it(`Should have open 
-        dialog after click button "${BUTTON_OPEN_TITLE}" 
-        and after click button "${BUTTON_CLOSE_TITLE}" 
+	it(`Should have open
+        dialog after click button "${BUTTON_OPEN_TITLE}"
+        and after click button "${BUTTON_CLOSE_TITLE}"
         close dialog`,
 	async () => {
 		const { getByText, queryByText } = render(<DialogRender />);
