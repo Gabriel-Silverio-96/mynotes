@@ -55,7 +55,7 @@ describe("<DialogCreateNote />", () => {
 		ReactDOM.unmountComponentAtNode(div);
 	});
 
-	it(`Should not show title dialog ${TITLE_DIALOG} when dialog is false`, () => {
+	it(`Should not show title dialog ${TITLE_DIALOG} when dialog is close`, () => {
 		const { queryByText, getByText } = render(<DialogCreateNoteComponent />);
 		const buttonOpenDialog = getByText("Open") as HTMLButtonElement;
 		userEvent.click(buttonOpenDialog);
