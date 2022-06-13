@@ -24,7 +24,7 @@ export default createGlobalStyle `
     [id*="describe-"] {
         display: none;
     }
-    
+
     :focus-visible {
         outline: 0.3rem solid red;
         outline-style: dotted;
@@ -36,6 +36,12 @@ export default createGlobalStyle `
             cursor: not-allowed;
         }
     }
+
+	button {
+		&:disabled: {
+			cursor: not-allowed;
+		}
+	}
 
     a {
         cursor: pointer;
