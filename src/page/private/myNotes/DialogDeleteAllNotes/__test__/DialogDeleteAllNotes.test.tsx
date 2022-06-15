@@ -23,7 +23,7 @@ const DialogDeleteAllNotesComponent: React.FC<IDeleteAllNote | any> = (props) =>
 			<Layout>
 				<DialogDeleteAllNotesView
 					open={isOpenDefault ? isOpenDefault : open}
-					{...{ isOpenDefault, deleteAllNotes, isLoading, onClose }}
+					{...{ deleteAllNotes, isLoading, onClose }}
 				/>
 				<Button title="Open" onClick={onOpen} />
 			</Layout>
