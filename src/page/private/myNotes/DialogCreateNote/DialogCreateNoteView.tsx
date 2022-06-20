@@ -8,15 +8,17 @@ import DialogFormField from "components/Dialog/DialogFormField";
 import Input from "components/FormFields/Input";
 import React from "react";
 import { IDialogCreateNote } from "./types/types.component";
+import ColorPicker from "components/ColorPicker";
 
 const DialogCreateNoteView: React.FC<IDialogCreateNote> = (props) => {
-	const { isOpenDialogCreateNote, onClose, handleChange, errorInputMessage, postSaveNote, isLoading } = props;
+	const { isOpenDialogCreateNote, onClose, handleChange, errorInputMessage, postSaveNote, isLoading, color, setColor } = props;
 	return (
 		<Dialog open={isOpenDialogCreateNote}>
 			<DialogTitle onClick={onClose}>
 				<h2>Create Note</h2>
 			</DialogTitle>
 			<DialogForm method="post">
+				<ColorPicker {...{ color, setColor }} hideRGB hideHSV />
 				<DialogFormField>
 					<Input
 						label="Title note"
@@ -26,9 +28,9 @@ const DialogCreateNoteView: React.FC<IDialogCreateNote> = (props) => {
 						onChange={handleChange}
 						data-testid="create-dialog-title"
 						errorMessage={
-                            errorInputMessage!.map((errorInputMessage: IErrorInputMessage) => (
-                            	errorInputMessage.param === "title_note" ? errorInputMessage.msg : ""
-                            ))
+							errorInputMessage!.map((errorInputMessage: IErrorInputMessage) => (
+								errorInputMessage.param === "title_note" ? errorInputMessage.msg : ""
+							))
 						}
 					/>
 				</DialogFormField>
@@ -51,7 +53,7 @@ const DialogCreateNoteView: React.FC<IDialogCreateNote> = (props) => {
 			</DialogForm>
 			<DialogAction>
 				<Button title="Close" onClick={onClose} variant="secondary" disabled={isLoading} />
-				<Button title="Save"  isLoading={isLoading} messageLoading="Saving" onClick={postSaveNote} />
+				<Button title="Save" isLoading={isLoading} messageLoading="Saving" onClick={postSaveNote} />
 			</DialogAction>
 		</Dialog>
 	);

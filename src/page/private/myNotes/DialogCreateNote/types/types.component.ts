@@ -1,5 +1,6 @@
 import { IErrorInputMessage } from "common/types/errorResponse";
-import { ChangeEvent } from "react";
+import React, { ChangeEvent } from "react";
+import { Color } from "react-color-palette";
 
 export interface IDialogCreateNote {
     isOpenDialogCreateNote: boolean;
@@ -8,4 +9,6 @@ export interface IDialogCreateNote {
     isLoading?: boolean;
     errorInputMessage?: IErrorInputMessage[];
     postSaveNote?: () => void;
+	color: Color;
+	setColor: React.Dispatch<React.SetStateAction<Color>>;
 }
