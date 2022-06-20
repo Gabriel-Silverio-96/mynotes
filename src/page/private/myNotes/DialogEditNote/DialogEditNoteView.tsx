@@ -1,11 +1,12 @@
 import { IErrorInputMessage } from "common/types/errorResponse";
 import Badge from "components/Badge";
 import Button from "components/Button";
+import ColorPicker from "components/ColorPicker";
 import Dialog from "components/Dialog";
 import DialogAction from "components/Dialog/DialogAction";
 import DialogForm from "components/Dialog/DialogForm";
-import DialogTitle from "components/Dialog/DialogTitle";
 import DialogFormField from "components/Dialog/DialogFormField";
+import DialogTitle from "components/Dialog/DialogTitle";
 import Input from "components/FormFields/Input";
 import TextArea from "components/FormFields/TextArea";
 import React from "react";
@@ -20,9 +21,12 @@ const DialogEditNoteView: React.FC<IDialogEditNote> = (props) => {
 		isLoadingEdit,
 		isLoadingData,
 		isOpenDialogEditNote,
-		openDialogDeleteThisNoteInDialogEditNote
+		openDialogDeleteThisNoteInDialogEditNote,
+		color,
+		setColor
 	} = props;
 	const dateCreatedAt = new Date(editNote.created_at!).toLocaleDateString("en-US");
+
 	return (
 		<Dialog open={isOpenDialogEditNote}>
 			<DialogTitle onClick={onClose}>
@@ -30,6 +34,7 @@ const DialogEditNoteView: React.FC<IDialogEditNote> = (props) => {
 				{!isLoadingData && <Badge text={`Create at ${dateCreatedAt}`} />}
 			</DialogTitle>
 			<DialogForm method="post">
+				<ColorPicker {...{ color, setColor }} hideRGB hideHSV />
 				<DialogFormField>
 					<Input
 						label="Title note"
