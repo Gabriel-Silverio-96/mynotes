@@ -2,6 +2,7 @@ import { cleanup, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { store } from "common/store";
 import Button from "components/Button";
+import { COLOR_PICKER_INITAL_STATE } from "components/ColorPicker/util";
 import Layout from "components/Layout";
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
@@ -20,7 +21,7 @@ const MOCK_ERRORS_MESSAGE = [
 afterEach(cleanup);
 const DialogCreateNoteComponent: React.FC<IDialogCreateNote | any> = (props) => {
 	const [open, setOpen] = useState<boolean>(false);
-	const { isOpenDefault, handleChange, errorInputMessage = [], postSaveNote, isLoading } = props;
+	const { isOpenDefault, handleChange, errorInputMessage = [], postSaveNote, setColor, isLoading } = props;
 
 	const onOpen = () => setOpen(prevState => !prevState);
 	const onClose = () => setOpen(prevState => !prevState);
@@ -28,6 +29,8 @@ const DialogCreateNoteComponent: React.FC<IDialogCreateNote | any> = (props) => 
 		<Provider store={store}>
 			<Layout>
 				<DialogCreateNoteView
+					color={COLOR_PICKER_INITAL_STATE}
+					setColor={setColor}
 					isOpenDialogCreateNote={isOpenDefault ? true : open}
 					{...{
 						onClose,

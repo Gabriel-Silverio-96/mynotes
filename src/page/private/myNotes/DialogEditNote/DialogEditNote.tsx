@@ -1,8 +1,10 @@
+import * as variables from "assets/styles/variables";
 import { AxiosError, AxiosResponse } from "axios";
 import { IDataErrorResponse, IErrorInputMessage } from "common/types/errorResponse";
-import { ISnackBarResponse } from "common/types/snackBar";
 import { INote } from "common/types/myNotes/notes";
+import { ISnackBarResponse } from "common/types/snackBar";
 import React, { ChangeEvent, useContext, useEffect, useState } from "react";
+import { useColor } from "react-color-palette";
 import apiMyNotes from "service/apiMyNotes";
 import useDialogMynotes from "../common/hooks/useDialogMynotes";
 import { ContextMyNotes } from "../Context/MyNotes";
@@ -16,6 +18,7 @@ const DialogEditNote: React.FC = () => {
 
 	const { closeDialogEditNote, openDialogDeleteThisNote } = useDialogMynotes();
 	const { noteEditIdSelected, isOpenDialogEditNote, setRefreshRequest } = useContext(ContextMyNotes);
+	const [color, setColor] = useColor("hex", variables.primaryColor);
 
 	const [errorInputMessage, setErrorInputMessage] = useState<IErrorInputMessage[]>([]);
 	const [isLoadingData, setIsLoadingData] = useState<boolean>(false);
@@ -35,7 +38,9 @@ const DialogEditNote: React.FC = () => {
 				setIsLoadingData(true);
 				try {
 					const { data } = await apiMyNotes.get(`notes/note_id=${noteEditIdSelected}`) as AxiosResponse<{ note: INote }>;
-					setEditNote(data.note);
+					const { color_note, title_note, observation } = data.note;
+					setEditNote({ color_note, title_note, observation });
+					setColor({ hex: data.note.color_note, rgb: { r: 0, g: 0, b: 0 }, hsv: { h: 0, s: 0, v: 0 } });
 				} catch (err) {
 				} finally {
 					setTimeout(() => setIsLoadingData(false), 500);
@@ -57,12 +62,12 @@ const DialogEditNote: React.FC = () => {
 		setErrorInputMessage([]);
 		setIsLoadingEdit(true);
 
-		const editNoteBody = { color_note: editNote.color_note, title_note: editNote.title_note, observation: editNote.observation };
+		const data = { ...editNote, color_note: color.hex };
 		try {
-            await apiMyNotes.put(`notes/edit/note_id=${noteEditIdSelected}`, editNoteBody) as AxiosResponse<ISnackBarResponse>;
-            setRefreshRequest((prevState: boolean) => !prevState);
-            closeDialogEditNote();
-            setEditNote(EDIT_NOTE_INITIAL_STATE);
+			await apiMyNotes.put(`notes/edit/note_id=${noteEditIdSelected}`, data) as AxiosResponse<ISnackBarResponse>;
+			setRefreshRequest((prevState: boolean) => !prevState);
+			closeDialogEditNote();
+			setEditNote(EDIT_NOTE_INITIAL_STATE);
 		} catch (err) {
 			const error = err as AxiosError;
 			const { status, data } = error.response as AxiosResponse<IDataErrorResponse>;
@@ -89,7 +94,9 @@ const DialogEditNote: React.FC = () => {
 				putEditNote,
 				isOpenDialogEditNote,
 				openDialogDeleteThisNoteInDialogEditNote,
-				onClose
+				onClose,
+				color,
+				setColor
 			}}
 		/>
 	);
