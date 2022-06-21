@@ -12,7 +12,11 @@ const ColorPicker: React.FC<IColorPicker | any> = (props) => {
 	const [colorSelect, setColorSelect] = useState<string>("");
 	const [open, setOpen] = useState<boolean>(false);
 
-	const openAndCloseColorPicker = () => setOpen(prevState => !prevState);
+	const openColorPicker = () => setOpen(prevState => !prevState);
+
+	const closeColorPicker = (e: any) => {
+		if(e.target.dataset.picker) setOpen(prevState => !prevState);
+	};
 
 	return (
 		<ColorPickerView
@@ -22,11 +26,12 @@ const ColorPicker: React.FC<IColorPicker | any> = (props) => {
 				width,
 				height,
 				open,
-				openAndCloseColorPicker,
+				openColorPicker,
 				colorSelect,
 				setColorSelect,
 				theme,
 				loading,
+				closeColorPicker,
 				...rest
 			}}
 		/>
