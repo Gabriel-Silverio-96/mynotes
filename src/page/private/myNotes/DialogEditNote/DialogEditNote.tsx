@@ -21,7 +21,7 @@ const DialogEditNote: React.FC = () => {
 	const [color, setColor] = useColor("hex", variables.primaryColor);
 
 	const [errorInputMessage, setErrorInputMessage] = useState<IErrorInputMessage[]>([]);
-	const [isLoadingData, setIsLoadingData] = useState<boolean>(false);
+	const [isLoadingData, setIsLoadingData] = useState<boolean>(true);
 	const [isLoadingEdit, setIsLoadingEdit] = useState<boolean>(false);
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -38,8 +38,7 @@ const DialogEditNote: React.FC = () => {
 				setIsLoadingData(true);
 				try {
 					const { data } = await apiMyNotes.get(`notes/note_id=${noteEditIdSelected}`) as AxiosResponse<{ note: INote }>;
-					const { color_note, title_note, observation } = data.note;
-					setEditNote({ color_note, title_note, observation });
+					setEditNote(data.note);
 					setColor({ hex: data.note.color_note, rgb: { r: 0, g: 0, b: 0 }, hsv: { h: 0, s: 0, v: 0 } });
 				} catch (err) {
 				} finally {
@@ -61,8 +60,8 @@ const DialogEditNote: React.FC = () => {
 	const putEditNote = async () => {
 		setErrorInputMessage([]);
 		setIsLoadingEdit(true);
-
-		const data = { ...editNote, color_note: color.hex };
+		const { title_note, observation }: INote = editNote;
+		const data: INote = { color_note: color.hex, title_note, observation };
 		try {
 			await apiMyNotes.put(`notes/edit/note_id=${noteEditIdSelected}`, data) as AxiosResponse<ISnackBarResponse>;
 			setRefreshRequest((prevState: boolean) => !prevState);
