@@ -2,8 +2,9 @@ import Loading from "components/Loading";
 import React from "react";
 import { ColorPicker } from "react-color-palette";
 import { ButtonColorPicker, ButtonColorPickerContainer, ColorPickerContainer, ColorPickerStyle } from "./styled";
+import { IColorPicker } from "./types/ColorPicker.component";
 
-const ColorPickerView: React.FC<any> = (props) => {
+const ColorPickerView: React.FC<IColorPicker> = (props) => {
 	const {
 		color,
 		setColor,
@@ -11,11 +12,11 @@ const ColorPickerView: React.FC<any> = (props) => {
 		height,
 		open,
 		openColorPicker,
+		closeColorPicker,
 		colorSelect,
 		setColorSelect,
 		theme,
 		loading,
-		closeColorPicker,
 		...rest
 	} = props;
 
@@ -33,16 +34,14 @@ const ColorPickerView: React.FC<any> = (props) => {
 							<ColorPicker
 								{...{ width, height, color }}
 								onChange={setColor}
-								dark={theme.dark === "dark" ? false : true}
+								dark={theme.title === "dark" ? true : false}
 								onChangeComplete={({ hex }) => setColorSelect(hex)}
 								{...rest}
 							/>
 						</ColorPickerStyle>
 					)}
-
 				</ColorPickerContainer>
 			)}
-
 		</>
 	);
 };

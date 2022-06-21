@@ -27,11 +27,11 @@ const ColorPicker: React.FC<IColorPicker | any> = (props) => {
 				height,
 				open,
 				openColorPicker,
+				closeColorPicker,
 				colorSelect,
 				setColorSelect,
 				theme,
 				loading,
-				closeColorPicker,
 				...rest
 			}}
 		/>
