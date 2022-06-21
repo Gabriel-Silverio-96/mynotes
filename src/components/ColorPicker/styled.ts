@@ -1,6 +1,10 @@
 import * as variables from "assets/styles/variables";
 import styled from "styled-components";
 
+export const ColorPickerContainer = styled.div`
+	position: relative;
+`;
+
 export const ButtonColorPickerContainer = styled.div`
 	display: flex;
 	align-items: center;
@@ -21,9 +25,19 @@ export const ButtonColorPicker = styled.div<any>`
 `;
 
 export const ColorPickerStyle = styled.div`
+	background-color: transparent;
+    width: 100%;
+    height: 94vh;
+    position: absolute;
+    top: -9rem;
+    right: 0;
+    z-index: 1;
+    margin-top: 2rem;
+
 	.rcp {
 		position: absolute;
 		z-index: 1;
 		margin-top: 1rem;
+		top: 8rem;
 	}
 `;
