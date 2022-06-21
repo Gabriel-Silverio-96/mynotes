@@ -6,7 +6,7 @@ import ColorPickerView from "./ColorPickerView";
 import { IColorPicker } from "./types/ColorPicker.component";
 
 const ColorPicker: React.FC<IColorPicker | any> = (props) => {
-	const { color, setColor, width = 300, height = 200, ...rest } = props;
+	const { color, setColor, width = 300, height = 200, loading = false, ...rest } = props;
 	const [theme] = useThemeStorage("theme", dark);
 
 	const [colorSelect, setColorSelect] = useState<string>("");
@@ -26,6 +26,7 @@ const ColorPicker: React.FC<IColorPicker | any> = (props) => {
 				colorSelect,
 				setColorSelect,
 				theme,
+				loading,
 				...rest
 			}}
 		/>

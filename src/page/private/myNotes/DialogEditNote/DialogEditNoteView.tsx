@@ -34,7 +34,7 @@ const DialogEditNoteView: React.FC<IDialogEditNote> = (props) => {
 				{!isLoadingData && <Badge text={`Create at ${dateCreatedAt}`} />}
 			</DialogTitle>
 			<DialogForm method="post">
-				<ColorPicker {...{ color, setColor }} hideRGB hideHSV />
+				<ColorPicker {...{ color, setColor }} hideRGB hideHSV loading={isLoadingData}/>
 				<DialogFormField>
 					<Input
 						label="Title note"
