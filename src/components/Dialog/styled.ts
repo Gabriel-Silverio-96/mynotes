@@ -48,7 +48,7 @@ export const DialogContent = styled.div<IDialogStyled>`
     flex-direction: ${({size}) => size === "fullScreen" ? "column" : "inherit"};
 
     .dialog-action {
-        margin: ${({size}) => size === "fullScreen" ? "auto" : "inherit"};;
+        margin-top: ${({size}) => size === "fullScreen" ? "auto" : "2rem"};
     }
 
     @media(max-width: 580px) {
