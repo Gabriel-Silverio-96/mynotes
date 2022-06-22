@@ -15,20 +15,20 @@ const DialogSize = (size: string): string => {
 };
 
 export const DialogContainer = styled.div<IDialogStyled>`
-    width: -webkit-fill-available;    
-    width: -moz-available;    
+    width: -webkit-fill-available;
+    width: -moz-available;
     height: 100%;
-    background-color: ${variables.blackLight};  
-    position: fixed; 
+    background-color: ${variables.blackLight};
+    position: fixed;
     display: flex;
     left: 0;
     top: 0;
-    overflow: auto; 
+    overflow: auto;
     z-index: 1;
-    padding: ${({size}) => size === "fullScreen" ? "0" : "1rem"};    
+    padding: ${({size}) => size === "fullScreen" ? "0" : "1rem"};
 
     @media(max-width: 580px) {
-       padding: 0;     
+       padding: 0;
     }
 `;
 
@@ -38,8 +38,8 @@ export const DialogContent = styled.div<IDialogStyled>`
     min-height: ${({size, minHeight}) => {
 		if(size === "fullScreen") return "100%";
 		if(minHeight) return `${minHeight}rem`;
-		return "15rem";        
-	}};    
+		return "15rem";
+	}};
     padding: 1.5rem;
     background-color: ${props => props.theme.colors.backgroundSecundary};
     border-radius: ${({size}) => size === "fullScreen" ? "0" : "1rem"};
@@ -47,8 +47,8 @@ export const DialogContent = styled.div<IDialogStyled>`
     display: ${({size}) => size === "fullScreen" ? "flex" : "block"};
     flex-direction: ${({size}) => size === "fullScreen" ? "column" : "inherit"};
 
-    .dialog-action {        
-        margin-top: margin: ${({size}) => size === "fullScreen" ? "inherit" : "auto"};;
+    .dialog-action {
+        margin: ${({size}) => size === "fullScreen" ? "auto" : "inherit"};;
     }
 
     @media(max-width: 580px) {
@@ -59,7 +59,7 @@ export const DialogContent = styled.div<IDialogStyled>`
         max-width: 100%;
 
         .dialog-action {
-            margin-top: auto;
+            margin: auto 0 0 0;
         }
     }
 `;
