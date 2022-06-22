@@ -8,7 +8,7 @@ const CustomRoute:React.FC<ICustomRoute> = ({ isPrivate, isHeaderVisible = true,
 	const { authenticated } = useContext(AuthContext);
 
 	if (isPrivate && !authenticated) {
-		return <Redirect to="/" />;
+		return <Redirect to="/auth/login" />;
 	}
 
 	return <>{isHeaderVisible && <Header />}<Route {...rest} /></>;
