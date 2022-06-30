@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import * as variables from "./variables";
+import MynotesFont from "../fonts/mynotes-font.woff";
 
 export default createGlobalStyle `
     * {
@@ -46,4 +47,9 @@ export default createGlobalStyle `
     a {
         cursor: pointer;
     }
+
+	@font-face {
+		font-family: mynotes;
+		src: url(${MynotesFont});
+	}
 `;
