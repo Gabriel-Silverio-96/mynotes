@@ -7,6 +7,7 @@ export const red = "#FF0000";
 export const success = "#138d05";
 export const warning = "#ffbc00";
 export const info = "#0087e7";
+export const orange = "#FF3110";
 
 //Neutral colors
 export const grayDark = "#161414";
