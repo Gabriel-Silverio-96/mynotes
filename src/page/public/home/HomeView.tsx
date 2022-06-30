@@ -7,11 +7,11 @@ import { IHome } from "./types";
 const HomeView: React.FC<IHome> = () => {
 	return (
 		<Main>
-			<h1>Time to<br /> create new notes</h1>
+			<h1>New way<br /> to <span>organize</span></h1>
 			<p>Easily and quickly organize your day</p>
 			<div>
 				<Link to="auth/create-account">
-					<Button size="large"
+					<Button size="medium"
 						title="Get started"
 					/>
 				</Link>
