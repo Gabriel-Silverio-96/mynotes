@@ -3,11 +3,11 @@ import { Logo } from "./styled";
 import * as variables from "assets/styles/variables";
 import { ILogo } from "./types/types.component";
 
-const Logo2View: React.FC<ILogo> = ({ themeTitle, responsive }) => {
+const LogoView: React.FC<ILogo> = ({ themeTitle, responsive, isoType }) => {
 	return (
-		<Logo responsive={responsive}>
+		<Logo {...{ responsive }} >
 			<svg xmlns="http://www.w3.org/2000/svg" width="130.459" height="30.215" viewBox="0 0 130.459 30.215">
-				<g data-name={responsive && "text-logo"} transform="translate(43.469 7.794)" fill={themeTitle === "dark" ? variables.white : variables.black}>
+				<g data-name={responsive && "text-logo"} data-isotype={isoType && "isotype-logo"} transform="translate(43.469 7.794)" fill={themeTitle === "dark" ? variables.white : variables.black}>
 					<path d="M342.206,385.74v14.822h-2.436V389.992l-4.512,7.455h-.3l-4.514-7.478v10.592h-2.436V385.74h2.626l4.474,7.411,4.486-7.411Z" transform="translate(-328.014 -385.74)" />
 					<path d="M374.435,395.956h2.436l-4.068,10.93q-1.525,4.108-5.174,3.9v-2.139a2.478,2.478,0,0,0,1.737-.456,3.714,3.714,0,0,0,1.081-1.621l.106-.213-4.491-10.4h2.5l3.159,7.69Z" transform="translate(-350.288 -391.72)" />
 					<path d="M404.843,385.74h2.436v14.822h-1.906l-6.991-10.068v10.068h-2.436V385.74H397.8l7.037,10.13Z" transform="translate(-367.775 -385.74)" />
@@ -30,4 +30,4 @@ const Logo2View: React.FC<ILogo> = ({ themeTitle, responsive }) => {
 	);
 };
 
-export default Logo2View;
+export default LogoView;
