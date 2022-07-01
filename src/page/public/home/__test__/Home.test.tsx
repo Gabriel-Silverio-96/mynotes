@@ -5,7 +5,8 @@ import { BrowserRouter } from "react-router-dom";
 import ThemeProviderTest from "util/test/themeProviderTest";
 import Home from "../Home";
 
-const PRIMARY_TEXT = "Time to create new notes";
+const PRIMARY_TEXT = "New way to";
+const PRIMARY_TEXT_HIGHLIGHT = "organize";
 const SECONDARY_TEXT = "Easily and quickly organize your day";
 
 const HomeRender = () => {
@@ -30,10 +31,11 @@ describe("Page <HomeRender />", () => {
 		ReactDOM.unmountComponentAtNode(div);
 	});
 
-	it(`Should show title main '${PRIMARY_TEXT}'`, () => {
+	it(`Should show title main '${PRIMARY_TEXT} ${PRIMARY_TEXT_HIGHLIGHT}'`, () => {
 		const { getByText } = render(<HomeRender />);
 
 		expect(getByText(PRIMARY_TEXT)).toBeInTheDocument();
+		expect(getByText(PRIMARY_TEXT_HIGHLIGHT)).toBeInTheDocument();
 	});
 
 	it(`Should show text '${SECONDARY_TEXT}'`, () => {
