@@ -1,4 +1,5 @@
 export interface ILogo {
-    themeTitle: string;
+    themeTitle?: string;
     responsive?: boolean;
+    isoType?: boolean;
 }
