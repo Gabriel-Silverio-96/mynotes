@@ -4,7 +4,7 @@ import { IBadgeStyled, IBadgeVariant } from "./types/types.styled";
 
 const BadgeVariant: IBadgeVariant = {
 	default: {
-		backgroundColor: `${variables.black}`,
+		backgroundColor: `${variables.grayMedium2}`,
 		color: `${variables.white}`,
 	},
 	primary: {
@@ -33,7 +33,7 @@ export const Badge = styled.div<IBadgeStyled>`
     background-color: ${({ variant }) => BadgeVariant[variant!].backgroundColor};
     color: ${({ variant }) => BadgeVariant[variant!].color};;
     width: fit-content;
-    padding: 0.4rem; 
+    padding: 0.4rem;
     border-radius: 0.5rem;
     font-size: 0.7rem;
 `;
