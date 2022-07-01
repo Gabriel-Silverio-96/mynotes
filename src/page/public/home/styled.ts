@@ -20,6 +20,7 @@ export const Main = styled.main<MainProps>`
         font-size: 7rem;
 		font-family: "mynotes";
 		line-height: 7rem;
+		font-weight: 100;
 
 		span {
 			background:
