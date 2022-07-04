@@ -15,17 +15,17 @@ export const FormContainer = styled.section`
     height: 90vh;
     padding: 0.3rem;
     margin-top: 2rem;
-    
+
     header {
         padding: 1rem 0;
         text-align: center;
-    }  
+    }
 
     @media(max-width: 767px) {
         align-items: baseline;
         height: 100%;
-    } 
-    
+    }
+
     button {
         margin-top: 1rem;
     }
@@ -39,7 +39,7 @@ export const BackPage = styled.div`
     cursor: pointer;
 
     &:hover {
-        color: ${variables.primaryColor};
+        color: ${variables.color_primary};
     }
 `;
 
@@ -47,25 +47,25 @@ export const FormContent = styled.div<IFormContentStyled>`
     width: ${props => props.widthModal};
     padding: 3rem;
     border-radius: 0.8rem;
-    background-color: ${props => props.theme.colors.backgroundSecundary};   
+    background-color: ${props => props.theme.colors.backgroundSecundary};
     border: 0.2rem solid ${props => props.theme.colors.inputBorder};
 
     h1 {
         color: ${props => props.theme.colors.textColorTitle};
-        font-size: 2.5rem;    
-        margin-bottom: 0.5rem;    
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
     }
-    
+
     p {
         color: ${props => props.theme.colors.textColorParagraph};
-        
+
         strong {
-            color: ${variables.primaryColor}
+            color: ${variables.color_primary}
         }
     }
 
     form {
-        margin-top: 3rem;        
+        margin-top: 3rem;
         button {
             margin-top: 2rem;
             width: 100%;
@@ -84,18 +84,18 @@ export const FormContent = styled.div<IFormContentStyled>`
                     transition: .3s;
 
                     &:hover {
-                        color: ${variables.primaryColor};
+                        color: ${variables.color_primary};
                     }
 
                 }
             }
         }
     }
-    
+
     @media(max-width: 767px) {
         width: -webkit-fill-available;
         width: -moz-available;
         width: intrinsic;
         padding: 2rem 1rem;
-    } 
+    }
 `;

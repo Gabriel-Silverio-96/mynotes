@@ -17,7 +17,7 @@ export const TextAreaGroup = styled.div`
     }
 `;
 
-export const TextAreaElement = styled.div`    
+export const TextAreaElement = styled.div`
     position: relative;
 
     .loading-input {
@@ -26,7 +26,7 @@ export const TextAreaElement = styled.div`
         left: 0.8rem;
     }
 
-    textarea {        
+    textarea {
         width: intrinsic;
         width: -webkit-fill-available;
         width: -moz-available;
@@ -36,10 +36,10 @@ export const TextAreaElement = styled.div`
         font-size: 1rem;
         color: ${props => props.theme.colors.textColorParagraph};
         background-color: ${props => props.theme.colors.backgroundPrimary};
-        
+
         &:focus {
-            border-color: ${variables.primaryColor};
-            outline: 0;            
+            border-color: ${variables.color_primary};
+            outline: 0;
         }
     }
 `;

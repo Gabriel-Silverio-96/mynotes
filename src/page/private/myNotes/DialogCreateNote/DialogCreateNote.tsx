@@ -16,7 +16,7 @@ const CREATE_NOTE_INITIAL_STATE: any = { title_note: "", observation: "" };
 const DialogCreateNote: React.FC = () => {
 	const { closeDialogCreateNote } = useDialogMynotes();
 	const { setRefreshRequest, isOpenDialogCreateNote } = useContext(ContextMyNotes);
-	const [color, setColor] = useColor("hex", variables.primaryColor);
+	const [color, setColor] = useColor("hex", variables.color_primary);
 
 	const [errorInputMessage, setErrorInputMessage] = useState<IErrorInputMessage[]>([]);
 	const [createNote, setCreateNote] = useState<INote>(CREATE_NOTE_INITIAL_STATE);

@@ -46,9 +46,9 @@ const InputView = forwardRef<HTMLInputElement, IInput>((props, ref) => {
 						variant="text"
 						iconButton={
 							isVisiblePassword ? (
-								<FiEye size={18} stroke={variables.primaryColor} />
+								<FiEye size={18} stroke={variables.color_primary} />
 							) : (
-								<FiEyeOff size={18} stroke={variables.primaryColor} />
+								<FiEyeOff size={18} stroke={variables.color_primary} />
 							)
 						}
 						className="button-eye-password"
