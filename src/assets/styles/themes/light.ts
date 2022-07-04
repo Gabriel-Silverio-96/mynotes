@@ -1,11 +1,11 @@
-import { black, grayBorder, grayLightBorder, grayMedium, primaryColor, secondaryColor, textColorParagraph, white } from "../variables";
+import { black, grayBorder, grayLightBorder, grayMedium, color_primary, color_secondary, textColorParagraph, white } from "../variables";
 
 const light = {
 	title: "light",
 
 	colors: {
-		primary: primaryColor,
-		secundary: secondaryColor,
+		primary: color_primary,
+		secundary: color_secondary,
 
 		backgroundPrimary: white,
 		backgroundSecundary: white,
