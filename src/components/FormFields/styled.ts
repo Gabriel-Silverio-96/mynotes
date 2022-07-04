@@ -9,7 +9,7 @@ export const InputGroup = styled.div`
     label {
         color: ${props => props.theme.colors.textColorParagraph};
         margin-bottom: 0.5rem;
-    }   
+    }
 
     textarea {
         padding: 0.6rem 0.5rem;
@@ -22,8 +22,8 @@ export const InputGroup = styled.div`
         resize: vertical;
 
         &:focus {
-            border-color: ${variables.primaryColor};
-            outline: 0;            
+            border-color: ${variables.color_primary};
+            outline: 0;
         }
     }
 
@@ -34,7 +34,7 @@ export const InputGroup = styled.div`
     }
 `;
 
-export const InputElement = styled.div`    
+export const InputElement = styled.div`
     position: relative;
 
     .loading-input {
@@ -43,7 +43,7 @@ export const InputElement = styled.div`
         left: 0.8rem;
     }
 
-    input {        
+    input {
         width: intrinsic;
         width: -webkit-fill-available;
         width: -moz-available;
@@ -53,10 +53,10 @@ export const InputElement = styled.div`
         font-size: 1rem;
         color: ${props => props.theme.colors.textColorParagraph};
         background-color: ${props => props.theme.colors.backgroundPrimary};
-        
+
         &:focus {
-            border-color: ${variables.primaryColor};
-            outline: 0;            
+            border-color: ${variables.color_primary};
+            outline: 0;
         }
     }
 
@@ -65,6 +65,6 @@ export const InputElement = styled.div`
         width: min-content;
         right: 0rem;
         top: 0.2rem;
-        margin-top: 0;        
+        margin-top: 0;
     }
 `;
