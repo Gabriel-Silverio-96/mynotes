@@ -18,7 +18,7 @@ const DialogEditNote: React.FC = () => {
 
 	const { closeDialogEditNote, openDialogDeleteThisNote } = useDialogMynotes();
 	const { noteEditIdSelected, isOpenDialogEditNote, setRefreshRequest } = useContext(ContextMyNotes);
-	const [color, setColor] = useColor("hex", variables.primaryColor);
+	const [color, setColor] = useColor("hex", variables.color_primary);
 
 	const [errorInputMessage, setErrorInputMessage] = useState<IErrorInputMessage[]>([]);
 	const [isLoadingData, setIsLoadingData] = useState<boolean>(true);

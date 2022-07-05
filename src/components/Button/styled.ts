@@ -5,23 +5,23 @@ import { IButtonStyled, IButtonVariantProps, IButtonSizeProps } from "./types/ty
 const ButtonVariant: IButtonVariantProps = {
 	default: {
 		backgroundColor: `${variables.black}`,
-		backgroundColorHover: `${variables.primaryColor}`,
+		backgroundColorHover: `${variables.color_primary}`,
 		color: `${variables.white}`,
 		colorHover: `${variables.white}`,
 		border: (props: ThemeProps<DefaultTheme>) => props.theme.colors.buttonBorder,
 		borderHover: (props: ThemeProps<DefaultTheme>) => props.theme.colors.backgroundPrimary
 	},
 	primary: {
-		backgroundColor: `${variables.primaryColor}`,
+		backgroundColor: `${variables.color_primary}`,
 		backgroundColorHover: `${variables.black}`,
 		color: `${variables.white}`,
 		colorHover: `${variables.white}`,
-		border: `${variables.primaryColor}`,
+		border: `${variables.color_primary}`,
 		borderHover: `${variables.grayBorder}`
 	},
 	secondary: {
 		backgroundColor: "transparent",
-		backgroundColorHover: `${variables.primaryColor}`,
+		backgroundColorHover: `${variables.color_primary}`,
 		color: (props: ThemeProps<DefaultTheme>) => props.theme.colors.textColorTitle,
 		colorHover: `${variables.white}`,
 		border: (props: ThemeProps<DefaultTheme>) => props.theme.colors.buttonBorder,
@@ -31,14 +31,14 @@ const ButtonVariant: IButtonVariantProps = {
 		backgroundColor: "transparent",
 		backgroundColorHover: "none",
 		color: (props: ThemeProps<DefaultTheme>) => props.theme.colors.textColorTitle,
-		colorHover: `${variables.primaryColor}`,
+		colorHover: `${variables.color_primary}`,
 		border: "transparent",
 		borderHover: "transparent"
-	},    
+	},
 	danger: {
 		backgroundColor: `${variables.redLight}`,
-		backgroundColorHover: `${variables.red}`,
-		color: `${variables.red}`,
+		backgroundColorHover: `${variables.color_danger}`,
+		color: `${variables.color_danger}`,
 		colorHover: `${variables.white}`,
 		border: "transparent",
 		borderHover: "transparent"
@@ -61,26 +61,26 @@ const ButtonSize: IButtonSizeProps = {
 };
 
 export const Button = styled.button<IButtonStyled>`
-    background-color: ${({ variant }) => ButtonVariant[variant!]!.backgroundColor}};
-    color: ${({ variant }) => ButtonVariant[variant!]!.color}};
-    border: 0.03rem solid ${({ variant }) => ButtonVariant[variant!]!.border}};;
+    background-color: ${({ variant }) => ButtonVariant[variant!]!.backgroundColor};
+    color: ${({ variant }) => ButtonVariant[variant!]!.color};
+    border: 0.03rem solid ${({ variant }) => ButtonVariant[variant!]!.border};
     font-size: ${({ size }) => ButtonSize[size!].fontSize};
     padding: ${({ size }) => ButtonSize[size!].padding};
     border-radius: 0.3125rem;
     height: fit-content;
     cursor: pointer;
-    transition: 0.3s;    
-    
+    transition: 0.3s;
+
     &:hover:not([disabled]) {
-        background-color: ${({ variant }) => ButtonVariant[variant!]!.backgroundColorHover};        
-        color: ${({ variant }) => ButtonVariant[variant!]!.colorHover};  
-        border-color: ${({ variant }) => ButtonVariant[variant!]!.borderHover};      
+        background-color: ${({ variant }) => ButtonVariant[variant!]!.backgroundColorHover};
+        color: ${({ variant }) => ButtonVariant[variant!]!.colorHover};
+        border-color: ${({ variant }) => ButtonVariant[variant!]!.borderHover};
     }
 
     &:disabled {
-        background-color: ${props => props.theme.title === "dark" ? "#303030" : variables.disabledColor };     
+        background-color: ${props => props.theme.title === "dark" ? "#303030" : variables.disabledColor };
         color: #6e6e6e;
-        cursor: not-allowed;        
+        cursor: not-allowed;
     }
 `;
 

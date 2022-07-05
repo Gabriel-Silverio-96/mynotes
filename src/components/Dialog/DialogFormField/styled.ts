@@ -21,12 +21,12 @@ export const DialogFormField = styled.div`
         background-color: ${props => props.theme.colors.backgroundPrimary};
 
         &:focus {
-            border-color: ${variables.primaryColor};
-            outline: 0;            
+            border-color: ${variables.color_primary};
+            outline: 0;
         }
 
         + span {
-            color: ${variables.red};
+            color: ${variables.color_danger};
             font-size: 0.8rem;
         }
     }
@@ -42,12 +42,12 @@ export const DialogFormField = styled.div`
         resize: vertical;
 
         &:focus {
-            border-color: ${variables.primaryColor};
-            outline: 0;            
+            border-color: ${variables.color_primary};
+            outline: 0;
         }
 
         + span {
-            color: ${variables.red};;
+            color: ${variables.color_danger};;
             font-size: 0.8rem;
         }
     }

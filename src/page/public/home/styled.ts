@@ -30,10 +30,10 @@ export const MainWrapper = styled.div`
 			background:
 				linear-gradient(
 						to right,
-						${variables.primaryColor} 20%,
-						${variables.orange} 40%,
-						${variables.orange} 60%,
-						${variables.primaryColor} 80%
+						${variables.color_primary} 20%,
+						${variables.color_third} 40%,
+						${variables.color_third} 60%,
+						${variables.color_primary} 80%
 					);
 			-webkit-background-clip: text;
 			-webkit-text-fill-color: transparent;
@@ -58,7 +58,7 @@ export const MainWrapper = styled.div`
         margin-top: 2rem;
 
         button {
-            background-color: ${variables.primaryColor};
+            background-color: ${variables.color_primary};
             border: 0;
         }
     }
@@ -122,7 +122,7 @@ export const Quotes = styled.div`
 	padding: 5rem 1rem;
 	border-radius: 0.5rem;
 	text-align: center;
-	background-color: ${variables.primaryColor};
+	background-color: ${variables.color_primary};
 	color: ${variables.white};
 `;
 

@@ -8,19 +8,19 @@ const BadgeVariant: IBadgeVariant = {
 		color: `${variables.white}`,
 	},
 	primary: {
-		backgroundColor: `${variables.primaryColor}`,
+		backgroundColor: `${variables.color_primary}`,
 		color: `${variables.white}`,
 	},
 	secondary: {
-		backgroundColor: `${variables.secondaryColor}`,
+		backgroundColor: `${variables.color_secondary}`,
 		color: `${variables.black}`,
 	},
 	danger: {
-		backgroundColor: `${variables.red}`,
+		backgroundColor: `${variables.color_danger}`,
 		color: `${variables.white}`,
 	},
 	success: {
-		backgroundColor: `${variables.success}`,
+		backgroundColor: `${variables.color_success}`,
 		color: `${variables.white}`,
 	},
 	text: {
