@@ -6,7 +6,7 @@ const AlertSeverity = (severity: string): IAlertSeverityOptionStyled => {
 	const alertSeverityOption: IAlertSeverityOption = {
 		success: {
 			backgroundColor: variables.greenLight,
-			color: variables.success
+			color: variables.color_success
 		},
 		error: {
 			backgroundColor: variables.redLight,
@@ -14,11 +14,11 @@ const AlertSeverity = (severity: string): IAlertSeverityOptionStyled => {
 		},
 		warning: {
 			backgroundColor: variables.yellowLight,
-			color: variables.warning
+			color: variables.color_warning
 		},
 		info: {
 			backgroundColor: variables.blueLight,
-			color: variables.info
+			color: variables.color_info
 		}
 	};
 	return alertSeverityOption[severity];

@@ -20,7 +20,7 @@ const BadgeVariant: IBadgeVariant = {
 		color: `${variables.white}`,
 	},
 	success: {
-		backgroundColor: `${variables.success}`,
+		backgroundColor: `${variables.color_success}`,
 		color: `${variables.white}`,
 	},
 	text: {

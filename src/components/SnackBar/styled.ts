@@ -4,11 +4,11 @@ import { IAlignOption, ISnackBarProgressBarStyled, ISnackBarStyled, ITypeMessage
 
 const TypeMessage = (typeMessage: string): string => {
 	const typeMessageOption: ITypeMessageStyled = {
-		success: variables.success,
+		success: variables.color_success,
 		error: variables.color_danger,
-		warning: variables.warning,
+		warning: variables.color_warning,
 	};
-	return typeMessageOption[typeMessage] || variables.success;
+	return typeMessageOption[typeMessage] || variables.color_success;
 };
 
 const AlignSnackBar = (align: string): Postion => {
