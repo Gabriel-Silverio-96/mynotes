@@ -10,7 +10,7 @@ const AlertSeverity = (severity: string): IAlertSeverityOptionStyled => {
 		},
 		error: {
 			backgroundColor: variables.redLight,
-			color: variables.red
+			color: variables.color_danger
 		},
 		warning: {
 			backgroundColor: variables.yellowLight,
@@ -28,12 +28,12 @@ export const Alert = styled.div<IAlertStyled>`
     width: auto;
     padding: 1rem;
     background-color: ${({ severity }) => AlertSeverity(severity).backgroundColor};
-    color: ${({ severity }) => AlertSeverity(severity).color};   
+    color: ${({ severity }) => AlertSeverity(severity).color};
     border-radius: 0.5rem;
     border: 0.1rem solid ${({ severity }) => AlertSeverity(severity).color};
-    
+
     > p, ul {
-        color: ${({ severity }) => AlertSeverity(severity).color};   
+        color: ${({ severity }) => AlertSeverity(severity).color};
     }
 
     ul {
@@ -48,7 +48,7 @@ export const AlertHeader = styled.div<IAlertStyled>`
     margin-bottom: 0.5rem;
 
     > strong {
-        text-transform: capitalize;        
+        text-transform: capitalize;
         color: ${({ severity }) => AlertSeverity(severity).color};
     }
 `;

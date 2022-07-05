@@ -27,7 +27,7 @@ export default createGlobalStyle `
     }
 
     :focus-visible {
-        outline: 0.3rem solid red;
+        outline: 0.3rem solid ${variables.color_danger};
         outline-style: dotted;
     }
 

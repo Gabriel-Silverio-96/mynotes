@@ -26,7 +26,7 @@ export const DialogFormField = styled.div`
         }
 
         + span {
-            color: ${variables.red};
+            color: ${variables.color_danger};
             font-size: 0.8rem;
         }
     }
@@ -47,7 +47,7 @@ export const DialogFormField = styled.div`
         }
 
         + span {
-            color: ${variables.red};;
+            color: ${variables.color_danger};;
             font-size: 0.8rem;
         }
     }

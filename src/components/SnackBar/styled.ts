@@ -5,7 +5,7 @@ import { IAlignOption, ISnackBarProgressBarStyled, ISnackBarStyled, ITypeMessage
 const TypeMessage = (typeMessage: string): string => {
 	const typeMessageOption: ITypeMessageStyled = {
 		success: variables.success,
-		error: variables.red,
+		error: variables.color_danger,
 		warning: variables.warning,
 	};
 	return typeMessageOption[typeMessage] || variables.success;
@@ -19,37 +19,37 @@ const AlignSnackBar = (align: string): Postion => {
 			bottom: "inherit",
 			right: "0",
 			left: "0",
-		},       
+		},
 		topRight: {
 			top: DEFAULT_POSITION,
 			bottom: "inherit",
 			right: DEFAULT_POSITION,
 			left: "inherit",
-		},       
+		},
 		topLeft: {
 			top: DEFAULT_POSITION,
 			bottom: "inherit",
 			right: "inherit",
 			left: DEFAULT_POSITION,
-		},       
+		},
 		bottomCenter: {
 			top: "inherit",
 			bottom: DEFAULT_POSITION,
 			right: "0",
 			left: "0",
-		},       
+		},
 		bottomRight: {
 			top: "inherit",
 			bottom: DEFAULT_POSITION,
 			right: DEFAULT_POSITION,
 			left: "inherit",
-		},       
+		},
 		bottomLeft: {
 			top: "inherit",
 			bottom: DEFAULT_POSITION,
 			right: "inherit",
 			left: DEFAULT_POSITION,
-		},       
+		},
 	};
 
 	return alignOption[align];
@@ -78,15 +78,15 @@ export const SnackBar = styled.div<ISnackBarStyled>`
         display: none;
     }
 
-    h4 {        
-        text-transform: capitalize;    
+    h4 {
+        text-transform: capitalize;
     }
 
     p {
         font-size: 0.8rem;
     }
 
-    animation: TopShow 0.5s; 
+    animation: TopShow 0.5s;
     animation-fill-mode: backwards;
 
     @keyframes TopShow {
@@ -94,7 +94,7 @@ export const SnackBar = styled.div<ISnackBarStyled>`
             opacity: 0;
             bottom: 0;
         }
-        
+
         100% {
             opacity: 1;
             bottom: ${({ align }) => AlignSnackBar(align!).bottom};
@@ -110,7 +110,7 @@ export const SnackBarProgressBar = styled.div<ISnackBarProgressBarStyled>`
     left: 0;
     bottom: -0.15rem;
     border-radius: 0rem 0rem 1rem 1rem;
-    animation: Increase ${({delay}) => `${delay!/1000}s`}; 
+    animation: Increase ${({delay}) => `${delay!/1000}s`};
     animation-fill-mode: forwards;
 
     @keyframes Increase {

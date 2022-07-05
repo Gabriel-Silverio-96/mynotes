@@ -16,7 +16,7 @@ const BadgeVariant: IBadgeVariant = {
 		color: `${variables.black}`,
 	},
 	danger: {
-		backgroundColor: `${variables.red}`,
+		backgroundColor: `${variables.color_danger}`,
 		color: `${variables.white}`,
 	},
 	success: {

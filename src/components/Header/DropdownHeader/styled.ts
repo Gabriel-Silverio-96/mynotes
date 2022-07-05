@@ -19,9 +19,9 @@ export const DropdownHeaderWrapper = styled.div`
     place-items: center;
     cursor: pointer;
     z-index: 1;
-    
+
     &.dropdown {
-        & > div {            
+        & > div {
             .arrow-chevron {
                 transition: .3s;
                 transform: rotate(0deg);
@@ -30,13 +30,13 @@ export const DropdownHeaderWrapper = styled.div`
     }
 
     &.active-dropdown {
-        & > div {            
+        & > div {
             .arrow-chevron {
                 transition: .3s;
                 transform: rotate(180deg);
             }
         }
-    }   
+    }
 `;
 
 export const ButtonDropdown = styled.div<IButtonDropdownStyled>`
@@ -52,16 +52,16 @@ export const ButtonDropdown = styled.div<IButtonDropdownStyled>`
     z-index: ${props => props.zIndex && "1"};
 
     span {
-        color: ${variables.white};            
-    } 
+        color: ${variables.white};
+    }
 `;
 
 export const Dropdown = styled.div`
     position: absolute;
     top: 5rem;
     padding: 2rem;
-    background-color: ${variables.black};   
-    color: ${variables.white};   
+    background-color: ${variables.black};
+    color: ${variables.white};
     border: 0.03rem solid ${variables.grayBorder};
     border-radius: 0.3125rem;
     right: 0.85rem;
@@ -74,12 +74,12 @@ export const Dropdown = styled.div`
             margin-bottom: 1rem;
 
             a {
-                color: ${variables.white};            
+                color: ${variables.white};
             }
 
             &:last-child {
                 margin-bottom: 0rem;
-                color: ${variables.red};
+                color: ${variables.color_danger};
             }
         }
     }

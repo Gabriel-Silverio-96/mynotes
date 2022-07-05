@@ -37,8 +37,8 @@ const ButtonVariant: IButtonVariantProps = {
 	},
 	danger: {
 		backgroundColor: `${variables.redLight}`,
-		backgroundColorHover: `${variables.red}`,
-		color: `${variables.red}`,
+		backgroundColorHover: `${variables.color_danger}`,
+		color: `${variables.color_danger}`,
 		colorHover: `${variables.white}`,
 		border: "transparent",
 		borderHover: "transparent"

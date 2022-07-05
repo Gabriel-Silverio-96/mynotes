@@ -4,7 +4,7 @@ export const color_secondary = "#FFE210";
 export const color_third = "#FF3110";
 
 //Complementary
-export const red = "#FF0000";
+export const color_danger = "#FF0000";
 export const success = "#138d05";
 export const warning = "#ffbc00";
 export const info = "#0087e7";
