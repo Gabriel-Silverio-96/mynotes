@@ -11,7 +11,7 @@ export const TextAreaGroup = styled.div`
     }
 
     span {
-        color: ${variables.red};
+        color: ${variables.color_danger};
         margin-left: 0.2rem;
         font-size: 0.8rem;
     }
