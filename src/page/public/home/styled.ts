@@ -104,7 +104,7 @@ export const Card = styled.div`
 	align-items: center;
 	justify-content: center;
 	background-color: ${props => props.theme.colors.backgroundPrimary};
-	border: 0.01rem solid ${variables.grayMedium2};
+	border: 0.01rem solid ${variables.color_neutral_gray_medium_2};
 `;
 
 export const CardContent = styled.div`
@@ -127,7 +127,7 @@ export const Quotes = styled.div`
 `;
 
 export const Footer = styled.footer`
-	border: 0.01rem solid ${variables.grayMedium2};
+	border: 0.01rem solid ${variables.color_neutral_gray_medium_2};
 	border-right: 0;
 	border-left: 0;
 	border-bottom: 0;

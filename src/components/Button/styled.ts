@@ -17,7 +17,7 @@ const ButtonVariant: IButtonVariantProps = {
 		color: `${variables.white}`,
 		colorHover: `${variables.white}`,
 		border: `${variables.color_primary}`,
-		borderHover: `${variables.grayBorder}`
+		borderHover: `${variables.color_neutral_gray_medium}`
 	},
 	secondary: {
 		backgroundColor: "transparent",
@@ -36,7 +36,7 @@ const ButtonVariant: IButtonVariantProps = {
 		borderHover: "transparent"
 	},
 	danger: {
-		backgroundColor: `${variables.redLight}`,
+		backgroundColor: `${variables.color_red_light}`,
 		backgroundColorHover: `${variables.color_danger}`,
 		color: `${variables.color_danger}`,
 		colorHover: `${variables.white}`,
@@ -78,7 +78,7 @@ export const Button = styled.button<IButtonStyled>`
     }
 
     &:disabled {
-        background-color: ${props => props.theme.title === "dark" ? "#303030" : variables.disabledColor };
+        background-color: ${props => props.theme.title === "dark" ? "#303030" : variables.color_disabled };
         color: #6e6e6e;
         cursor: not-allowed;
     }
