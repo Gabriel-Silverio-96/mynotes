@@ -9,6 +9,7 @@ export const ButtonColorPickerContainer = styled.div`
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
+	width: max-content;
 	cursor: pointer;
 
 	span {
