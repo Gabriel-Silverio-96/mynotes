@@ -1,4 +1,4 @@
-import { black, grayBorder, grayLightBorder, grayMedium, color_primary, color_secondary, textColorParagraph, white } from "../variables";
+import { black, color_neutral_gray_medium, color_neutral_gray_light, color_neutral_gray_light_2, color_primary, color_secondary, textColorParagraph, white } from "../variables";
 
 const light = {
 	title: "light",
@@ -12,9 +12,9 @@ const light = {
 
 		textColorTitle: black,
 		textColorParagraph: textColorParagraph,
-		inputBorder: grayMedium,
-		buttonBorder: grayBorder,
-		noteCardBorder: grayLightBorder
+		inputBorder: color_neutral_gray_light_2,
+		buttonBorder: color_neutral_gray_medium,
+		noteCardBorder: color_neutral_gray_light
 	}
 };
 

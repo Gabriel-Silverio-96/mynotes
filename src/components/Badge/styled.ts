@@ -4,7 +4,7 @@ import { IBadgeStyled, IBadgeVariant } from "./types/types.styled";
 
 const BadgeVariant: IBadgeVariant = {
 	default: {
-		backgroundColor: `${variables.grayMedium2}`,
+		backgroundColor: `${variables.color_neutral_gray_medium_2}`,
 		color: `${variables.white}`,
 	},
 	primary: {

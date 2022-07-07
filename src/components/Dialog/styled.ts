@@ -18,7 +18,7 @@ export const DialogContainer = styled.div<IDialogStyled>`
     width: -webkit-fill-available;
     width: -moz-available;
     height: 100%;
-    background-color: ${variables.blackLight};
+    background-color: ${variables.color_background_dialog};
     position: fixed;
     display: flex;
     left: 0;

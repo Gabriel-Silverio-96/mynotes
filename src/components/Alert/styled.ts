@@ -5,19 +5,19 @@ import * as variables from "assets/styles/variables";
 const AlertSeverity = (severity: string): IAlertSeverityOptionStyled => {
 	const alertSeverityOption: IAlertSeverityOption = {
 		success: {
-			backgroundColor: variables.greenLight,
+			backgroundColor: variables.color_green_light,
 			color: variables.color_success
 		},
 		error: {
-			backgroundColor: variables.redLight,
+			backgroundColor: variables.color_red_light,
 			color: variables.color_danger
 		},
 		warning: {
-			backgroundColor: variables.yellowLight,
+			backgroundColor: variables.color_yellow_light,
 			color: variables.color_warning
 		},
 		info: {
-			backgroundColor: variables.blueLight,
+			backgroundColor: variables.color_blue_light,
 			color: variables.color_info
 		}
 	};

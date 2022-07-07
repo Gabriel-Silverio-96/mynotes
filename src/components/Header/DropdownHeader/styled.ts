@@ -40,7 +40,7 @@ export const DropdownHeaderWrapper = styled.div`
 `;
 
 export const ButtonDropdown = styled.div<IButtonDropdownStyled>`
-    border: 0.03rem solid ${variables.grayBorder};
+    border: 0.03rem solid ${variables.color_neutral_gray_medium};
     font-size: 0.9rem;
     padding: 0.45rem 0.6rem;
     display: flex;
@@ -62,7 +62,7 @@ export const Dropdown = styled.div`
     padding: 2rem;
     background-color: ${variables.black};
     color: ${variables.white};
-    border: 0.03rem solid ${variables.grayBorder};
+    border: 0.03rem solid ${variables.color_neutral_gray_medium};
     border-radius: 0.3125rem;
     right: 0.85rem;
 

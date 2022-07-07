@@ -1,27 +1,27 @@
-//Main colors
+// Primary colors
 export const color_primary = "#9C10FF";
 export const color_secondary = "#FFE210";
 export const color_third = "#FF3110";
 
-//Complementary
+// Complementary colors
 export const color_danger = "#FF0000";
 export const color_success = "#138d05";
 export const color_warning = "#ffbc00";
 export const color_info = "#0087e7";
+export const color_yellow_light = "#fffff0";
+export const color_red_light = "#FFE3E3";
+export const color_green_light = "#CFFFC9";
+export const color_blue_light = "#f4faff";
 
-//Neutral colors
-export const grayDark = "#161414";
-export const grayMedium = "#EBEBEB";
-export const grayLight = "#F8F8F8";
-export const grayBorder = "#484848";
-export const grayLightBorder = "#c7c7c7";
-export const grayMedium2 = "#535353";
+// Neutral colors
+export const color_neutral_gray_dark = "#161414";
+export const color_neutral_gray_medium = "#484848";
+export const color_neutral_gray_medium_2 = "#535353";
+export const color_neutral_gray_light = "#c7c7c7";
+export const color_neutral_gray_light_2 = "#EBEBEB";
+export const color_background_dialog = "#00000075";
+export const color_disabled = "#d9d9d9";
+
 export const black = "#000000";
-export const blackLight = "#00000075";
 export const white = "#FFFFFF";
-export const yellowLight = "#fffff0";
-export const redLight = "#FFE3E3";
-export const greenLight = "#CFFFC9";
-export const blueLight = "#f4faff";
 export const textColorParagraph = "#929292";
-export const disabledColor = "#d9d9d9";
