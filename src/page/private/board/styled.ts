@@ -9,5 +9,6 @@ export const Main = styled.main`
 	overflow: scroll;
     overflow-x: hidden;
     height: 87vh;
-    padding-bottom: 1rem;
+	padding: 1.6rem 1rem 0;
+	width: 100%;
 `;
