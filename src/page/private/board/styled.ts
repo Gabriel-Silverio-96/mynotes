@@ -25,9 +25,5 @@ export const Main = styled.main`
 		border-radius: 2rem;
 		cursor: all-scroll;
 	}
-
-	::-webkit-scrollbar-track {
-		-webkit-box-shadow: inset 0 0 6px transparent;
-	}
 `;
 
