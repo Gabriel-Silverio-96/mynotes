@@ -14,7 +14,8 @@ export const color_green_light = "#CFFFC9";
 export const color_blue_light = "#f4faff";
 
 // Neutral colors
-export const color_neutral_gray_dark = "#161414";
+export const color_neutral_gray_dark = "#090909";
+export const color_neutral_gray_dark_2 = "#161414";
 export const color_neutral_gray_medium = "#484848";
 export const color_neutral_gray_medium_2 = "#535353";
 export const color_neutral_gray_light = "#c7c7c7";

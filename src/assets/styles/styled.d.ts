@@ -7,10 +7,11 @@ declare module "styled-components" {
         colors: {
             primary: string;
             secundary: string;
-    
+
             backgroundPrimary: string;
             backgroundSecundary: string;
-    
+            backgroundAside: string;
+
             textColorTitle: string;
             textColorParagraph: string;
             inputBorder: string;

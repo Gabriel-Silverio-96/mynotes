@@ -9,6 +9,7 @@ const light = {
 
 		backgroundPrimary: white,
 		backgroundSecundary: white,
+		backgroundAside: white,
 
 		textColorTitle: black,
 		textColorParagraph: textColorParagraph,

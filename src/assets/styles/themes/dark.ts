@@ -1,4 +1,4 @@
-import { black, color_neutral_gray_medium, color_neutral_gray_dark, color_primary, color_secondary, textColorParagraph, white } from "../variables";
+import { black, color_neutral_gray_dark, color_neutral_gray_dark_2, color_neutral_gray_medium, color_primary, color_secondary, textColorParagraph, white } from "../variables";
 
 const dark = {
 	title: "dark",
@@ -7,12 +7,13 @@ const dark = {
 		primary: color_secondary,
 		secundary: color_primary,
 
-		backgroundPrimary: black,
-		backgroundSecundary: color_neutral_gray_dark,
+		backgroundPrimary: color_neutral_gray_dark,
+		backgroundSecundary: color_neutral_gray_dark_2,
+		backgroundAside: black,
 
 		textColorTitle: white,
 		textColorParagraph: textColorParagraph,
-		inputBorder: color_neutral_gray_dark,
+		inputBorder: color_neutral_gray_dark_2,
 		buttonBorder: color_neutral_gray_medium,
 		noteCardBorder: "transparent"
 	}
