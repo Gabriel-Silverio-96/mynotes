@@ -7,7 +7,6 @@ export const Aside = styled.aside`
 	position: fixed;
     left: 0;
 	top: 0rem;
-    z-index: -1;
 	padding: 6rem 1rem 0rem 1rem;
 	display: flex;
 	flex-direction: column;
