@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
-    background-color: ${props => props.theme.colors.backgroundPrimary};
+    background-color: transparent;
     padding: 1rem 0;
     display: flex;
     justify-content: space-between;
@@ -19,7 +19,7 @@ export const HeaderContainer = styled.header`
             text-decoration: none;
             display: contents;
         }
-        
+
         button {
             cursor: pointer;
         }
