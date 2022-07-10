@@ -9,6 +9,7 @@ export const HeaderContainer = styled.header`
     a {
         display: flex;
         align-items: center;
+		z-index: 1;
     }
 
     nav {
