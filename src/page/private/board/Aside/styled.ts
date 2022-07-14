@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Aside = styled.aside`
 	background: ${(props) => props.theme.colors.backgroundAside};
-	width: 15rem;
+	width: 12rem;
 	height: 100vh;
 	position: fixed;
     left: 0;

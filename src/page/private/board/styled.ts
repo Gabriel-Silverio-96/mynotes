@@ -5,10 +5,10 @@ export const Board = styled.div`
 `;
 
 export const Main = styled.main`
-	margin-left: 17rem;
+	margin-left: 14rem;
 	overflow: scroll;
     overflow-x: hidden;
-    height: 87vh;
+    height: 85vh;
 	padding: 1.6rem 1rem 0;
 	width: 100%;
 
